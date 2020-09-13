@@ -1,8 +1,8 @@
-
 | Module | Team Member Name | Team member gitlab account |
 | ------ | ------ | ------|
-| cell | Benjamin Doornbos | doornbbenj |
-| cell | Callum Mckay | mckaycall |
-| cell | Jack Maclennan | maclenjack |
-| cell | Seth Patel | patelseth |
-| cell | Isabella | tomazisab |
+| Maze | Benjamin Doornbos | doornbbenj |
+| Record and Replay Games  | Callum Mckay | mckaycall |
+| Monkey Testing | Jack Maclennan | maclenjack |
+| Rendering  | Seth Patel | patelseth |
+| Application  | Isabella Tomaz| tomazisab |
+| Persistence and Levels  | Matt Rowling | rowlinmatt |
