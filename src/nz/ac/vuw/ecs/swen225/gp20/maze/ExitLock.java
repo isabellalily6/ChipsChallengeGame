@@ -1,0 +1,22 @@
+package nz.ac.vuw.ecs.swen225.gp20.maze;
+
+/**
+ * From handout:
+ * Behaves like a wall time for Chap as long as there are still uncollected treasures. Once the treasure chest is full
+ * (all treasures have been collected), Chap can pass through the lock.
+ *
+ * @author Benjamin Doornbos 300487256
+ */
+public class ExitLock extends Tile {
+    //TODO: determine how this will get changed to an exit tile
+
+    /**
+     * Creates new ExitLock tile
+     *
+     * @param row row in the maze array
+     * @param col col in the maze array
+     */
+    public ExitLock(int row, int col) {
+        super("data/exitLock.png", row, col, false);
+    }
+}
