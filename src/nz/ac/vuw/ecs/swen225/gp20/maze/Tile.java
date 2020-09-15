@@ -9,21 +9,28 @@ public abstract class Tile {
     private final String imageURl;
     private final int row;
     private final int col;
-    protected boolean actorsCanOccupy;
+    private final boolean accessible;
 
     /**
      * Initializes all required fields
      *
-     * @param imageURl        the URL for the image corresponding to a tile
-     * @param row             row in the maze array
-     * @param col             col in the maze array
-     * @param actorsCanOccupy whether an actor can walk onto this tile
+     * @param imageURl   the URL for the image corresponding to a tile
+     * @param row        row in the maze array
+     * @param col        col in the maze array
+     * @param accessible whether an actor can walk onto this tile
      */
-    public Tile(String imageURl, int row, int col, boolean actorsCanOccupy) {
+    public Tile(String imageURl, int row, int col, boolean accessible) {
         this.imageURl = imageURl;
         this.row = row;
         this.col = col;
-        this.actorsCanOccupy = actorsCanOccupy;
+        this.accessible = accessible;
+    }
+
+    /**
+     * @return whether an actor can step on this tile
+     */
+    public boolean isAccessible() {
+        return accessible;
     }
 
     /**
