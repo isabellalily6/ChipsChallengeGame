@@ -46,6 +46,7 @@ public abstract class Tile {
 
     /**
      * This will perform actions required once an actor enters this tile (to be overridden by classes like Treasure)
+     * TODO: this method may be redundant
      *
      * @param actor the actor entering this tile
      */
@@ -66,8 +67,6 @@ public abstract class Tile {
     public boolean isOccupied() {
         return occupied;
     }
-
-    //TODO: this method may not be needed
 
     /**
      * Change the value of the occupied boolean

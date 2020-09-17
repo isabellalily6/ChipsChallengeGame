@@ -35,6 +35,13 @@ public class Player extends Actor {
     }
 
     /**
+     * @return how many treasures chap has collected
+     */
+    public int getTreasuresCollected() {
+        return treasuresCollected;
+    }
+
+    /**
      * Adds the colour corresponding to a key just picked up to Chap's backpack
      *
      * @param col colour of the key just picked up
