@@ -13,10 +13,10 @@ public class ExitLock extends Tile {
     /**
      * Creates new ExitLock tile
      *
-     * @param row row in the maze array
      * @param col col in the maze array
+     * @param row row in the maze array
      */
-    public ExitLock(int row, int col) {
-        super("data/exitLock.png", row, col, false);
+    public ExitLock(int col, int row) {
+        super("data/exitLock.png", col, row, false, false);
     }
 }

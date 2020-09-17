@@ -1,6 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import java.util.Arrays;
 import java.util.List;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * From Handout:
@@ -16,35 +20,45 @@ import java.util.List;
  * @author Benjamin Doornbos
  */
 public class Maze {
-    private final int rows;
     private final int cols;
+    private final int rows;
     private final Tile[][] tiles;
-    private Player chap;
+    private final int totalTreasures;
+    private final Player chap;
     private List<Actor> actors;
+    private int treasuresLeft;
+    private boolean levelOver;
+
+
+    /**
+     * TEST CONSTRUCTOR - Do not use in production code
+     * a real maze needs many more fields than this
+     *
+     * @param tiles the tiles that make up the maze
+     */
+    public Maze(Tile[][] tiles) {
+        this.cols = tiles.length;
+        this.rows = tiles[0].length;
+        this.tiles = copy2dTileArray(tiles);
+        this.totalTreasures = 0;
+        chap = new Player(tiles[cols / 2][rows / 2]);
+    }
 
     /**
      * New maze which contains the Tile array and controls logic.
      * (new maze needs to be initialised for each level)
+     * TODO: discuss method for loading walls and stuff from file
      *
-     * @param cols amount of cols for the entire level
-     * @param rows amount of rows for the entire level
+     * @param tiles          the tiles that make up the maze
+     * @param totalTreasures the total treasures that are in this level
      */
-    public Maze(int cols, int rows) {
-        this.cols = cols;
-        this.rows = rows;
-        tiles = new Tile[cols][rows];
-    }
-
-    private void initMaze() {
-        //TODO: discuss method for loading walls and stuff from file
-        //-----------TEMPORARY-------------
-        for (int x = 0; x < cols; x++) {
-            for (int y = 0; y < rows; y++) {
-                tiles[x][y] = new Free(x, y);
-            }
-        }
+    public Maze(Tile[][] tiles, int totalTreasures) {
+        this.cols = tiles.length;
+        this.rows = tiles[0].length;
+        this.tiles = copy2dTileArray(tiles);
+        checkArgument(totalTreasures >= 0, "amount of treasures must not be negative");
+        this.totalTreasures = treasuresLeft = totalTreasures;
         chap = new Player(tiles[cols / 2][rows / 2]);
-        //---------------------------------
     }
 
     /**
@@ -63,28 +77,102 @@ public class Maze {
      * @param dir Direction to move
      */
     public void moveActor(Actor a, Direction dir) {
+        checkNotNull(a);
+        Tile newLoc = null;
         switch (dir) {
             case UP:
-                a.setLocation(tiles[a.getLocation().getCol()][a.getLocation().getRow() - 1]);
+                checkArgument(a.getLocation().getRow() > 0, "Actor cannot move any higher!");
+                newLoc = tiles[a.getLocation().getCol()][a.getLocation().getRow() - 1];
                 break;
             case DOWN:
-                a.setLocation(tiles[a.getLocation().getCol()][a.getLocation().getRow() + 1]);
+                checkArgument(a.getLocation().getRow() < rows - 1, "Actor cannot move any lower!");
+                newLoc = tiles[a.getLocation().getCol()][a.getLocation().getRow() + 1];
                 break;
             case LEFT:
-                a.setLocation(tiles[a.getLocation().getCol() - 1][a.getLocation().getRow()]);
+                checkArgument(a.getLocation().getCol() > 0, "Actor cannot move any further left!");
+                newLoc = tiles[a.getLocation().getCol() - 1][a.getLocation().getRow()];
                 break;
             case RIGHT:
-                a.setLocation(tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()]);
+                checkArgument(a.getLocation().getCol() < cols - 1, "Actor cannot move any further right!");
+                newLoc = tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()];
                 break;
         }
+        //TODO: better error handling
+        checkNotNull(newLoc);
+        if (!newLoc.isAccessible()) return;
+
+        a.getLocation().onExit();
+        if (a == chap) {
+            if (newLoc instanceof Exit) levelOver = true;
+            else {
+                interactWithTile(newLoc);
+                // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
+                newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
+            }
+        }
+        newLoc.onEntry(a);
+        a.setLocation(newLoc);
+
+    }
+
+    private void interactWithTile(Tile loc) {
+        if (loc instanceof Treasure) {
+            chap.incrementTreasures();
+            treasuresLeft--;
+            if (treasuresLeft == 0) flipExitLock();
+            assert (treasuresLeft + chap.getTreasuresCollected() == totalTreasures);
+        } else if (loc instanceof Key) {
+            var k = (Key) loc;
+            chap.addToBackPack(k.getColour());
+        } else if (loc instanceof LockedDoor) {
+            LockedDoor ld = (LockedDoor) loc;
+            //TODO: better error handling
+            if (!chap.backpackContains(ld.getLockColour())) return;
+        }
+
+        if (loc.isFreeOnEntry()) setFree(loc);
     }
 
 
+    private void setFree(Tile loc) {
+        tiles[loc.getCol()][loc.getRow()] = new Free(loc.getCol(), loc.getRow());
+    }
+
+    private void flipExitLock() {
+        for (int x = 0; x < cols; x++) {
+            for (int y = 0; y < rows; y++) {
+                if (tiles[x][y] instanceof ExitLock) setFree(tiles[x][y]);
+            }
+        }
+    }
+
+    private Tile[][] copy2dTileArray(Tile[][] toCopy) {
+        Tile[][] toRet = new Tile[toCopy.length][];
+        for (int i = 0; i < toCopy.length; i++) {
+            toRet[i] = Arrays.copyOf(toCopy[i], toCopy[i].length);
+        }
+        return toRet;
+    }
+
     /**
-     * @return 2d array of Tiles that represents the maze
+     * @return Whether the level is over (chap died or reached exit)
+     */
+    public boolean isLevelOver() {
+        return levelOver;
+    }
+
+    /**
+     * @return Shallow copy of 2d array of Tiles that represents the maze
      */
     public Tile[][] getTiles() {
-        return tiles;
+        return copy2dTileArray(tiles);
+    }
+
+    /**
+     * @return the amount of uncollected treasures in this level
+     */
+    public int getTreasuresLeft() {
+        return treasuresLeft;
     }
 
     /**

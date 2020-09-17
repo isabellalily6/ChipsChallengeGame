@@ -13,13 +13,20 @@ public class Key extends Tile {
     /**
      * Creates a new Key (should only be used when initialising game
      *
-     * @param row    row in the maze array
      * @param col    col in the maze array
+     * @param row    row in the maze array
      * @param colour the colour that this particular key is going to be (determined by json)
      */
-    public Key(int row, int col, Colour colour) {
-        super("data/key.png", row, col, true);
+    public Key(int col, int row, Colour colour) {
+        super("data/key.png", col, row, true, true);
         this.colour = colour;
+    }
+
+    /**
+     * @return The colour of this key
+     */
+    public Colour getColour() {
+        return colour;
     }
 
     enum Colour {

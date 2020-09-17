@@ -11,10 +11,11 @@ public class Treasure extends Tile {
     /**
      * Creates new Treasure tile
      *
-     * @param row row in the maze array
      * @param col col in the maze array
+     * @param row row in the maze array
      */
-    public Treasure(int row, int col) {
-        super("data/treasure.png", row, col, true);
+    public Treasure(int col, int row) {
+        super("data/treasure.png", col, row, true, true);
     }
+
 }

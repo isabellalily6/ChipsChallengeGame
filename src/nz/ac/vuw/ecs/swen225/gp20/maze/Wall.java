@@ -11,10 +11,10 @@ public class Wall extends Tile {
     /**
      * Creates a new wall
      *
-     * @param row row in the maze array
      * @param col col in the maze array
+     * @param row row in the maze array
      */
-    public Wall(int row, int col) {
-        super("data/wall.png", row, col, false);
+    public Wall(int col, int row) {
+        super("data/wall.png", col, row, false, true);
     }
 }

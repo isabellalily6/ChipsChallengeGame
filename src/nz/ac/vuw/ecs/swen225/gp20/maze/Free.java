@@ -10,10 +10,10 @@ public class Free extends Tile {
     /**
      * Creates new free tile
      *
-     * @param row row in the maze array
      * @param col col in the maze array
+     * @param row row in the maze array
      */
-    public Free(int row, int col) {
-        super("data/free.png", row, col, true);
+    public Free(int col, int row) {
+        super("data/free.png", col, row, true, false);
     }
 }
