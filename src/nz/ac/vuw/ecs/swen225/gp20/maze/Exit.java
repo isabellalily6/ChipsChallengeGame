@@ -10,10 +10,10 @@ public class Exit extends Tile {
     /**
      * Creates new Exit tile
      *
-     * @param row row in the maze array
      * @param col col in the maze array
+     * @param row row in the maze array
      */
-    public Exit(int row, int col) {
-        super("data/exit.png", row, col, true);
+    public Exit(int col, int row) {
+        super("data/exit.png", col, row, true, false);
     }
 }

@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,11 +17,13 @@ import java.util.List;
  * @author Benjamin Doornbos
  */
 public class Maze {
-    private final int rows;
     private final int cols;
+    private final int rows;
     private final Tile[][] tiles;
     private Player chap;
     private List<Actor> actors;
+    private int treasures;
+    private boolean levelOver;
 
     /**
      * New maze which contains the Tile array and controls logic.
@@ -33,6 +36,17 @@ public class Maze {
         this.cols = cols;
         this.rows = rows;
         tiles = new Tile[cols][rows];
+    }
+
+    /**
+     * Constructor with pre-constructed tile array
+     *
+     * @param tiles the tiles that make up the maze
+     */
+    public Maze(Tile[][] tiles) {
+        this.cols = tiles.length;
+        this.rows = tiles[0].length;
+        this.tiles = tiles;
     }
 
     private void initMaze() {
@@ -63,28 +77,78 @@ public class Maze {
      * @param dir Direction to move
      */
     public void moveActor(Actor a, Direction dir) {
+        Tile newLoc = null;
         switch (dir) {
             case UP:
-                a.setLocation(tiles[a.getLocation().getCol()][a.getLocation().getRow() - 1]);
+                newLoc = tiles[a.getLocation().getCol()][a.getLocation().getRow() - 1];
                 break;
             case DOWN:
-                a.setLocation(tiles[a.getLocation().getCol()][a.getLocation().getRow() + 1]);
+                newLoc = tiles[a.getLocation().getCol()][a.getLocation().getRow() + 1];
                 break;
             case LEFT:
-                a.setLocation(tiles[a.getLocation().getCol() - 1][a.getLocation().getRow()]);
+                newLoc = tiles[a.getLocation().getCol() - 1][a.getLocation().getRow()];
                 break;
             case RIGHT:
-                a.setLocation(tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()]);
+                newLoc = tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()];
                 break;
         }
+        //TODO: better error handling
+        if (newLoc == null) throw new IllegalArgumentException("Chap tried to walk onto null square");
+        if (!newLoc.isAccessible()) return;
+
+        a.getLocation().onExit();
+        if (newLoc instanceof Exit)
+            if (a == chap) interactWithTile(newLoc);
+        newLoc.onEntry(a);
+        a.setLocation(newLoc);
+
+    }
+
+    private void interactWithTile(Tile loc) {
+        if (loc instanceof Treasure) {
+            chap.incrementTreasures();
+            treasures--;
+            if (treasures == 0) flipExitLock();
+        } else if (loc instanceof Key) {
+            Key k = (Key) loc;
+            chap.addToBackPack(k.getColour());
+        } else if (loc instanceof LockedDoor) {
+            LockedDoor ld = (LockedDoor) loc;
+            if (!chap.backpackContains(ld.getLockColour())) return;
+        }
+
+        if (loc.isFreeOnEntry()) setFree(loc);
     }
 
 
+    private void setFree(Tile loc) {
+        tiles[loc.getCol()][loc.getRow()] = new Free(loc.getCol(), loc.getRow());
+    }
+
+    private void flipExitLock() {
+        for (int x = 0; x < cols; x++) {
+            for (int y = 0; y < rows; y++) {
+                if (tiles[x][y] instanceof ExitLock) setFree(tiles[x][y]);
+            }
+        }
+    }
+
     /**
-     * @return 2d array of Tiles that represents the maze
+     * @return Whether the level is over (chap died or reached exit)
+     */
+    public boolean isLevelOver() {
+        return levelOver;
+    }
+
+    /**
+     * @return Shallow copy of 2d array of Tiles that represents the maze
      */
     public Tile[][] getTiles() {
-        return tiles;
+        Tile[][] toRet = new Tile[tiles.length][];
+        for (int i = 0; i < tiles.length; i++) {
+            toRet[i] = Arrays.copyOf(tiles[i], tiles[i].length);
+        }
+        return toRet;
     }
 
     /**

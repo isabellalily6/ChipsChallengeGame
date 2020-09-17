@@ -12,12 +12,21 @@ public class InfoField extends Tile {
     /**
      * Creates new InfoField
      *
-     * @param row  row in the maze array
      * @param col  col in the maze array
+     * @param row  row in the maze array
      * @param info the information to be printed to the screen when this tile is stepped on
      */
-    public InfoField(int row, int col, String info) {
-        super("data/infoField.png", row, col, true);
+    public InfoField(int col, int row, String info) {
+        super("data/infoField.png", col, row, true, false);
         this.info = info;
+    }
+
+    /**
+     * The info this tile should show the user when they walk on this tile
+     *
+     * @return info to display
+     */
+    public String getInfo() {
+        return info;
     }
 }

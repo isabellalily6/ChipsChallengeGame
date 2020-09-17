@@ -8,14 +8,24 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
  * @author Benjamin Doornbos 300487256
  */
 public class LockedDoor extends Tile {
+    private final Key.Colour lockColour;
 
     /**
      * Creates new locked door
      *
-     * @param row row in the maze array
-     * @param col col in the maze array
+     * @param col        col in the maze array
+     * @param row        row in the maze array
+     * @param lockColour the colour of key that unlocks this door
      */
-    public LockedDoor(int row, int col) {
-        super("data/lockedDoor.png", row, col, false);
+    public LockedDoor(int col, int row, Key.Colour lockColour) {
+        super("data/lockedDoor.png", col, row, false, true);
+        this.lockColour = lockColour;
+    }
+
+    /**
+     * @return the colour of key that unlocks this door
+     */
+    public Key.Colour getLockColour() {
+        return lockColour;
     }
 }
