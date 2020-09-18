@@ -7,7 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author Seth Patel 300488677
+ * Objects of this class provide a simple 2D view of the maze,
+ * to be embedded in the application. It is updated when any
+ * actor moves. It only uses a certain focus region of the maze,
+ * which is determined based on the position of the player.
+ *
+ * @author Seth Patel
  **/
 public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
@@ -36,8 +41,7 @@ public class Canvas extends JPanel {
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - 4, y = 0; row <= centre.getRow() + 4; row++, y++) {
             for (int col = centre.getCol() - 4, x = 0; col <= centre.getCol() + 4; col++, x++) {
-                ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
-                components[x][y] = new JLabel(scaleImage(icon));
+                components[x][y] = new JLabel(makeImageIcon(maze.getTiles()[col][row].getImageURl()));
                 add(components[x][y]);
             }
         }
@@ -50,19 +54,19 @@ public class Canvas extends JPanel {
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - 4, y = 0; row <= centre.getRow() + 4; row++, y++) {
             for (int col = centre.getCol() - 4, x = 0; col <= centre.getCol() + 4; col++, x++) {
-                ImageIcon icon = scaleImage(makeImageIcon(maze.getTiles()[col][row].getImageURl()));
+                ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                 components[x][y].setIcon(icon);
             }
         }
     }
 
     /**
-     * Scales an image to the required size.
+     * Scale an image to the required size.
      *
      * @param baseImage the image to scale
      * @return the scaled image
      **/
-    private ImageIcon scaleImage(ImageIcon baseImage) {
+    private static ImageIcon scaleImage(ImageIcon baseImage) {
         return new ImageIcon(baseImage.getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_SMOOTH));
     }
 
@@ -76,7 +80,7 @@ public class Canvas extends JPanel {
         java.net.URL imageURL = Canvas.class.getResource(filename);
         ImageIcon icon = null;
         if (imageURL != null) {
-            icon = new ImageIcon(imageURL);
+            icon = scaleImage(new ImageIcon(imageURL));
         }
         return icon;
     }
