@@ -4,8 +4,6 @@ public class Main {
     // initialize the game variables
     GUI gui;
 
-    // initialize GUI fields
-
     public Main(){
       gui = new GUI(this);
       gui.setUpGui();

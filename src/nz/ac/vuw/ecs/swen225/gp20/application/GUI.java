@@ -19,6 +19,7 @@ public class GUI extends JFrame {
   public GUI(Main main){
     this.main = main;
 
+    // set the frame requirements
     setSize(screenWidth, screenHeight);
     setResizable(true);
     setVisible(true);
