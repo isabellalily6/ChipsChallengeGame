@@ -28,6 +28,7 @@ public class Maze {
     private List<Actor> actors;
     private int treasuresLeft;
     private boolean levelOver;
+    private int level;
 
 
     /**
@@ -62,15 +63,18 @@ public class Maze {
     }
 
     /**
-     * Generates a Maze from JSON file (will need to passed here by Application)
+     * Generates a Maze from JSON file corresponding to the level number provided
+     *
+     * @param level the level for this Maze to load
      */
-    public Maze() {
+    public Maze(int level) {
         //TODO: json loader stuff here
         this.cols = -1;
         this.rows = -1;
         this.tiles = new Tile[0][0];
         this.totalTreasures = -1;
         this.chap = null;
+        this.level = level;
     }
 
     /**
