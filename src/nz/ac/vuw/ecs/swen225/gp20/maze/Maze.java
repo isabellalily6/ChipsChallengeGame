@@ -62,6 +62,18 @@ public class Maze {
     }
 
     /**
+     * Generates a Maze from JSON file (will need to passed here by Application)
+     */
+    public Maze() {
+        //TODO: json loader stuff here
+        this.cols = -1;
+        this.rows = -1;
+        this.tiles = new Tile[0][0];
+        this.totalTreasures = -1;
+        this.chap = null;
+    }
+
+    /**
      * Moves Chap in given direction. This is a special case of moveActor but for only Chap.
      *
      * @param dir Direction to move
