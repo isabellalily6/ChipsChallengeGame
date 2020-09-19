@@ -6,12 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /*
 TODO: Tests to make:
-    - grab 1st treasure
-        - ensure cell becomes free
-        - ensure treasures changes by 1
-    - grab correct key
-        - ensure tile becomes free
-        - ensure backpack contains key
     - grab incorrect key
         - ensure backpack contains correct key
     - open door with key
@@ -202,6 +196,35 @@ class MazeTests {
         var beforeMove = getChapLocation(maze);
         maze.moveChap(Maze.Direction.UP);
         assertChapPos(maze, beforeMove);
+    }
+
+    @Test
+    void getCorrectKeyCellBecomesFree() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.DOWN);
+        assert (maze.getChap().getLocation() instanceof Free);
+    }
+
+    @Test
+    void getCorrectKeyGoesIntoBackpack() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.DOWN);
+        assert (maze.getChap().backpackContains(Key.Colour.TOPAZ));
+    }
+
+    @Test
+    void getCorrectKeyDoorOpens() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.DOWN);
+        maze.moveChap(Maze.Direction.LEFT);
+        maze.moveChap(Maze.Direction.UP);
+        var beforeMove = getChapLocation(maze);
+        maze.moveChap(Maze.Direction.LEFT);
+        //doesnt work
+        assert (maze.getChap().getLocation().getCol() - beforeMove.x == 1);
     }
 
     static class Location {
