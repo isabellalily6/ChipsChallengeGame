@@ -24,6 +24,7 @@ public class Dashboard extends JPanel {
     //setBackground(Color.decode("#0C9036"));
     setBackground(Color.lightGray);
     setFocusable(false);
+    createComponents();
     addComponents();
     Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
     setBorder(border);

@@ -4,6 +4,7 @@ import javafx.scene.input.KeyCode;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -17,6 +18,7 @@ public class GUI extends JFrame implements KeyListener {
   private JPanel mainPanel = new JPanel();
   private Dashboard dashboard = new Dashboard();
   private GridBagConstraints gbc = new GridBagConstraints();
+  private JDialog pausedDialogue = new JDialog();
 
   // initialize application
   private Main main;
@@ -38,7 +40,6 @@ public class GUI extends JFrame implements KeyListener {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setFocusable(true);
     setFocusTraversalKeysEnabled(false);
-    setAlwaysOnTop(true);
   }
 
   /**
@@ -74,6 +75,26 @@ public class GUI extends JFrame implements KeyListener {
     this.add(mainPanel);
     this.validate();
     this.repaint();
+    createPausedDialogue();
+  }
+
+  public void createPausedDialogue(){
+    pausedDialogue.addKeyListener(this);
+    pausedDialogue.setFocusable(true);
+    pausedDialogue.setLocationRelativeTo(this);
+    pausedDialogue.setSize(300, 200);
+    pausedDialogue.setLayout(new GridLayout(2, 1));
+    pausedDialogue.setBackground(Color.lightGray);
+    JLabel paused = new JLabel("GAME IS PAUSED", SwingConstants.CENTER);
+    paused.setFont(new Font("Verdana", Font.PLAIN, 25));
+    JButton resume = new JButton("RESUME");
+    resume.setBackground(Color.lightGray);
+    resume.setFont(new Font("Verdana", Font.PLAIN, 20));
+    Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+    resume.setBorder(border);
+    pausedDialogue.add(paused);
+    pausedDialogue.add(resume);
+    pausedDialogue.toFront();
   }
 
   /**
@@ -127,10 +148,22 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
       //SPACE - pause the game and display a “game is paused” dialog
       System.out.println("Pause and display");
+      displayPausedDialogue();
+      main.pauseGame();
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
       //ESC - close the “game is paused” dialog and resume the game
       System.out.println("CLose dialogue and Resume");
+      hidePausedDialogue();
+      main.playGame();
     }
+  }
+
+  public void displayPausedDialogue(){
+    pausedDialogue.setVisible(true);
+  }
+
+  public void hidePausedDialogue(){
+    pausedDialogue.setVisible(false);
   }
 
   @Override
