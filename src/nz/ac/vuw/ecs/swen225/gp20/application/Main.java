@@ -7,16 +7,19 @@ import java.util.TimerTask;
 
 public class Main {
     // initialize the game variables
-    GUI gui;
-    Maze maze;
+    private GUI gui;
+    private Maze maze;
 
     // game information
-    int level = 1;
-    int maxTime = 10;
-    int timeLeft = maxTime;
+    private int level = 1;
+    private int maxTime = 10;
+    private int timeLeft = maxTime;
 
-    Timer timer = new Timer();
-    TimerTask timerTask;
+    private Timer timer = new Timer();
+    private TimerTask timerTask;
+
+    private boolean gamePaused = false;
+
 
   /**
    *  Create a new instance of the game application
@@ -63,7 +66,13 @@ public class Main {
       };
     }
 
+    public void pauseGame(){
+      gamePaused = true;
+    }
 
+    public void playGame(){
+      gamePaused = false;
+    }
 
   /**
    * Creates a new instance of main to run the ChapsChallenge game

@@ -4,7 +4,6 @@ import javafx.scene.input.KeyCode;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -20,9 +19,8 @@ public class GUI extends JFrame implements KeyListener {
   private GridBagConstraints gbc = new GridBagConstraints();
 
   // initialize application
-  Main main;
-  Maze maze;
-
+  private Main main;
+  private Maze maze;
 
   /**
    * Create the JFrame for the game and sets all the default values.
@@ -98,23 +96,25 @@ public class GUI extends JFrame implements KeyListener {
     int keyCode = keyEvent.getKeyCode();
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
+      maze.moveChap(Maze.Direction.UP);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
+      maze.moveChap(Maze.Direction.DOWN);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
+      maze.moveChap(Maze.Direction.RIGHT);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
+      maze.moveChap(Maze.Direction.LEFT);
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
       System.out.println("EXIT But save level");
       System.exit(0);
-      //eyEvent.VK_CONTROL) && activeKeys.contains(KeyEvent.VK_X
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
       System.exit(0);
-      //eyEvent.VK_CONTROL) && activeKeys.contains(KeyEvent.VK_X
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
       System.out.println("Resume a saved game");
