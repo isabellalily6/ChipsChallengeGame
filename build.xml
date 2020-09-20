@@ -64,7 +64,9 @@
         </junitlauncher>
     </target>
 
-    <target name="test.console.launcher" depends="compile">
+    <target name="build" depends="init,compile,compile-test"/>
+
+    <target name="test.console.launcher">
         <java classpathref="test.classpath" classname="org.junit.platform.console.ConsoleLauncher" fork="true"
               failonerror="true">
             <arg value="--scan-classpath"/>

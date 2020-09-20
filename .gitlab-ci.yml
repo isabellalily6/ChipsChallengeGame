@@ -1,0 +1,20 @@
+image: openjdk:8
+
+before_script:
+  - apt-get update
+  - apt-get -y install ant
+
+stages:
+  - build
+  - test
+
+ci_build:
+  stage: build
+  script:
+    - ant clean
+    - ant build
+
+ci_test:
+  stage: test
+  script:
+    - ant clean build test.console.launcher
