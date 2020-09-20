@@ -29,7 +29,7 @@ public class Canvas extends JPanel {
         this.maze = maze;
         components = new JLabel[VIEW_SIZE][VIEW_SIZE];
         setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        setLayout(new GridBagLayout());
+        setLayout(new GridLayout());
         createComponents();
     }
 
