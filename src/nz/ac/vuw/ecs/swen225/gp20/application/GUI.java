@@ -18,6 +18,7 @@ public class GUI extends JFrame implements KeyListener {
   JPanel mainPanel = new JPanel();
   JPanel dashboard = new JPanel();
   GridBagConstraints gbc = new GridBagConstraints();
+  JLabel timeNum = new JLabel("");
 
   // initialize application
   Main main;
@@ -67,7 +68,6 @@ public class GUI extends JFrame implements KeyListener {
     levelNum.setBackground(Color.lightGray);
     JLabel time = new JLabel("TIME");
     time.setFont(new Font("Verdana", Font.PLAIN, 18));
-    JLabel timeNum = new JLabel("");
     timeNum.setFont(new Font("Verdana", Font.PLAIN, 18));
     timeNum.setBorder(border);
     JLabel chips = new JLabel("CHIPS LEFT");
@@ -128,6 +128,11 @@ public class GUI extends JFrame implements KeyListener {
 
 
 
+  }
+
+  public void setTimer(int timeLeft){
+    String time = Integer.toString(timeLeft);
+    timeNum.setText(time);
   }
 
   @Override
