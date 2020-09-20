@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.1.2" sequence="0" timestamp="1600596814582" analysisTimestamp="1600596814592" release="">
+  <Project projectName="">
+    <Jar>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\out\production</Jar>
+    <AuxClasspathEntry>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\lib\guava-29.0-jre-javadoc.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\lib\guava-29.0-jre-sources.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\lib\guava-29.0-jre.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\lib\javax.json-1.1.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\lib\javax.json-api-1.1.4.jar
+    </AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\lib\spotbugs-ant.jar
+    </AuxClasspathEntry>
+    <SrcDir>C:\Users\Ben\UniProjects\2020_T2\SWEN225\assignments\gp20\src\nz\ac\vuw\ecs\swen225\gp20\maze</SrcDir>
+  </Project>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Sun, 20 Sep 2020 22:13:34 +1200" total_classes="15" referenced_classes="42" total_bugs="0"
+                   total_size="248" num_packages="1" java_version="11.0.8" vm_version="11.0.8+10-LTS" cpu_seconds="6.66"
+                   clock_seconds="1.46" peak_mbytes="191.32" alloc_mbytes="4044.00" gc_seconds="0.02">
+    <PackageStats package="nz.ac.vuw.ecs.swen225.gp20.maze" total_bugs="0" total_types="15" total_size="248">
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Actor" sourceFile="&lt;Unknown&gt;" interface="false" size="7"
+                  bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Exit" sourceFile="&lt;Unknown&gt;" interface="false" size="3"
+                  bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="3" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Free" sourceFile="&lt;Unknown&gt;" interface="false" size="3"
+                  bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.InfoField" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="6" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Key" sourceFile="&lt;Unknown&gt;" interface="false" size="6"
+                  bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Key$Colour" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="27" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="6" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Maze" sourceFile="&lt;Unknown&gt;" interface="false" size="105"
+                  bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Maze$1" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="10" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Maze$Direction" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="21" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Player" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="14" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Tile" sourceFile="&lt;Unknown&gt;" interface="false" size="31"
+                  bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Treasure" sourceFile="&lt;Unknown&gt;" interface="false"
+                  size="3" bugs="0"/>
+      <ClassStats class="nz.ac.vuw.ecs.swen225.gp20.maze.Wall" sourceFile="&lt;Unknown&gt;" interface="false" size="3"
+                  bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="239"
+                    invocations="414" avgMicrosecondsPerInvocation="578" maxMicrosecondsPerInvocation="10510"
+                    standardDeviationMicrosecondsPerInvocation="1160"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="91"
+                    invocations="418" avgMicrosecondsPerInvocation="218" maxMicrosecondsPerInvocation="3795"
+                    standardDeviationMicrosecondsPerInvocation="229"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="52" invocations="42"
+                    avgMicrosecondsPerInvocation="1253" maxMicrosecondsPerInvocation="11785"
+                    standardDeviationMicrosecondsPerInvocation="2736"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="39" invocations="42"
+                    avgMicrosecondsPerInvocation="937" maxMicrosecondsPerInvocation="8790"
+                    standardDeviationMicrosecondsPerInvocation="2056"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="31" invocations="173"
+                    avgMicrosecondsPerInvocation="183" maxMicrosecondsPerInvocation="4248"
+                    standardDeviationMicrosecondsPerInvocation="388"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="29"
+                    invocations="55" avgMicrosecondsPerInvocation="543" maxMicrosecondsPerInvocation="8611"
+                    standardDeviationMicrosecondsPerInvocation="1241"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="29"
+                    invocations="63" avgMicrosecondsPerInvocation="462" maxMicrosecondsPerInvocation="13632"
+                    standardDeviationMicrosecondsPerInvocation="1754"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="28"
+                    invocations="53" avgMicrosecondsPerInvocation="545" maxMicrosecondsPerInvocation="21808"
+                    standardDeviationMicrosecondsPerInvocation="2955"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="28"
+                    invocations="53" avgMicrosecondsPerInvocation="539" maxMicrosecondsPerInvocation="6673"
+                    standardDeviationMicrosecondsPerInvocation="1002"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="28"
+                    invocations="53" avgMicrosecondsPerInvocation="528" maxMicrosecondsPerInvocation="6122"
+                    standardDeviationMicrosecondsPerInvocation="1040"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="27"
+                    invocations="54" avgMicrosecondsPerInvocation="510" maxMicrosecondsPerInvocation="8590"
+                    standardDeviationMicrosecondsPerInvocation="1223"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="27" invocations="378"
+                    avgMicrosecondsPerInvocation="72" maxMicrosecondsPerInvocation="1382"
+                    standardDeviationMicrosecondsPerInvocation="128"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="24" invocations="53"
+                    avgMicrosecondsPerInvocation="469" maxMicrosecondsPerInvocation="9339"
+                    standardDeviationMicrosecondsPerInvocation="1285"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory"
+                    totalMilliseconds="23" invocations="53" avgMicrosecondsPerInvocation="443"
+                    maxMicrosecondsPerInvocation="4342" standardDeviationMicrosecondsPerInvocation="719"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="23"
+                    invocations="42" avgMicrosecondsPerInvocation="556" maxMicrosecondsPerInvocation="6589"
+                    standardDeviationMicrosecondsPerInvocation="1367"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="20" invocations="15"
+                    avgMicrosecondsPerInvocation="1360" maxMicrosecondsPerInvocation="13697"
+                    standardDeviationMicrosecondsPerInvocation="3431"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="18"
+                    invocations="42" avgMicrosecondsPerInvocation="441" maxMicrosecondsPerInvocation="9530"
+                    standardDeviationMicrosecondsPerInvocation="1510"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="17" invocations="42"
+                    avgMicrosecondsPerInvocation="419" maxMicrosecondsPerInvocation="6173"
+                    standardDeviationMicrosecondsPerInvocation="1200"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="16"
+                    invocations="42" avgMicrosecondsPerInvocation="390" maxMicrosecondsPerInvocation="4903"
+                    standardDeviationMicrosecondsPerInvocation="873"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="15"
+                    invocations="42" avgMicrosecondsPerInvocation="376" maxMicrosecondsPerInvocation="3399"
+                    standardDeviationMicrosecondsPerInvocation="788"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="11"
+                    invocations="36" avgMicrosecondsPerInvocation="309" maxMicrosecondsPerInvocation="2238"
+                    standardDeviationMicrosecondsPerInvocation="413"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

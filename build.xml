@@ -1,0 +1,92 @@
+<project name="gp20">
+
+    <!--src dir is set to just the maze package because the application package is not compiling -->
+    <property name="src.dir" value="src/nz/ac/vuw/ecs/swen225/gp20/maze"/>
+    <property name="test.dir" value="test"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="build.dir" value="out"/>
+    <property name="classes.dir" value="${build.dir}/production"/>
+    <property name="test.classes.dir" value="${build.dir}/test"/>
+    <property name="test.report.dir" value="${build.dir}/testReport"/>
+    <property name="spotbugs.home" value="C:/Software/spotbugs-4.1.2"/>
+
+    <path id="junit.classpath">
+        <fileset dir="${lib.dir}/junit"/>
+    </path>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+    </path>
+
+    <path id="test.classpath">
+        <pathelement path="${test.classes.dir}"/>
+        <pathelement path="${classes.dir}"/>
+        <path refid="junit.classpath"/>
+        <path refid="classpath"/>
+    </path>
+
+    <taskdef
+            resource="edu/umd/cs/findbugs/anttask/tasks.properties"
+            classpathref="classpath"/>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <target name="compile-test" depends="init">
+        <javac srcdir="${test.dir}" destdir="${test.classes.dir}" classpathref="test.classpath"
+               includeantruntime="false"/>
+    </target>
+
+    <target name="test" depends="compile-test">
+        <junitlauncher>
+            <!-- include the JUnit platform related libraries
+            required to run the tests-->
+            <classpath refid="test.classpath"/>
+
+            <testclasses outputdir="${test.report.dir}">
+                <fileset dir="${test.classes.dir}">
+                    <include name="**/*Tests.class"/>
+                </fileset>
+                <listener type="legacy-xml" sendSysOut="true" sendSysErr="true"/>
+                <listener type="legacy-plain" sendSysOut="true"/>
+            </testclasses>
+        </junitlauncher>
+    </target>
+
+    <target name="test.console.launcher" depends="compile">
+        <java classpathref="test.classpath" classname="org.junit.platform.console.ConsoleLauncher" fork="true"
+              failonerror="true">
+            <arg value="--scan-classpath"/>
+            <arg line="--reports-dir ${test.report.dir}"/>
+        </java>
+        <junitreport todir="${test.report.dir}">
+            <fileset dir="${test.report.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${test.report.dir}/html"/>
+        </junitreport>
+    </target>
+
+    <target name="spotBugs" depends="init">
+        <spotbugs home="${spotbugs.home}"
+                  output="xml"
+                  outputfile="spotBugs-report.xml">
+            <sourcepath path="${src.dir}"/>
+            <auxclasspath refid="classpath"/>
+            <class location="${classes.dir}"/>
+        </spotbugs>
+    </target>
+
+
+</project>
