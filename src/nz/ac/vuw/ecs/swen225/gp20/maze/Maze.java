@@ -198,10 +198,27 @@ public class Maze {
         return chap;
     }
 
-    enum Direction {
+    /**
+     * Enum that determines the direction of one of chap's moves
+     *
+     * @author Benjamin Doornbos
+     */
+    public enum Direction {
+        /**
+         * Moving up one row
+         */
         UP,
+        /**
+         * Moving down one row
+         */
         DOWN,
+        /**
+         * Moving left one column
+         */
         LEFT,
+        /**
+         * Moving right one column
+         */
         RIGHT,
     }
 }
