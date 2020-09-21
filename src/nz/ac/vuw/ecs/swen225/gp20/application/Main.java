@@ -66,11 +66,35 @@ public class Main {
       };
     }
 
+  /**
+   * Load a file for the game
+   *
+   **/
+    public void loadFile(){
+
+    }
+
+  /**
+   * Save a game to a file
+   *
+   **/
+  public void saveFile(){
+
+  }
+
+  /**
+   * Pauses the game
+   *
+   **/
     public void pauseGame(){
       gui.displayPausedDialogue();
       gamePaused = true;
     }
 
+  /**
+   * Resumes the game
+   *
+   **/
     public void playGame(){
       gui.hidePausedDialogue();
       gamePaused = false;
