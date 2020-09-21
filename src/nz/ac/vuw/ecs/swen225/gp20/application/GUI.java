@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -17,6 +18,7 @@ public class GUI extends JFrame implements KeyListener {
   // initialize GUI fields
   private JPanel mainPanel = new JPanel();
   private Dashboard dashboard = new Dashboard();
+  private Canvas canvas;
   private GridBagConstraints gbc = new GridBagConstraints();
   private JDialog pausedDialogue = new JDialog();
 
@@ -26,10 +28,14 @@ public class GUI extends JFrame implements KeyListener {
 
   /**
    * Create the JFrame for the game and sets all the default values.
+   *
+   * @param main
+   * @param maze
    **/
   public GUI(Main main, Maze maze){
     this.main = main;
     this.maze = maze;
+    this.canvas = new Canvas(maze);
 
     // set the frame requirements
     addKeyListener(this);
@@ -40,6 +46,8 @@ public class GUI extends JFrame implements KeyListener {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setFocusable(true);
     setFocusTraversalKeysEnabled(false);
+    createPausedDialogue();
+    setResizable(false);
   }
 
   /**
@@ -54,10 +62,8 @@ public class GUI extends JFrame implements KeyListener {
     mainPanel.setLayout(new BorderLayout(50, 50));
 
     // create a new canvas to add to the frame
-    Canvas canvas = new Canvas();
     canvas.setFocusable(false);
     canvas.setBackground(Color.LIGHT_GRAY);
-
 
     // adding components to the main panel
     mainPanel.add(canvas, BorderLayout.CENTER);
@@ -67,12 +73,22 @@ public class GUI extends JFrame implements KeyListener {
     dashboard.setVisible(true);
     mainPanel.setVisible(true);
 
-    // adding the main panel to the frame and redrawing it
+    // Create a panel to place the canvas on to keep the correct size of the canva
+    JPanel canvasPanel = new JPanel();
+    canvasPanel.add(canvas);
+
+    // add the components to the main panel in the correct locations
+    mainPanel.add(canvasPanel, BorderLayout.CENTER);
+    mainPanel.add(dashboard, BorderLayout.EAST);
+
     add(mainPanel);
     validate();
     repaint();
   }
 
+  /**
+   * Create paused dialogue for when the player pauses the game
+   **/
   public void createPausedDialogue(){
     pausedDialogue.addKeyListener(this);
     pausedDialogue.setFocusable(true);
@@ -100,6 +116,20 @@ public class GUI extends JFrame implements KeyListener {
   public void setTimer(int timeLeft){
     String time = Integer.toString(timeLeft);
     dashboard.setTimer(time);
+  }
+
+  /**
+   * Displays the paused dialogue on the screen.
+   **/
+  public void displayPausedDialogue(){
+    pausedDialogue.setVisible(true);
+  }
+
+  /**
+   * Hides the paused dialogue.
+   **/
+  public void hidePausedDialogue(){
+    pausedDialogue.setVisible(false);
   }
 
   @Override
@@ -143,22 +173,12 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
       //SPACE - pause the game and display a “game is paused” dialog
       System.out.println("Pause and display");
-      displayPausedDialogue();
       main.pauseGame();
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
       //ESC - close the “game is paused” dialog and resume the game
       System.out.println("CLose dialogue and Resume");
-      hidePausedDialogue();
       main.playGame();
     }
-  }
-
-  public void displayPausedDialogue(){
-    pausedDialogue.setVisible(true);
-  }
-
-  public void hidePausedDialogue(){
-    pausedDialogue.setVisible(false);
   }
 
   @Override

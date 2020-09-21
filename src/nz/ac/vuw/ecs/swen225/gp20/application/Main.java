@@ -67,10 +67,12 @@ public class Main {
     }
 
     public void pauseGame(){
+      gui.displayPausedDialogue();
       gamePaused = true;
     }
 
     public void playGame(){
+      gui.hidePausedDialogue();
       gamePaused = false;
     }
 
