@@ -1,6 +1,5 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
-import javafx.scene.input.KeyCode;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 
 import javax.swing.*;
