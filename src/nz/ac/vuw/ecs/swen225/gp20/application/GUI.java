@@ -16,9 +16,8 @@ public class GUI extends JFrame implements KeyListener {
 
   // initialize GUI fields
   private JPanel mainPanel = new JPanel();
-  private Dashboard dashboard = new Dashboard();
+  private Dashboard dashboard;
   private Canvas canvas;
-  private GridBagConstraints gbc = new GridBagConstraints();
   private JDialog pausedDialogue = new JDialog();
 
   // initialize application
@@ -35,6 +34,7 @@ public class GUI extends JFrame implements KeyListener {
     this.main = main;
     this.maze = maze;
     this.canvas = new Canvas(maze);
+    this.dashboard = new Dashboard(maze);
 
     // set the frame requirements
     addKeyListener(this);
