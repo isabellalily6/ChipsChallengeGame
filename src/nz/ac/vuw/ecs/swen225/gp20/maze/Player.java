@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,6 +49,15 @@ public class Player extends Actor {
      */
     public void addToBackPack(Key.Colour col) {
         backpack.add(col);
+    }
+
+    /**
+     * Returns an unmodifiable version of the backpack set (all of the keys chap has)
+     *
+     * @return an unmodifiable version of the backpack set (all of the keys chap has)
+     */
+    public Set<Key.Colour> getBackpack() {
+        return Collections.unmodifiableSet(backpack);
     }
 
     /**
