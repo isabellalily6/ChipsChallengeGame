@@ -4,6 +4,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -45,36 +46,31 @@ public class GUI extends JFrame implements KeyListener {
    * Create the components for the gui and adds them to the screen in the correct locations.
    **/
   public void setUpGui(){
-    // Create the Maze
-    JPanel maze = new JPanel();
-    maze.setBackground(Color.blue);
+    // Create and set the boarder for the main panel
+    EmptyBorder border = new EmptyBorder(50, 50, 50, 50);
+    mainPanel.setBorder(border);
 
     // Add the dashboard and maze to the gui
-    mainPanel.setLayout(new GridBagLayout());
-    gbc.fill = GridBagConstraints.BOTH;
-    gbc.gridheight = 1;
-    gbc.gridwidth = 1;
-    gbc.gridx = 0;
-    gbc.gridy = 0;
-    gbc.weighty = 1;
-    gbc.weightx = 6;
-    gbc.insets = new Insets(50, 50, 50, 50);
+    mainPanel.setLayout(new BorderLayout(50, 50));
+
+    // create a new canvas to add to the frame
     Canvas canvas = new Canvas();
     canvas.setFocusable(false);
-    mainPanel.add(canvas, gbc);
+    canvas.setBackground(Color.LIGHT_GRAY);
 
-    gbc.gridx = 1;
-    gbc.weightx = 2;
-    gbc.insets = new Insets(50, 50, 50, 50);
-    mainPanel.add(dashboard, gbc);
 
+    // adding components to the main panel
+    mainPanel.add(canvas, BorderLayout.CENTER);
+    mainPanel.add(dashboard, BorderLayout.EAST);
+
+    // setting the components to be visible
     dashboard.setVisible(true);
     mainPanel.setVisible(true);
 
-    this.add(mainPanel);
-    this.validate();
-    this.repaint();
-    createPausedDialogue();
+    // adding the main panel to the frame and redrawing it
+    add(mainPanel);
+    validate();
+    repaint();
   }
 
   public void createPausedDialogue(){
