@@ -16,6 +16,7 @@ import java.awt.*;
  **/
 public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
+    private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 10;
     private final Maze maze;
     private final JLabel[][] components;
@@ -40,8 +41,8 @@ public class Canvas extends JPanel {
     private void createComponents() {
         removeAll();
         Tile centre = maze.getChap().getLocation();
-        for (int row = centre.getRow() - 4, y = 0; row <= centre.getRow() + 4; row++, y++) {
-            for (int col = centre.getCol() - 4, x = 0; col <= centre.getCol() + 4; col++, x++) {
+        for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
+            for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
                 components[x][y] = new JLabel(makeImageIcon(maze.getTiles()[col][row].getImageURl()));
                 add(components[x][y]);
             }
@@ -53,8 +54,8 @@ public class Canvas extends JPanel {
      **/
     public void refreshComponents() {
         Tile centre = maze.getChap().getLocation();
-        for (int row = centre.getRow() - 4, y = 0; row <= centre.getRow() + 4; row++, y++) {
-            for (int col = centre.getCol() - 4, x = 0; col <= centre.getCol() + 4; col++, x++) {
+        for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
+            for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
                 ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                 components[x][y].setIcon(icon);
             }
