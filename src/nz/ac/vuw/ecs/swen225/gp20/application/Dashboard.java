@@ -21,11 +21,11 @@ public class Dashboard extends JPanel {
   public Dashboard(){
     // Set up the components of the dashboard
     setLayout(new GridLayout(7, 1));
-    //setBackground(Color.decode("#0C9036"));
     setBackground(Color.lightGray);
     setFocusable(false);
     createComponents();
     addComponents();
+    setPreferredSize(new Dimension(250, 400));
     Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
     setBorder(border);
   }
@@ -72,7 +72,6 @@ public class Dashboard extends JPanel {
 
   /**
    * Add the components to the dashboard
-   *
    **/
   public void addComponents(){
     add(level);
