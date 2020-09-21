@@ -2,13 +2,10 @@ package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -59,24 +56,16 @@ public class GUI extends JFrame implements KeyListener {
     // set the menu bar
     setJMenuBar(new MenuBar(main));
 
+    // set the layout for the main panel
+    mainPanel.setLayout(new BorderLayout(50, 50));
+
     // Create and set the boarder for the main panel
     EmptyBorder border = new EmptyBorder(50, 50, 50, 50);
     mainPanel.setBorder(border);
 
-    // Add the dashboard and maze to the gui
-    mainPanel.setLayout(new BorderLayout(50, 50));
-
     // create a new canvas to add to the frame
     canvas.setFocusable(false);
     canvas.setBackground(Color.LIGHT_GRAY);
-
-    // adding components to the main panel
-    mainPanel.add(canvas, BorderLayout.CENTER);
-    mainPanel.add(dashboard, BorderLayout.EAST);
-
-    // setting the components to be visible
-    dashboard.setVisible(true);
-    mainPanel.setVisible(true);
 
     // Create a panel to place the canvas on to keep the correct size of the canva
     JPanel canvasPanel = new JPanel();

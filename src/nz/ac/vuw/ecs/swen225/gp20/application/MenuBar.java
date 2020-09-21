@@ -28,7 +28,6 @@ public class MenuBar extends JMenuBar {
     quit.addActionListener(method -> System.exit(0));
     file.add(quit);
 
-
     // Create the game menu
     JMenu game = new JMenu("Game");
 
@@ -45,12 +44,12 @@ public class MenuBar extends JMenuBar {
     //startRecording.addActionListener(method -> main.loadFile());
     recording.add(startRecording);
 
-    // create and add the start recording button
+    // create and add the save recording button
     JMenuItem saveRecording = new JMenuItem("Save Recording");
     //saveRecording.addActionListener(method -> main.loadFile());
     recording.add(saveRecording);
 
-    // create and add the start recording button
+    // create and add the load recording button
     JMenuItem loadRecording = new JMenuItem("Load Recording");
     //loadRecording.addActionListener(method -> main.loadFile());
     recording.add(loadRecording);
