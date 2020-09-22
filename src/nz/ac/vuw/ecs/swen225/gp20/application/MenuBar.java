@@ -41,18 +41,23 @@ public class MenuBar extends JMenuBar {
 
     // create and add the start recording button
     JMenuItem startRecording = new JMenuItem("Start Recording");
-    //startRecording.addActionListener(method -> main.loadFile());
+    startRecording.addActionListener(method -> main.startRecording());
     recording.add(startRecording);
 
     // create and add the save recording button
     JMenuItem saveRecording = new JMenuItem("Save Recording");
-    //saveRecording.addActionListener(method -> main.loadFile());
+    saveRecording.addActionListener(method -> main.saveRecording());
     recording.add(saveRecording);
 
     // create and add the load recording button
     JMenuItem loadRecording = new JMenuItem("Load Recording");
-    //loadRecording.addActionListener(method -> main.loadFile());
+    loadRecording.addActionListener(method -> main.loadRecording());
     recording.add(loadRecording);
+
+    // create and add the replay recording button
+    JMenuItem replayRecording = new JMenuItem("Replay Recording");
+    replayRecording.addActionListener(method -> main.replayRecording());
+    recording.add(replayRecording);
 
     // add each section to the menu bar
     add(file);

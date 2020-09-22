@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -67,8 +68,35 @@ public class Main {
     }
 
   /**
+   * Start the recording of a game
+   **/
+    public void startRecording(){
+      RecordAndPlay.setIsRecording(true);
+    }
+
+  /**
+   * Save the recording of a game
+   **/
+  public void saveRecording(){
+    RecordAndPlay.saveRecording();
+  }
+
+  /**
+   * Load a recording of a game
+   **/
+  public void loadRecording(){
+    RecordAndPlay.loadRecording();
+  }
+
+  /**
+   * Replay a recording of a game
+   **/
+  public void replayRecording(){
+
+  }
+
+  /**
    * Load a file for the game
-   *
    **/
     public void loadFile(){
 
@@ -76,7 +104,6 @@ public class Main {
 
   /**
    * Save a game to a file
-   *
    **/
   public void saveFile(){
 
@@ -84,7 +111,6 @@ public class Main {
 
   /**
    * Pauses the game
-   *
    **/
     public void pauseGame(){
       gui.displayPausedDialogue();
@@ -93,7 +119,6 @@ public class Main {
 
   /**
    * Resumes the game
-   *
    **/
     public void playGame(){
       gui.hidePausedDialogue();
