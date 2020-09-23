@@ -115,13 +115,14 @@ public class Maze {
         }
         //TODO: better error handling
         checkNotNull(newLoc);
-        if (!newLoc.isAccessible()) return;
+        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) return;
 
         a.getLocation().onExit();
         if (a == chap) {
             if (newLoc instanceof Exit) levelOver = true;
             else {
-                interactWithTile(newLoc);
+                //if this method returns false, chap is not allowed to move to newLoc
+                if (!interactWithTile(newLoc)) return;
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
                 newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
             }
@@ -131,7 +132,7 @@ public class Maze {
 
     }
 
-    private void interactWithTile(Tile loc) {
+    private boolean interactWithTile(Tile loc) {
         if (loc instanceof Treasure) {
             chap.incrementTreasures();
             treasuresLeft--;
@@ -141,12 +142,13 @@ public class Maze {
             var k = (Key) loc;
             chap.addToBackPack(k.getColour());
         } else if (loc instanceof LockedDoor) {
-            LockedDoor ld = (LockedDoor) loc;
+            var ld = (LockedDoor) loc;
             //TODO: better error handling
-            if (!chap.backpackContains(ld.getLockColour())) return;
+            if (!chap.backpackContains(ld.getLockColour())) return false;
         }
 
         if (loc.isFreeOnEntry()) setFree(loc);
+        return true;
     }
 
 
@@ -163,7 +165,7 @@ public class Maze {
     }
 
     private Tile[][] copy2dTileArray(Tile[][] toCopy) {
-        Tile[][] toRet = new Tile[toCopy.length][];
+        var toRet = new Tile[toCopy.length][];
         for (int i = 0; i < toCopy.length; i++) {
             toRet[i] = Arrays.copyOf(toCopy[i], toCopy[i].length);
         }

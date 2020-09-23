@@ -30,7 +30,7 @@ public class Key extends Tile {
     }
 
     enum Colour {
-        EMERALD, DIAMOND, SAPPHIRE, AMETHYST, TOPAZ, RUBY
+        RED, GREEN, BLUE
     }
 }
 
