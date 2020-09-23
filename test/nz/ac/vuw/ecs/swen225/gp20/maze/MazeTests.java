@@ -4,20 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
-TODO: Tests to make:
-    - grab incorrect key
-        - ensure backpack contains correct key
-    - open door with key
-        - ensure correct key works
-        - ensure incorrect key doesn't
-        - ensure tile becomes free
-    - collect last treasure
-        - ensure exitLock flips
-    - go to exit
-        - ensure level is over
+/**
+ * This runs all the tests to ensure the basic logic of the game works
+ *
+ * @author Benjamin Doornbos 300487256
  */
-class MazeTests {
+public class MazeTests {
     private Tile[][] createEmptyMazeArray() {
         Tile[][] tiles = new Tile[5][5];
         for (int x = 0; x < 5; x++) {
@@ -28,6 +20,18 @@ class MazeTests {
         return tiles;
     }
 
+    /*
+         | w | w | ex| w |
+         | w | w | el| w |
+         | t | bd| C | t |
+         | w | rd| rk| bk|
+    ex - exit
+    el - exit lock
+    t - treasure
+    bd/rd - blue/red door
+    C - chap
+    bk/rk - blue/red key
+     */
     private Tile[][] createTestMazeArray() {
         Tile[][] tiles = new Tile[4][4];
         //set everything to wall by default
@@ -38,14 +42,14 @@ class MazeTests {
         }
         //hardcode a tiny, playable board
         tiles[0][2] = new Treasure(0, 2);
-        tiles[1][2] = new LockedDoor(1, 2, Key.Colour.TOPAZ);
+        tiles[0][3] = new LockedDoor(0, 3, Key.Colour.RED);
+        tiles[1][2] = new LockedDoor(1, 2, Key.Colour.BLUE);
         tiles[2][0] = new Exit(2, 0);
         tiles[2][1] = new ExitLock(2, 1);
         tiles[2][2] = new Free(2, 2);
-        tiles[2][3] = new Key(2, 3, Key.Colour.SAPPHIRE);
+        tiles[2][3] = new Key(2, 3, Key.Colour.RED);
         tiles[3][2] = new Treasure(3, 2);
-        tiles[3][3] = new Key(3, 3, Key.Colour.TOPAZ);
-        //TODO: add a door of a different type to ensure the wrong key can't open it
+        tiles[3][3] = new Key(3, 3, Key.Colour.BLUE);
 
         return tiles;
     }
@@ -73,7 +77,7 @@ class MazeTests {
     void test2dArrayCloneShallowImmutable() {
         Tile[][] tiles = createEmptyMazeArray();
         var maze = new Maze(tiles);
-        maze.getTiles()[0][0] = new Key(0, 0, Key.Colour.AMETHYST);
+        maze.getTiles()[0][0] = new Key(0, 0, Key.Colour.RED);
         assertFalse(maze.getTiles()[0][0] instanceof Key);
     }
 
@@ -166,6 +170,13 @@ class MazeTests {
     }
 
     @Test
+    void grabOneTreasureCellExitLockDoesntFlip() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        assert (maze.getTiles()[2][1] instanceof ExitLock);
+    }
+
+    @Test
     void grabTreasureChapsTreasuresIncrements() {
         var maze = initTestMaze();
         assert (maze.getChap().getTreasuresCollected() == 0);
@@ -199,7 +210,7 @@ class MazeTests {
     }
 
     @Test
-    void getCorrectKeyCellBecomesFree() {
+    void getBlueKeyCellBecomesFree() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
@@ -207,15 +218,15 @@ class MazeTests {
     }
 
     @Test
-    void getCorrectKeyGoesIntoBackpack() {
+    void getBlueKeyGoesIntoBackpack() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
-        assert (maze.getChap().backpackContains(Key.Colour.TOPAZ));
+        assert (maze.getChap().backpackContains(Key.Colour.BLUE));
     }
 
     @Test
-    void getCorrectKeyDoorOpens() {
+    void getBlueKeyBlueDoorOpens() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
@@ -223,8 +234,52 @@ class MazeTests {
         maze.moveChap(Maze.Direction.UP);
         var beforeMove = getChapLocation(maze);
         maze.moveChap(Maze.Direction.LEFT);
-        //doesnt work
-        assert (maze.getChap().getLocation().getCol() - beforeMove.x == 1);
+        assert (maze.getChap().getLocation().getCol() - beforeMove.x == -1);
+    }
+
+    @Test
+    void getRedKeyBlueDoorDoesntOpen() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.DOWN);
+        maze.moveChap(Maze.Direction.UP);
+        var beforeMove = getChapLocation(maze);
+        maze.moveChap(Maze.Direction.LEFT);
+        assertChapPos(maze, beforeMove);
+    }
+
+    @Test
+    void getRedKeyGoesIntoBackpack() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.DOWN);
+        assert (maze.getChap().backpackContains(Key.Colour.RED));
+    }
+
+    @Test
+    void collectAllTreasuresExitLockFlips() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.DOWN);
+        maze.moveChap(Maze.Direction.UP);
+        maze.moveChap(Maze.Direction.LEFT);
+        maze.moveChap(Maze.Direction.LEFT);
+        maze.moveChap(Maze.Direction.LEFT);
+        assert (maze.getTiles()[2][1] instanceof Free);
+    }
+
+    @Test
+    void goToExitLevelOver() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.DOWN);
+        maze.moveChap(Maze.Direction.UP);
+        maze.moveChap(Maze.Direction.LEFT);
+        maze.moveChap(Maze.Direction.LEFT);
+        maze.moveChap(Maze.Direction.LEFT);
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.UP);
+        maze.moveChap(Maze.Direction.UP);
+        assert (maze.isLevelOver());
     }
 
     static class Location {

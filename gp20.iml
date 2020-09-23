@@ -14,7 +14,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library>
+      <library name="lib">
         <CLASSES>
           <root url="file://$MODULE_DIR$/lib" />
         </CLASSES>
