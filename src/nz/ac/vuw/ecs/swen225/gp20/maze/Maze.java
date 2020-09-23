@@ -28,27 +28,10 @@ public class Maze {
     private List<Actor> actors;
     private int treasuresLeft;
     private boolean levelOver;
-    private int level;
-
 
     /**
      * TEST CONSTRUCTOR - Do not use in production code
      * a real maze needs many more fields than this
-     *
-     * @param tiles the tiles that make up the maze
-     */
-    public Maze(Tile[][] tiles) {
-        this.cols = tiles.length;
-        this.rows = tiles[0].length;
-        this.tiles = copy2dTileArray(tiles);
-        this.totalTreasures = 0;
-        chap = new Player(tiles[cols / 2][rows / 2]);
-    }
-
-    /**
-     * New maze which contains the Tile array and controls logic.
-     * (new maze needs to be initialised for each level)
-     * TODO: discuss method for loading walls and stuff from file
      *
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
@@ -69,12 +52,14 @@ public class Maze {
      */
     public Maze(int level) {
         //TODO: json loader stuff here
+        /*var loadedLevel = LevelLoader(level);
+          this(loadedLevel.getMaze(),loadedLevel.getTreasures());
+         */
         this.cols = -1;
         this.rows = -1;
         this.tiles = new Tile[0][0];
         this.totalTreasures = -1;
         this.chap = null;
-        this.level = level;
     }
 
     /**
