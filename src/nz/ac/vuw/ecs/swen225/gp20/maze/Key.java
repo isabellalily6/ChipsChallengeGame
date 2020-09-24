@@ -29,8 +29,19 @@ public class Key extends Tile {
         return colour;
     }
 
-    enum Colour {
-        RED, GREEN, BLUE
+    public enum Colour {
+        /**
+         * Red coloured Keys/Doors
+         */
+        RED,
+        /**
+         * Green coloured Keys/Doors
+         */
+        GREEN,
+        /**
+         * Blue coloured Keys/Doors
+         */
+        BLUE
     }
 }
 
