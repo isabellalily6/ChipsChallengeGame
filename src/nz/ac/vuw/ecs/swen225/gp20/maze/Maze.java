@@ -129,6 +129,7 @@ public class Maze {
         }
         newLoc.onEntry(a);
         a.setLocation(newLoc);
+        a.setDir(dir);
 
     }
 
@@ -209,18 +210,31 @@ public class Maze {
         /**
          * Moving up one row
          */
-        UP,
+        UP("Up"),
         /**
          * Moving down one row
          */
-        DOWN,
+        DOWN("Down"),
         /**
          * Moving left one column
          */
-        LEFT,
+        LEFT("Left"),
         /**
          * Moving right one column
          */
-        RIGHT,
+        RIGHT("Right");
+
+        private final String name;
+
+        Direction(String name) {
+            this.name = name;
+        }
+
+        /**
+         * @return Properly formatted name of this direction
+         */
+        public String getName() {
+            return name;
+        }
     }
 }
