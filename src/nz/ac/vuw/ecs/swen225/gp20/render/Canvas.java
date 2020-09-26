@@ -17,7 +17,7 @@ import java.awt.*;
 public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
-    private static final int TILE_SIZE = 10;
+    private static final int TILE_SIZE = 50;
     private final Maze maze;
     private final JLabel[][] components;
 
