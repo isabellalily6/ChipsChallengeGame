@@ -1,7 +1,13 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+
 import javax.json.Json;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +16,9 @@ import java.util.List;
  */
 public class RecordAndPlay {
     private static boolean isRecording = false;
-    private static final List<String> playerMoves = new ArrayList<>();
-    private static final List<String> mobMoves = new ArrayList<>();
+    private static final List<RecordedMove> moves = new ArrayList<>();
+    private static String gameState;
+
 
     /**
      * saves a recording to a file
@@ -21,11 +28,9 @@ public class RecordAndPlay {
 
         var gameJson = Json.createArrayBuilder();
 
-        var playerMovesArray = Json.createArrayBuilder(playerMoves);
-        var mobMovesArray = Json.createArrayBuilder(mobMoves);
+        var movesArray = Json.createArrayBuilder(moves);
 
-        gameJson.add(playerMovesArray.build());
-        gameJson.add(mobMovesArray.build());
+        gameJson.add(movesArray.build());
 
         try (var writer = new StringWriter()) {
             Json.createWriter(writer).write(gameJson.build());
@@ -50,26 +55,15 @@ public class RecordAndPlay {
 
     }
 
-    /**
-     * @param m player move to add to the list of mvoes
-     * @return true if the move was recorded
-     */
-    public static boolean addPlayerMove(String m) {
-        if (isRecording) {
-            playerMoves.add(m);
-            return true;
-        }
-
-        return false;
-    }
 
     /**
-     * @param m mob move to add to the list of mvoes
-     * @return true if the move was recorded
+     * @param a actor who performed this move
+     * @param d direction of this move
+     * @return true if the move was recorded, false if not
      */
-    public static boolean addMobMove(String m) {
+    public static boolean addMove(Actor a, Maze.Direction d) {
         if (isRecording) {
-            mobMoves.add(m);
+            moves.add(new RecordedMove(a, d));
             return true;
         }
 
@@ -84,14 +78,45 @@ public class RecordAndPlay {
     }
 
     /**
-     * @param isRecording, sets the game to be recorded or not
+     * Starts recording this game
      */
-    public static void setIsRecording(boolean isRecording) {
-        RecordAndPlay.isRecording = isRecording;
+    public static void startRecording() {
+        isRecording = true;
+        //TODO: add the start game state (ie, where are the tiles? what does the player have in their inventory?
+        //gameTiles = getCurrentGameState();
     }
 
     private static void resetRecordingState() {
-        playerMoves.clear();
-        mobMoves.clear();
+        moves.clear();
+        gameState = "";
+        isRecording = false;
+    }
+
+    static class RecordedMove {
+        private final Actor actor;
+        private final Maze.Direction direction;
+
+        /**
+         * @param actor     actor who this move has been done by
+         * @param direction direction of said move
+         */
+        RecordedMove(Actor actor, Maze.Direction direction) {
+            this.actor = actor;
+            this.direction = direction;
+        }
+
+        /**
+         * @return the actor of this recorded move
+         */
+        public Actor getActor() {
+            return actor;
+        }
+
+        /**
+         * @return the direction of this recorded move
+         */
+        public Maze.Direction getDirection() {
+            return direction;
+        }
     }
 }
