@@ -7,27 +7,27 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
-    // initialize the game variables
-    private GUI gui;
-    private Maze maze;
+  // initialize the game variables
+  private final GUI gui;
+  private final Maze maze;
 
-    // game information
-    private int level = 1;
-    private int maxTime = 10;
-    private int timeLeft = maxTime;
+  // game information
+  private final int level = 1;
+  private final int maxTime = 10;
+  private int timeLeft = maxTime;
 
-    private Timer timer = new Timer();
-    private TimerTask timerTask;
+  private Timer timer = new Timer();
+  private TimerTask timerTask;
 
-    private boolean gamePaused = false;
+  private boolean gamePaused = false;
 
 
   /**
-   *  Create a new instance of the game application
+   * Create a new instance of the game application
    **/
-    public Main(){
-      // create the maze and the gui for the game
-      maze = new Maze(level);
+  public Main() {
+    // create the maze and the gui for the game
+    maze = new Maze(level);
       gui = new GUI(this, maze);
       gui.setUpGui();
     }
@@ -71,7 +71,7 @@ public class Main {
    * Start the recording of a game
    **/
     public void startRecording(){
-      RecordAndPlay.setIsRecording(true);
+      RecordAndPlay.startRecording();
     }
 
   /**
