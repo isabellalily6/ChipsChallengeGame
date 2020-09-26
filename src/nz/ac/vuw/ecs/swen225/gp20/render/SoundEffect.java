@@ -18,7 +18,7 @@ public enum SoundEffect {
     STEP("data/step.wav"),
     COBRA("data/cobra.wav");
 
-    private Clip clip;
+    private String filename;
 
     /**
      * Create and play a sound effect once.
@@ -32,9 +32,6 @@ public enum SoundEffect {
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-            if (clip.getFramePosition() == clip.getFrameLength()) {
-                clip.stop();
-            }
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             e.printStackTrace();
         }

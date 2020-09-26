@@ -5,6 +5,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 /**
  * Objects of this class provide a simple 2D view of the maze,
@@ -80,7 +81,7 @@ public class Canvas extends JPanel {
      * @return the converted image
      **/
     private static ImageIcon makeImageIcon(String filename) {
-        java.net.URL imageURL = Canvas.class.getResource(filename);
+        URL imageURL = Canvas.class.getResource(filename);
         ImageIcon icon = null;
         if (imageURL != null) {
             icon = scaleImage(new ImageIcon(imageURL));
