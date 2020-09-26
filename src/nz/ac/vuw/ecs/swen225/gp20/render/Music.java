@@ -11,7 +11,7 @@ import java.net.URL;
  **/
 public class Music {
 
-    private static final String musicFile = "data/music.wav";
+    private static final String musicFile = "music.wav";
     private Clip clip;
 
     /**
