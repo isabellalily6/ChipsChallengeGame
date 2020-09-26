@@ -1,6 +1,5 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
-import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
@@ -55,26 +54,17 @@ public class LevelLoader {
 				
 				
 				//Determine the colour if applicable
-				Key.Colour tileColor;
+				Key.Colour tileColor = null;
 				if(tileType.equals("Key") || tileType.equals("LockedDoor")) {
 					String colorName = jsonTileObj.getString("color");
-					if(colorName.contentEquals("emerald")) {
-						tileColor = Key.Colour.EMERALD;
+					if(colorName.contentEquals("red")) {
+						tileColor = Key.Colour.RED;
 						
-					} else if(colorName.contentEquals("diamond")) {
-						tileColor = Key.Color.DIAMOND;
+					} else if(colorName.contentEquals("green")) {
+						tileColor = Key.Colour.GREEN;
 						
-					} else if(colorName.contentEquals("sapphire")) {
-						tileColor = Key.Color.SAPPHIRE;
-						
-					} else if(colorName.contentEquals("amethyst")) {
-						tileColor = Key.Color.AMETHYST;
-						
-					} else if(colorName.contentEquals("topaz")) {
-						tileColor = Key.Color.TOPAZ;
-						
-					} else if(colorName.contentEquals("ruby")) {
-						tileColor = Key.Color.RUBY;
+					} else if(colorName.contentEquals("blue")) {
+						tileColor = Key.Colour.BLUE;
 						
 					}
 				}
