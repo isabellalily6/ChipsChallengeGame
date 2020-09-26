@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -132,20 +133,24 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-   // System.out.println("pressed");
+    // System.out.println("pressed");
     int keyCode = keyEvent.getKeyCode();
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       maze.moveChap(Maze.Direction.UP);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       maze.moveChap(Maze.Direction.DOWN);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       maze.moveChap(Maze.Direction.RIGHT);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.RIGHT);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       maze.moveChap(Maze.Direction.LEFT);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.LEFT);
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
