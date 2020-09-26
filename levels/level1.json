@@ -1,91 +1,91 @@
 [
-	{"type": "Free"}
-	{"type": "Treasure"}
-	{"type": "Free"}
-	{"type": "Wall"}
-	{"type": "Exit"}
-	{"type": "Wall"}
-	{"type": "Free"}
-	{"type": "Treasure"}
-	{"type": "Free"}
+	{"type": "Free"},
+	{"type": "Treasure"},
+	{"type": "Free"},
+	{"type": "Wall"},
+	{"type": "Exit"},
+	{"type": "Wall"},
+	{"type": "Free"},
+	{"type": "Treasure"},
+	{"type": "Free"},
 	
-	{"type": "Wall"}
-	{"type": "Wall"}
-	{"type": "LockedDoor", "color": "green"}
-	{"type": "Wall"}
+	{"type": "Wall"},
+	{"type": "Wall"},
+	{"type": "LockedDoor", "color": "green"},
+	{"type": "Wall"},
 	{"type": "ExitLock"}
-	{"type": "Wall"}
-	{"type": "LockedDoor", "color": "green"}
-	{"type": "Wall"}
-	{"type": "Wall"}
+	{"type": "Wall"},
+	{"type": "LockedDoor", "color": "green"},
+	{"type": "Wall"},
+	{"type": "Wall"},
 	
-	{"type": "Free"}
-	{"type": "LockedDoor", "color": "blue"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "LockedDoor", "color": "red"}
-	{"type": "Free"}
+	{"type": "Free"},
+	{"type": "LockedDoor", "color": "blue"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "LockedDoor", "color": "red"},
+	{"type": "Free"},
 	
-	{"type": "Free"}
-	{"type": "Wall"}
-	{"type": "Key", "color": "blue"}
-	{"type": "Free"}
-	{"type": "InfoField"}
-	{"type": "Free"}
-	{"type": "Key", "color": "red"}
-	{"type": "Wall"}
-	{"type": "Free"}
+	{"type": "Free"},
+	{"type": "Wall"},
+	{"type": "Key", "color": "blue"},
+	{"type": "Free"},
+	{"type": "InfoField", "info": "Collect chips to get past the chip socket. Use keys to open doors."},
+	{"type": "Free"},
+	{"type": "Key", "color": "red"},
+	{"type": "Wall"},
+	{"type": "Free"},
 	
-	{"type": "Wall"}
-	{"type": "Wall"}
-	{"type": "Treasure"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Treasure"}
-	{"type": "Wall"}
-	{"type": "Wall"}
+	{"type": "Wall"},
+	{"type": "Wall"},
+	{"type": "Treasure"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Treasure"},
+	{"type": "Wall"},
+	{"type": "Wall"},
 	
-	{"type": "Free"}
-	{"type": "Wall"}
-	{"type": "Key", "color": "blue"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Key", "color": "red"}
-	{"type": "Wall"}
-	{"type": "Free"}
+	{"type": "Free"},
+	{"type": "Wall"},
+	{"type": "Key", "color": "blue"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Key", "color": "red"},
+	{"type": "Wall"},
+	{"type": "Free"},
 	
-	{"type": "Free"}
-	{"type": "LockedDoor", "color": "red"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Treasure"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "LockedDoor", "color": "blue"}
-	{"type": "Free"}
+	{"type": "Free"},
+	{"type": "LockedDoor", "color": "red"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Treasure"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "LockedDoor", "color": "blue"},
+	{"type": "Free"},
 
-	{"type": "Wall"}
-	{"type": "Wall"}
-	{"type": "Wall"}
-	{"type": "LockedDoor", "color": "green"}
-	{"type": "Wall"}
-	{"type": "LockedDoor", "color": "green"}
-	{"type": "Wall"}
-	{"type": "Wall"}
-	{"type": "Wall"}
+	{"type": "Wall"},
+	{"type": "Wall"},
+	{"type": "Wall"},
+	{"type": "LockedDoor", "color": "green"},
+	{"type": "Wall"},
+	{"type": "LockedDoor", "color": "green"},
+	{"type": "Wall"},
+	{"type": "Wall"},
+	{"type": "Wall"},
 	
-	{"type": "Free"}
-	{"type": "Wall"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Wall"}
-	{"type": "Free"}
-	{"type": "Free"}
-	{"type": "Wall"}
+	{"type": "Free"},
+	{"type": "Wall"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Wall"},
+	{"type": "Free"},
+	{"type": "Free"},
+	{"type": "Wall"},
 	{"type": "Free"}
 ]

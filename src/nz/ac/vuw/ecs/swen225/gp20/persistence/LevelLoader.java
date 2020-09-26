@@ -27,7 +27,7 @@ public class LevelLoader {
 	 * 
 	 * @param level number
 	 */
-	public Level load(int levelNumber) {
+	public static Level load(int levelNumber) {
 		String filename = "levels\\level" + levelNumber + ".json";
 		
 		int mapWidth = 9;
