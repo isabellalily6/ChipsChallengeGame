@@ -11,31 +11,31 @@
 	
 	{"type": "Wall"}
 	{"type": "Wall"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "green"}
 	{"type": "Wall"}
 	{"type": "ExitLock"}
 	{"type": "Wall"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "green"}
 	{"type": "Wall"}
 	{"type": "Wall"}
 	
 	{"type": "Free"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "blue"}
 	{"type": "Free"}
 	{"type": "Free"}
 	{"type": "Free"}
 	{"type": "Free"}
 	{"type": "Free"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "red"}
 	{"type": "Free"}
 	
 	{"type": "Free"}
 	{"type": "Wall"}
-	{"type": "Key"}
+	{"type": "Key", "color": "blue"}
 	{"type": "Free"}
 	{"type": "InfoField"}
 	{"type": "Free"}
-	{"type": "Key"}
+	{"type": "Key", "color": "red"}
 	{"type": "Wall"}
 	{"type": "Free"}
 	
@@ -51,30 +51,30 @@
 	
 	{"type": "Free"}
 	{"type": "Wall"}
-	{"type": "Key"}
+	{"type": "Key", "color": "blue"}
 	{"type": "Free"}
 	{"type": "Free"}
 	{"type": "Free"}
-	{"type": "Key"}
+	{"type": "Key", "color": "red"}
 	{"type": "Wall"}
 	{"type": "Free"}
 	
 	{"type": "Free"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "red"}
 	{"type": "Free"}
 	{"type": "Free"}
 	{"type": "Treasure"}
 	{"type": "Free"}
 	{"type": "Free"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "blue"}
 	{"type": "Free"}
 
 	{"type": "Wall"}
 	{"type": "Wall"}
 	{"type": "Wall"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "green"}
 	{"type": "Wall"}
-	{"type": "LockedDoor"}
+	{"type": "LockedDoor", "color": "green"}
 	{"type": "Wall"}
 	{"type": "Wall"}
 	{"type": "Wall"}
