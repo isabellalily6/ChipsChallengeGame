@@ -23,7 +23,7 @@ public class Player extends Actor {
      * @param location the tile this actor is standing on
      */
     public Player(Tile location) {
-        super(location);
+        super(location, "player");
         backpack = new HashSet<>();
         treasuresCollected = 0;
     }
