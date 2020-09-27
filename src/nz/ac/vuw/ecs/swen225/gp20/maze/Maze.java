@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,15 +53,7 @@ public class Maze {
      * @param level the level for this Maze to load
      */
     public Maze(int level) {
-        //TODO: json loader stuff here
-        /*var loadedLevel = LevelLoader(level);
-          this(loadedLevel.getMaze(),loadedLevel.getTreasures());
-         */
-        this.cols = -1;
-        this.rows = -1;
-        this.tiles = new Tile[0][0];
-        this.totalTreasures = -1;
-        this.chap = null;
+        this(new LevelLoader().load(level).getMap(), new LevelLoader().load(level).getTreasures());
     }
 
     /**
