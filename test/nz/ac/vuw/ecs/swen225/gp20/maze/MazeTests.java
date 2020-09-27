@@ -69,14 +69,14 @@ public class MazeTests {
     @Test
     void test2dArrayShallowClone() {
         Tile[][] tiles = createEmptyMazeArray();
-        var maze = new Maze(tiles);
+        var maze = new Maze(tiles, 0);
         assertNotSame(tiles, maze.getTiles());
     }
 
     @Test
     void test2dArrayCloneShallowImmutable() {
         Tile[][] tiles = createEmptyMazeArray();
-        var maze = new Maze(tiles);
+        var maze = new Maze(tiles, 0);
         maze.getTiles()[0][0] = new Key(0, 0, Key.Colour.RED);
         assertFalse(maze.getTiles()[0][0] instanceof Key);
     }
@@ -85,7 +85,7 @@ public class MazeTests {
 
     @Test
     void moveUp() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldY = maze.getChap().getLocation().getRow();
         maze.moveChap(Maze.Direction.UP);
         assert (maze.getChap().getLocation().getRow() - oldY == -1);
@@ -93,7 +93,7 @@ public class MazeTests {
 
     @Test
     void moveDown() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldY = maze.getChap().getLocation().getRow();
         maze.moveChap(Maze.Direction.DOWN);
         assert (maze.getChap().getLocation().getRow() - oldY == 1);
@@ -101,7 +101,7 @@ public class MazeTests {
 
     @Test
     void moveLeft() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldX = maze.getChap().getLocation().getCol();
         maze.moveChap(Maze.Direction.LEFT);
         assert (maze.getChap().getLocation().getCol() - oldX == -1);
@@ -109,7 +109,7 @@ public class MazeTests {
 
     @Test
     void moveRight() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldX = maze.getChap().getLocation().getCol();
         maze.moveChap(Maze.Direction.RIGHT);
         assert (maze.getChap().getLocation().getCol() - oldX == 1);
@@ -117,7 +117,7 @@ public class MazeTests {
 
     @Test
     void moveUpIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.UP);
@@ -127,7 +127,7 @@ public class MazeTests {
 
     @Test
     void moveDownIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.DOWN);
@@ -137,7 +137,7 @@ public class MazeTests {
 
     @Test
     void moveLeftIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.LEFT);
@@ -147,7 +147,7 @@ public class MazeTests {
 
     @Test
     void moveRightIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.RIGHT);

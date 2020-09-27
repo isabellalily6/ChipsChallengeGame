@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,28 +29,12 @@ public class Maze {
     private final Player chap;
     private List<Actor> actors;
     private int treasuresLeft;
-    private boolean levelOver;
     private int level;
-
+    private boolean levelOver;
 
     /**
      * TEST CONSTRUCTOR - Do not use in production code
      * a real maze needs many more fields than this
-     *
-     * @param tiles the tiles that make up the maze
-     */
-    public Maze(Tile[][] tiles) {
-        this.cols = tiles.length;
-        this.rows = tiles[0].length;
-        this.tiles = copy2dTileArray(tiles);
-        this.totalTreasures = 0;
-        chap = new Player(tiles[cols / 2][rows / 2]);
-    }
-
-    /**
-     * New maze which contains the Tile array and controls logic.
-     * (new maze needs to be initialised for each level)
-     * TODO: discuss method for loading walls and stuff from file
      *
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
@@ -68,12 +54,7 @@ public class Maze {
      * @param level the level for this Maze to load
      */
     public Maze(int level) {
-        //TODO: json loader stuff here
-        this.cols = -1;
-        this.rows = -1;
-        this.tiles = new Tile[0][0];
-        this.totalTreasures = -1;
-        this.chap = null;
+        this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures());
         this.level = level;
     }
 
@@ -199,6 +180,13 @@ public class Maze {
      */
     public Player getChap() {
         return chap;
+    }
+
+    /**
+     * @return the level that is currently being played
+     */
+    public int getLevel() {
+        return level;
     }
 
     /**
