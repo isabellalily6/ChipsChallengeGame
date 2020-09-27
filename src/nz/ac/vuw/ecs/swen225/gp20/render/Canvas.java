@@ -32,7 +32,7 @@ public class Canvas extends JPanel {
         setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        setLayout(new GridLayout());
+        setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
         createComponents();
     }
 
@@ -61,7 +61,6 @@ public class Canvas extends JPanel {
                 components[x][y].setIcon(icon);
             }
         }
-        repaint();
     }
 
     /**
