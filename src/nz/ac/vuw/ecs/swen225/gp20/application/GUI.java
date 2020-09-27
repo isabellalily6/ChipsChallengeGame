@@ -178,6 +178,7 @@ public class GUI extends JFrame implements KeyListener {
       System.out.println("CLose dialogue and Resume");
       main.playGame();
     }
+    canvas.repaint();
   }
 
   @Override
