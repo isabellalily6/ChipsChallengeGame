@@ -1,8 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.render;
 
 import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Objects of this class represent music to play in the game.
@@ -11,7 +11,7 @@ import java.net.URL;
  **/
 public class Music {
 
-    private static final String musicFile = "music.wav";
+    private static final String musicFile = "data/music.wav";
     private Clip clip;
 
     /**
@@ -19,8 +19,7 @@ public class Music {
      **/
     public Music() {
         try {
-            URL url = getClass().getResource(musicFile);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(musicFile));
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {

@@ -1,8 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.render;
 
 import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Objects of this class are sound effects to be used in the game.
@@ -27,8 +27,7 @@ public enum SoundEffect {
      **/
     SoundEffect(String filename) {
         try {
-            URL url = getClass().getResource(filename);
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filename));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
