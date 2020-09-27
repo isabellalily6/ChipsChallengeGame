@@ -29,6 +29,7 @@ public class Maze {
     private final Player chap;
     private List<Actor> actors;
     private int treasuresLeft;
+    private int level;
     private boolean levelOver;
 
     /**
@@ -53,7 +54,8 @@ public class Maze {
      * @param level the level for this Maze to load
      */
     public Maze(int level) {
-        this(new LevelLoader().load(level).getMap(), new LevelLoader().load(level).getTreasures());
+        this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures());
+        this.level = level;
     }
 
     /**
@@ -178,6 +180,13 @@ public class Maze {
      */
     public Player getChap() {
         return chap;
+    }
+
+    /**
+     * @return the level that is currently being played
+     */
+    public int getLevel() {
+        return level;
     }
 
     /**
