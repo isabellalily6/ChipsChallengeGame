@@ -5,7 +5,6 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 /**
  * Objects of this class provide a simple 2D view of the maze,
@@ -54,7 +53,7 @@ public class Canvas extends JPanel {
     /**
      * Refresh the components for the canvas.
      **/
-    public void refreshComponents() {
+    public void paintComponent() {
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
@@ -62,6 +61,7 @@ public class Canvas extends JPanel {
                 components[x][y].setIcon(icon);
             }
         }
+        repaint();
     }
 
     /**
@@ -81,12 +81,7 @@ public class Canvas extends JPanel {
      * @return the converted image
      **/
     private static ImageIcon makeImageIcon(String filename) {
-        URL imageURL = Canvas.class.getResource(filename);
-        ImageIcon icon = null;
-        if (imageURL != null) {
-            icon = scaleImage(new ImageIcon(imageURL));
-        }
-        return icon;
+        return scaleImage(new ImageIcon(filename));
     }
 
 }
