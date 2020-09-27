@@ -53,7 +53,7 @@ public class Canvas extends JPanel {
     /**
      * Refresh the components for the canvas.
      **/
-    public void paintComponent() {
+    public void paintComponent(Graphics g) {
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
