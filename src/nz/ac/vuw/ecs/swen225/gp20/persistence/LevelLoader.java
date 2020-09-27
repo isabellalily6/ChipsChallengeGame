@@ -1,7 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import javax.json.Json;
@@ -15,6 +18,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Free;
 import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
 import nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
@@ -27,7 +31,7 @@ public class LevelLoader {
 	 * 
 	 * @param level number
 	 */
-	public Level load(int levelNumber) {
+	public static Level load(int levelNumber) {
 		String filename = "levels\\level" + levelNumber + ".json";
 		
 		int mapWidth = 9;
@@ -105,6 +109,64 @@ public class LevelLoader {
 		}
 		
 		return new Level(map, treasures);
+	}
+	
+	/**
+	 * Saves the current game state in json format to a levels\gameState
+	 * @param game
+	 */
+	public void saveGameState(Maze game) {
+		String gameState = "{";
+		
+		Tile[][] map = game.getTiles();
+		
+		//level
+		gameState += "\"level\": \"" + game.getLevel() + "\",";
+		
+		//cols
+		gameState += "\"cols\": \"" + map.length + "\",";
+		
+		//rows
+		gameState += "\"rows\": \"" + map[0].length + "\",";
+		
+		//map
+		gameState += "\"map\": [";	
+		for(int col = 0; col < map.length; col++) {
+			for(int row = 0; row < map[0].length; row++) {
+				gameState += map[col][row].toString();
+			}
+		}
+		gameState += ",";
+				
+		//treasuresLeft
+		gameState += "\"treasuresLeft\": \"" + game.getTreasuresLeft() + "\",";
+		
+		//chapCol
+		gameState += "\"chapCol\": \"" + game.getChap().getLocation().getCol() + "\",";
+		
+		//chapRow
+		gameState += "\"chapRow\": \"" + game.getChap().getLocation().getRow() + "\"";
+		
+		//keysCollected
+		gameState += "\"keysCollected\": [";
+		for(Key.Colour colour : game.getChap().getBackpack()) {
+			gameState += "{\"colour\": \"" + colour + "\"},";
+		}
+		if(!game.getChap().getBackpack().isEmpty()) {
+			gameState = gameState.substring(0, gameState.length() - 1);
+		}
+		gameState += "]";
+		
+		gameState += "}";
+		
+		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter("levels\\gameState"));
+		      writer.write(gameState);
+		      writer.close();
+		} catch (IOException e) {
+		      System.out.println("Error saving game state" + e);
+		}
 	}
 	
 }
