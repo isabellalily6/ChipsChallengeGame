@@ -32,7 +32,7 @@ public class LevelLoader {
 	 * @param level number
 	 */
 	public static Level load(int levelNumber) {
-		String filename = "levels\\level" + levelNumber + ".json";
+		String filename = "levels/level" + levelNumber + ".json";
 		
 		int mapWidth = 9;
 		int mapHeight = 9;
@@ -161,7 +161,7 @@ public class LevelLoader {
 		
 		
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("levels\\gameState"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState"));
 		      writer.write(gameState);
 		      writer.close();
 		} catch (IOException e) {

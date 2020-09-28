@@ -13,7 +13,7 @@
 	{"type": "Wall"},
 	{"type": "LockedDoor", "color": "green"},
 	{"type": "Wall"},
-	{"type": "ExitLock"}
+	{"type": "ExitLock"},
 	{"type": "Wall"},
 	{"type": "LockedDoor", "color": "green"},
 	{"type": "Wall"},
