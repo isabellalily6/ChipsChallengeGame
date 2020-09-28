@@ -74,7 +74,7 @@
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "LockedDoor", "color": "red"},
-	{"type": "Free"},,
+	{"type": "Free"},
 	{"type": "Key", "color": "green"},
 	{"type": "Free"},
 	{"type": "Wall"},
