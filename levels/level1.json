@@ -179,39 +179,79 @@
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "Free"},
+	{
+		"type": "Wall"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Treasure"
+	},
+	{
+		"type": "Wall"
+	},
+	{
+		"type": "Treasure"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Wall"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Wall"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Wall"
+	},
+	{
+		"type": "Key",
+		"color": "green"
+	},
+	{"type": "Free"},
 	{"type": "Wall"},
 	{"type": "Free"},
-	{"type": "Treasure"},
-	{"type": "Wall"},
-	{"type": "Treasure"},
-	{"type": "Free"},
-	{"type": "Wall"},
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "Free"},
-	{"type": "Free"}
 	
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "Wall"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Wall"},
-	{"type": "Key", "color": "green"},
-	{"type": "Free"},
-	{"type": "Wall"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Wall"},
 	{"type": "Wall"},
 	{"type": "Wall"},
 	{"type": "Wall"},
@@ -227,15 +267,37 @@
 	{"type": "Free"},
 	{"type": "Free"},
 	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
-	{"type": "Free"},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	},
+	{
+		"type": "Free"
+	}
 ]
