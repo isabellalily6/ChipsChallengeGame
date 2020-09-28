@@ -65,7 +65,7 @@
 	
 	{"type": "Wall"},
 	{"type": "Free"},
-	{"type": "Key", "color": "yellow"},
+	{"type": "Key", "color": "green"},
 	{"type": "Free"},
 	{"type": "LockedDoor", "color": "blue"},
 	{"type": "Free"},
@@ -75,7 +75,7 @@
 	{"type": "Free"},
 	{"type": "LockedDoor", "color": "red"},
 	{"type": "Free"},,
-	{"type": "Key", "color": "yellow"},
+	{"type": "Key", "color": "green"},
 	{"type": "Free"},
 	{"type": "Wall"},
 	
