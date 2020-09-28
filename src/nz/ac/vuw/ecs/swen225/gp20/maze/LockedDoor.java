@@ -28,4 +28,9 @@ public class LockedDoor extends Tile {
     public Key.Colour getLockColour() {
         return lockColour;
     }
+
+    @Override
+    public String toString() {
+        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+lockColour.getName().toLowerCase()+"\"}";
+    }
 }

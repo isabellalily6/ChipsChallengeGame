@@ -15,8 +15,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * in the game world (e.g. “Can Chap go through this door?”, “Can Chap pick up this object?”, “Does this key open that
  * door?”, etc.).
  *
- * <p>The core logic of the game is that the player moves Chap around the maze until he reaches the exit and then advances
- * to the next level (if there is another level).
+ * <p>The core logic of the game is that the player moves Chap around the maze until he reaches the exit and then
+ * advances to the next level (if there is another level).
  * This module should make extensive use of contracts to ensure the integrity of the maze.
  *
  * @author Benjamin Doornbos

@@ -29,6 +29,11 @@ public class Key extends Tile {
         return colour;
     }
 
+    @Override
+    public String toString() {
+        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+colour.toString().toLowerCase()+"\"}";
+    }
+
     public enum Colour {
         /**
          * Red coloured Keys/Doors

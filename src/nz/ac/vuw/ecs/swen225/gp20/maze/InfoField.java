@@ -29,4 +29,9 @@ public class InfoField extends Tile {
     public String getInfo() {
         return info;
     }
+
+    @Override
+    public String toString() {
+        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"info\": \""+info+"\"}";
+    }
 }
