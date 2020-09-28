@@ -32,10 +32,10 @@ public class LevelLoader {
 	 * @param level number
 	 */
 	public static Level load(int levelNumber) {
-		String filename = "levels\\level" + levelNumber + ".json";
+		String filename = "levels/level" + levelNumber + ".json";
 		
-		int mapWidth = 9;
-		int mapHeight = 9;
+		int mapWidth = 15;
+		int mapHeight = 15;
 		
 		Tile[][] map = new Tile[mapWidth][mapHeight]; 
 		int treasures = 0; //total treasures in the level
@@ -161,7 +161,7 @@ public class LevelLoader {
 		
 		
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("levels\\gameState"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState"));
 		      writer.write(gameState);
 		      writer.close();
 		} catch (IOException e) {
