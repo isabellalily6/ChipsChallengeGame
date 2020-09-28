@@ -53,8 +53,8 @@ public class LevelLoader {
 				
 				JsonObject jsonTileObj = jsonTiles.get(i);
 				String tileType = jsonTileObj.getString("type");
-				int col = i / mapWidth;
-				int row = i % mapWidth;
+				int row = i / mapWidth;
+				int col = i % mapWidth;
 				
 				
 				//Determine the colour if applicable
