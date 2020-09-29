@@ -10,10 +10,8 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObjectBuilder;
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,7 +22,8 @@ import java.util.List;
  */
 public class RecordAndPlay {
     private static boolean isRecording = false;
-    private static final List<RecordedMove> moves = new ArrayList<>();
+    private static final List<RecordedMove> recordedMoves = new ArrayList<>();
+    private static final List<RecordedMove> loadedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
 
@@ -41,7 +40,7 @@ public class RecordAndPlay {
         var jsonToSave = buildJson();
 
         //Save this to a file
-        savetoFile(jsonToSave);
+        saveToFile(jsonToSave);
 
         //reset the recording state
         resetRecordingState();
@@ -49,9 +48,44 @@ public class RecordAndPlay {
 
     /**
      * Loads a recording from the file
+     *
+     * @param m is the main class, this is used to access the player, and the gui which is the parent to the filechooser
      */
-    public static void loadRecording() {
+    public static void loadRecording(Main m) {
+        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
+        fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
+        var result = fileChooser.showOpenDialog(m.getGui());
 
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File jsonFile = fileChooser.getSelectedFile();
+            if (!jsonFile.getName().endsWith(".json")) return;
+
+            try {
+                var parser = Json.createReader(new FileReader(jsonFile));
+                var jsonArr = parser.readArray();
+                var moves = jsonArr.getJsonObject(1);
+                for (var move : moves.getJsonArray("moves")) {
+                    var loadedMove = move.asJsonObject();
+
+                    var actorName = loadedMove.get("actor").toString();
+
+                    //this is due to the value being stored as a string, so it would come out as ""player""
+                    actorName = turnJsonStringToString(actorName);
+                    var dir = getDirection(loadedMove.get("dir").toString());
+
+                    RecordedMove recordedMove = null;
+                    if (actorName.equals("player")) {
+                        recordedMove = new RecordedMove(m.getMaze().getChap(), dir);
+                    } else {
+                        //TODO support for other mobs in lvl 2
+                    }
+
+                    loadedMoves.add(recordedMove);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -62,7 +96,7 @@ public class RecordAndPlay {
      */
     public static boolean addMove(Actor a, Maze.Direction d) {
         if (isRecording) {
-            moves.add(new RecordedMove(a, d));
+            recordedMoves.add(new RecordedMove(a, d));
             return true;
         }
 
@@ -94,9 +128,9 @@ public class RecordAndPlay {
 
         var movesArray = Json.createArrayBuilder();
 
-        for (var move : moves) {
+        for (var move : recordedMoves) {
             var obj = Json.createObjectBuilder()
-                    .add("move", move.actor.getName())
+                    .add("actor", move.getActor().getName())
                     .add("dir", move.getDirection().toString());
             movesArray.add(obj);
         }
@@ -104,11 +138,10 @@ public class RecordAndPlay {
         var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
 
         gameJson.add(movesArrayObj.build());
-
         return gameJson.build();
     }
 
-    private static void savetoFile(JsonArray jsonArray) {
+    private static void saveToFile(JsonArray jsonArray) {
         var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
         var result = fileChooser.showOpenDialog(parentComponent);
 
@@ -126,9 +159,32 @@ public class RecordAndPlay {
     }
 
     private static void resetRecordingState() {
-        moves.clear();
+        recordedMoves.clear();
         gameState = null;
         isRecording = false;
+    }
+
+    private static String turnJsonStringToString(String s) {
+        if (s == null) return null;
+        if (s.length() < 2) return "";
+
+        return s.substring(1, s.length() - 1);
+    }
+
+    private static Maze.Direction getDirection(String dir) {
+        dir = turnJsonStringToString(dir);
+        switch (dir) {
+            case "UP":
+                return Maze.Direction.UP;
+            case "DOWN":
+                return Maze.Direction.DOWN;
+            case "RIGHT":
+                return Maze.Direction.RIGHT;
+            case "LEFT":
+                return Maze.Direction.LEFT;
+            default:
+                throw new IllegalArgumentException("Provided string was not a direction");
+        }
     }
 
     static class RecordedMove {
