@@ -1,8 +1,5 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
-import nz.ac.vuw.ecs.swen225.gp20.render.Sound;
-import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
-
 /**
  * From handout:
  * If Chap steps onto the tile, the treasure (chip) is picked up and added to the treasure chest.
@@ -21,9 +18,4 @@ public class Treasure extends Tile {
         super("data/treasure.png", col, row, true, true);
     }
 
-    @Override
-    public void onEntry(Actor actor) {
-        SoundEffect.play(Sound.PICK_UP_ITEM);
-        setOccupied(true);
-    }
 }

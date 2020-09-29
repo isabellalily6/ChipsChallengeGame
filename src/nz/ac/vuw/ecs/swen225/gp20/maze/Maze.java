@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+import nz.ac.vuw.ecs.swen225.gp20.render.Sound;
+import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
 import java.util.Arrays;
 
@@ -102,8 +104,9 @@ public class Maze {
 
         a.getLocation().onExit();
         if (a == chap) {
-            if (newLoc instanceof Exit) levelOver = true;
-            else {
+            if (newLoc instanceof Exit) {
+                levelOver = true;
+            } else {
                 //if this method returns false, chap is not allowed to move to newLoc
                 if (!interactWithTile(newLoc)) {
                     a.setDir(dir);
@@ -112,6 +115,7 @@ public class Maze {
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
                 newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
             }
+            playSound(newLoc);
         }
         newLoc.onEntry(a);
         a.setLocation(newLoc);
@@ -136,6 +140,17 @@ public class Maze {
 
         if (loc.isFreeOnEntry()) setFree(loc);
         return true;
+    }
+
+    private void playSound(Tile t) {
+        Sound sound;
+        if (t instanceof Exit) sound = Sound.EXIT;
+        else if (t instanceof Treasure || t instanceof Key) sound = Sound.PICK_UP_ITEM;
+        else if (t instanceof InfoField) sound = Sound.INFO_FIELD;
+        else if (t instanceof LockedDoor && chap.backpackContains(((LockedDoor) t).getLockColour()))
+            sound = Sound.UNLOCK_DOOR;
+        else sound = Sound.STEP;
+        SoundEffect.play(sound);
     }
 
 
