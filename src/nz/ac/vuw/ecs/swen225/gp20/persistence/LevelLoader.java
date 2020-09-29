@@ -118,7 +118,7 @@ public class LevelLoader {
 	 */
 	public String getGameState(Main application) {
 		Maze game = application.getMaze();
-		int timeLeft application.getTimeLeft();
+		int timeLeft = application.getTimeLeft();
 		
 		String gameState = "{";
 		
