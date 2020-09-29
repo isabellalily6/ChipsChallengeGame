@@ -51,6 +51,7 @@ public abstract class Tile {
      * @param actor the actor entering this tile
      */
     public void onEntry(Actor actor) {
+        //SoundEffect.play(Sound.STEP);
         setOccupied(true);
     }
 

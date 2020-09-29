@@ -18,4 +18,8 @@ public class Treasure extends Tile {
         super("data/treasure.png", col, row, true, true);
     }
 
+    @Override
+    public void onEntry(Actor actor) {
+        super.onEntry(actor);
+    }
 }
