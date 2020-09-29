@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
@@ -9,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class RecordAndPlay {
      * saves a recording to a file
      */
     public static void saveRecording() {
-        var saveFileName = "chapsChallengeRecording.txt";
+        var saveFileName = "chapsChallengeRecording.json";
 
         var gameJson = Json.createArrayBuilder();
 
@@ -33,18 +35,21 @@ public class RecordAndPlay {
 
         var movesArray = Json.createArrayBuilder();
 
-
         for (var move : moves) {
-            var obj = Json.createObjectBuilder().add("move", move.actor.getImageURl()).add("dir", move.getDirection().getName());
+            var obj = Json.createObjectBuilder()
+                    .add("move", move.actor.getName())
+                    .add("dir", move.getDirection().toString());
             movesArray.add(obj);
         }
 
-        gameJson.add(movesArray.build());
+        var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
+
+        gameJson.add(movesArrayObj.build());
 
         try (var writer = new StringWriter()) {
             Json.createWriter(writer).write(gameJson.build());
             try {
-                var bw = new BufferedWriter(new FileWriter(saveFileName));
+                var bw = new BufferedWriter(new FileWriter(saveFileName, StandardCharsets.UTF_8));
                 bw.write(writer.toString());
                 bw.close();
             } catch (IOException e) {
@@ -91,10 +96,9 @@ public class RecordAndPlay {
      *
      * @param m current maze that we are recording
      */
-    public static void startRecording(Maze m) {
+    public static void startRecording(Main m) {
         isRecording = true;
-        //TODO: add the start game state (ie, where are the tiles? what does the player have in their inventory?
-        gameState = new LevelLoader().saveGameState(m);
+        gameState = new LevelLoader().getGameState(m);
     }
 
     private static void resetRecordingState() {
