@@ -91,7 +91,7 @@ public class Canvas extends JPanel {
      * @param filename the image file e.g. "data/image.png"
      * @return the converted image
      **/
-    private static ImageIcon makeImageIcon(String filename) {
+    public static ImageIcon makeImageIcon(String filename) {
         return scaleImage(new ImageIcon(filename));
     }
 
