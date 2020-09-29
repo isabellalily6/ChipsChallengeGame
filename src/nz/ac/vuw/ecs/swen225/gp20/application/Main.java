@@ -162,6 +162,15 @@ public class Main {
   }
 
   /**
+   * Get the gui
+   *
+   * @return the gui
+   **/
+  public GUI getGui() {
+    return gui;
+  }
+
+  /**
    * Get the level
    *
    * @return the current maze
