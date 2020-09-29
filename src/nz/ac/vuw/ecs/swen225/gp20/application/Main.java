@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 
 import java.util.Timer;
@@ -9,11 +10,11 @@ import java.util.TimerTask;
 public class Main {
   // initialize the game variables
   private final GUI gui;
-  private final Maze maze;
+  private Maze maze;
 
   // game information
   private final int level = 1;
-  private final int maxTime = 10;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   private Timer timer = new Timer();
@@ -30,6 +31,7 @@ public class Main {
     maze = new Maze(level);
       gui = new GUI(this, maze);
       gui.setUpGui();
+      startTimer();
     }
 
   /**
@@ -60,7 +62,7 @@ public class Main {
             timer.cancel();
           }
           // otherwise decrease the timer by 1.
-          else {
+          else if(!gamePaused){
             timeLeft -= 1;
           }
         }
@@ -110,6 +112,17 @@ public class Main {
   }
 
   /**
+   * Start a game from the level passed in as a parameter
+   **/
+  public void startGame(int level){
+    if(timeLeft != 0 && timeLeft != maxTime){
+      timer.cancel();
+    }
+    this.maze = new Maze(1);
+    startTimer();
+  }
+
+  /**
    * Pauses the game
    **/
     public void pauseGame(){
@@ -124,6 +137,24 @@ public class Main {
       gui.hidePausedDialogue();
       gamePaused = false;
     }
+
+  /**
+   * Get the maze
+   *
+   * @return the current maze
+   **/
+  public Maze getMaze() {
+    return maze;
+  }
+
+  /**
+   * Get the time left
+   *
+   * @return the time left in the timer
+   **/
+  public int getTimeLeft() {
+    return timeLeft;
+  }
 
   /**
    * Creates a new instance of main to run the ChapsChallenge game
