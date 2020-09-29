@@ -6,6 +6,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,18 +21,18 @@ import java.util.List;
 public class RecordAndPlay {
     private static boolean isRecording = false;
     private static final List<RecordedMove> moves = new ArrayList<>();
-    private static String gameState;
+    private static JsonObjectBuilder gameState;
 
 
     /**
-     * saves a recording to a file
+     * saves a recorded game to a file for replaying later
      */
     public static void saveRecording() {
         var saveFileName = "chapsChallengeRecording.json";
 
         var gameJson = Json.createArrayBuilder();
 
-        gameJson.add(gameState);
+        gameJson.add(gameState.build());
 
         var movesArray = Json.createArrayBuilder();
 
@@ -98,12 +99,12 @@ public class RecordAndPlay {
      */
     public static void startRecording(Main m) {
         isRecording = true;
-        gameState = new LevelLoader().getGameState(m);
+        gameState = LevelLoader.getGameState(m);
     }
 
     private static void resetRecordingState() {
         moves.clear();
-        gameState = "";
+        gameState = null;
         isRecording = false;
     }
 
