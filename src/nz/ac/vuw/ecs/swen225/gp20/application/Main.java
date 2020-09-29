@@ -139,6 +139,24 @@ public class Main {
     }
 
   /**
+   * Get the maze
+   *
+   * @return the current maze
+   **/
+  public Maze getMaze() {
+    return maze;
+  }
+
+  /**
+   * Get the time left
+   *
+   * @return the time left in the timer
+   **/
+  public int getTimeLeft() {
+    return timeLeft;
+  }
+
+  /**
    * Creates a new instance of main to run the ChapsChallenge game
    * 
    * @param args
