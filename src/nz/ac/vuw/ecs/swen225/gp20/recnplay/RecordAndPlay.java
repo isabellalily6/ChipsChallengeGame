@@ -109,7 +109,7 @@ public class RecordAndPlay {
     }
 
     private static void savetoFile(JsonArray jsonArray) {
-        var fileChooser = new JFileChooser(Paths.get(".").toAbsolutePath().normalize().toString() + "/recordings");
+        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
         var result = fileChooser.showOpenDialog(parentComponent);
 
         if (result == JFileChooser.APPROVE_OPTION) {
