@@ -27,7 +27,7 @@ public class Maze {
     private final Tile[][] tiles;
     private final int totalTreasures;
     private final Player chap;
-    private List<Actor> actors;
+    //private List<Actor> actors;
     private int treasuresLeft;
     private int level;
     private boolean levelOver;
