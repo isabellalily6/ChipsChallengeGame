@@ -9,25 +9,18 @@ import java.io.IOException;
  *
  * @author Seth Patel
  **/
-public enum SoundEffect {
-    UNLOCK_DOOR("data/unlock_door.wav"),
-    HIT_BY_MOB("data/hit_by_mob.wav"),
-    PICK_UP_ITEM("data/pick_up_item.wav"),
-    EXIT("data/exit.wav"),
-    INFO_FIELD("data/info_field.wav"),
-    STEP("data/step.wav"),
-    COBRA("data/cobra.wav");
+public class SoundEffect {
 
-    private String filename;
+    private Sound sound;
 
     /**
      * Create and play a sound effect once.
      *
-     * @param filename the sound file to use
+     * @param sound the sound to use
      **/
-    SoundEffect(String filename) {
+    public static void play(Sound sound) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(filename));
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sound.filename));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
