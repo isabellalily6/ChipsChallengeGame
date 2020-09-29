@@ -1,5 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.render.Sound;
+import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
+
 /**
  * Tile class declares all of the required fields and methods for any tile on the maze.
  *
@@ -51,7 +54,7 @@ public abstract class Tile {
      * @param actor the actor entering this tile
      */
     public void onEntry(Actor actor) {
-        //SoundEffect.play(Sound.STEP);
+        SoundEffect.play(Sound.STEP);
         setOccupied(true);
     }
 

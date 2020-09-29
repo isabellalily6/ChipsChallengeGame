@@ -1,5 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.render.Sound;
+import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
+
 /**
  * From Handout:
  * Actors can move onto those tiles. If Chap moves onto such a tile, he picks up the key with this colour,
@@ -20,6 +23,12 @@ public class Key extends Tile {
     public Key(int col, int row, Colour colour) {
         super("data/" + colour.getName() + "Key.png", col, row, true, true);
         this.colour = colour;
+    }
+
+    @Override
+    public void onEntry(Actor actor) {
+        SoundEffect.play(Sound.PICK_UP_ITEM);
+        setOccupied(true);
     }
 
     /**
