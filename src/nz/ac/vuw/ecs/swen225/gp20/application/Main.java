@@ -13,7 +13,7 @@ public class Main {
   private Maze maze;
 
   // game information
-  private final int level = 1;
+  private int level = 1;
   private final int maxTime = 100;
   private int timeLeft = maxTime;
 
@@ -119,6 +119,8 @@ public class Main {
       timer.cancel();
     }
     this.maze = new Maze(1);
+    gui.getCanvas().setMaze(maze);
+    gui.setMaze(maze);
     startTimer();
   }
 

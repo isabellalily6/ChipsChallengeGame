@@ -51,6 +51,15 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
+   * Get Canvas
+   *
+   * @return the canvas
+   **/
+  public Canvas getCanvas() {
+    return canvas;
+  }
+
+  /**
    * Create the components for the gui and adds them to the screen in the correct locations.
    **/
   public void setUpGui(){
@@ -113,6 +122,15 @@ public class GUI extends JFrame implements KeyListener {
   public void setTimer(int timeLeft){
     String time = Integer.toString(timeLeft);
     dashboard.setTimer(time);
+  }
+
+  /**
+   * Set the maze
+   *
+   * @param maze
+   **/
+  public void setMaze(Maze maze) {
+    this.maze = maze;
   }
 
   /**
