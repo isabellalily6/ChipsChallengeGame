@@ -14,7 +14,7 @@ public class Main {
 
   // game information
   private int level = 1;
-  private final int maxTime = 100;
+  private final int maxTime = 5;
   private int timeLeft = maxTime;
 
   private Timer timer = new Timer();
@@ -57,8 +57,14 @@ public class Main {
         public void run() {
           // show the time on the gui label
           gui.setTimer(timeLeft);
+          if(maze.isLevelOver()){
+            gui.getGameWon().setVisible(true);
+            timeLeft = maxTime;
+            timer.cancel();
+          }
           // if the timer has reached 0, cancel the timer
           if(timeLeft==0){
+            gui.getGameLost().setVisible(true);
             timer.cancel();
           }
           // otherwise decrease the timer by 1.
@@ -111,6 +117,9 @@ public class Main {
 
   }
 
+  public void exitGame(){
+    gui.exitGame();
+  }
   /**
    * Start a game from the level passed in as a parameter
    **/
@@ -118,9 +127,10 @@ public class Main {
     if(timeLeft != 0 && timeLeft != maxTime){
       timer.cancel();
     }
-    this.maze = new Maze(1);
+    this.maze = new Maze(level);
     gui.getCanvas().setMaze(maze);
     gui.setMaze(maze);
+    gui.getCanvas().repaint();
     startTimer();
   }
 
@@ -128,16 +138,16 @@ public class Main {
    * Pauses the game
    **/
     public void pauseGame(){
-      gui.displayPausedDialogue();
       gamePaused = true;
+      gui.displayPausedDialogue();
     }
 
   /**
    * Resumes the game
    **/
     public void playGame(){
-      gui.hidePausedDialogue();
       gamePaused = false;
+      gui.hidePausedDialogue();
     }
 
   /**
@@ -147,6 +157,15 @@ public class Main {
    **/
   public Maze getMaze() {
     return maze;
+  }
+
+  /**
+   * Get the level
+   *
+   * @return the current maze
+   **/
+  public int getLevel() {
+    return level;
   }
 
   /**
