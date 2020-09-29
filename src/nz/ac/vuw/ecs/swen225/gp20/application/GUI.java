@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.Level;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import javax.swing.*;
@@ -179,6 +181,7 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
+      LevelLoader.saveGameState(LevelLoader.getGameState(main));
       System.exit(0);
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
