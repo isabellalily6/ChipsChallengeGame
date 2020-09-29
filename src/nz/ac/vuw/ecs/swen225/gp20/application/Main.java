@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 
 import java.util.Timer;
@@ -13,7 +14,7 @@ public class Main {
 
   // game information
   private final int level = 1;
-  private final int maxTime = 10;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   private Timer timer = new Timer();
@@ -99,7 +100,7 @@ public class Main {
    * Load a file for the game
    **/
     public void loadFile(){
-
+      //LevelLoader.load();
     }
 
   /**
