@@ -1,13 +1,17 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,25 +21,36 @@ import java.util.List;
 public class RecordAndPlay {
     private static boolean isRecording = false;
     private static final List<RecordedMove> moves = new ArrayList<>();
-    private static String gameState;
+    private static JsonObjectBuilder gameState;
 
 
     /**
-     * saves a recording to a file
+     * saves a recorded game to a file for replaying later
      */
     public static void saveRecording() {
-        var saveFileName = "chapsChallengeRecording.txt";
+        var saveFileName = "chapsChallengeRecording.json";
 
         var gameJson = Json.createArrayBuilder();
 
-        var movesArray = Json.createArrayBuilder(moves);
+        gameJson.add(gameState.build());
 
-        gameJson.add(movesArray.build());
+        var movesArray = Json.createArrayBuilder();
+
+        for (var move : moves) {
+            var obj = Json.createObjectBuilder()
+                    .add("move", move.actor.getName())
+                    .add("dir", move.getDirection().toString());
+            movesArray.add(obj);
+        }
+
+        var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
+
+        gameJson.add(movesArrayObj.build());
 
         try (var writer = new StringWriter()) {
             Json.createWriter(writer).write(gameJson.build());
             try {
-                var bw = new BufferedWriter(new FileWriter(saveFileName));
+                var bw = new BufferedWriter(new FileWriter(saveFileName, StandardCharsets.UTF_8));
                 bw.write(writer.toString());
                 bw.close();
             } catch (IOException e) {
@@ -79,16 +94,17 @@ public class RecordAndPlay {
 
     /**
      * Starts recording this game
+     *
+     * @param m current maze that we are recording
      */
-    public static void startRecording() {
+    public static void startRecording(Main m) {
         isRecording = true;
-        //TODO: add the start game state (ie, where are the tiles? what does the player have in their inventory?
-        //gameTiles = getCurrentGameState();
+        gameState = LevelLoader.getGameState(m);
     }
 
     private static void resetRecordingState() {
         moves.clear();
-        gameState = "";
+        gameState = null;
         isRecording = false;
     }
 
