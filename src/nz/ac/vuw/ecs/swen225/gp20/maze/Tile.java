@@ -1,5 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 /**
  * Tile class declares all of the required fields and methods for any tile on the maze.
  *
@@ -112,8 +115,11 @@ public abstract class Tile {
         return row;
     }
 
-    @Override
-    public String toString() {
-        return "{\"type\": \""+this.getClass().getSimpleName()+"\"}";
+    /**
+     * @return json object for saving to file
+     */
+    public JsonObjectBuilder getJson() {
+        return Json.createObjectBuilder()
+                .add("type", getClass().getSimpleName());
     }
 }
