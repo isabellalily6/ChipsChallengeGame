@@ -14,6 +14,13 @@ public class Dialogues extends JDialog implements KeyListener {
   private JButton closeButton;
   private Main main;
 
+  /**
+   * Create a new instance of Dialogue
+   *
+   * @param main
+   * @param labelText
+   * @param buttonText
+   **/
   public Dialogues(Main main, String labelText, String buttonText){
     this.main = main;
     this.setModal(true);
@@ -42,14 +49,20 @@ public class Dialogues extends JDialog implements KeyListener {
     this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
   }
 
-  public JLabel getLabel() {
-    return label;
-  }
-
+  /**
+   * Get the first button on the JDialogue
+   *
+   * @return the first button
+   **/
   public JButton getButton() {
     return button;
   }
 
+  /**
+   * Set the action listener for the first button in the dialogue
+   *
+   * @param actionListener
+   **/
   public void setActionListener(ActionListener actionListener){
     button.addActionListener(actionListener);
   }
@@ -66,7 +79,7 @@ public class Dialogues extends JDialog implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent keyEvent) {
-   if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
+    if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
       //ESC - close the “game is paused” dialog and resume the game
       System.out.println("CLose dialogue and Resume");
       main.playGame();

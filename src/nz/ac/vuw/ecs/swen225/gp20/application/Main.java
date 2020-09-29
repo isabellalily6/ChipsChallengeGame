@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 
 import java.util.Timer;
@@ -12,7 +13,7 @@ public class Main {
   private Maze maze;
 
   // game information
-  private final int level = 1;
+  private int level = 1;
   private final int maxTime = 5;
   private int timeLeft = maxTime;
 
@@ -28,58 +29,58 @@ public class Main {
   public Main() {
     // create the maze and the gui for the game
     maze = new Maze(level);
-      gui = new GUI(this, maze);
-      gui.setUpGui();
-      startTimer();
-    }
+    gui = new GUI(this, maze);
+    gui.setUpGui();
+    startTimer();
+  }
 
   /**
    * Start a timer to do the timer task every second
    **/
-    public void startTimer(){
-      // set the start time of the timer
-      timeLeft = maxTime;
-      // create the time and the timer task
-      timer = new Timer();
-      createTimerTask();
-      // schedule the timer to do the task every second
-      timer.schedule(timerTask, 0,1000);
-    }
+  public void startTimer(){
+    // set the start time of the timer
+    timeLeft = maxTime;
+    // create the time and the timer task
+    timer = new Timer();
+    createTimerTask();
+    // schedule the timer to do the task every second
+    timer.schedule(timerTask, 0,1000);
+  }
 
   /**
    * Create a new timer task for the timer which will count down every second
    **/
-    public void createTimerTask(){
-      // create a new timer task
-      timerTask = new TimerTask() {
-        @Override
-        public void run() {
-          // show the time on the gui label
-          gui.setTimer(timeLeft);
-          if(maze.isLevelOver()){
-            gui.getGameWon().setVisible(true);
-            timeLeft = maxTime;
-            timer.cancel();
-          }
-          // if the timer has reached 0, cancel the timer
-          if(timeLeft==0){
-            gui.getGameLost().setVisible(true);
-            timer.cancel();
-          }
-          // otherwise decrease the timer by 1.
-          else if(!gamePaused){
-            timeLeft -= 1;
-          }
+  public void createTimerTask(){
+    // create a new timer task
+    timerTask = new TimerTask() {
+      @Override
+      public void run() {
+        // show the time on the gui label
+        gui.setTimer(timeLeft);
+        if(maze.isLevelOver()){
+          gui.getGameWon().setVisible(true);
+          timeLeft = maxTime;
+          timer.cancel();
         }
-      };
-    }
+        // if the timer has reached 0, cancel the timer
+        if(timeLeft==0){
+          gui.getGameLost().setVisible(true);
+          timer.cancel();
+        }
+        // otherwise decrease the timer by 1.
+        else if(!gamePaused){
+          timeLeft -= 1;
+        }
+      }
+    };
+  }
 
   /**
    * Start the recording of a game
    **/
-    public void startRecording(){
-      RecordAndPlay.startRecording(this);
-    }
+  public void startRecording(){
+    RecordAndPlay.startRecording();
+  }
 
   /**
    * Save the recording of a game
@@ -105,9 +106,9 @@ public class Main {
   /**
    * Load a file for the game
    **/
-    public void loadFile(){
+  public void loadFile(){
 
-    }
+  }
 
   /**
    * Save a game to a file
@@ -116,8 +117,11 @@ public class Main {
 
   }
 
+  /**
+   * Exit the game
+   **/
   public void exitGame(){
-    gui.exitGame();
+    System.exit(0);
   }
   /**
    * Start a game from the level passed in as a parameter
@@ -136,18 +140,18 @@ public class Main {
   /**
    * Pauses the game
    **/
-    public void pauseGame(){
-      gamePaused = true;
-      gui.displayPausedDialogue();
-    }
+  public void pauseGame(){
+    gamePaused = true;
+    gui.displayPausedDialogue();
+  }
 
   /**
    * Resumes the game
    **/
-    public void playGame(){
-      gamePaused = false;
-      gui.hidePausedDialogue();
-    }
+  public void playGame(){
+    gamePaused = false;
+    gui.hidePausedDialogue();
+  }
 
   /**
    * Get the maze
@@ -178,11 +182,11 @@ public class Main {
 
   /**
    * Creates a new instance of main to run the ChapsChallenge game
-   * 
+   *
    * @param args
    **/
-    public static void main(String[] args) {
-	    System.out.println("Welcome to Chaps Challenge!");
-	    new Main();
-    }
+  public static void main(String[] args) {
+    System.out.println("Welcome to Chaps Challenge!");
+    new Main();
+  }
 }

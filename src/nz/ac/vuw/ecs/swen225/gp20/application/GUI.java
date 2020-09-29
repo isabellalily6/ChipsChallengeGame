@@ -61,6 +61,9 @@ public class GUI extends JFrame implements KeyListener {
     setButtonActionListeners();
   }
 
+  /**
+   * Set the action listeners for the buttons on the JDialogues
+   **/
   public void setButtonActionListeners(){
     pausedDialogue.getButton().addActionListener(method -> main.playGame());
     gameWon.setActionListener(new ActionListener() {
@@ -154,16 +157,22 @@ public class GUI extends JFrame implements KeyListener {
     pausedDialogue.setVisible(false);
   }
 
+  /**
+   * Get the game won dialogues
+   *
+   * @return the game won dialogue
+   **/
   public Dialogues getGameWon() {
     return gameWon;
   }
 
+  /**
+   * Get the game lost dialogues
+   *
+   * @return the game lost dialogue
+   **/
   public Dialogues getGameLost() {
     return gameLost;
-  }
-
-  public void exitGame() {
-    System.exit(0);
   }
 
   @Override
@@ -194,12 +203,12 @@ public class GUI extends JFrame implements KeyListener {
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
       System.out.println("EXIT But save level");
-      exitGame();
+      main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
       LevelLoader.saveGameState(LevelLoader.getGameState(main));
-      exitGame();
+      main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
       System.out.println("Resume a saved game");
