@@ -4,10 +4,12 @@ import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -19,6 +21,8 @@ import java.util.List;
 
 /**
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
+ *
+ * @author callum mckay
  */
 public class RecordAndPlay {
     private static boolean isRecording = false;
@@ -30,6 +34,8 @@ public class RecordAndPlay {
 
     /**
      * saves a recorded game in Json format to a file for replaying later
+     *
+     * @author callum mckay
      */
     public static void saveRecording() {
         if (!isRecording) {
@@ -50,41 +56,22 @@ public class RecordAndPlay {
      * Loads a recording from the file
      *
      * @param m is the main class, this is used to access the player, and the gui which is the parent to the filechooser
+     * @author callum mckay
      */
     public static void loadRecording(Main m) {
-        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
-        fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
-        var result = fileChooser.showOpenDialog(m.getGui());
+        File jsonFile = getJsonFileToLoad(m.getGui());
 
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File jsonFile = fileChooser.getSelectedFile();
-            if (!jsonFile.getName().endsWith(".json")) return;
+        if (jsonFile == null) return;
 
-            try {
-                var parser = Json.createReader(new FileReader(jsonFile));
-                var jsonArr = parser.readArray();
-                var moves = jsonArr.getJsonObject(1);
-                for (var move : moves.getJsonArray("moves")) {
-                    var loadedMove = move.asJsonObject();
+        try {
+            var parser = Json.createReader(new FileReader(jsonFile, StandardCharsets.UTF_8));
+            var jsonArr = parser.readArray();
 
-                    var actorName = loadedMove.get("actor").toString();
-
-                    //this is due to the value being stored as a string, so it would come out as ""player""
-                    actorName = turnJsonStringToString(actorName);
-                    var dir = getDirection(loadedMove.get("dir").toString());
-
-                    RecordedMove recordedMove = null;
-                    if (actorName.equals("player")) {
-                        recordedMove = new RecordedMove(m.getMaze().getChap(), dir);
-                    } else {
-                        //TODO support for other mobs in lvl 2
-                    }
-
-                    loadedMoves.add(recordedMove);
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            var moves = jsonArr.getJsonObject(1);
+            loadedMoves.addAll(loadMoves(moves, m.getMaze().getChap()));
+            var i = 0;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -93,6 +80,7 @@ public class RecordAndPlay {
      * @param a actor who performed this move
      * @param d direction of this move
      * @return true if the move was recorded, false if not
+     * @author callum mckay
      */
     public static boolean addMove(Actor a, Maze.Direction d) {
         if (isRecording) {
@@ -105,6 +93,7 @@ public class RecordAndPlay {
 
     /**
      * @return if the game is being recorded
+     * @author callum mckay
      */
     public static boolean isRecording() {
         return isRecording;
@@ -114,11 +103,39 @@ public class RecordAndPlay {
      * Starts recording this game
      *
      * @param m current maze that we are recording
+     * @author callum mckay
      */
     public static void startRecording(Main m) {
         isRecording = true;
         gameState = LevelLoader.getGameState(m);
         parentComponent = m.getGui();
+    }
+
+    private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
+        var toReturn = new ArrayList<RecordedMove>();
+
+        for (var move : movesJson.getJsonArray("moves")) {
+            var loadedMove = move.asJsonObject();
+
+            var actorName = loadedMove.get("actor").toString();
+
+            //this is due to the value being stored as a string, so it would come out as ""player""
+            actorName = turnJsonStringToString(actorName);
+            var dir = getDirection(loadedMove.get("dir").toString());
+
+            RecordedMove recordedMove = null;
+            if (actorName.equals("player")) {
+                //TODO: make this not get the mazes chap but instead the chap from the new maze
+                // once that has been loaded
+                recordedMove = new RecordedMove(p, dir);
+            } else {
+                //TODO support for other mobs in lvl 2
+            }
+
+            toReturn.add(recordedMove);
+        }
+
+        return toReturn;
     }
 
     private static JsonArray buildJson() {
@@ -139,6 +156,21 @@ public class RecordAndPlay {
 
         gameJson.add(movesArrayObj.build());
         return gameJson.build();
+    }
+
+    private static File getJsonFileToLoad(GUI g) {
+        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
+        fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
+        var result = fileChooser.showOpenDialog(g);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File jsonFile = fileChooser.getSelectedFile();
+            if (!jsonFile.getName().endsWith(".json")) return null;
+
+            return jsonFile;
+        }
+
+        return null;
     }
 
     private static void saveToFile(JsonArray jsonArray) {
@@ -173,20 +205,15 @@ public class RecordAndPlay {
 
     private static Maze.Direction getDirection(String dir) {
         dir = turnJsonStringToString(dir);
-        switch (dir) {
-            case "UP":
-                return Maze.Direction.UP;
-            case "DOWN":
-                return Maze.Direction.DOWN;
-            case "RIGHT":
-                return Maze.Direction.RIGHT;
-            case "LEFT":
-                return Maze.Direction.LEFT;
-            default:
-                throw new IllegalArgumentException("Provided string was not a direction");
-        }
+        return Maze.Direction.valueOf(dir);
     }
 
+
+    /**
+     * A internal class which can represent a move, simply maps an Actor to a Direction
+     *
+     * @author callum mckay
+     */
     static class RecordedMove {
         private final Actor actor;
         private final Maze.Direction direction;
@@ -194,6 +221,7 @@ public class RecordAndPlay {
         /**
          * @param actor     actor who this move has been done by
          * @param direction direction of said move
+         * @author callum mckay
          */
         RecordedMove(Actor actor, Maze.Direction direction) {
             this.actor = actor;
@@ -202,6 +230,7 @@ public class RecordAndPlay {
 
         /**
          * @return the actor of this recorded move
+         * @author callum mckay
          */
         public Actor getActor() {
             return actor;
@@ -209,6 +238,7 @@ public class RecordAndPlay {
 
         /**
          * @return the direction of this recorded move
+         * @author callum mckay
          */
         public Maze.Direction getDirection() {
             return direction;
