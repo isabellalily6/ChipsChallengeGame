@@ -14,7 +14,7 @@ public class Main {
 
   // game information
   private int level = 1;
-  private final int maxTime = 5;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   private Timer timer = new Timer();
