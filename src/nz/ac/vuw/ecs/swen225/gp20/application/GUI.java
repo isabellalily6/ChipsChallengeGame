@@ -209,7 +209,7 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
-      LevelLoader.saveGameState(LevelLoader.getGameState(main));
+      main.saveFile();
       main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game

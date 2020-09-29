@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 
 import java.util.Timer;
@@ -113,7 +114,7 @@ public class Main {
    * Save a game to a file
    **/
   public void saveFile(){
-
+    LevelLoader.saveGameState(LevelLoader.getGameState(this));
   }
 
   /**
