@@ -18,7 +18,7 @@ public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 50;
-    private final Maze maze;
+    private Maze maze;
     private final JLabel[][] components;
 
     /**
@@ -48,6 +48,28 @@ public class Canvas extends JPanel {
                 add(components[x][y]);
             }
         }
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
+    }
+
+    /**
+     * Get the player sprite to draw.
+     *
+     * @param direction the direction the player is facing
+     * @return the image to draw
+     **/
+    private ImageIcon getPlayerSprite(Maze.Direction direction) {
+        switch (direction) {
+            case UP:
+                return makeImageIcon("data/playerUp.png");
+            case DOWN:
+                return makeImageIcon("data/playerDown.png");
+            case LEFT:
+                return makeImageIcon("data/playerLeft.png");
+            case RIGHT:
+                return makeImageIcon("data/playerRight.png");
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -67,6 +89,7 @@ public class Canvas extends JPanel {
                 components[x][y].setIcon(icon);
             }
         }
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
     }
 
     /**
@@ -89,4 +112,12 @@ public class Canvas extends JPanel {
         return scaleImage(new ImageIcon(filename));
     }
 
+    /**
+     * Set the value of maze.
+     *
+     * @param maze the value to set
+     **/
+    public void setMaze(Maze maze) {
+        this.maze = maze;
+    }
 }

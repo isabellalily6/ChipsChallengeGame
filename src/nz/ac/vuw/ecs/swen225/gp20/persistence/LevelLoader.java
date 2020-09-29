@@ -1,10 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
-//import java.io.BufferedWriter;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-//import java.io.FileWriter;
-//import java.io.IOException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import javax.json.Json;
@@ -12,6 +12,7 @@ import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
 import nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Free;
@@ -112,16 +113,22 @@ public class LevelLoader {
 	}
 	
 	/**
-	 * Saves the current game state in json format to a levels\gameState
+	 * Gets the current game state and returns a string
 	 * @param game
 	 */
-	public String saveGameState(Maze game) {
+	public String getGameState(Main application) {
+		Maze game = application.getMaze();
+		int timeLeft = application.getTimeLeft();
+		
 		String gameState = "{";
 		
 		Tile[][] map = game.getTiles();
 		
 		//level
 		gameState += "\"level\": \"" + game.getLevel() + "\",";
+		
+		//timeLeft
+		gameState += "\"timeLeft\": \"" + timeLeft + "\",";
 		
 		//cols
 		gameState += "\"cols\": \"" + map.length + "\",";
@@ -145,7 +152,7 @@ public class LevelLoader {
 		gameState += "\"chapCol\": \"" + game.getChap().getLocation().getCol() + "\",";
 		
 		//chapRow
-		gameState += "\"chapRow\": \"" + game.getChap().getLocation().getRow() + "\"";
+		gameState += "\"chapRow\": \"" + game.getChap().getLocation().getRow() + "\",";
 		
 		//keysCollected
 		gameState += "\"keysCollected\": [";
@@ -162,13 +169,23 @@ public class LevelLoader {
 		return gameState;
 		
 		/**
+		*/
+	}
+	
+	/**
+	 * Saves the game state string to a json file
+	 * @param toSave 
+	 */
+	public void saveGameState(String toSave) {
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState"));
-		      writer.write(gameState);
+			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState.json"));
+		      writer.write(toSave);
 		      writer.close();
 		} catch (IOException e) {
 		      System.out.println("Error saving game state" + e);
-		}*/
+		}
 	}
+	
+	
 	
 }
