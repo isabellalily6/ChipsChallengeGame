@@ -1,17 +1,21 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObjectBuilder;
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,44 +26,24 @@ public class RecordAndPlay {
     private static boolean isRecording = false;
     private static final List<RecordedMove> moves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
+    private static GUI parentComponent;
 
 
     /**
-     * saves a recorded game to a file for replaying later
+     * saves a recorded game in Json format to a file for replaying later
      */
     public static void saveRecording() {
-        var saveFileName = "chapsChallengeRecording.json";
-
-        var gameJson = Json.createArrayBuilder();
-
-        gameJson.add(gameState.build());
-
-        var movesArray = Json.createArrayBuilder();
-
-        for (var move : moves) {
-            var obj = Json.createObjectBuilder()
-                    .add("move", move.actor.getName())
-                    .add("dir", move.getDirection().toString());
-            movesArray.add(obj);
+        if (!isRecording) {
+            return;
         }
 
-        var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
+        //Build a json representation of the game and moves that have been performed
+        var jsonToSave = buildJson();
 
-        gameJson.add(movesArrayObj.build());
+        //Save this to a file
+        savetoFile(jsonToSave);
 
-        try (var writer = new StringWriter()) {
-            Json.createWriter(writer).write(gameJson.build());
-            try {
-                var bw = new BufferedWriter(new FileWriter(saveFileName, StandardCharsets.UTF_8));
-                bw.write(writer.toString());
-                bw.close();
-            } catch (IOException e) {
-                throw new Error("Game was not able to be saved due to an exception");
-            }
-        } catch (IOException e) {
-            throw new Error("Game was not able to be saved due to an exception");
-        }
-
+        //reset the recording state
         resetRecordingState();
     }
 
@@ -100,6 +84,45 @@ public class RecordAndPlay {
     public static void startRecording(Main m) {
         isRecording = true;
         gameState = LevelLoader.getGameState(m);
+        parentComponent = m.getGui();
+    }
+
+    private static JsonArray buildJson() {
+        var gameJson = Json.createArrayBuilder();
+
+        gameJson.add(gameState.build());
+
+        var movesArray = Json.createArrayBuilder();
+
+        for (var move : moves) {
+            var obj = Json.createObjectBuilder()
+                    .add("move", move.actor.getName())
+                    .add("dir", move.getDirection().toString());
+            movesArray.add(obj);
+        }
+
+        var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
+
+        gameJson.add(movesArrayObj.build());
+
+        return gameJson.build();
+    }
+
+    private static void savetoFile(JsonArray jsonArray) {
+        var fileChooser = new JFileChooser(Paths.get(".").toAbsolutePath().normalize().toString() + "/recordings");
+        var result = fileChooser.showOpenDialog(parentComponent);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            var writer = new StringWriter();
+            Json.createWriter(writer).write(jsonArray);
+            try {
+                var bw = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile() + ".json", StandardCharsets.UTF_8));
+                bw.write(writer.toString());
+                bw.close();
+            } catch (IOException e) {
+                throw new Error("Game was not able to be saved due to an exception");
+            }
+        }
     }
 
     private static void resetRecordingState() {
