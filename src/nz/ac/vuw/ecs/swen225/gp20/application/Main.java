@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class Main {
   // initialize the game variables
   private final GUI gui;
-  private final Maze maze;
+  private Maze maze;
 
   // game information
   private final int level = 1;
@@ -31,6 +31,7 @@ public class Main {
     maze = new Maze(level);
       gui = new GUI(this, maze);
       gui.setUpGui();
+      startTimer();
     }
 
   /**
@@ -100,7 +101,7 @@ public class Main {
    * Load a file for the game
    **/
     public void loadFile(){
-      //LevelLoader.load();
+
     }
 
   /**
@@ -108,6 +109,17 @@ public class Main {
    **/
   public void saveFile(){
 
+  }
+
+  /**
+   * Start a game from the level passed in as a parameter
+   **/
+  public void startGame(int level){
+    if(timeLeft != 0 && timeLeft != maxTime){
+      timer.cancel();
+    }
+    this.maze = new Maze(1);
+    startTimer();
   }
 
   /**

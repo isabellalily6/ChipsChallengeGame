@@ -170,6 +170,7 @@ public class GUI extends JFrame implements KeyListener {
       System.out.println("Start a new game as last unfinished level");
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1){
       //CTRL-1 - start a new game at level 1
+      main.startGame(1);
       System.out.println("Start new game a level 1");
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
       //SPACE - pause the game and display a “game is paused” dialog
