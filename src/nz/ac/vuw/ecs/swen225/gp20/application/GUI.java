@@ -1,10 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
-import nz.ac.vuw.ecs.swen225.gp20.persistence.Level;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -16,19 +16,19 @@ import java.awt.event.KeyListener;
 
 public class GUI extends JFrame implements KeyListener {
   // initialize screen sizes
-  private int screenWidth = 900;
-  private int screenHeight = 650;
+  private final int screenWidth = 900;
+  private final int screenHeight = 650;
 
   // initialize GUI fields
-  private JPanel mainPanel = new JPanel();
-  private Dashboard dashboard;
-  private Canvas canvas;
-  private Dialogues pausedDialogue;
-  private Dialogues gameWon;
-  private Dialogues gameLost;
+  private final JPanel mainPanel = new JPanel();
+  private final Dashboard dashboard;
+  private final Canvas canvas;
+  private final Dialogues pausedDialogue;
+  private final Dialogues gameWon;
+  private final Dialogues gameLost;
 
   // initialize application
-  private Main main;
+  private final Main main;
   private Maze maze;
 
   /**
