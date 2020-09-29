@@ -12,7 +12,7 @@ public class Main {
   private Maze maze;
 
   // game information
-  private int level = 1;
+  private final int level = 1;
   private final int maxTime = 100;
   private int timeLeft = maxTime;
 
@@ -92,7 +92,7 @@ public class Main {
    * Load a recording of a game
    **/
   public void loadRecording(){
-    RecordAndPlay.loadRecording();
+    RecordAndPlay.loadRecording(gui);
   }
 
   /**

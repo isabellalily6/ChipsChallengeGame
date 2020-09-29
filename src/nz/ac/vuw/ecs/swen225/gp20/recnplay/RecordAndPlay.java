@@ -10,10 +10,8 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObjectBuilder;
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -41,7 +39,7 @@ public class RecordAndPlay {
         var jsonToSave = buildJson();
 
         //Save this to a file
-        savetoFile(jsonToSave);
+        saveToFile(jsonToSave);
 
         //reset the recording state
         resetRecordingState();
@@ -50,8 +48,25 @@ public class RecordAndPlay {
     /**
      * Loads a recording from the file
      */
-    public static void loadRecording() {
+    public static void loadRecording(GUI g) {
+        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
+        fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
+        var result = fileChooser.showOpenDialog(g);
 
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File jsonFile = fileChooser.getSelectedFile();
+            if (!jsonFile.getName().endsWith(".json")) return;
+
+            try {
+                var inputStreamReader = new InputStreamReader(new FileInputStream(jsonFile));
+                var parser = Json.createParser(inputStreamReader);
+                while (parser.hasNext()) {
+                    parser.next();
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -96,7 +111,7 @@ public class RecordAndPlay {
 
         for (var move : moves) {
             var obj = Json.createObjectBuilder()
-                    .add("move", move.actor.getName())
+                    .add("move", move.getActor().getName())
                     .add("dir", move.getDirection().toString());
             movesArray.add(obj);
         }
@@ -104,11 +119,10 @@ public class RecordAndPlay {
         var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
 
         gameJson.add(movesArrayObj.build());
-
         return gameJson.build();
     }
 
-    private static void savetoFile(JsonArray jsonArray) {
+    private static void saveToFile(JsonArray jsonArray) {
         var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
         var result = fileChooser.showOpenDialog(parentComponent);
 
