@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 public class GUI extends JFrame implements KeyListener {
   // initialize screen sizes
   private int screenWidth = 900;
-  private int screenHeight = 500;
+  private int screenHeight = 650;
 
   // initialize GUI fields
   private JPanel mainPanel = new JPanel();
