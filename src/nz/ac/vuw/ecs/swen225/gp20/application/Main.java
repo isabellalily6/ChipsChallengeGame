@@ -71,7 +71,7 @@ public class Main {
    * Start the recording of a game
    **/
     public void startRecording(){
-      RecordAndPlay.startRecording();
+      RecordAndPlay.startRecording(this.maze);
     }
 
   /**

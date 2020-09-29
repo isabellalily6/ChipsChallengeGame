@@ -2,6 +2,7 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
 import java.io.BufferedWriter;
@@ -28,7 +29,15 @@ public class RecordAndPlay {
 
         var gameJson = Json.createArrayBuilder();
 
-        var movesArray = Json.createArrayBuilder(moves);
+        gameJson.add(gameState);
+
+        var movesArray = Json.createArrayBuilder();
+
+
+        for (var move : moves) {
+            var obj = Json.createObjectBuilder().add("move", move.actor.getImageURl()).add("dir", move.getDirection().getName());
+            movesArray.add(obj);
+        }
 
         gameJson.add(movesArray.build());
 
@@ -79,11 +88,13 @@ public class RecordAndPlay {
 
     /**
      * Starts recording this game
+     *
+     * @param m current maze that we are recording
      */
-    public static void startRecording() {
+    public static void startRecording(Maze m) {
         isRecording = true;
         //TODO: add the start game state (ie, where are the tiles? what does the player have in their inventory?
-        //gameTiles = getCurrentGameState();
+        gameState = new LevelLoader().saveGameState(m);
     }
 
     private static void resetRecordingState() {
