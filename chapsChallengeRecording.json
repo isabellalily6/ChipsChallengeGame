@@ -1,0 +1,781 @@
+[
+  {
+    "level": 1,
+    "timeLeft": 96,
+    "cols": 15,
+    "rows": 15,
+    "map": [
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Key",
+        "color": "green"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "blue"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "red"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "green"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Key",
+        "color": "blue"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Key",
+        "color": "blue"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "green"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Exit"
+      },
+      {
+        "type": "ExitLock"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "InfoField",
+        "info": "Collect chips to get past the chip socket. Use keys to open doors."
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "green"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Key",
+        "color": "green"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "green"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Key",
+        "color": "red"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Key",
+        "color": "red"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "red"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "LockedDoor",
+        "color": "blue"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Key",
+        "color": "green"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Treasure"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Wall"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      },
+      {
+        "type": "Free"
+      }
+    ],
+    "treasuresLeft": 11,
+    "chapCol": 7,
+    "chapRow": 7,
+    "keysCollected": []
+  },
+  {
+    "moves": [
+      {
+        "move": "player",
+        "dir": "UP"
+      },
+      {
+        "move": "player",
+        "dir": "LEFT"
+      },
+      {
+        "move": "player",
+        "dir": "UP"
+      },
+      {
+        "move": "player",
+        "dir": "UP"
+      },
+      {
+        "move": "player",
+        "dir": "RIGHT"
+      },
+      {
+        "move": "player",
+        "dir": "RIGHT"
+      },
+      {
+        "move": "player",
+        "dir": "RIGHT"
+      },
+      {
+        "move": "player",
+        "dir": "DOWN"
+      },
+      {
+        "move": "player",
+        "dir": "DOWN"
+      },
+      {
+        "move": "player",
+        "dir": "DOWN"
+      },
+      {
+        "move": "player",
+        "dir": "DOWN"
+      },
+      {
+        "move": "player",
+        "dir": "LEFT"
+      },
+      {
+        "move": "player",
+        "dir": "LEFT"
+      },
+      {
+        "move": "player",
+        "dir": "LEFT"
+      },
+      {
+        "move": "player",
+        "dir": "LEFT"
+      },
+      {
+        "move": "player",
+        "dir": "UP"
+      },
+      {
+        "move": "player",
+        "dir": "UP"
+      },
+      {
+        "move": "player",
+        "dir": "UP"
+      }
+    ]
+  }
+]
