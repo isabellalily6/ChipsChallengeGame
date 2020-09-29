@@ -1,10 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
-import java.io.BufferedWriter;
+//import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.FileWriter;
+//import java.io.IOException;
 import java.util.List;
 
 import javax.json.Json;
@@ -29,7 +29,7 @@ public class LevelLoader {
 	 * Reads a JSON file describing the level
 	 * TODO: Don't hard code height and width
 	 * 
-	 * @param level number
+	 * @param levelNumber
 	 */
 	public static Level load(int levelNumber) {
 		String filename = "levels/level" + levelNumber + ".json";
@@ -115,7 +115,7 @@ public class LevelLoader {
 	 * Saves the current game state in json format to a levels\gameState
 	 * @param game
 	 */
-	public void saveGameState(Maze game) {
+	public String saveGameState(Maze game) {
 		String gameState = "{";
 		
 		Tile[][] map = game.getTiles();
@@ -159,14 +159,16 @@ public class LevelLoader {
 		
 		gameState += "}";
 		
+		return gameState;
 		
+		/**
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState"));
 		      writer.write(gameState);
 		      writer.close();
 		} catch (IOException e) {
 		      System.out.println("Error saving game state" + e);
-		}
+		}*/
 	}
 	
 }
