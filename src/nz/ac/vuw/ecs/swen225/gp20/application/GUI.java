@@ -181,8 +181,10 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-    // System.out.println("pressed");
-    int keyCode = keyEvent.getKeyCode();
+  }
+
+  @Override
+  public void keyReleased(KeyEvent keyEvent) {
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       maze.moveChap(Maze.Direction.UP);
@@ -225,14 +227,9 @@ public class GUI extends JFrame implements KeyListener {
       main.pauseGame();
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
       //ESC - close the “game is paused” dialog and resume the game
-      System.out.println("CLose dialogue and Resume");
+      System.out.println("Close dialogue and Resume");
       main.playGame();
     }
     canvas.repaint();
-  }
-
-  @Override
-  public void keyReleased(KeyEvent keyEvent) {
-
   }
 }
