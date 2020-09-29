@@ -61,7 +61,7 @@ public class Main {
             timer.cancel();
           }
           // otherwise decrease the timer by 1.
-          else {
+          else if(!gamePaused){
             timeLeft -= 1;
           }
         }
