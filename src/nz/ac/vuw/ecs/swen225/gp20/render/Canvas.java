@@ -48,6 +48,28 @@ public class Canvas extends JPanel {
                 add(components[x][y]);
             }
         }
+        components[centre.getCol()][centre.getRow()].setIcon(getPlayerSprite(maze.getChap().getDir()));
+    }
+
+    /**
+     * Get the player sprite to draw
+     *
+     * @param direction the direction the player is facing
+     * @return the image to draw
+     **/
+    private ImageIcon getPlayerSprite(Maze.Direction direction) {
+        switch (direction) {
+            case UP:
+                return makeImageIcon("data/playerUp.png");
+            case DOWN:
+                return makeImageIcon("data/playerDown.png");
+            case LEFT:
+                return makeImageIcon("data/playerLeft.png");
+            case RIGHT:
+                return makeImageIcon("data/playerRight.png");
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -67,6 +89,7 @@ public class Canvas extends JPanel {
                 components[x][y].setIcon(icon);
             }
         }
+        components[centre.getCol()][centre.getRow()].setIcon(getPlayerSprite(maze.getChap().getDir()));
     }
 
     /**
