@@ -19,6 +19,8 @@ import java.util.List;
 
 /**
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
+ *
+ * @author callum mckay
  */
 public class RecordAndPlay {
     private static boolean isRecording = false;
@@ -30,6 +32,8 @@ public class RecordAndPlay {
 
     /**
      * saves a recorded game in Json format to a file for replaying later
+     *
+     * @author callum mckay
      */
     public static void saveRecording() {
         if (!isRecording) {
@@ -50,6 +54,7 @@ public class RecordAndPlay {
      * Loads a recording from the file
      *
      * @param m is the main class, this is used to access the player, and the gui which is the parent to the filechooser
+     * @author callum mckay
      */
     public static void loadRecording(Main m) {
         var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
@@ -96,6 +101,8 @@ public class RecordAndPlay {
      * @param a actor who performed this move
      * @param d direction of this move
      * @return true if the move was recorded, false if not
+     *
+     * @author callum mckay
      */
     public static boolean addMove(Actor a, Maze.Direction d) {
         if (isRecording) {
@@ -108,6 +115,8 @@ public class RecordAndPlay {
 
     /**
      * @return if the game is being recorded
+     *
+     * @author callum mckay
      */
     public static boolean isRecording() {
         return isRecording;
@@ -117,6 +126,8 @@ public class RecordAndPlay {
      * Starts recording this game
      *
      * @param m current maze that we are recording
+     *
+     * @author callum mckay
      */
     public static void startRecording(Main m) {
         isRecording = true;
@@ -179,6 +190,11 @@ public class RecordAndPlay {
         return Maze.Direction.valueOf(dir);
     }
 
+    /**
+     * A internal class which can represent a move, simply maps an Actor to a Direction
+     *
+     * @author callum mckay
+     */
     static class RecordedMove {
         private final Actor actor;
         private final Maze.Direction direction;
@@ -186,6 +202,7 @@ public class RecordAndPlay {
         /**
          * @param actor     actor who this move has been done by
          * @param direction direction of said move
+         * @author callum mckay
          */
         RecordedMove(Actor actor, Maze.Direction direction) {
             this.actor = actor;
@@ -194,6 +211,8 @@ public class RecordAndPlay {
 
         /**
          * @return the actor of this recorded move
+         *
+         * @author callum mckay
          */
         public Actor getActor() {
             return actor;
@@ -201,6 +220,8 @@ public class RecordAndPlay {
 
         /**
          * @return the direction of this recorded move
+         *
+         * @author callum mckay
          */
         public Maze.Direction getDirection() {
             return direction;
