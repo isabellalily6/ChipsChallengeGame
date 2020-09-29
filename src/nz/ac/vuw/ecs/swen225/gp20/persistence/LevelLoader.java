@@ -116,7 +116,7 @@ public class LevelLoader {
 	 * Gets the current game state and returns a string
 	 * @param game
 	 */
-	public String getGameState(Main application) {
+	public static String getGameState(Main application) {
 		Maze game = application.getMaze();
 		int timeLeft = application.getTimeLeft();
 		
@@ -176,7 +176,7 @@ public class LevelLoader {
 	 * Saves the game state string to a json file
 	 * @param toSave 
 	 */
-	public void saveGameState(String toSave) {
+	public static void saveGameState(String toSave) {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState.json"));
 		      writer.write(toSave);
