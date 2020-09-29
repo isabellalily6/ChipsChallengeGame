@@ -50,10 +50,16 @@ public class Canvas extends JPanel {
         }
     }
 
+    @Override
+    public void repaint() {
+        refreshComponent();
+    }
+
     /**
      * Refresh the components for the canvas.
      **/
-    public void paintComponent(Graphics g) {
+    public void refreshComponent() {
+        if (maze == null) return;
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
