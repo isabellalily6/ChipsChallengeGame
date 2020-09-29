@@ -70,6 +70,8 @@ public class GUI extends JFrame implements KeyListener {
 
     // Create a panel to place the canvas on to keep the correct size of the canva
     JPanel canvasPanel = new JPanel();
+    Border borderGray = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+    canvas.setBorder(borderGray);
     canvasPanel.add(canvas);
 
     // add the components to the main panel in the correct locations
