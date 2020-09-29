@@ -92,7 +92,7 @@ public class Main {
    * Load a recording of a game
    **/
   public void loadRecording(){
-    RecordAndPlay.loadRecording(gui);
+    RecordAndPlay.loadRecording(this);
   }
 
   /**
