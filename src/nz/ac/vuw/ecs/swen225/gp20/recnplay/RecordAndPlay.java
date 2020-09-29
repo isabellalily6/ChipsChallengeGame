@@ -61,8 +61,9 @@ public class RecordAndPlay {
             if (!jsonFile.getName().endsWith(".json")) return;
 
             try {
-                var parser = Json.createReader(new FileReader(jsonFile));
+                var parser = Json.createReader(new FileReader(jsonFile, StandardCharsets.UTF_8));
                 var jsonArr = parser.readArray();
+
                 var moves = jsonArr.getJsonObject(1);
                 for (var move : moves.getJsonArray("moves")) {
                     var loadedMove = move.asJsonObject();
@@ -75,6 +76,8 @@ public class RecordAndPlay {
 
                     RecordedMove recordedMove = null;
                     if (actorName.equals("player")) {
+                        //TODO: make this not get the mazes chap but instead the chap from the new maze
+                        // once that has been loaded
                         recordedMove = new RecordedMove(m.getMaze().getChap(), dir);
                     } else {
                         //TODO support for other mobs in lvl 2
@@ -82,7 +85,7 @@ public class RecordAndPlay {
 
                     loadedMoves.add(recordedMove);
                 }
-            } catch (FileNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -173,18 +176,7 @@ public class RecordAndPlay {
 
     private static Maze.Direction getDirection(String dir) {
         dir = turnJsonStringToString(dir);
-        switch (dir) {
-            case "UP":
-                return Maze.Direction.UP;
-            case "DOWN":
-                return Maze.Direction.DOWN;
-            case "RIGHT":
-                return Maze.Direction.RIGHT;
-            case "LEFT":
-                return Maze.Direction.LEFT;
-            default:
-                throw new IllegalArgumentException("Provided string was not a direction");
-        }
+        return Maze.Direction.valueOf(dir);
     }
 
     static class RecordedMove {
