@@ -31,22 +31,22 @@ public class Key extends Tile {
 
     @Override
     public String toString() {
-        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+colour.toString().toLowerCase()+"\"}";
+        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+colour.getName()+"\"}";
     }
 
     public enum Colour {
         /**
          * Red coloured Keys/Doors
          */
-        RED("Red"),
+        RED("red"),
         /**
          * Green coloured Keys/Doors
          */
-        GREEN("Green"),
+        GREEN("green"),
         /**
          * Blue coloured Keys/Doors
          */
-        BLUE("Blue");
+        BLUE("blue");
 
         private final String name;
 
