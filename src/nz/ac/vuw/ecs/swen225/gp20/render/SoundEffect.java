@@ -11,8 +11,6 @@ import java.io.IOException;
  **/
 public class SoundEffect {
 
-    private Sound sound;
-
     /**
      * Create and play a sound effect once.
      *
