@@ -48,7 +48,7 @@ public class Canvas extends JPanel {
                 add(components[x][y]);
             }
         }
-        components[centre.getCol()][centre.getRow()].setIcon(getPlayerSprite(maze.getChap().getDir()));
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
     }
 
     /**
@@ -89,7 +89,7 @@ public class Canvas extends JPanel {
                 components[x][y].setIcon(icon);
             }
         }
-        components[centre.getCol()][centre.getRow()].setIcon(getPlayerSprite(maze.getChap().getDir()));
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
     }
 
     /**
