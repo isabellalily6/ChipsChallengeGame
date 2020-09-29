@@ -65,7 +65,7 @@ public class Canvas extends JPanel {
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
                 if (row < 0 || row > maze.getTiles()[0].length - 1 || col < 0 || col > maze.getTiles().length - 1) {
-                    components[x][y].setIcon(makeImageIcon("data/free.png"));
+                    components[x][y].setIcon(makeImageIcon("data/wall.png"));
                 } else {
                     ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                     components[x][y].setIcon(icon);
