@@ -17,8 +17,8 @@ import java.awt.*;
 public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
-    private static final int TILE_SIZE = 10;
-    private final Maze maze;
+    private static final int TILE_SIZE = 50;
+    private Maze maze;
     private final JLabel[][] components;
 
     /**
@@ -32,7 +32,7 @@ public class Canvas extends JPanel {
         setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        setLayout(new GridLayout());
+        setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
         createComponents();
     }
 
@@ -48,19 +48,52 @@ public class Canvas extends JPanel {
                 add(components[x][y]);
             }
         }
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
+    }
+
+    /**
+     * Get the player sprite to draw.
+     *
+     * @param direction the direction the player is facing
+     * @return the image to draw
+     **/
+    private ImageIcon getPlayerSprite(Maze.Direction direction) {
+        switch (direction) {
+            case UP:
+                return makeImageIcon("data/playerUp.png");
+            case DOWN:
+                return makeImageIcon("data/playerDown.png");
+            case LEFT:
+                return makeImageIcon("data/playerLeft.png");
+            case RIGHT:
+                return makeImageIcon("data/playerRight.png");
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public void repaint() {
+        refreshComponent();
     }
 
     /**
      * Refresh the components for the canvas.
      **/
-    public void refreshComponents() {
+    public void refreshComponent() {
+        if (maze == null) return;
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
-                ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
-                components[x][y].setIcon(icon);
+                if (row < 0 || row > maze.getTiles()[0].length - 1 || col < 0 || col > maze.getTiles().length - 1) {
+                    components[x][y].setIcon(makeImageIcon("data/free.png"));
+                } else {
+                    ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
+                    components[x][y].setIcon(icon);
+                }
             }
         }
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
     }
 
     /**
@@ -80,12 +113,15 @@ public class Canvas extends JPanel {
      * @return the converted image
      **/
     private static ImageIcon makeImageIcon(String filename) {
-        java.net.URL imageURL = Canvas.class.getResource(filename);
-        ImageIcon icon = null;
-        if (imageURL != null) {
-            icon = scaleImage(new ImageIcon(imageURL));
-        }
-        return icon;
+        return scaleImage(new ImageIcon(filename));
     }
 
+    /**
+     * Set the value of maze.
+     *
+     * @param maze the value to set
+     **/
+    public void setMaze(Maze maze) {
+        this.maze = maze;
+    }
 }

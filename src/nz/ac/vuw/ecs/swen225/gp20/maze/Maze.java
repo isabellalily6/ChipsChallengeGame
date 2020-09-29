@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,8 +15,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * in the game world (e.g. “Can Chap go through this door?”, “Can Chap pick up this object?”, “Does this key open that
  * door?”, etc.).
  *
- * <p>The core logic of the game is that the player moves Chap around the maze until he reaches the exit and then advances
- * to the next level (if there is another level).
+ * <p>The core logic of the game is that the player moves Chap around the maze until he reaches the exit and then
+ * advances to the next level (if there is another level).
  * This module should make extensive use of contracts to ensure the integrity of the maze.
  *
  * @author Benjamin Doornbos
@@ -25,30 +27,14 @@ public class Maze {
     private final Tile[][] tiles;
     private final int totalTreasures;
     private final Player chap;
-    private List<Actor> actors;
+    //private List<Actor> actors;
     private int treasuresLeft;
-    private boolean levelOver;
     private int level;
-
+    private boolean levelOver;
 
     /**
      * TEST CONSTRUCTOR - Do not use in production code
      * a real maze needs many more fields than this
-     *
-     * @param tiles the tiles that make up the maze
-     */
-    public Maze(Tile[][] tiles) {
-        this.cols = tiles.length;
-        this.rows = tiles[0].length;
-        this.tiles = copy2dTileArray(tiles);
-        this.totalTreasures = 0;
-        chap = new Player(tiles[cols / 2][rows / 2]);
-    }
-
-    /**
-     * New maze which contains the Tile array and controls logic.
-     * (new maze needs to be initialised for each level)
-     * TODO: discuss method for loading walls and stuff from file
      *
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
@@ -68,12 +54,7 @@ public class Maze {
      * @param level the level for this Maze to load
      */
     public Maze(int level) {
-        //TODO: json loader stuff here
-        this.cols = -1;
-        this.rows = -1;
-        this.tiles = new Tile[0][0];
-        this.totalTreasures = -1;
-        this.chap = null;
+        this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures());
         this.level = level;
     }
 
@@ -129,6 +110,7 @@ public class Maze {
         }
         newLoc.onEntry(a);
         a.setLocation(newLoc);
+        a.setDir(dir);
 
     }
 
@@ -201,6 +183,13 @@ public class Maze {
     }
 
     /**
+     * @return the level that is currently being played
+     */
+    public int getLevel() {
+        return level;
+    }
+
+    /**
      * Enum that determines the direction of one of chap's moves
      *
      * @author Benjamin Doornbos
@@ -209,18 +198,31 @@ public class Maze {
         /**
          * Moving up one row
          */
-        UP,
+        UP("Up"),
         /**
          * Moving down one row
          */
-        DOWN,
+        DOWN("Down"),
         /**
          * Moving left one column
          */
-        LEFT,
+        LEFT("Left"),
         /**
          * Moving right one column
          */
-        RIGHT,
+        RIGHT("Right");
+
+        private final String name;
+
+        Direction(String name) {
+            this.name = name;
+        }
+
+        /**
+         * @return Properly formatted name of this direction
+         */
+        public String getName() {
+            return name;
+        }
     }
 }

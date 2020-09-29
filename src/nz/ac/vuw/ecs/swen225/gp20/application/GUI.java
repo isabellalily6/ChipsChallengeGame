@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -12,7 +13,7 @@ import java.awt.event.KeyListener;
 public class GUI extends JFrame implements KeyListener {
   // initialize screen sizes
   private int screenWidth = 900;
-  private int screenHeight = 500;
+  private int screenHeight = 650;
 
   // initialize GUI fields
   private JPanel mainPanel = new JPanel();
@@ -69,6 +70,8 @@ public class GUI extends JFrame implements KeyListener {
 
     // Create a panel to place the canvas on to keep the correct size of the canva
     JPanel canvasPanel = new JPanel();
+    Border borderGray = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
+    canvas.setBorder(borderGray);
     canvasPanel.add(canvas);
 
     // add the components to the main panel in the correct locations
@@ -132,20 +135,24 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-   // System.out.println("pressed");
+    // System.out.println("pressed");
     int keyCode = keyEvent.getKeyCode();
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       maze.moveChap(Maze.Direction.UP);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       maze.moveChap(Maze.Direction.DOWN);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       maze.moveChap(Maze.Direction.RIGHT);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.RIGHT);
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       maze.moveChap(Maze.Direction.LEFT);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.LEFT);
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
@@ -163,6 +170,7 @@ public class GUI extends JFrame implements KeyListener {
       System.out.println("Start a new game as last unfinished level");
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1){
       //CTRL-1 - start a new game at level 1
+      main.startGame(1);
       System.out.println("Start new game a level 1");
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
       //SPACE - pause the game and display a “game is paused” dialog
@@ -173,6 +181,7 @@ public class GUI extends JFrame implements KeyListener {
       System.out.println("CLose dialogue and Resume");
       main.playGame();
     }
+    canvas.repaint();
   }
 
   @Override

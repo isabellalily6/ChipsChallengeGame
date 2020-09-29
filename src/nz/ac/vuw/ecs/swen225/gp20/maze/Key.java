@@ -18,7 +18,7 @@ public class Key extends Tile {
      * @param colour the colour that this particular key is going to be (determined by json)
      */
     public Key(int col, int row, Colour colour) {
-        super("data/key.png", col, row, true, true);
+        super("data/" + colour.getName() + "Key.png", col, row, true, true);
         this.colour = colour;
     }
 
@@ -29,19 +29,38 @@ public class Key extends Tile {
         return colour;
     }
 
+    @Override
+    public String toString() {
+        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+colour.getName()+"\"}";
+    }
+
     public enum Colour {
         /**
          * Red coloured Keys/Doors
          */
-        RED,
+        RED("red"),
         /**
          * Green coloured Keys/Doors
          */
-        GREEN,
+        GREEN("green"),
         /**
          * Blue coloured Keys/Doors
          */
-        BLUE
+        BLUE("blue");
+
+        private final String name;
+
+
+        Colour(String name) {
+            this.name = name;
+        }
+
+        /**
+         * @return properly formatted name of this key
+         */
+        public String getName() {
+            return name;
+        }
     }
 }
 

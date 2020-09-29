@@ -67,16 +67,16 @@ public class MazeTests {
     }
 
     @Test
-    void test2dArrayShallowClone() {
+    public void test2dArrayShallowClone() {
         Tile[][] tiles = createEmptyMazeArray();
-        var maze = new Maze(tiles);
+        var maze = new Maze(tiles, 0);
         assertNotSame(tiles, maze.getTiles());
     }
 
     @Test
-    void test2dArrayCloneShallowImmutable() {
+    public void test2dArrayCloneShallowImmutable() {
         Tile[][] tiles = createEmptyMazeArray();
-        var maze = new Maze(tiles);
+        var maze = new Maze(tiles, 0);
         maze.getTiles()[0][0] = new Key(0, 0, Key.Colour.RED);
         assertFalse(maze.getTiles()[0][0] instanceof Key);
     }
@@ -84,40 +84,40 @@ public class MazeTests {
     //----------Movement Tests-------------
 
     @Test
-    void moveUp() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveUp() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldY = maze.getChap().getLocation().getRow();
         maze.moveChap(Maze.Direction.UP);
         assert (maze.getChap().getLocation().getRow() - oldY == -1);
     }
 
     @Test
-    void moveDown() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveDown() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldY = maze.getChap().getLocation().getRow();
         maze.moveChap(Maze.Direction.DOWN);
         assert (maze.getChap().getLocation().getRow() - oldY == 1);
     }
 
     @Test
-    void moveLeft() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveLeft() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldX = maze.getChap().getLocation().getCol();
         maze.moveChap(Maze.Direction.LEFT);
         assert (maze.getChap().getLocation().getCol() - oldX == -1);
     }
 
     @Test
-    void moveRight() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveRight() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         var oldX = maze.getChap().getLocation().getCol();
         maze.moveChap(Maze.Direction.RIGHT);
         assert (maze.getChap().getLocation().getCol() - oldX == 1);
     }
 
     @Test
-    void moveUpIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveUpIntoNull() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.UP);
@@ -126,8 +126,8 @@ public class MazeTests {
     }
 
     @Test
-    void moveDownIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveDownIntoNull() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.DOWN);
@@ -136,8 +136,8 @@ public class MazeTests {
     }
 
     @Test
-    void moveLeftIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveLeftIntoNull() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.LEFT);
@@ -146,8 +146,8 @@ public class MazeTests {
     }
 
     @Test
-    void moveRightIntoNull() {
-        var maze = new Maze(createEmptyMazeArray());
+    public void moveRightIntoNull() {
+        var maze = new Maze(createEmptyMazeArray(), 0);
         assertThrows(IllegalArgumentException.class, () -> {
             for (int i = 0; i < 3; i++) {
                 maze.moveChap(Maze.Direction.RIGHT);
@@ -156,28 +156,28 @@ public class MazeTests {
     }
 
     @Test
-    void ensureTreasureCellAccessible() {
+    public void ensureTreasureCellAccessible() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         assertChapPos(maze, new Location(3, 2));
     }
 
     @Test
-    void grabTreasureCellBecomesFree() {
+    public void grabTreasureCellBecomesFree() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         assert (maze.getChap().getLocation() instanceof Free);
     }
 
     @Test
-    void grabOneTreasureCellExitLockDoesntFlip() {
+    public void grabOneTreasureCellExitLockDoesntFlip() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         assert (maze.getTiles()[2][1] instanceof ExitLock);
     }
 
     @Test
-    void grabTreasureChapsTreasuresIncrements() {
+    public void grabTreasureChapsTreasuresIncrements() {
         var maze = initTestMaze();
         assert (maze.getChap().getTreasuresCollected() == 0);
         maze.moveChap(Maze.Direction.RIGHT);
@@ -185,7 +185,7 @@ public class MazeTests {
     }
 
     @Test
-    void moveIntoWall() {
+    public void moveIntoWall() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         var beforeMove = getChapLocation(maze);
@@ -194,7 +194,7 @@ public class MazeTests {
     }
 
     @Test
-    void moveIntoLockedDoorNoKey() {
+    public void moveIntoLockedDoorNoKey() {
         var maze = initTestMaze();
         var beforeMove = getChapLocation(maze);
         maze.moveChap(Maze.Direction.LEFT);
@@ -202,7 +202,7 @@ public class MazeTests {
     }
 
     @Test
-    void moveIntoExitLock() {
+    public void moveIntoExitLock() {
         var maze = initTestMaze();
         var beforeMove = getChapLocation(maze);
         maze.moveChap(Maze.Direction.UP);
@@ -210,7 +210,7 @@ public class MazeTests {
     }
 
     @Test
-    void getBlueKeyCellBecomesFree() {
+    public void getBlueKeyCellBecomesFree() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
@@ -218,7 +218,7 @@ public class MazeTests {
     }
 
     @Test
-    void getBlueKeyGoesIntoBackpack() {
+    public void getBlueKeyGoesIntoBackpack() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
@@ -226,7 +226,7 @@ public class MazeTests {
     }
 
     @Test
-    void getBlueKeyBlueDoorOpens() {
+    public void getBlueKeyBlueDoorOpens() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
@@ -238,7 +238,7 @@ public class MazeTests {
     }
 
     @Test
-    void getRedKeyBlueDoorDoesntOpen() {
+    public void getRedKeyBlueDoorDoesntOpen() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.DOWN);
         maze.moveChap(Maze.Direction.UP);
@@ -248,14 +248,14 @@ public class MazeTests {
     }
 
     @Test
-    void getRedKeyGoesIntoBackpack() {
+    public void getRedKeyGoesIntoBackpack() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.DOWN);
         assert (maze.getChap().backpackContains(Key.Colour.RED));
     }
 
     @Test
-    void collectAllTreasuresExitLockFlips() {
+    public void collectAllTreasuresExitLockFlips() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
@@ -267,7 +267,7 @@ public class MazeTests {
     }
 
     @Test
-    void goToExitLevelOver() {
+    public void goToExitLevelOver() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
         maze.moveChap(Maze.Direction.DOWN);
