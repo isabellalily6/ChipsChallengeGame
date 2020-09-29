@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.List;
 
 import javax.json.Json;
@@ -196,11 +197,14 @@ public class LevelLoader {
 	 * Saves the game state string to a json file
 	 * @param toSave 
 	 */
-	public static void saveGameState(String toSave) {
+	public static void saveGameState(JsonObjectBuilder toSave) {
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState.json"));
-		      writer.write(toSave);
-		      writer.close();
+			StringWriter writer = new StringWriter();
+			Json.createWriter(writer).write(toSave.build());
+			
+			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("levels/gameState.json"));
+		    bufferedWriter.write(writer.toString());
+		    bufferedWriter.close();
 		} catch (IOException e) {
 		      System.out.println("Error saving game state" + e);
 		}
