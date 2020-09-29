@@ -63,4 +63,11 @@ public abstract class Actor {
     public String getImageURl() {
         return "data/" + name + dir.getName() + ".png";
     }
+
+    /**
+     * @return name of this actor (i.e. "Player","Cobra")
+     */
+    public String getName() {
+        return name;
+    }
 }
