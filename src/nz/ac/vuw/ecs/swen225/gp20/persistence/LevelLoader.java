@@ -9,7 +9,9 @@ import java.util.List;
 
 import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
@@ -116,9 +118,12 @@ public class LevelLoader {
 	 * Gets the current game state and returns a string
 	 * @param game
 	 */
-	public String getGameState(Main application) {
+	public static JsonObjectBuilder getGameState(Main application) {
 		Maze game = application.getMaze();
 		int timeLeft = application.getTimeLeft();
+		
+		JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
+		
 		
 		String gameState = "{";
 		
@@ -126,39 +131,54 @@ public class LevelLoader {
 		
 		//level
 		gameState += "\"level\": \"" + game.getLevel() + "\",";
+		objectBuilder.add("level", game.getLevel());
 		
 		//timeLeft
 		gameState += "\"timeLeft\": \"" + timeLeft + "\",";
+		objectBuilder.add("timeLeft", timeLeft);
 		
 		//cols
 		gameState += "\"cols\": \"" + map.length + "\",";
+		objectBuilder.add("cols", map.length);
 		
 		//rows
 		gameState += "\"rows\": \"" + map[0].length + "\",";
+		objectBuilder.add("rows", map[0].length);
 		
 		//map
+		JsonArrayBuilder mapArrayBuilder = Json.createArrayBuilder();
 		gameState += "\"map\": [";	
 		for(int col = 0; col < map.length; col++) {
 			for(int row = 0; row < map[0].length; row++) {
 				gameState += map[col][row].toString();
+				mapArrayBuilder.add(map[col][row].getJson());
 			}
 		}
+		objectBuilder.add("map", mapArrayBuilder);
 		gameState += ",";
 				
 		//treasuresLeft
 		gameState += "\"treasuresLeft\": \"" + game.getTreasuresLeft() + "\",";
+		objectBuilder.add("treasuresLeft", game.getTreasuresLeft());
 		
 		//chapCol
 		gameState += "\"chapCol\": \"" + game.getChap().getLocation().getCol() + "\",";
+		objectBuilder.add("chapCol", game.getChap().getLocation().getCol());
 		
 		//chapRow
 		gameState += "\"chapRow\": \"" + game.getChap().getLocation().getRow() + "\",";
+		objectBuilder.add("chapRow", game.getChap().getLocation().getRow());
 		
 		//keysCollected
+		JsonArrayBuilder keysArrayBuilder = Json.createArrayBuilder();
 		gameState += "\"keysCollected\": [";
 		for(Key.Colour colour : game.getChap().getBackpack()) {
-			gameState += "{\"colour\": \"" + colour + "\"},";
+			gameState += "{\"color\": \"" + colour + "\"},";
+			JsonObjectBuilder keyObjectBuilder = Json.createObjectBuilder();
+			keyObjectBuilder.add("color", colour.toString());
+			mapArrayBuilder.add(keyObjectBuilder);
 		}
+		objectBuilder.add("keysCollected", keysArrayBuilder);
 		if(!game.getChap().getBackpack().isEmpty()) {
 			gameState = gameState.substring(0, gameState.length() - 1);
 		}
@@ -166,7 +186,7 @@ public class LevelLoader {
 		
 		gameState += "}";
 		
-		return gameState;
+		return objectBuilder;
 		
 		/**
 		*/
@@ -176,7 +196,7 @@ public class LevelLoader {
 	 * Saves the game state string to a json file
 	 * @param toSave 
 	 */
-	public void saveGameState(String toSave) {
+	public static void saveGameState(String toSave) {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("levels/gameState.json"));
 		      writer.write(toSave);

@@ -3,7 +3,6 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -96,14 +95,20 @@ public class Maze {
         }
         //TODO: better error handling
         checkNotNull(newLoc);
-        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) return;
+        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) {
+            a.setDir(dir);
+            return;
+        }
 
         a.getLocation().onExit();
         if (a == chap) {
             if (newLoc instanceof Exit) levelOver = true;
             else {
                 //if this method returns false, chap is not allowed to move to newLoc
-                if (!interactWithTile(newLoc)) return;
+                if (!interactWithTile(newLoc)) {
+                    a.setDir(dir);
+                    return;
+                }
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
                 newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
             }

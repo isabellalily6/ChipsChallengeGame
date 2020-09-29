@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import javax.json.JsonObjectBuilder;
+
 /**
  * From handout:
  * Like a free tile, but when Chap steps on this field, a help text will be displayed.
@@ -31,7 +33,7 @@ public class InfoField extends Tile {
     }
 
     @Override
-    public String toString() {
-        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"info\": \""+info+"\"}";
+    public JsonObjectBuilder getJson() {
+        return super.getJson().add("info", info);
     }
 }

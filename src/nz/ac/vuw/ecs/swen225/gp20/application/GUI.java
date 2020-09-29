@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.Level;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import javax.swing.*;
@@ -48,6 +50,15 @@ public class GUI extends JFrame implements KeyListener {
     setFocusTraversalKeysEnabled(false);
     createPausedDialogue();
     setResizable(false);
+  }
+
+  /**
+   * Get Canvas
+   *
+   * @return the canvas
+   **/
+  public Canvas getCanvas() {
+    return canvas;
   }
 
   /**
@@ -116,6 +127,15 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
+   * Set the maze
+   *
+   * @param maze
+   **/
+  public void setMaze(Maze maze) {
+    this.maze = maze;
+  }
+
+  /**
    * Displays the paused dialogue on the screen.
    **/
   public void displayPausedDialogue(){
@@ -161,6 +181,7 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
+      LevelLoader.saveGameState(LevelLoader.getGameState(main));
       System.exit(0);
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
@@ -170,6 +191,7 @@ public class GUI extends JFrame implements KeyListener {
       System.out.println("Start a new game as last unfinished level");
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1){
       //CTRL-1 - start a new game at level 1
+      main.startGame(1);
       System.out.println("Start new game a level 1");
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
       //SPACE - pause the game and display a “game is paused” dialog

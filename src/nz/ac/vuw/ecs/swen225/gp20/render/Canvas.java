@@ -48,28 +48,7 @@ public class Canvas extends JPanel {
                 add(components[x][y]);
             }
         }
-        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
-    }
-
-    /**
-     * Get the player sprite to draw.
-     *
-     * @param direction the direction the player is facing
-     * @return the image to draw
-     **/
-    private ImageIcon getPlayerSprite(Maze.Direction direction) {
-        switch (direction) {
-            case UP:
-                return makeImageIcon("data/playerUp.png");
-            case DOWN:
-                return makeImageIcon("data/playerDown.png");
-            case LEFT:
-                return makeImageIcon("data/playerLeft.png");
-            case RIGHT:
-                return makeImageIcon("data/playerRight.png");
-            default:
-                throw new IllegalArgumentException();
-        }
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
     }
 
     @Override
@@ -85,11 +64,15 @@ public class Canvas extends JPanel {
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
-                ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
-                components[x][y].setIcon(icon);
+                if (row < 0 || row > maze.getTiles()[0].length - 1 || col < 0 || col > maze.getTiles().length - 1) {
+                    components[x][y].setIcon(makeImageIcon("data/free.png"));
+                } else {
+                    ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
+                    components[x][y].setIcon(icon);
+                }
             }
         }
-        components[VIEW_SIDE][VIEW_SIDE].setIcon(getPlayerSprite(maze.getChap().getDir()));
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
     }
 
     /**
@@ -108,7 +91,7 @@ public class Canvas extends JPanel {
      * @param filename the image file e.g. "data/image.png"
      * @return the converted image
      **/
-    private static ImageIcon makeImageIcon(String filename) {
+    public static ImageIcon makeImageIcon(String filename) {
         return scaleImage(new ImageIcon(filename));
     }
 
