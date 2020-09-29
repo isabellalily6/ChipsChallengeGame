@@ -18,7 +18,7 @@ public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 50;
-    private final Maze maze;
+    private Maze maze;
     private final JLabel[][] components;
 
     /**
@@ -52,7 +52,7 @@ public class Canvas extends JPanel {
     }
 
     /**
-     * Get the player sprite to draw
+     * Get the player sprite to draw.
      *
      * @param direction the direction the player is facing
      * @return the image to draw
@@ -112,4 +112,12 @@ public class Canvas extends JPanel {
         return scaleImage(new ImageIcon(filename));
     }
 
+    /**
+     * Set the value of maze.
+     *
+     * @param maze the value to set
+     **/
+    public void setMaze(Maze maze) {
+        this.maze = maze;
+    }
 }
