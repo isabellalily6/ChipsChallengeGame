@@ -170,8 +170,6 @@ public class RecordAndPlay {
         recordingPaused = false;
 
         new Thread(() -> {
-
-
             //if this is different to the moveIndex we know that the user has stepped through
             int prevMoveIndex = 0;
 
@@ -232,7 +230,6 @@ public class RecordAndPlay {
                 var copiedList = new ArrayList<>(movesToPlay);
 
                 for (var move : copiedList) {
-
                     //We want to play each move at this second
                     if (timeLeft == move.getTimeLeft()) {
                         m.getMaze().moveActor(move.getActor(), move.getDirection());
