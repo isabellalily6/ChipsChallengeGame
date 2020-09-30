@@ -114,6 +114,14 @@ public class RecordAndPlay {
         parentComponent = m.getGui();
     }
 
+    /**
+     * @param m is the main which will be playing this recording
+     * @author callum mckay
+     */
+    public static void playRecording(Main m) {
+
+    }
+
     private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
         var toReturn = new ArrayList<RecordedMove>();
 
