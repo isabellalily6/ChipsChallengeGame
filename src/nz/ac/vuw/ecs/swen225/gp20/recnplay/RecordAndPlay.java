@@ -36,6 +36,7 @@ public class RecordAndPlay {
     private static final List<RecordedMove> loadedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
+    private static final Lock lock = new ReentrantLock();
 
 
     /**
@@ -169,7 +170,7 @@ public class RecordAndPlay {
         recordingPaused = false;
 
         new Thread(() -> {
-            Lock lock = new ReentrantLock();
+
 
             //if this is different to the moveIndex we know that the user has stepped through
             int prevMoveIndex = 0;
