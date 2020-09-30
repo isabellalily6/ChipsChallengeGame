@@ -60,17 +60,17 @@ public class RecordAndPlay {
     }
 
     /**
-     * @return See if a recording is playing
+     * @return See if a recording is paused
      */
-    public static boolean isPlayingRecording() {
-        return playingRecording;
+    public static boolean isRecordingPaused() {
+        return recordingPaused;
     }
 
     /**
-     * @param playingRecording Pauses the playing recording
+     * @param recordingPaused Pauses the playing recording
      */
-    public static void setPlayingRecording(boolean playingRecording) {
-        RecordAndPlay.playingRecording = playingRecording;
+    public static void setRecordingPaused(boolean recordingPaused) {
+        RecordAndPlay.recordingPaused = recordingPaused;
     }
 
     /**
