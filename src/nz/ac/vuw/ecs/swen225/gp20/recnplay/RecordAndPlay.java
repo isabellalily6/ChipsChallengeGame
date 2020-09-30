@@ -17,7 +17,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
@@ -26,6 +29,9 @@ import java.util.List;
  */
 public class RecordAndPlay {
     private static boolean isRecording = false;
+    private static boolean playingRecording = false;
+    private static boolean recordingPaused = true;
+    private static int moveIndex = -1;
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static final List<RecordedMove> loadedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
@@ -50,6 +56,20 @@ public class RecordAndPlay {
 
         //reset the recording state
         resetRecordingState();
+    }
+
+    /**
+     * @return See if a recording is playing
+     */
+    public static boolean isPlayingRecording() {
+        return playingRecording;
+    }
+
+    /**
+     * @param playingRecording Pauses the playing recording
+     */
+    public static void setPlayingRecording(boolean playingRecording) {
+        RecordAndPlay.playingRecording = playingRecording;
     }
 
     /**
@@ -103,6 +123,13 @@ public class RecordAndPlay {
     }
 
     /**
+     * Stop the recording from playing
+     */
+    public static void endPlayingRecording() {
+        playingRecording = false;
+    }
+
+    /**
      * Starts recording this game
      *
      * @param m current maze that we are recording
@@ -115,11 +142,102 @@ public class RecordAndPlay {
     }
 
     /**
+     * @param forward, true if we are stepping forward, false if backward
+     */
+    public static void stepThroughRecording(boolean forward) {
+        if (recordingPaused || !playingRecording) {
+            return;
+        }
+
+        if (forward) moveIndex++;
+        else moveIndex--;
+    }
+
+    /**
      * @param m is the main which will be playing this recording
      * @author callum mckay
      */
     public static void playRecording(Main m) {
+        if (loadedMoves.isEmpty()) return;
 
+        //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
+        var movesToPlay = new ArrayList<>(loadedMoves);
+
+        //we want to keep track of where we are, for allowing the user to step through the moves
+        moveIndex = 0;
+        playingRecording = true;
+        recordingPaused = false;
+
+        new Thread(() -> {
+            Lock lock = new ReentrantLock();
+
+            //if this is different to the moveIndex we know that the user has stepped through
+            int prevMoveIndex = 0;
+
+            while (!movesToPlay.isEmpty()) {
+                lock.lock();
+                if (!playingRecording) {
+                    moveIndex = -1;
+                    recordingPaused = true;
+                    return;
+                }
+
+                if (prevMoveIndex != moveIndex) {
+                    //We have gone backwards
+                    if (prevMoveIndex > moveIndex) {
+                        var playedMoves = new ArrayList<>(loadedMoves);
+                        playedMoves.removeAll(movesToPlay);
+                        playedMoves.sort(RecordedMove::compareTo);
+                        Collections.reverse(playedMoves);
+
+                        for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
+                            var moveToAdd = playedMoves.get(i);
+                            movesToPlay.add(moveToAdd);
+
+                            //If the times on the next move ARE equal, we want them to both be added
+                            if (moveToAdd.getTimeLeft() != playedMoves.get(i + 1).getTimeLeft()) {
+                                break;
+                            }
+                        }
+                    } else {
+                        //we have gone forwards
+                        var movesToSkip = new ArrayList<>(loadedMoves);
+                        movesToSkip.removeAll(movesToPlay);
+
+                        for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
+                            var moveToSkip = movesToSkip.get(i);
+                            movesToPlay.remove(moveToSkip);
+
+                            //If the times on the next move ARE equal, we want them to both be added
+                            if (moveToSkip.getTimeLeft() != movesToSkip.get(i + 1).getTimeLeft()) {
+                                break;
+                            }
+                        }
+                    }
+
+                    //ensure the moves are still sorted
+                    movesToPlay.sort(RecordedMove::compareTo);
+                    //TODO: SET TIMER ON MAIN TO BE THAT OF THE FIRST MOVE
+                }
+
+                if (recordingPaused) continue;
+                lock.unlock();
+
+                int timeLeft = m.getTimeLeft();
+                var copiedList = new ArrayList<>(movesToPlay);
+
+                for (var move : copiedList) {
+
+                    //We want to play each move at this second
+                    if (timeLeft == move.getTimeLeft()) {
+                        m.getMaze().moveActor(move.getActor(), move.getDirection());
+                        movesToPlay.remove(move);
+                        moveIndex++;
+                        prevMoveIndex = moveIndex;
+                    } else break;
+                }
+            }
+        }).start();
     }
 
     private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
