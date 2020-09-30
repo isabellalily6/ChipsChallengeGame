@@ -146,7 +146,7 @@ public class RecordAndPlay {
      * @param forward, true if we are stepping forward, false if backward
      */
     public static void stepThroughRecording(boolean forward) {
-        if (recordingPaused || !playingRecording) {
+        if (!playingRecording) {
             return;
         }
 
@@ -218,6 +218,10 @@ public class RecordAndPlay {
 
                     //ensure the moves are still sorted
                     movesToPlay.sort(RecordedMove::compareTo);
+
+                    //make sure indexes now match up
+                    // in case the recording is paused we dont want to repeat the skip/step back
+                    prevMoveIndex = moveIndex;
                     //TODO: SET TIMER ON MAIN TO BE THAT OF THE FIRST MOVE
                 }
 
