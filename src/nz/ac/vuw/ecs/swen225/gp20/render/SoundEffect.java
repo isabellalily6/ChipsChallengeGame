@@ -11,21 +11,23 @@ import java.io.IOException;
  **/
 public class SoundEffect {
 
-    private Sound sound;
-
     /**
      * Create and play a sound effect once.
      *
      * @param sound the sound to use
      **/
     public static void play(Sound sound) {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sound.filename));
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
+        Runnable runnable = () -> {
+            try {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sound.filename));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                e.printStackTrace();
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 }

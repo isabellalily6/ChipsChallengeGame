@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import javax.json.JsonObjectBuilder;
+
 /**
  * From handout:
  * Chap can only move onto those tiles if they have the key with the matching colour -- this unlocks the door.
@@ -30,7 +32,7 @@ public class LockedDoor extends Tile {
     }
 
     @Override
-    public String toString() {
-        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+lockColour.getName().toLowerCase()+"\"}";
+    public JsonObjectBuilder getJson() {
+        return super.getJson().add("color", lockColour.getName());
     }
 }

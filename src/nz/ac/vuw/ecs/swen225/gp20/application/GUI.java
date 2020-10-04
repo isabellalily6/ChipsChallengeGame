@@ -1,30 +1,34 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
-import nz.ac.vuw.ecs.swen225.gp20.persistence.Level;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GUI extends JFrame implements KeyListener {
   // initialize screen sizes
-  private int screenWidth = 900;
-  private int screenHeight = 650;
+  private final int screenWidth = 900;
+  private final int screenHeight = 650;
 
   // initialize GUI fields
-  private JPanel mainPanel = new JPanel();
-  private Dashboard dashboard;
-  private Canvas canvas;
-  private JDialog pausedDialogue = new JDialog();
+  private final JPanel mainPanel = new JPanel();
+  private final Dashboard dashboard;
+  private final Canvas canvas;
+  private final Dialogues pausedDialogue;
+  private final Dialogues gameWon;
+  private final Dialogues gameLost;
 
   // initialize application
-  private Main main;
+  private final Main main;
   private Maze maze;
 
   /**
@@ -48,8 +52,34 @@ public class GUI extends JFrame implements KeyListener {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     setFocusable(true);
     setFocusTraversalKeysEnabled(false);
-    createPausedDialogue();
     setResizable(false);
+
+    // create dialogues
+    pausedDialogue = new Dialogues(main, "GAME IS PAUSED", "RESUME");
+    gameWon = new Dialogues(main, "You have won the level!!!", "RESTART");
+    gameLost = new Dialogues(main, "You have lost the game", "RETRY");
+    setButtonActionListeners();
+  }
+
+  /**
+   * Set the action listeners for the buttons on the JDialogues
+   **/
+  public void setButtonActionListeners(){
+    pausedDialogue.getButton().addActionListener(method -> main.playGame());
+    gameWon.setActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        main.startGame(main.getLevel());
+        gameWon.dispose();
+      }
+    });
+    gameLost.setActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        main.startGame(main.getLevel());
+        gameLost.dispose();
+      }
+    });
   }
 
   /**
@@ -95,28 +125,6 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
-   * Create paused dialogue for when the player pauses the game
-   **/
-  public void createPausedDialogue(){
-    pausedDialogue.addKeyListener(this);
-    pausedDialogue.setFocusable(true);
-    pausedDialogue.setLocationRelativeTo(this);
-    pausedDialogue.setSize(300, 200);
-    pausedDialogue.setLayout(new GridLayout(2, 1));
-    pausedDialogue.setBackground(Color.lightGray);
-    JLabel paused = new JLabel("GAME IS PAUSED", SwingConstants.CENTER);
-    paused.setFont(new Font("Verdana", Font.PLAIN, 25));
-    JButton resume = new JButton("RESUME");
-    resume.setBackground(Color.lightGray);
-    resume.setFont(new Font("Verdana", Font.PLAIN, 20));
-    Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
-    resume.setBorder(border);
-    pausedDialogue.add(paused);
-    pausedDialogue.add(resume);
-    pausedDialogue.toFront();
-  }
-
-  /**
    * Call the method in the dashboard, to change the time displayed to the new time left
    *
    * @param timeLeft
@@ -149,14 +157,34 @@ public class GUI extends JFrame implements KeyListener {
     pausedDialogue.setVisible(false);
   }
 
+  /**
+   * Get the game won dialogues
+   *
+   * @return the game won dialogue
+   **/
+  public Dialogues getGameWon() {
+    return gameWon;
+  }
+
+  /**
+   * Get the game lost dialogues
+   *
+   * @return the game lost dialogue
+   **/
+  public Dialogues getGameLost() {
+    return gameLost;
+  }
+
   @Override
   public void keyTyped(KeyEvent keyEvent) {
   }
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-    // System.out.println("pressed");
-    int keyCode = keyEvent.getKeyCode();
+  }
+
+  @Override
+  public void keyReleased(KeyEvent keyEvent) {
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       maze.moveChap(Maze.Direction.UP);
@@ -177,12 +205,12 @@ public class GUI extends JFrame implements KeyListener {
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
       System.out.println("EXIT But save level");
-      System.exit(0);
+      main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
       LevelLoader.saveGameState(LevelLoader.getGameState(main));
-      System.exit(0);
+      main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
       System.out.println("Resume a saved game");
@@ -199,14 +227,9 @@ public class GUI extends JFrame implements KeyListener {
       main.pauseGame();
     }else if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
       //ESC - close the “game is paused” dialog and resume the game
-      System.out.println("CLose dialogue and Resume");
+      System.out.println("Close dialogue and Resume");
       main.playGame();
     }
     canvas.repaint();
-  }
-
-  @Override
-  public void keyReleased(KeyEvent keyEvent) {
-
   }
 }

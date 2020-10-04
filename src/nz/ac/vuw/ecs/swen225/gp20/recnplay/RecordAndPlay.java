@@ -1,13 +1,19 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import javax.json.JsonArray;
+import javax.json.JsonObjectBuilder;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,43 +22,70 @@ import java.util.List;
  */
 public class RecordAndPlay {
     private static boolean isRecording = false;
-    private static final List<RecordedMove> moves = new ArrayList<>();
-    private static String gameState;
+    private static final List<RecordedMove> recordedMoves = new ArrayList<>();
+    private static final List<RecordedMove> loadedMoves = new ArrayList<>();
+    private static JsonObjectBuilder gameState;
+    private static GUI parentComponent;
 
 
     /**
-     * saves a recording to a file
+     * saves a recorded game in Json format to a file for replaying later
      */
     public static void saveRecording() {
-        var saveFileName = "chapsChallengeRecording.txt";
-
-        var gameJson = Json.createArrayBuilder();
-
-        var movesArray = Json.createArrayBuilder(moves);
-
-        gameJson.add(movesArray.build());
-
-        try (var writer = new StringWriter()) {
-            Json.createWriter(writer).write(gameJson.build());
-            try {
-                var bw = new BufferedWriter(new FileWriter(saveFileName));
-                bw.write(writer.toString());
-                bw.close();
-            } catch (IOException e) {
-                throw new Error("Game was not able to be saved due to an exception");
-            }
-        } catch (IOException e) {
-            throw new Error("Game was not able to be saved due to an exception");
+        if (!isRecording) {
+            return;
         }
 
+        //Build a json representation of the game and moves that have been performed
+        var jsonToSave = buildJson();
+
+        //Save this to a file
+        saveToFile(jsonToSave);
+
+        //reset the recording state
         resetRecordingState();
     }
 
     /**
      * Loads a recording from the file
+     *
+     * @param m is the main class, this is used to access the player, and the gui which is the parent to the filechooser
      */
-    public static void loadRecording() {
+    public static void loadRecording(Main m) {
+        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
+        fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
+        var result = fileChooser.showOpenDialog(m.getGui());
 
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File jsonFile = fileChooser.getSelectedFile();
+            if (!jsonFile.getName().endsWith(".json")) return;
+
+            try {
+                var parser = Json.createReader(new FileReader(jsonFile));
+                var jsonArr = parser.readArray();
+                var moves = jsonArr.getJsonObject(1);
+                for (var move : moves.getJsonArray("moves")) {
+                    var loadedMove = move.asJsonObject();
+
+                    var actorName = loadedMove.get("actor").toString();
+
+                    //this is due to the value being stored as a string, so it would come out as ""player""
+                    actorName = turnJsonStringToString(actorName);
+                    var dir = getDirection(loadedMove.get("dir").toString());
+
+                    RecordedMove recordedMove = null;
+                    if (actorName.equals("player")) {
+                        recordedMove = new RecordedMove(m.getMaze().getChap(), dir);
+                    } else {
+                        //TODO support for other mobs in lvl 2
+                    }
+
+                    loadedMoves.add(recordedMove);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -63,7 +96,7 @@ public class RecordAndPlay {
      */
     public static boolean addMove(Actor a, Maze.Direction d) {
         if (isRecording) {
-            moves.add(new RecordedMove(a, d));
+            recordedMoves.add(new RecordedMove(a, d));
             return true;
         }
 
@@ -79,17 +112,79 @@ public class RecordAndPlay {
 
     /**
      * Starts recording this game
+     *
+     * @param m current maze that we are recording
      */
-    public static void startRecording() {
+    public static void startRecording(Main m) {
         isRecording = true;
-        //TODO: add the start game state (ie, where are the tiles? what does the player have in their inventory?
-        //gameTiles = getCurrentGameState();
+        gameState = LevelLoader.getGameState(m);
+        parentComponent = m.getGui();
+    }
+
+    private static JsonArray buildJson() {
+        var gameJson = Json.createArrayBuilder();
+
+        gameJson.add(gameState.build());
+
+        var movesArray = Json.createArrayBuilder();
+
+        for (var move : recordedMoves) {
+            var obj = Json.createObjectBuilder()
+                    .add("actor", move.getActor().getName())
+                    .add("dir", move.getDirection().toString());
+            movesArray.add(obj);
+        }
+
+        var movesArrayObj = Json.createObjectBuilder().add("moves", movesArray);
+
+        gameJson.add(movesArrayObj.build());
+        return gameJson.build();
+    }
+
+    private static void saveToFile(JsonArray jsonArray) {
+        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
+        var result = fileChooser.showOpenDialog(parentComponent);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            var writer = new StringWriter();
+            Json.createWriter(writer).write(jsonArray);
+            try {
+                var bw = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile() + ".json", StandardCharsets.UTF_8));
+                bw.write(writer.toString());
+                bw.close();
+            } catch (IOException e) {
+                throw new Error("Game was not able to be saved due to an exception");
+            }
+        }
     }
 
     private static void resetRecordingState() {
-        moves.clear();
-        gameState = "";
+        recordedMoves.clear();
+        gameState = null;
         isRecording = false;
+    }
+
+    private static String turnJsonStringToString(String s) {
+        if (s == null) return null;
+        if (s.length() < 2) return "";
+
+        return s.substring(1, s.length() - 1);
+    }
+
+    private static Maze.Direction getDirection(String dir) {
+        dir = turnJsonStringToString(dir);
+        switch (dir) {
+            case "UP":
+                return Maze.Direction.UP;
+            case "DOWN":
+                return Maze.Direction.DOWN;
+            case "RIGHT":
+                return Maze.Direction.RIGHT;
+            case "LEFT":
+                return Maze.Direction.LEFT;
+            default:
+                throw new IllegalArgumentException("Provided string was not a direction");
+        }
     }
 
     static class RecordedMove {

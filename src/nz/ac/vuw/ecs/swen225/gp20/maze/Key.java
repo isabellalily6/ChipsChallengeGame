@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import javax.json.JsonObjectBuilder;
+
 /**
  * From Handout:
  * Actors can move onto those tiles. If Chap moves onto such a tile, he picks up the key with this colour,
@@ -31,8 +33,8 @@ public class Key extends Tile {
     }
 
     @Override
-    public String toString() {
-        return "{\"type\": \""+this.getClass().getSimpleName()+"\", \"color\": \""+colour.getName()+"\"}";
+    public JsonObjectBuilder getJson() {
+        return super.getJson().add("color", colour.getName());
     }
 
     public enum Colour {

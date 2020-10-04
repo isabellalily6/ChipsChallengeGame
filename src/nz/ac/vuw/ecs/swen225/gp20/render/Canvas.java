@@ -7,9 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Objects of this class provide a simple 2D view of the maze,
+ * Objects of this class provide a simple 2D view of the maze
  * to be embedded in the application. It is updated when any
- * actor moves. It only uses a certain focus region of the maze,
+ * actor moves. It only uses a certain focus region of the maze
  * which is determined based on the position of the player.
  *
  * @author Seth Patel
@@ -53,13 +53,13 @@ public class Canvas extends JPanel {
 
     @Override
     public void repaint() {
-        refreshComponent();
+        refreshComponents();
     }
 
     /**
      * Refresh the components for the canvas.
      **/
-    public void refreshComponent() {
+    public void refreshComponents() {
         if (maze == null) return;
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
@@ -96,7 +96,7 @@ public class Canvas extends JPanel {
     }
 
     /**
-     * Set the value of maze.
+     * Set the value of the maze.
      *
      * @param maze the value to set
      **/
