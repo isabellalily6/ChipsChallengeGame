@@ -137,7 +137,7 @@ public class Maze {
             //TODO: better error handling
             if (!chap.backpackContains(ld.getLockColour())) return false;
         }
-
+        playSound(loc);
         if (loc.isFreeOnEntry()) setFree(loc);
         return true;
     }
