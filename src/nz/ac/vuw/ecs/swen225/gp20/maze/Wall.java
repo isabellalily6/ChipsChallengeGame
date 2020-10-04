@@ -15,6 +15,6 @@ public class Wall extends Tile {
      * @param row row in the maze array
      */
     public Wall(int col, int row) {
-        super("data/wall.png", col, row, false, true);
+        super("data/wall.png", col, row, false, false);
     }
 }
