@@ -1,13 +1,16 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+/**
+ * Create a MenuBar to be added to the main GUI
+ **/
 public class MenuBar extends JMenuBar {
 
   /**
    * Create a new menu bar and set the default values for the menu bar
+   *
+   * @param main
    **/
   public MenuBar(Main main){
     // Create the file menu
