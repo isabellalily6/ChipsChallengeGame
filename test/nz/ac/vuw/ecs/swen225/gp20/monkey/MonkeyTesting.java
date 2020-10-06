@@ -48,7 +48,7 @@ public class MonkeyTesting {
                         && maze.getChap().backpackContains(((LockedDoor) up).getLockColour()))) {
                     candidates.put(up, 1); // tile is valuable
                 }
-                else if (up.isAccessible()) if (up.isAccessible()) candidates.put(up, 0); // tile is not valuable
+                else if (up.isAccessible()) candidates.put(up, 0); // tile is not valuable
 
                 Tile down = tiles[maze.getChap().getLocation().getCol()]
                         [Math.min(maze.getChap().getLocation().getRow() + 1, tiles.length - 1)];
@@ -56,7 +56,7 @@ public class MonkeyTesting {
                         && maze.getChap().backpackContains(((LockedDoor) down).getLockColour()))) {
                     candidates.put(down, 1);
                 }
-                else if (down.isAccessible()) if (down.isAccessible()) candidates.put(down, 0);
+                else if (down.isAccessible()) candidates.put(down, 0);
 
                 Tile left = tiles[Math.max(maze.getChap().getLocation().getCol() - 1, 0)]
                         [maze.getChap().getLocation().getRow()];
@@ -64,7 +64,7 @@ public class MonkeyTesting {
                         && maze.getChap().backpackContains(((LockedDoor) left).getLockColour()))) {
                     candidates.put(left, 1);
                 }
-                else if (left.isAccessible()) if (left.isAccessible()) candidates.put(left, 0);
+                else if (left.isAccessible()) candidates.put(left, 0);
 
                 Tile right = tiles[Math.min(maze.getChap().getLocation().getCol() + 1, tiles[0].length)]
                         [maze.getChap().getLocation().getRow()];
@@ -72,7 +72,7 @@ public class MonkeyTesting {
                         && maze.getChap().backpackContains(((LockedDoor) right).getLockColour()))) {
                     candidates.put(right, 1);
                 }
-                else if (right.isAccessible()) if (right.isAccessible()) candidates.put(right, 0);
+                else if (right.isAccessible()) candidates.put(right, 0);
 
                 // final candidate
                 Tile candidate;
@@ -130,28 +130,28 @@ public class MonkeyTesting {
                         && maze.getChap().backpackContains(((LockedDoor) up).getLockColour()))) {
                     candidates.put(up, 1);
                 }
-                else if (up.isAccessible()) if (up.isAccessible()) candidates.put(up, 0);
+                else if (up.isAccessible()) candidates.put(up, 0);
 
                 Tile down = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() + 1];
                 if (down instanceof Treasure || down instanceof Key || (down instanceof LockedDoor
                         && maze.getChap().backpackContains(((LockedDoor) down).getLockColour()))) {
                     candidates.put(down, 1);
                 }
-                else if (down.isAccessible()) if (down.isAccessible()) candidates.put(down, 0);
+                else if (down.isAccessible()) candidates.put(down, 0);
 
                 Tile left = tiles[maze.getChap().getLocation().getCol() - 1][maze.getChap().getLocation().getRow()];
                 if (left instanceof Treasure || left instanceof Key || (left instanceof LockedDoor
                         && maze.getChap().backpackContains(((LockedDoor) left).getLockColour()))) {
                     candidates.put(left, 1);
                 }
-                else if (left.isAccessible()) if (left.isAccessible()) candidates.put(left, 0);
+                else if (left.isAccessible()) candidates.put(left, 0);
 
                 Tile right = tiles[maze.getChap().getLocation().getCol() + 1][maze.getChap().getLocation().getRow()];
                 if (right instanceof Treasure || right instanceof Key || (right instanceof LockedDoor
                         && maze.getChap().backpackContains(((LockedDoor) right).getLockColour()))) {
                     candidates.put(right, 1);
                 }
-                else if (right.isAccessible()) if (right.isAccessible()) candidates.put(right, 0);
+                else if (right.isAccessible()) candidates.put(right, 0);
 
                 Tile candidate;
                 ArrayList<Tile> updatedCandidates = new ArrayList<>(candidates.keySet());
