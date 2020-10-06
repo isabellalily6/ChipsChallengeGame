@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Create a GUI which displays the game on the screen
+ **/
 public class GUI extends JFrame implements KeyListener {
   // initialize screen sizes
   private final int screenWidth = 900;
@@ -41,7 +44,7 @@ public class GUI extends JFrame implements KeyListener {
     this.main = main;
     this.maze = maze;
     this.canvas = new Canvas(maze);
-    this.dashboard = new Dashboard(maze);
+    this.dashboard = new Dashboard();
 
     // set the frame requirements
     addKeyListener(this);

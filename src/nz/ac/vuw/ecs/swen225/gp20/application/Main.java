@@ -2,23 +2,37 @@ package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * From Handout:
+ * The application window should display the time left to play, the current level, keys collected,
+ * and the number of treasures that still need to be collected.  It should also offer buttons
+ * and menu items to pause and exit the game, to save the game state and to resume a saved game,
+ * and to display a help page with game rules.
+ *
+ * This module also manages a countdown -- each level has a maximum time associated with
+ * it (such as 1 min), and the once the countdown reaches zero, the game terminates
+ * with a group dialog informing the user, and resetting the game to replay the level.
+ *
+ * @author Isabella Tomaz-Ketley
+ */
 public class Main {
   // initialize the game variables
   private final GUI gui;
   private Maze maze;
 
-  // game information
+  // initialise the game information
   private final int level = 1;
   private final int maxTime = 100;
   private int timeLeft = maxTime;
 
+  // initialize the timer variables
   private Timer timer = new Timer();
   private TimerTask timerTask;
 
+  // variable to check whether the game is paused or not
   private boolean gamePaused = false;
 
 
@@ -122,13 +136,16 @@ public class Main {
   public void exitGame(){
     System.exit(0);
   }
+
   /**
    * Start a game from the level passed in as a parameter
    **/
   public void startGame(int level){
+    // if the timer is still going, cancel it
     if(timeLeft != 0 && timeLeft != maxTime){
       timer.cancel();
     }
+    // create a new maze and set this in canvas and the gui
     this.maze = new Maze(level);
     gui.getCanvas().setMaze(maze);
     gui.setMaze(maze);

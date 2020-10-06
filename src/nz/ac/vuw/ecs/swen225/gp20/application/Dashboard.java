@@ -6,14 +6,19 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
+/**
+ * Creates a dashboard on the GUI which includes:
+ * Level number.
+ * Time Left.
+ * Number of treasure collected.
+ * Images of the treasures collected.
+ **/
 public class Dashboard extends JPanel {
   // initialise the size of the dashboard
   private int WIDTH = 200;
   private int HEIGHT = 400;
 
-  private Maze maze;
-
-  // initialise the components tobe put on the Dashboard
+  // initialise the components to be put on the Dashboard
   private JLabel level;
   private JLabel levelNum;
   private JLabel time;
@@ -29,8 +34,7 @@ public class Dashboard extends JPanel {
   /**
    * Create a new instance of dashboard and set the default values
    **/
-  public Dashboard(Maze maze){
-    this.maze = maze;
+  public Dashboard(){
     // Set up the components of the dashboard
     setLayout(new BorderLayout());
     setBackground(Color.lightGray);
@@ -40,6 +44,7 @@ public class Dashboard extends JPanel {
     setPreferredSize(new Dimension(WIDTH, HEIGHT));
     Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
     setBorder(border);
+    // set the colour of the two panels
     topPanel.setBackground(Color.lightGray);
     bottomPanel.setBackground(Color.lightGray);
   }
@@ -58,7 +63,7 @@ public class Dashboard extends JPanel {
     level.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // create the level number label
-    levelNum = new JLabel("0", SwingConstants.CENTER);
+    levelNum = new JLabel("1", SwingConstants.CENTER);
     levelNum.setFont(new Font("Verdana", Font.PLAIN, 18));
     levelNum.setBorder(border);
     levelNum.setBackground(Color.lightGray);
