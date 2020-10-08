@@ -22,7 +22,41 @@ public class MonkeyTesting {
      * tests monkey test without GUI
      */
     @Test
-    public void monkeyTestWithoutGUI () {
+    public void randomMonkeyTestWithoutGUI () {
+        double initialTime = System.currentTimeMillis();
+        Random random = new Random();
+        // fill up direction ArrayList
+        ArrayList<Maze.Direction> directions = new ArrayList<>();
+        directions.add(Maze.Direction.UP);
+        directions.add(Maze.Direction.DOWN);
+        directions.add(Maze.Direction.LEFT);
+        directions.add(Maze.Direction.RIGHT);
+        Main main = new Main();
+        Maze maze = main.getMaze();
+        int x = 0;
+
+        while (x++ < 999 && main.getTimeLeft() > 0) {
+            try {
+                Thread.sleep(100, 0);
+                maze.moveChap(directions.get(random.nextInt(4)));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        double endTime = System.currentTimeMillis();
+        int seconds = (int)((endTime - initialTime)/1000.0);
+        int minutes = (int)(seconds/60.0);
+        seconds -= minutes*60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
+    }
+
+    /**
+     * tests intelligent monkey test without GUI
+     */
+    @Test
+    public void IntelligentMonkeyTestWithoutGUI () {
+        double initialTime = System.currentTimeMillis();
         Random random = new Random();
         // fill up direction ArrayList
         ArrayList<Maze.Direction> directions = new ArrayList<>();
@@ -44,7 +78,7 @@ public class MonkeyTesting {
                         [Math.max(maze.getChap().getLocation().getRow() - 1, 0)];
 
                 // check if tile is a valuable tile
-                if (up instanceof Treasure || up instanceof Key || (up instanceof LockedDoor
+                if (up instanceof Treasure || up instanceof Key || up instanceof Exit || (up instanceof LockedDoor
                         && maze.getChap().backpackContains(((LockedDoor) up).getLockColour()))) {
                     candidates.put(up, 1); // tile is valuable
                 }
@@ -68,7 +102,7 @@ public class MonkeyTesting {
 
                 Tile right = tiles[Math.min(maze.getChap().getLocation().getCol() + 1, tiles[0].length)]
                         [maze.getChap().getLocation().getRow()];
-                if (right instanceof Treasure || right instanceof Key || (right instanceof LockedDoor
+                if (right instanceof Treasure || right instanceof Key|| (right instanceof LockedDoor
                         && maze.getChap().backpackContains(((LockedDoor) right).getLockColour()))) {
                     candidates.put(right, 1);
                 }
@@ -97,14 +131,54 @@ public class MonkeyTesting {
                 e.printStackTrace();
             }
         }
+        double endTime = System.currentTimeMillis();
+        int seconds = (int)((endTime - initialTime)/1000.0);
+        int minutes = (int)(seconds/60.0);
+        seconds -= minutes*60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
     }
 
     /**
-     * tests monkey test with GUI
-     * comments same as previous test
+     * tests random monkey test with GUI
      */
     @Test
-    public void monkeyTestWithGUI () {
+    public void RandomMonkeyTestWithGUI () {
+        double initialTime = System.currentTimeMillis();
+        Random random = new Random();
+        Main main = new Main();
+        GUI gui = main.getGui();
+        ArrayList<KeyEvent> keyEvents = new ArrayList<>();
+        // up
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38));
+        // down
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 40));
+        // left
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37));
+        // right
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
+        int x = 0;
+
+        while (x++ < 999) {
+            try {
+                gui.dispatchEvent(keyEvents.get(random.nextInt(4)));
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        double endTime = System.currentTimeMillis();
+        int seconds = (int)((endTime - initialTime)/1000.0);
+        int minutes = (int)(seconds/60.0);
+        seconds -= minutes*60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
+    }
+
+    /**
+     * tests intelligent monkey test with GUI
+     */
+    @Test
+    public void IntelligentMonkeyTestWithGUI () {
+        double initialTime = System.currentTimeMillis();
         Random random = new Random();
         Main main = new Main();
         Maze maze = main.getMaze();
@@ -120,13 +194,13 @@ public class MonkeyTesting {
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
         int x = 0;
 
-        while (x++ < 999) {
+        while (!maze.isLevelOver()) {
             try {
                 Tile[][] tiles = maze.getTiles();
                 HashMap<Tile, Integer> candidates = new HashMap<>();
 
                 Tile up = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() - 1];
-                if (up instanceof Treasure || up instanceof Key || (up instanceof LockedDoor
+                if (up instanceof Treasure || up instanceof Key || up instanceof Exit || (up instanceof LockedDoor
                         && maze.getChap().backpackContains(((LockedDoor) up).getLockColour()))) {
                     candidates.put(up, 1);
                 }
@@ -171,5 +245,10 @@ public class MonkeyTesting {
                 e.printStackTrace();
             }
         }
+        double endTime = System.currentTimeMillis();
+        int seconds = (int)((endTime - initialTime)/1000.0);
+        int minutes = (int)(seconds/60.0);
+        seconds -= minutes*60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
     }
 }
