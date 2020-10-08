@@ -51,11 +51,6 @@ public class Canvas extends JPanel {
         components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
     }
 
-    @Override
-    public void repaint() {
-        refreshComponents();
-    }
-
     /**
      * Refresh the components for the canvas.
      **/

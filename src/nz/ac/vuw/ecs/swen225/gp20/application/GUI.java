@@ -36,8 +36,8 @@ public class GUI extends JFrame implements KeyListener {
   /**
    * Create the JFrame for the game and sets all the default values.
    *
-   * @param main
-   * @param maze
+   * @param main main
+   * @param maze maze
    **/
   public GUI(Main main, Maze maze){
     this.main = main;
@@ -129,7 +129,7 @@ public class GUI extends JFrame implements KeyListener {
   /**
    * Call the method in the dashboard, to change the time displayed to the new time left
    *
-   * @param timeLeft
+   * @param timeLeft time left
    **/
   public void setTimer(int timeLeft){
     String time = Integer.toString(timeLeft);
@@ -139,7 +139,7 @@ public class GUI extends JFrame implements KeyListener {
   /**
    * Set the maze
    *
-   * @param maze
+   * @param maze maze
    **/
   public void setMaze(Maze maze) {
     this.maze = maze;
@@ -232,6 +232,7 @@ public class GUI extends JFrame implements KeyListener {
       System.out.println("Close dialogue and Resume");
       main.playGame();
     }
-    canvas.repaint();
+    canvas.refreshComponents();
+    //canvas.repaint();
   }
 }

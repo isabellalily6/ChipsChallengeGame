@@ -24,6 +24,7 @@ public class Key extends Tile {
         this.colour = colour;
     }
 
+
     /**
      * @return The colour of this key
      */

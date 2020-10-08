@@ -39,8 +39,16 @@ public class LevelLoader {
 	public static Level load(int levelNumber) {
 		String filename = "levels/level" + levelNumber + ".json";
 		
-		int mapWidth = 15;
-		int mapHeight = 15;
+		int mapWidth;
+		int mapHeight;
+		
+		if(levelNumber == 1) {
+			mapWidth = 15;
+			mapHeight = 15;
+		} else {
+			mapWidth = 18;
+			mapHeight = 11;
+		}
 		
 		Tile[][] map = new Tile[mapWidth][mapHeight]; 
 		int treasures = 0; //total treasures in the level
@@ -104,6 +112,12 @@ public class LevelLoader {
 					
 				} else if(tileType.equals("Exit")) {
 					map[col][row] = new Exit(col, row);
+					
+				} else if(tileType.equals("Lava")) {
+					map[col][row] = new Lava(col, row);
+					
+				} else if(tileType.equals("Block")) {
+					map[col][row] = new Block(col, row);
 					
 				}
 				
