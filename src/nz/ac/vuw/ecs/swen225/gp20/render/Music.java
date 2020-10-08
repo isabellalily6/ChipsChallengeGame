@@ -18,31 +18,37 @@ public class Music {
      * Create a music object.
      **/
     public Music() {
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(musicFile));
-            clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
-            e.printStackTrace();
-        }
+        Runnable runnable = () -> {
+            try {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(musicFile));
+                clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
+            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                e.printStackTrace();
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
-    /**
-     * Play the music.
-     **/
-    public void play() {
-        if (clip.isRunning()) clip.stop();
-        clip.setFramePosition(0);
-        clip.start();
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
-    }
+//    /**
+//     * Play the music.
+//     **/
+//    public void play() {
+//        if (clip.isRunning()) clip.stop();
+//        clip.setFramePosition(0);
+//        clip.start();
+//        clip.loop(Clip.LOOP_CONTINUOUSLY);
+//    }
 
-    /**
-     * Stop the music.
-     **/
-    public void stop() {
-        if (!clip.isRunning()) return;
-        clip.stop();
-        clip.setFramePosition(0);
-    }
+//    /**
+//     * Stop the music.
+//     **/
+//    public void stop() {
+//        if (!clip.isRunning()) return;
+//        clip.stop();
+//        clip.setFramePosition(0);
+//    }
 }
