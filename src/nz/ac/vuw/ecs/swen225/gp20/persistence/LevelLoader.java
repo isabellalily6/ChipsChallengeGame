@@ -23,6 +23,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
 import nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
@@ -52,6 +53,8 @@ public class LevelLoader {
 		
 		Tile[][] map = new Tile[mapWidth][mapHeight]; 
 		int treasures = 0; //total treasures in the level
+		Player chap;
+		ArrayList<Block> blocks = new ArrayList<Block>()
 		
 		try {
 			
@@ -117,7 +120,13 @@ public class LevelLoader {
 					map[col][row] = new Lava(col, row);
 					
 				} else if(tileType.equals("Block")) {
-					map[col][row] = new Block(col, row);
+					blocks.add(new Block(col, row));
+					map[col][row] = new Free(col, row);
+					
+				}else if(tileType.equals("Player")) {
+					Tile playerTile = new Free(col, row);
+					chap = new Player(playerTile);
+					map[col][row] = playerTile;
 					
 				}
 				
@@ -127,7 +136,11 @@ public class LevelLoader {
 			e.printStackTrace();
 		}
 		
-		return new Level(map, treasures);
+		if(levelNumber == 1) {
+			return new Level(map, treasures, chap);
+		} else {
+			return new Level(map, treasures, chap, blocks);
+		}
 	}
 	
 	/**

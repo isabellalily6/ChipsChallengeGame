@@ -96,7 +96,7 @@
 	{"type": "Wall"},
 	{"type": "Treasure"},
 	{"type": "Free"},
-	{"type": "Free"},
+	{"type": "Player"},
 	{"type": "Free"},
 	{"type": "Treasure"},
 	{"type": "Wall"},
