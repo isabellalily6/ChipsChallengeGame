@@ -108,7 +108,7 @@
 	{"type": "Free"},
 	{"type": "Block"},
 	{"type": "Block"},
-	{"type": "Free"},
+	{"type": "Player"},
 	{"type": "InfoField", "info": "Push blocks into lava to make a bridge. Watch out for the cobra."},
 	{"type": "Free"},
 	{"type": "Wall"},
