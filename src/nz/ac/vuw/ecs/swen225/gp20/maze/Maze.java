@@ -94,7 +94,7 @@ public class Maze {
                 checkArgument(a.getLocation().getCol() < cols - 1, "Actor cannot move any further right!");
                 newLoc = tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()];
                 break;
-        }
+           }
         //TODO: better error handling
         checkNotNull(newLoc);
         if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) {

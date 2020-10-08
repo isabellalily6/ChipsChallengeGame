@@ -22,7 +22,7 @@ public class MazeTests {
 
     /*
          | w | w | ex| w |
-         | w | w | el| w |
+         | w | w | el| i |
          | t | bd| C | t |
          | w | rd| rk| bk|
     ex - exit
@@ -48,6 +48,7 @@ public class MazeTests {
         tiles[2][1] = new ExitLock(2, 1);
         tiles[2][2] = new Free(2, 2);
         tiles[2][3] = new Key(2, 3, Key.Colour.RED);
+        tiles[3][1] = new InfoField(3, 1, "Test");
         tiles[3][2] = new Treasure(3, 2);
         tiles[3][3] = new Key(3, 3, Key.Colour.BLUE);
 
@@ -188,6 +189,7 @@ public class MazeTests {
     public void moveIntoWall() {
         var maze = initTestMaze();
         maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.UP);
         var beforeMove = getChapLocation(maze);
         maze.moveChap(Maze.Direction.UP);
         assertChapPos(maze, beforeMove);
@@ -281,6 +283,38 @@ public class MazeTests {
         maze.moveChap(Maze.Direction.UP);
         assert (maze.isLevelOver());
     }
+
+    @Test
+    public void infoFieldDisplaysInfo() {
+        var maze = initTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        maze.moveChap(Maze.Direction.UP);
+        assertEquals("Test", ((InfoField) maze.getChap().getLocation()).getInfo());
+    }
+
+    @Test
+    public void invalidActorNameThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Actor a = new Actor(new Free(0, 0), "") {
+            };
+        });
+    }
+
+    @Test
+    public void negativeTotalTreasuresThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Maze m = new Maze(new Tile[][]{{new Free(0, 0)}}, -1);
+        });
+    }
+
+   /* @Test
+    public void badDirectionOnMoveActorThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            var maze = initTestMaze();
+            maze.moveChap();
+        });
+    }*/
+
 
     static class Location {
         private final int x;

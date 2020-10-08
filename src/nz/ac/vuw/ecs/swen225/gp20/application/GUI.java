@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
-import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 
@@ -14,6 +13,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Create a GUI which displays the game on the screen
+ **/
 public class GUI extends JFrame implements KeyListener {
   // initialize screen sizes
   private final int screenWidth = 900;
@@ -41,7 +43,7 @@ public class GUI extends JFrame implements KeyListener {
     this.main = main;
     this.maze = maze;
     this.canvas = new Canvas(maze);
-    this.dashboard = new Dashboard(maze);
+    this.dashboard = new Dashboard();
 
     // set the frame requirements
     addKeyListener(this);
@@ -188,19 +190,19 @@ public class GUI extends JFrame implements KeyListener {
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       maze.moveChap(Maze.Direction.UP);
-      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP, main.getTimeLeft());
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       maze.moveChap(Maze.Direction.DOWN);
-      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN, main.getTimeLeft());
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       maze.moveChap(Maze.Direction.RIGHT);
-      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.RIGHT);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.RIGHT, main.getTimeLeft());
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       maze.moveChap(Maze.Direction.LEFT);
-      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.LEFT);
+      RecordAndPlay.addMove(maze.getChap(), Maze.Direction.LEFT, main.getTimeLeft());
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
@@ -209,7 +211,7 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
-      LevelLoader.saveGameState(LevelLoader.getGameState(main));
+      main.saveFile();
       main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game

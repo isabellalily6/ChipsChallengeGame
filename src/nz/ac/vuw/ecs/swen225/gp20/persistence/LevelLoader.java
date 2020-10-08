@@ -30,10 +30,11 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
 public class LevelLoader {
 	
 	/**
-	 * Reads a JSON file describing the level
+	 * Reads a JSON file describing the level and creates a new Level object
 	 * TODO: Don't hard code height and width
 	 * 
 	 * @param levelNumber
+	 * @return Level
 	 */
 	public static Level load(int levelNumber) {
 		String filename = "levels/level" + levelNumber + ".json";
@@ -116,8 +117,9 @@ public class LevelLoader {
 	}
 	
 	/**
-	 * Gets the current game state and returns a string
+	 * Gets the current game state as a JsonObectBuilder
 	 * @param game
+	 * @return JsonObjectBuilder
 	 */
 	public static JsonObjectBuilder getGameState(Main application) {
 		Maze game = application.getMaze();
@@ -194,7 +196,7 @@ public class LevelLoader {
 	}
 	
 	/**
-	 * Saves the game state string to a json file
+	 * Saves the game state to levels/gameState.json
 	 * @param toSave 
 	 */
 	public static void saveGameState(JsonObjectBuilder toSave) {
