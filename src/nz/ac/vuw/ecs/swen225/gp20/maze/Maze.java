@@ -30,6 +30,7 @@ public class Maze {
     private final Player chap;
     private List<Cobra> cobras;
     private List<Block> blocks;
+    private Thread cobraThread;
     private int treasuresLeft;
     private int level;
     private boolean levelOver;
@@ -73,7 +74,9 @@ public class Maze {
         this.level = level;
         if (level == 2) {
             //this.blocks = LevelLoader.load(level).getBlocks();
+            //this.cobras = LevelLoader.load(level).getCobras();
             setBlocks();
+            this.cobraThread = new MovementThreadHandler(this);
         }
     }
 
@@ -130,8 +133,10 @@ public class Maze {
         a.getLocation().onExit();
 
         if (a == chap) {
-            if (newLoc instanceof Exit) levelOver = true;
-            else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
+            if (newLoc instanceof Exit) {
+                levelOver = true;
+                cobraThread.interrupt();
+            } else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
             else {
                 //if this method returns false, chap is not allowed to move to newLoc
                 if (!interactWithTile(newLoc)) return;
@@ -160,6 +165,7 @@ public class Maze {
         } else if (loc instanceof Lava) {
             //TODO: potentially make levelOver an int 0=not over 1=win 2=die
             levelOver = true;
+            cobraThread.interrupt();
             return false;
         }
 
