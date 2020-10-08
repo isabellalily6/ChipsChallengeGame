@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.json.Json;
@@ -27,6 +28,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
 
 public class LevelLoader {
 	
@@ -53,7 +55,7 @@ public class LevelLoader {
 		
 		Tile[][] map = new Tile[mapWidth][mapHeight]; 
 		int treasures = 0; //total treasures in the level
-		Player chap;
+		Player chap = null;
 		ArrayList<Block> blocks = new ArrayList<Block>()
 		
 		try {

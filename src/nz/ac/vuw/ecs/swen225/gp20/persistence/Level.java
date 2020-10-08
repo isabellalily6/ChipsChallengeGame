@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
 
 public class Level {
 	
