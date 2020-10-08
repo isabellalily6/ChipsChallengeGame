@@ -37,7 +37,6 @@ public class MonkeyTesting {
 
         while (x++ < 999 && main.getTimeLeft() > 0) {
             try {
-                Thread.sleep(100, 0);
                 maze.moveChap(directions.get(random.nextInt(4)));
             }
             catch (Exception e) {
@@ -68,9 +67,8 @@ public class MonkeyTesting {
         Maze maze = main.getMaze();
         int x = 0;
 
-        while (x++ < 999 && main.getTimeLeft() > 0) {
+        while (!maze.isLevelOver()) {
             try {
-                Thread.sleep(100, 0);
                 Tile[][] tiles = maze.getTiles();
                 HashMap<Tile, Integer> candidates = new HashMap<>();
 

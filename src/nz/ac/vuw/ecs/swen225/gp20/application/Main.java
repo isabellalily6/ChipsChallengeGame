@@ -45,7 +45,7 @@ public class Main {
     maze = new Maze(level);
     gui = new GUI(this, maze);
     gui.setUpGui();
-    //startTimer();
+    startTimer();
   }
 
   /**
