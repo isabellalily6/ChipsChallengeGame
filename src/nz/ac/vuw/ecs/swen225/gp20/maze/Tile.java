@@ -15,6 +15,7 @@ public abstract class Tile {
     private final boolean accessible;
     private final boolean freeOnEntry;
     private boolean occupied;
+    private boolean hasBlock = false;
 
     /**
      * Initializes all required fields
@@ -113,6 +114,20 @@ public abstract class Tile {
      */
     public int getRow() {
         return row;
+    }
+
+    /**
+     * @return whether there is a block on this tile
+     */
+    public boolean hasBlock() {
+        return hasBlock;
+    }
+
+    /**
+     * @param hasBlock whether there is now a block on this tile
+     */
+    public void setHasBlock(boolean hasBlock) {
+        this.hasBlock = hasBlock;
     }
 
     /**
