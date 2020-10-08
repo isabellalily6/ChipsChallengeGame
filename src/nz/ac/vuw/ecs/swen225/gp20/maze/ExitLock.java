@@ -8,8 +8,6 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
  * @author Benjamin Doornbos 300487256
  */
 public class ExitLock extends Tile {
-    //TODO: determine how this will get changed to an exit tile
-
     /**
      * Creates new ExitLock tile
      *

@@ -3,6 +3,8 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -26,7 +28,8 @@ public class Maze {
     private final Tile[][] tiles;
     private final int totalTreasures;
     private final Player chap;
-    //private List<Actor> actors;
+    private List<Cobra> cobras;
+    private List<Block> blocks;
     private int treasuresLeft;
     private int level;
     private boolean levelOver;
@@ -48,6 +51,19 @@ public class Maze {
     }
 
     /**
+     * ------TEST CONSTRUCTOR---------
+     *
+     * @param tiles          the tiles that make up the maze
+     * @param totalTreasures the total treasures that are in this level
+     * @param blocks         list of blocks to be placed on the level
+     */
+    public Maze(Tile[][] tiles, int totalTreasures, List<Block> blocks) {
+        this(tiles, totalTreasures);
+        this.blocks = blocks;
+        setBlocks();
+    }
+
+    /**
      * Generates a Maze from JSON file corresponding to the level number provided
      *
      * @param level the level for this Maze to load
@@ -55,6 +71,17 @@ public class Maze {
     public Maze(int level) {
         this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures());
         this.level = level;
+        if (level == 2) {
+            //this.blocks = LevelLoader.load(level).getBlocks();
+            setBlocks();
+        }
+    }
+
+    private void setBlocks() {
+        for (Block b : blocks) {
+            b.setLocation(tiles[b.getCol()][b.getRow()]);
+            b.getLocation().setHasBlock(true);
+        }
     }
 
     /**
@@ -92,30 +119,28 @@ public class Maze {
                 checkArgument(a.getLocation().getCol() < cols - 1, "Actor cannot move any further right!");
                 newLoc = tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()];
                 break;
-           }
+        }
         //TODO: better error handling
         checkNotNull(newLoc);
-        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) {
-            a.setDir(dir);
-            return;
-        }
+
+        a.setDir(dir);
+
+        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) return;
 
         a.getLocation().onExit();
+
         if (a == chap) {
             if (newLoc instanceof Exit) levelOver = true;
+            else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
             else {
                 //if this method returns false, chap is not allowed to move to newLoc
-                if (!interactWithTile(newLoc)) {
-                    a.setDir(dir);
-                    return;
-                }
+                if (!interactWithTile(newLoc)) return;
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
                 newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
             }
         }
         newLoc.onEntry(a);
         a.setLocation(newLoc);
-        a.setDir(dir);
 
     }
 
@@ -132,6 +157,10 @@ public class Maze {
             var ld = (LockedDoor) loc;
             //TODO: better error handling
             if (!chap.backpackContains(ld.getLockColour())) return false;
+        } else if (loc instanceof Lava) {
+            //TODO: potentially make levelOver an int 0=not over 1=win 2=die
+            levelOver = true;
+            return false;
         }
 
         if (loc.isFreeOnEntry()) setFree(loc);
@@ -148,6 +177,37 @@ public class Maze {
             for (int y = 0; y < rows; y++) {
                 if (tiles[x][y] instanceof ExitLock) setFree(tiles[x][y]);
             }
+        }
+    }
+
+    private void moveBlock(Tile loc, Direction dir) {
+        Optional<Block> opt = blocks.stream().filter(b -> b.getLocation().equals(loc)).findFirst();
+        if (opt.isEmpty()) throw new IllegalArgumentException("No block at this location");
+        Block b = opt.get();
+
+        Tile newLoc = null;
+        switch (dir) {
+            case UP:
+                newLoc = tiles[loc.getCol()][loc.getRow() - 1];
+                break;
+            case DOWN:
+                newLoc = tiles[loc.getCol()][loc.getRow() + 1];
+                break;
+            case LEFT:
+                newLoc = tiles[loc.getCol() - 1][loc.getRow()];
+                break;
+            case RIGHT:
+                newLoc = tiles[loc.getCol() + 1][loc.getRow()];
+                break;
+        }
+
+        if (newLoc instanceof Free) {
+            b.getLocation().setHasBlock(false);
+            b.setLocation(newLoc);
+            b.getLocation().setHasBlock(true);
+        } else if (newLoc instanceof Lava) {
+            blocks.remove(b);
+            setFree(newLoc);
         }
     }
 
@@ -192,6 +252,13 @@ public class Maze {
      */
     public int getLevel() {
         return level;
+    }
+
+    /**
+     * @return a list of all the cobras in this game
+     */
+    public List<Cobra> getCobras() {
+        return cobras;
     }
 
     /**
