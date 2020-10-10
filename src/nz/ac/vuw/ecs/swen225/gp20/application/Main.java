@@ -219,6 +219,16 @@ public class Main {
     return timeLeft;
   }
 
+
+  /**
+   * Set the time left
+   *
+   * @param time
+   **/
+  public void setTimeLeft(int time) {
+    timeLeft = time;
+  }
+  
   /**
    * Creates a new instance of main to run the ChapsChallenge game
    *
