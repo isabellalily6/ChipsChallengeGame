@@ -132,7 +132,7 @@ public class Main {
    * Replay a recording of a game
    **/
   public void replayRecording(){
-
+    RecordAndPlay.playRecording(this);
   }
 
   /**
