@@ -3,6 +3,8 @@ package nz.ac.vuw.ecs.swen225.gp20.application;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
+import nz.ac.vuw.ecs.swen225.gp20.render.Music;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -45,6 +47,7 @@ public class Main {
     maze = new Maze(level);
     gui = new GUI(this, maze);
     gui.setUpGui();
+    new Music();
     startTimer();
   }
 
