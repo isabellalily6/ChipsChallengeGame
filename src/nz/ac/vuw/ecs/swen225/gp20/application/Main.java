@@ -59,6 +59,11 @@ public class Main {
   public Main(Boolean monkeyTest) {
     // create the maze and the gui for the game
     maze = new Maze(level);
+    if(monkeyTest){
+      gui = new GUI(this, maze);
+      gui.setUpGui();
+    }
+
   }
 
   /**
@@ -228,7 +233,7 @@ public class Main {
   public void setTimeLeft(int time) {
     timeLeft = time;
   }
-  
+
   /**
    * Creates a new instance of main to run the ChapsChallenge game
    *
