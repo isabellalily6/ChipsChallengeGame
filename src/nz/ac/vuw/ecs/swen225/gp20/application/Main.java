@@ -23,12 +23,12 @@ import java.util.TimerTask;
  */
 public class Main {
   // initialize the game variables
-  private final GUI gui;
+  private GUI gui;
   private Maze maze;
 
   // initialise the game information
-  private final int level = 1;
-  private final int maxTime = 100;
+  private int level = 1;
+  private int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -49,6 +49,21 @@ public class Main {
     gui.setUpGui();
     new Music();
     startTimer();
+  }
+
+
+  /**
+   * Create a new instance of the game which doesnt start a timer
+   * or create the GUI for testing purposes
+   **/
+  public Main(Boolean monkeyTest) {
+    // create the maze and the gui for the game
+    maze = new Maze(level);
+    if(monkeyTest){
+      gui = new GUI(this, maze);
+      gui.setUpGui();
+    }
+
   }
 
   /**
@@ -117,7 +132,7 @@ public class Main {
    * Replay a recording of a game
    **/
   public void replayRecording(){
-
+    RecordAndPlay.playRecording(this);
   }
 
   /**
@@ -207,6 +222,16 @@ public class Main {
    **/
   public int getTimeLeft() {
     return timeLeft;
+  }
+
+
+  /**
+   * Set the time left
+   *
+   * @param time
+   **/
+  public void setTimeLeft(int time) {
+    timeLeft = time;
   }
 
   /**
