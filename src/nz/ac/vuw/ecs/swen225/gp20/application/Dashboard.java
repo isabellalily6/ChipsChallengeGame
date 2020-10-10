@@ -1,10 +1,15 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
+
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Creates a dashboard on the GUI which includes:
@@ -26,15 +31,20 @@ public class Dashboard extends JPanel {
   private JLabel chips;
   private JLabel chipsNum;
   private JLabel chipsCollected;
+  private ArrayList<JLabel> treasuresCollected = new ArrayList<>();
 
   // Two panels which the dashboard consists of
   private JPanel topPanel = new JPanel(new GridLayout(7, 1));
   private JPanel bottomPanel = new JPanel(new GridLayout(2, 4));
 
+  Maze maze;
+  Canvas canvas;
+
   /**
    * Create a new instance of dashboard and set the default values
    **/
-  public Dashboard(){
+  public Dashboard(Maze maze, Canvas canvas){
+    this.maze = maze;
     // Set up the components of the dashboard
     setLayout(new BorderLayout());
     setBackground(Color.lightGray);
@@ -78,7 +88,7 @@ public class Dashboard extends JPanel {
     timeNum.setBorder(border);
 
     // create the chips label
-    chips = new JLabel("CHIPS LEFT", SwingConstants.CENTER);
+    chips = new JLabel("TREASURES LEFT", SwingConstants.CENTER);
     chips.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // create the chips number label
@@ -88,12 +98,13 @@ public class Dashboard extends JPanel {
 
 
     // create the chips collected label
-    chipsCollected = new JLabel("CHIPS COLLECTED", SwingConstants.CENTER);
+    chipsCollected = new JLabel("COLLECTED", SwingConstants.CENTER);
     chipsCollected.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // Create the bottom panel which contains the Chaps Items
     for(int i = 0; i < 8; i++){
       JLabel label = new JLabel();
+      treasuresCollected.add(label);
       // Set the boarder of the items
       border = BorderFactory.createLineBorder(Color.DARK_GRAY, 2);
       label.setBorder(border);
@@ -116,6 +127,30 @@ public class Dashboard extends JPanel {
 
     add(topPanel, BorderLayout.CENTER);
     add(bottomPanel, BorderLayout.SOUTH);
+  }
+
+  public void updateDashboard(){
+    Set<Key.Colour> playersBackback = maze.getChap().getBackpack();
+    int i = 0;
+    for(Key.Colour colour: playersBackback){
+      JLabel label = treasuresCollected.get(i);
+      label.setIcon(canvas.makeImageIcon(getFile(colour)));
+      i++;
+    }
+  }
+
+  public String getFile(Key.Colour colour){
+    String file = "data/";
+    if(colour == Key.Colour.RED){
+      file += "redKey.png";
+    }
+    else if(colour == Key.Colour.BLUE){
+      file += "blueKey.png";
+    }
+    else if(colour == Key.Colour.GREEN){
+      file += "greenKey.png";
+    }
+    return file;
   }
 
   /**

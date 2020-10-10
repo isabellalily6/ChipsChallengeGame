@@ -43,7 +43,7 @@ public class GUI extends JFrame implements KeyListener {
     this.main = main;
     this.maze = maze;
     this.canvas = new Canvas(maze);
-    this.dashboard = new Dashboard();
+    this.dashboard = new Dashboard(maze, canvas);
 
     // set the frame requirements
     addKeyListener(this);
@@ -79,6 +79,7 @@ public class GUI extends JFrame implements KeyListener {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         main.startGame(main.getLevel());
+        System.out.println("test");
         gameLost.dispose();
       }
     });
@@ -233,6 +234,7 @@ public class GUI extends JFrame implements KeyListener {
       main.playGame();
     }
     canvas.refreshComponents();
+    dashboard.updateDashboard();
     canvas.repaint();
   }
 }
