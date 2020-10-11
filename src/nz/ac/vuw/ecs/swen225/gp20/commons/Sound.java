@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.gp20.render;
+package nz.ac.vuw.ecs.swen225.gp20.commons;
 
 /**
  * Objects of this class represent a sound to play in the game.
