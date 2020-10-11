@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.json.Json;
@@ -23,9 +24,11 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
 import nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
 
 public class LevelLoader {
 	
@@ -39,11 +42,21 @@ public class LevelLoader {
 	public static Level load(int levelNumber) {
 		String filename = "levels/level" + levelNumber + ".json";
 		
-		int mapWidth = 15;
-		int mapHeight = 15;
+		int mapWidth;
+		int mapHeight;
+		
+		if(levelNumber == 1) {
+			mapWidth = 15;
+			mapHeight = 15;
+		} else {
+			mapWidth = 18;
+			mapHeight = 11;
+		}
 		
 		Tile[][] map = new Tile[mapWidth][mapHeight]; 
 		int treasures = 0; //total treasures in the level
+		Player chap = null;
+		ArrayList<Block> blocks = new ArrayList<Block>()
 		
 		try {
 			
@@ -105,6 +118,18 @@ public class LevelLoader {
 				} else if(tileType.equals("Exit")) {
 					map[col][row] = new Exit(col, row);
 					
+				} else if(tileType.equals("Lava")) {
+					map[col][row] = new Lava(col, row);
+					
+				} else if(tileType.equals("Block")) {
+					blocks.add(new Block(col, row));
+					map[col][row] = new Free(col, row);
+					
+				}else if(tileType.equals("Player")) {
+					Tile playerTile = new Free(col, row);
+					chap = new Player(playerTile);
+					map[col][row] = playerTile;
+					
 				}
 				
 			}
@@ -113,7 +138,11 @@ public class LevelLoader {
 			e.printStackTrace();
 		}
 		
-		return new Level(map, treasures);
+		if(levelNumber == 1) {
+			return new Level(map, treasures, chap);
+		} else {
+			return new Level(map, treasures, chap, blocks);
+		}
 	}
 	
 	/**
