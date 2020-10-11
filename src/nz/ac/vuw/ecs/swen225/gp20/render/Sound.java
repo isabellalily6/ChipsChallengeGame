@@ -14,7 +14,7 @@ public enum Sound {
     STEP("data/step.wav"),
     COBRA("data/cobra.wav");
 
-    String filename;
+    private final String filename;
 
     /**
      * Construct a new sound object.
@@ -23,5 +23,12 @@ public enum Sound {
      **/
     Sound(String filename) {
         this.filename = filename;
+    }
+
+    /**
+     * @return the filename for this sound
+     */
+    public String getFilename() {
+        return filename;
     }
 }
