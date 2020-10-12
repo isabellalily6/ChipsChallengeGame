@@ -234,7 +234,9 @@ public class GUI extends JFrame implements KeyListener {
       main.playGame();
     }
     canvas.refreshComponents();
+    Thread.yield();
     dashboard.updateDashboard();
+    canvas.validate();
     canvas.repaint();
   }
 }

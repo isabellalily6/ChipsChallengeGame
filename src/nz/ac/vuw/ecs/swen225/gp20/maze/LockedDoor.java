@@ -33,6 +33,6 @@ public class LockedDoor extends Tile {
 
     @Override
     public JsonObjectBuilder getJson() {
-        return super.getJson().add("color", lockColour.getName());
+        return super.getJson().add("color", lockColour.toString());
     }
 }
