@@ -135,6 +135,6 @@ public abstract class Tile {
      */
     public JsonObjectBuilder getJson() {
         return Json.createObjectBuilder()
-                .add("type", getClass().getSimpleName());
+                .add("type", getClass().getSimpleName()).add("col", col).add("row", row);
     }
 }

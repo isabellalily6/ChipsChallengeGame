@@ -1,8 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
+import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -188,21 +190,22 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent keyEvent) {
+    Sound sound = null;
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
-      maze.moveChap(Maze.Direction.UP);
+      sound = maze.moveChap(Maze.Direction.UP);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP, main.getTimeLeft());
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
-      maze.moveChap(Maze.Direction.DOWN);
+      sound = maze.moveChap(Maze.Direction.DOWN);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN, main.getTimeLeft());
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
-      maze.moveChap(Maze.Direction.RIGHT);
+      sound = maze.moveChap(Maze.Direction.RIGHT);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.RIGHT, main.getTimeLeft());
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
-      maze.moveChap(Maze.Direction.LEFT);
+      sound = maze.moveChap(Maze.Direction.LEFT);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.LEFT, main.getTimeLeft());
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
@@ -220,19 +223,20 @@ public class GUI extends JFrame implements KeyListener {
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_P){
       //CTRL-P  - start a new game at the last unfinished level
       System.out.println("Start a new game as last unfinished level");
-    }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1){
+    }else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1) {
       //CTRL-1 - start a new game at level 1
       main.startGame(1);
       System.out.println("Start new game a level 1");
-    }else if(keyEvent.getKeyCode() == KeyEvent.VK_SPACE){
+    } else if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE) {
       //SPACE - pause the game and display a “game is paused” dialog
       System.out.println("Pause and display");
       main.pauseGame();
-    }else if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
+    } else if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
       //ESC - close the “game is paused” dialog and resume the game
       System.out.println("Close dialogue and Resume");
       main.playGame();
     }
+    if (sound != null) SoundEffect.play(sound);
     canvas.refreshComponents();
     dashboard.updateDashboard();
     canvas.repaint();
