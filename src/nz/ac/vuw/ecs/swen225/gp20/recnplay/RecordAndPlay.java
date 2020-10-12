@@ -80,10 +80,6 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static void loadRecording(Main m) {
-        if (playRecordingThread != null) {
-            playRecordingThread.interrupt();
-        }
-
         File jsonFile = getJsonFileToLoad(m.getGui());
 
         if (jsonFile == null) return;
@@ -96,14 +92,14 @@ public class RecordAndPlay {
             var maze = loadGameState(gameStateJson);
 
             m.setMaze(maze);
-            m.getGui().getCanvas().setMaze(maze);
             m.getGui().setMaze(maze);
+            m.getGui().getCanvas().setMaze(maze);
             m.getGui().getCanvas().refreshComponents();
             m.getGui().getCanvas().repaint();
 
             var movesFromJson = jsonArr.getJsonObject(1);
             var moves = loadMoves(movesFromJson, maze.getChap());
-
+            loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
             playRecording(m);
@@ -174,29 +170,67 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static void playRecording(Main m) {
-        if (loadedMoves.isEmpty()) return;
+//        if (loadedMoves.isEmpty()) return;
+//
+//        //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
+//        var movesToPlay = new ArrayList<>(loadedMoves);
+//
+//        //we want to keep track of where we are, for allowing the user to step through the moves
+//        moveIndex = 0;
+//        playingRecording = true;
+//        recordingPaused = false;
+//        m.getTimer().cancel();
+//        m.getTimer().purge();
+//        m.startTimer();
+//        m.setTimeLeft(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
+//        m.getGui().setTimer(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
+        if (playRecordingThread != null) {
+            playRecordingThread.interrupt();
 
-        //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
-        var movesToPlay = new ArrayList<>(loadedMoves);
+            if (!lock.tryLock()) {
+                lock.unlock();
+            }
 
-        //we want to keep track of where we are, for allowing the user to step through the moves
-        moveIndex = 0;
-        playingRecording = true;
-        recordingPaused = false;
-        m.getTimer().cancel();
-        m.getTimer().purge();
-        m.startTimer();
-        m.setTimeLeft(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
-        m.getGui().setTimer(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
+        }
+        playRecordingThread = new PlayerThread(m);
+        playRecordingThread.start();
+    }
 
-        new Thread(() -> {
+    static class PlayerThread extends Thread {
+        private final Main main;
+
+        /**
+         * @param main main class which is running the replay
+         */
+        public PlayerThread(Main main) {
+            this.main = main;
+        }
+
+
+        @Override
+        public void run() {
+            if (loadedMoves.isEmpty()) return;
+
+            //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
+            var movesToPlay = new ArrayList<>(loadedMoves);
+
+            //we want to keep track of where we are, for allowing the user to step through the moves
+            moveIndex = 0;
+            playingRecording = true;
+            recordingPaused = false;
+            main.getTimer().cancel();
+            main.getTimer().purge();
+            main.startTimer();
+            main.setTimeLeft(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
+            main.getGui().setTimer(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
+
+
             //if this is different to the moveIndex we know that the user has stepped through
             int prevMoveIndex = 0;
 
-            int timeLeft = m.getTimeLeft();
+            int timeLeft = main.getTimeLeft();
 
             while (!movesToPlay.isEmpty()) {
-                lock.lock();
                 if (!playingRecording) {
                     moveIndex = -1;
                     recordingPaused = true;
@@ -252,27 +286,35 @@ public class RecordAndPlay {
 //                if (timeLeft == m.getTimeLeft()) {
 //                  continue;
 //                }
-
-                timeLeft = m.getTimeLeft();
-                var copiedList = new ArrayList<>(movesToPlay).stream().filter(move -> move.getTimeLeft() == m.getTimeLeft()).collect(Collectors.toList());
+                timeLeft = main.getTimeLeft();
+                var copiedList = new ArrayList<>(movesToPlay).stream().filter(move -> move.getTimeLeft() == main.getTimeLeft()).collect(Collectors.toList());
 
                 for (var move : copiedList) {
                     //We want to play each move at this second
-                    m.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), m.getGui()));
+                    main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
+                    main.getGui().getCanvas().refreshComponents();
+                    main.getGui().getCanvas().repaint();
+                    // m.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), m.getGui()));
                     try {
-                        Thread.sleep(500);
+                        Thread.sleep(200);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        playRecordingThread.interrupt();
+                        return;
+                    } finally {
+                        if (Thread.holdsLock(lock)) {
+                            lock.unlock();
+                        }
                     }
                     movesToPlay.remove(move);
                     moveIndex++;
                     prevMoveIndex = moveIndex;
                 }
                 timeLeft--;
-                m.setTimeLeft(timeLeft);
-                m.getGui().setTimer(timeLeft);
+                main.setTimeLeft(timeLeft);
+                main.getGui().setTimer(timeLeft);
             }
-        }).start();
+        }
+
     }
 
     private static Maze loadGameState(JsonObject gameStateJson) {

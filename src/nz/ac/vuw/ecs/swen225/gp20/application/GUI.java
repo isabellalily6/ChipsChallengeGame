@@ -186,13 +186,17 @@ public class GUI extends JFrame implements KeyListener {
   public void keyPressed(KeyEvent keyEvent) {
   }
 
+  public Maze getMaze() {
+    return maze;
+  }
+
   @Override
   public void keyReleased(KeyEvent keyEvent) {
     if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       maze.moveChap(Maze.Direction.UP);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP, main.getTimeLeft());
-    }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
+    } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       maze.moveChap(Maze.Direction.DOWN);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN, main.getTimeLeft());
