@@ -123,6 +123,7 @@ public class RecordAndPlay {
         lock.lock();
         if (isRecording && !playingRecording) {
             recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size() - 1));
+            lock.unlock();
             return true;
         }
         lock.unlock();
