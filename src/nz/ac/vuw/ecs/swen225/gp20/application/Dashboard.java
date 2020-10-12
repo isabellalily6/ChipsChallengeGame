@@ -126,6 +126,9 @@ public class Dashboard extends JPanel {
     add(bottomPanel, BorderLayout.SOUTH);
   }
 
+  /**
+   * Update the dashboard
+   **/
   public void updateDashboard(){
     Set<Key.Colour> playersBackback = maze.getChap().getBackpack();
     int i = 0;
@@ -133,6 +136,16 @@ public class Dashboard extends JPanel {
       JLabel label = treasuresCollected.get(i);
       label.setIcon(canvas.makeImageIcon(getFile(colour)));
       i++;
+    }
+    chipsNum.setText(maze.getTreasuresLeft() + "");
+  }
+
+  /**
+   * Reset the dashboard
+   **/
+  public void resetDashboard(){
+    for(JLabel label: treasuresCollected){
+      label.setIcon(null);
     }
     chipsNum.setText(maze.getTreasuresLeft() + "");
   }
@@ -149,6 +162,16 @@ public class Dashboard extends JPanel {
       file += "greenKey.png";
     }
     return file;
+  }
+
+  /**
+   * Update the maze in the dashboard to the new maze
+   *
+   * @param maze
+   **/
+  public void setMaze(Maze maze){
+    this.maze = maze;
+    this.resetDashboard();
   }
 
   /**
