@@ -146,6 +146,7 @@ public class GUI extends JFrame implements KeyListener {
    **/
   public void setMaze(Maze maze) {
     this.maze = maze;
+    dashboard.setMaze(maze);
   }
 
   /**
