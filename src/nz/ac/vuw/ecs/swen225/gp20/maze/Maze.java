@@ -1,8 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
-import nz.ac.vuw.ecs.swen225.gp20.render.Sound;
-import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
 import java.util.Arrays;
 import java.util.List;
@@ -93,9 +92,10 @@ public class Maze {
      * Moves Chap in given direction. This is a special case of moveActor but for only Chap.
      *
      * @param dir Direction to move
+     * @return the sound that should be played, null if there is no sound to be played
      */
-    public void moveChap(Direction dir) {
-        moveActor(chap, dir);
+    public Sound moveChap(Direction dir) {
+        return moveActor(chap, dir);
     }
 
     /**
@@ -103,8 +103,9 @@ public class Maze {
      *
      * @param a   Actor to move
      * @param dir Direction to move
+     * @return the sound that should be played, null if there is no sound to be played
      */
-    public void moveActor(Actor a, Direction dir) {
+    public Sound moveActor(Actor a, Direction dir) {
         checkNotNull(a);
         Tile newLoc = null;
         switch (dir) {
@@ -130,29 +131,32 @@ public class Maze {
 
         a.setDir(dir);
 
-        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) return;
+        if (!(newLoc instanceof LockedDoor) && !newLoc.isAccessible()) return null;
 
         a.getLocation().onExit();
+
+        Sound sound = null;
 
         if (a == chap) {
             if (newLoc instanceof Exit) {
                 levelOver = true;
-                cobraThread.interrupt();
+                if (cobraThread != null) cobraThread.interrupt();
             } else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
             else {
-                //if this method returns false, chap is not allowed to move to newLoc
-                if (!interactWithTile(newLoc)) return;
+                //if this method returns null, chap is not allowed to move to newLoc
+                sound = interactWithTile(newLoc);
+                if (sound == null) return null;
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
                 newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
             }
-            playSound(newLoc);
         }
         newLoc.onEntry(a);
         a.setLocation(newLoc);
-
+        if (sound != null) return sound;
+        return playSound(newLoc);
     }
 
-    private boolean interactWithTile(Tile loc) {
+    private Sound interactWithTile(Tile loc) {
         if (loc instanceof Treasure) {
             chap.incrementTreasures();
             treasuresLeft--;
@@ -164,27 +168,28 @@ public class Maze {
         } else if (loc instanceof LockedDoor) {
             var ld = (LockedDoor) loc;
             //TODO: better error handling
-            if (!chap.backpackContains(ld.getLockColour())) return false;
+            if (!chap.backpackContains(ld.getLockColour())) return null;
         } else if (loc instanceof Lava) {
             //TODO: potentially make levelOver an int 0=not over 1=win 2=die
             levelOver = true;
             cobraThread.interrupt();
-            return false;
+            return null;
         }
-        playSound(loc);
-        if (loc.isFreeOnEntry()) setFree(loc);
-        return true;
+        if (loc.isFreeOnEntry()) {
+            Sound sound = playSound(loc);
+            setFree(loc);
+            return sound;
+        }
+        return playSound(loc);
     }
 
-    private void playSound(Tile t) {
-        Sound sound;
-        if (t instanceof Exit) sound = Sound.EXIT;
-        else if (t instanceof Treasure || t instanceof Key) sound = Sound.PICK_UP_ITEM;
-        else if (t instanceof InfoField) sound = Sound.INFO_FIELD;
-        else if (t instanceof LockedDoor && chap.backpackContains(((LockedDoor) t).getLockColour()))
-            sound = Sound.UNLOCK_DOOR;
-        else sound = Sound.STEP;
-        SoundEffect.play(sound);
+    private Sound playSound(Tile t) {
+        if (t instanceof Exit) return Sound.EXIT;
+        if (t instanceof Treasure || t instanceof Key) return Sound.PICK_UP_ITEM;
+        if (t instanceof InfoField) return Sound.INFO_FIELD;
+        if (t instanceof LockedDoor && chap.backpackContains(((LockedDoor) t).getLockColour()))
+            return Sound.UNLOCK_DOOR;
+        else return Sound.STEP;
     }
 
 

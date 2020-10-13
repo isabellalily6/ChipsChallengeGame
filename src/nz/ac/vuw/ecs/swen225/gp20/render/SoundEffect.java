@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.render;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
+
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -22,19 +24,19 @@ public class SoundEffect {
     static {
         try {
             unlockDoorClip = AudioSystem.getClip();
-            unlockDoorClip.open(AudioSystem.getAudioInputStream(new File(Sound.UNLOCK_DOOR.filename)));
+            unlockDoorClip.open(AudioSystem.getAudioInputStream(new File(Sound.UNLOCK_DOOR.getFilename())));
             hitByMobClip = AudioSystem.getClip();
-            hitByMobClip.open(AudioSystem.getAudioInputStream(new File(Sound.HIT_BY_MOB.filename)));
+            hitByMobClip.open(AudioSystem.getAudioInputStream(new File(Sound.HIT_BY_MOB.getFilename())));
             pickUpItemClip = AudioSystem.getClip();
-            pickUpItemClip.open(AudioSystem.getAudioInputStream(new File(Sound.PICK_UP_ITEM.filename)));
+            pickUpItemClip.open(AudioSystem.getAudioInputStream(new File(Sound.PICK_UP_ITEM.getFilename())));
             exitClip = AudioSystem.getClip();
-            exitClip.open(AudioSystem.getAudioInputStream(new File(Sound.EXIT.filename)));
+            exitClip.open(AudioSystem.getAudioInputStream(new File(Sound.EXIT.getFilename())));
             infoFieldClip = AudioSystem.getClip();
-            infoFieldClip.open(AudioSystem.getAudioInputStream(new File(Sound.INFO_FIELD.filename)));
+            infoFieldClip.open(AudioSystem.getAudioInputStream(new File(Sound.INFO_FIELD.getFilename())));
             stepClip = AudioSystem.getClip();
-            stepClip.open(AudioSystem.getAudioInputStream(new File(Sound.STEP.filename)));
+            stepClip.open(AudioSystem.getAudioInputStream(new File(Sound.STEP.getFilename())));
             cobraClip = AudioSystem.getClip();
-            cobraClip.open(AudioSystem.getAudioInputStream(new File(Sound.COBRA.filename)));
+            cobraClip.open(AudioSystem.getAudioInputStream(new File(Sound.COBRA.getFilename())));
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
