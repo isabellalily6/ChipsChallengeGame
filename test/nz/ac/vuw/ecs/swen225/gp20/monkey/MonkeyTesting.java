@@ -31,12 +31,13 @@ public class MonkeyTesting {
         directions.add(Maze.Direction.DOWN);
         directions.add(Maze.Direction.LEFT);
         directions.add(Maze.Direction.RIGHT);
-        Main main = new Main();
+        Main main = new Main(false);
         Maze maze = main.getMaze();
         int x = 0;
 
-        while (x++ < 999 && main.getTimeLeft() > 0) {
+        while (!maze.isLevelOver()) {
             try {
+                x++;
                 maze.moveChap(directions.get(random.nextInt(4)));
             }
             catch (Exception e) {
@@ -47,14 +48,14 @@ public class MonkeyTesting {
         int seconds = (int)((endTime - initialTime)/1000.0);
         int minutes = (int)(seconds/60.0);
         seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
     }
 
     /**
      * tests intelligent monkey test without GUI
      */
     @Test
-    public void IntelligentMonkeyTestWithoutGUI () {
+    public void intelligentMonkeyTestWithoutGUI () {
         double initialTime = System.currentTimeMillis();
         Random random = new Random();
         // fill up direction ArrayList
@@ -63,7 +64,7 @@ public class MonkeyTesting {
         directions.add(Maze.Direction.DOWN);
         directions.add(Maze.Direction.LEFT);
         directions.add(Maze.Direction.RIGHT);
-        Main main = new Main();
+        Main main = new Main(false);
         Maze maze = main.getMaze();
         int x = 0;
 
@@ -124,6 +125,7 @@ public class MonkeyTesting {
                 else if (candidate == down) maze.moveChap(directions.get(1));
                 else if (candidate == left) maze.moveChap(directions.get(2));
                 else maze.moveChap(directions.get(3));
+                x++;
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -133,17 +135,17 @@ public class MonkeyTesting {
         int seconds = (int)((endTime - initialTime)/1000.0);
         int minutes = (int)(seconds/60.0);
         seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
     }
 
     /**
      * tests random monkey test with GUI
      */
     @Test
-    public void RandomMonkeyTestWithGUI () {
+    public void randomMonkeyTestWithGUI () {
         double initialTime = System.currentTimeMillis();
         Random random = new Random();
-        Main main = new Main();
+        Main main = new Main(true);
         GUI gui = main.getGui();
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
         // up
@@ -156,9 +158,10 @@ public class MonkeyTesting {
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
         int x = 0;
 
-        while (x++ < 999) {
+        while (!main.getMaze().isLevelOver()) {
             try {
                 gui.dispatchEvent(keyEvents.get(random.nextInt(4)));
+                x++;
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -168,17 +171,17 @@ public class MonkeyTesting {
         int seconds = (int)((endTime - initialTime)/1000.0);
         int minutes = (int)(seconds/60.0);
         seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
     }
 
     /**
      * tests intelligent monkey test with GUI
      */
     @Test
-    public void IntelligentMonkeyTestWithGUI () {
+    public void intelligentMonkeyTestWithGUI () {
         double initialTime = System.currentTimeMillis();
         Random random = new Random();
-        Main main = new Main();
+        Main main = new Main(true);
         Maze maze = main.getMaze();
         GUI gui = main.getGui();
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
@@ -238,6 +241,7 @@ public class MonkeyTesting {
                 else if (candidate == down) gui.dispatchEvent(keyEvents.get(1));
                 else if (candidate == left) gui.dispatchEvent(keyEvents.get(2));
                 else gui.dispatchEvent(keyEvents.get(3));
+                x++;
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -247,6 +251,6 @@ public class MonkeyTesting {
         int seconds = (int)((endTime - initialTime)/1000.0);
         int minutes = (int)(seconds/60.0);
         seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds.");
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
     }
 }
