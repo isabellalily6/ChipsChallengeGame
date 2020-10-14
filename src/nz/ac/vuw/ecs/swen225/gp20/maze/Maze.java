@@ -287,6 +287,13 @@ public class Maze {
     }
 
     /**
+     * @return a list of all the blocks in the game
+     */
+    public List<Block> getBlocks() {
+        return blocks;
+    }
+
+    /**
      * Enum that determines the direction of one of chap's moves
      *
      * @author Benjamin Doornbos
