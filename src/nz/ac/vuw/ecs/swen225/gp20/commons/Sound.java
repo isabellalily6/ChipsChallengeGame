@@ -3,7 +3,7 @@ package nz.ac.vuw.ecs.swen225.gp20.commons;
 /**
  * Objects of this class represent a sound to play in the game.
  *
- * @author Seth Patel
+ * @author Seth Patel 300488677
  **/
 public enum Sound {
     UNLOCK_DOOR("data/unlock_door.wav"),
