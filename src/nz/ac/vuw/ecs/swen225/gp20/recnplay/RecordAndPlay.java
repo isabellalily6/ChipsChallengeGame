@@ -31,13 +31,13 @@ public class RecordAndPlay {
     private static GUI parentComponent;
 
 
-    protected static final List<RecordedMove> loadedMoves = new ArrayList<>();
-    protected static final Lock lock = new ReentrantLock();
-    protected static PlayerThread playRecordingThread;
-    protected static boolean isRecording = false;
-    protected static boolean playingRecording = false;
-    protected static boolean recordingPaused = true;
-    protected static int moveIndex = -1;
+    static final List<RecordedMove> loadedMoves = new ArrayList<>();
+    static final Lock lock = new ReentrantLock();
+    static PlayerThread playRecordingThread;
+    static boolean isRecording = false;
+    static boolean playingRecording = false;
+    static boolean recordingPaused = true;
+    static int moveIndex = -1;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
