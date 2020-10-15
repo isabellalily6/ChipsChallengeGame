@@ -2,7 +2,7 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -92,12 +92,33 @@ public class MazeTests {
         return tiles;
     }
 
+    private Tile[][] createLavaTestMaze() {
+        Tile[][] tiles = new Tile[5][1];
+
+        tiles[0][0] = new Lava(0, 0);
+        tiles[1][0] = new Free(1, 0);
+        tiles[2][0] = new Free(2, 0);
+        tiles[3][0] = new Lava(3, 0);
+        tiles[4][0] = new Wall(4, 0);
+
+        return tiles;
+    }
+
     private Maze initGeneralTestMaze() {
         return new Maze(createGeneralTestMaze(), 2);
     }
 
     private Maze initBlockTestMaze() {
-        return new Maze(createBlockTestMaze(), 1, List.of(new Block(2, 2)));
+        return new Maze(createBlockTestMaze(), 1, new ArrayList<>() {{
+            add(new Block(2, 2));
+        }});
+    }
+
+    private Maze initLavaTestMaze() {
+        //return new Maze(createLavaTestMaze(), 1, List.of(new Block(1, 0)));
+        return new Maze(createLavaTestMaze(), 1, new ArrayList<>() {{
+            add(new Block(1, 0));
+        }});
     }
 
     private Location getChapLocation(Maze m) {
@@ -433,6 +454,30 @@ public class MazeTests {
         var locAfterMove = getFirstBlockLocation(maze);
         maze.moveChap(Maze.Direction.DOWN);
         assertEquals(locAfterMove, getFirstBlockLocation(maze));
+    }
+
+    @Test
+    public void chapDiesInLava() {
+        var maze = initLavaTestMaze();
+        maze.moveChap(Maze.Direction.RIGHT);
+        assert (maze.isLevelOver());
+    }
+
+    @Test
+    public void moveBlockIntoLavaWorks() {
+        var maze = initLavaTestMaze();
+        assert (maze.getTiles()[0][0] instanceof Lava);
+        maze.moveChap(Maze.Direction.LEFT);
+        assert (maze.getTiles()[0][0] instanceof Free);
+    }
+
+    @Test
+    public void moveBlockIntoLavaWalkable() {
+        var maze = initLavaTestMaze();
+        maze.moveChap(Maze.Direction.LEFT);
+        var locBeforeMove = getChapLocation(maze);
+        maze.moveChap(Maze.Direction.LEFT);
+        assert (getChapLocation(maze).x - locBeforeMove.x == -1);
     }
 
 

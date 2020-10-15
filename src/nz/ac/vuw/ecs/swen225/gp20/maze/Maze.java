@@ -172,7 +172,7 @@ public class Maze {
         } else if (loc instanceof Lava) {
             //TODO: potentially make levelOver an int 0=not over 1=win 2=die
             levelOver = true;
-            cobraThread.interrupt();
+            if (cobraThread != null) cobraThread.interrupt();
             return null;
         }
         if (loc.isFreeOnEntry()) {
@@ -187,8 +187,7 @@ public class Maze {
         if (t instanceof Exit) return Sound.EXIT;
         if (t instanceof Treasure || t instanceof Key) return Sound.PICK_UP_ITEM;
         if (t instanceof InfoField) return Sound.INFO_FIELD;
-        if (t instanceof LockedDoor && chap.backpackContains(((LockedDoor) t).getLockColour()))
-            return Sound.UNLOCK_DOOR;
+        if (t instanceof LockedDoor) return Sound.UNLOCK_DOOR;
         else return Sound.STEP;
     }
 
@@ -226,13 +225,15 @@ public class Maze {
                 break;
         }
 
-        if (newLoc instanceof Free) {
-            b.getLocation().setHasBlock(false);
-            b.setLocation(newLoc);
-            b.getLocation().setHasBlock(true);
-        } else if (newLoc instanceof Lava) {
-            blocks.remove(b);
-            setFree(newLoc);
+        if (newLoc.isAccessible()) {
+            if (newLoc instanceof Lava) {
+                blocks.remove(b);
+                setFree(newLoc);
+            } else {
+                b.getLocation().setHasBlock(false);
+                b.setLocation(newLoc);
+                b.getLocation().setHasBlock(true);
+            }
         }
     }
 
