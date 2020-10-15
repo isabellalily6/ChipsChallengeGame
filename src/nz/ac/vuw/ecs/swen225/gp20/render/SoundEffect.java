@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.render;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
+
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -8,7 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Objects of this class are sound effects to be used in the game. * * @author Seth Patel
+ * Objects of this class are sound effects to be used in the game.
+ *
+ * @author Seth Patel 300488677
  **/
 public class SoundEffect {
     private static Clip unlockDoorClip;
@@ -22,24 +26,29 @@ public class SoundEffect {
     static {
         try {
             unlockDoorClip = AudioSystem.getClip();
-            unlockDoorClip.open(AudioSystem.getAudioInputStream(new File(Sound.UNLOCK_DOOR.filename)));
+            unlockDoorClip.open(AudioSystem.getAudioInputStream(new File(Sound.UNLOCK_DOOR.getFilename())));
             hitByMobClip = AudioSystem.getClip();
-            hitByMobClip.open(AudioSystem.getAudioInputStream(new File(Sound.HIT_BY_MOB.filename)));
+            hitByMobClip.open(AudioSystem.getAudioInputStream(new File(Sound.HIT_BY_MOB.getFilename())));
             pickUpItemClip = AudioSystem.getClip();
-            pickUpItemClip.open(AudioSystem.getAudioInputStream(new File(Sound.PICK_UP_ITEM.filename)));
+            pickUpItemClip.open(AudioSystem.getAudioInputStream(new File(Sound.PICK_UP_ITEM.getFilename())));
             exitClip = AudioSystem.getClip();
-            exitClip.open(AudioSystem.getAudioInputStream(new File(Sound.EXIT.filename)));
+            exitClip.open(AudioSystem.getAudioInputStream(new File(Sound.EXIT.getFilename())));
             infoFieldClip = AudioSystem.getClip();
-            infoFieldClip.open(AudioSystem.getAudioInputStream(new File(Sound.INFO_FIELD.filename)));
+            infoFieldClip.open(AudioSystem.getAudioInputStream(new File(Sound.INFO_FIELD.getFilename())));
             stepClip = AudioSystem.getClip();
-            stepClip.open(AudioSystem.getAudioInputStream(new File(Sound.STEP.filename)));
+            stepClip.open(AudioSystem.getAudioInputStream(new File(Sound.STEP.getFilename())));
             cobraClip = AudioSystem.getClip();
-            cobraClip.open(AudioSystem.getAudioInputStream(new File(Sound.COBRA.filename)));
+            cobraClip.open(AudioSystem.getAudioInputStream(new File(Sound.COBRA.getFilename())));
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Play the clip.
+     *
+     * @param clip the clip to play.
+     **/
     private static void playSoundClip(Clip clip) {
         if (clip.isRunning()) {
             clip.stop();
@@ -49,7 +58,9 @@ public class SoundEffect {
     }
 
     /**
-     * Create and play a sound effect once.     *     * @param sound the sound to use
+     * Create and play a sound effect once.
+     *
+     * @param sound the sound to use
      **/
     public static void play(Sound sound) {
         new Thread(() -> {

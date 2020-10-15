@@ -3,8 +3,6 @@ package nz.ac.vuw.ecs.swen225.gp20.application;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
-
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -92,13 +90,12 @@ public class Dashboard extends JPanel {
     chips.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // create the chips number label
-    chipsNum = new JLabel("", SwingConstants.CENTER);
+    chipsNum = new JLabel(maze.getTreasuresLeft() + "", SwingConstants.CENTER);
     chipsNum.setFont(new Font("Verdana", Font.PLAIN, 18));
     chipsNum.setBorder(border);
 
-
     // create the chips collected label
-    chipsCollected = new JLabel("COLLECTED", SwingConstants.CENTER);
+    chipsCollected = new JLabel("KEYS COLLECTED", SwingConstants.CENTER);
     chipsCollected.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // Create the bottom panel which contains the Chaps Items
@@ -129,6 +126,9 @@ public class Dashboard extends JPanel {
     add(bottomPanel, BorderLayout.SOUTH);
   }
 
+  /**
+   * Update the dashboard
+   **/
   public void updateDashboard(){
     Set<Key.Colour> playersBackback = maze.getChap().getBackpack();
     int i = 0;
@@ -137,6 +137,17 @@ public class Dashboard extends JPanel {
       label.setIcon(canvas.makeImageIcon(getFile(colour)));
       i++;
     }
+    chipsNum.setText(maze.getTreasuresLeft() + "");
+  }
+
+  /**
+   * Reset the dashboard
+   **/
+  public void resetDashboard(){
+    for(JLabel label: treasuresCollected){
+      label.setIcon(null);
+    }
+    chipsNum.setText(maze.getTreasuresLeft() + "");
   }
 
   public String getFile(Key.Colour colour){
@@ -151,6 +162,16 @@ public class Dashboard extends JPanel {
       file += "greenKey.png";
     }
     return file;
+  }
+
+  /**
+   * Update the maze in the dashboard to the new maze
+   *
+   * @param maze
+   **/
+  public void setMaze(Maze maze){
+    this.maze = maze;
+    this.resetDashboard();
   }
 
   /**

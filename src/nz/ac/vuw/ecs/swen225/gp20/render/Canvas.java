@@ -2,9 +2,9 @@ package nz.ac.vuw.ecs.swen225.gp20.render;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
-
 import javax.swing.*;
 import java.awt.*;
+
 
 /**
  * Objects of this class provide a simple 2D view of the maze
@@ -15,6 +15,7 @@ import java.awt.*;
  * @author Seth Patel
  **/
 public class Canvas extends JPanel {
+
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 50;
