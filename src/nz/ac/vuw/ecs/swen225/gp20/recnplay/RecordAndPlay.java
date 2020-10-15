@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
 
 /**
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
@@ -27,17 +26,18 @@ import java.util.stream.Collectors;
  * @author callum mckay
  */
 public class RecordAndPlay {
-    private static boolean isRecording = false;
-    private static boolean playingRecording = false;
-    private static boolean recordingPaused = true;
-    private static int moveIndex = -1;
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
-    private static final List<RecordedMove> loadedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
-    private static Thread playRecordingThread;
-    private static final Lock lock = new ReentrantLock();
 
+
+    protected static final List<RecordedMove> loadedMoves = new ArrayList<>();
+    protected static final Lock lock = new ReentrantLock();
+    protected static PlayerThread playRecordingThread;
+    protected static boolean isRecording = false;
+    protected static boolean playingRecording = false;
+    protected static boolean recordingPaused = true;
+    protected static int moveIndex = -1;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
@@ -154,9 +154,23 @@ public class RecordAndPlay {
     }
 
     /**
+     * Steps the recording forwards by 1 step
+     */
+    public static void stepForward() {
+        stepThroughRecording(true);
+    }
+
+    /**
+     * Steps the recording backwards by 1 step
+     */
+    public static void stepBackward() {
+        stepThroughRecording(false);
+    }
+
+    /**
      * @param forward, true if we are stepping forward, false if backward
      */
-    public static void stepThroughRecording(boolean forward) {
+    private static void stepThroughRecording(boolean forward) {
         if (!playingRecording) {
             return;
         }
@@ -193,126 +207,6 @@ public class RecordAndPlay {
         }
         playRecordingThread = new PlayerThread(m);
         playRecordingThread.start();
-    }
-
-    static class PlayerThread extends Thread {
-        private final Main main;
-
-        /**
-         * @param main main class which is running the replay
-         */
-        public PlayerThread(Main main) {
-            this.main = main;
-        }
-
-
-        @Override
-        public void run() {
-            if (loadedMoves.isEmpty()) return;
-
-            //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
-            var movesToPlay = new ArrayList<>(loadedMoves);
-
-            //we want to keep track of where we are, for allowing the user to step through the moves
-            moveIndex = 0;
-            playingRecording = true;
-            recordingPaused = false;
-            main.getTimer().cancel();
-            main.getTimer().purge();
-            main.startTimer();
-            main.setTimeLeft(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
-            main.getGui().setTimer(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
-
-
-            //if this is different to the moveIndex we know that the user has stepped through
-            int prevMoveIndex = 0;
-
-            int timeLeft = main.getTimeLeft();
-
-            while (!movesToPlay.isEmpty()) {
-                if (!playingRecording) {
-                    moveIndex = -1;
-                    recordingPaused = true;
-                    return;
-                }
-
-//                if (prevMoveIndex != moveIndex) {
-//                    //We have gone backwards
-//                    if (prevMoveIndex > moveIndex) {
-//                        var playedMoves = new ArrayList<>(loadedMoves);
-//                        playedMoves.removeAll(movesToPlay);
-//                        playedMoves.sort(RecordedMove::compareTo);
-//                        Collections.reverse(playedMoves);
-//
-//                        for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
-//                            var moveToAdd = playedMoves.get(i);
-//                            movesToPlay.add(moveToAdd);
-//
-//                            //If the times on the next move ARE equal, we want them to both be added
-//                            if (moveToAdd.getTimeLeft() != playedMoves.get(i + 1).getTimeLeft()) {
-//                                break;
-//                            }
-//                        }
-//                    } else {
-//                        //we have gone forwards
-//                        var movesToSkip = new ArrayList<>(loadedMoves);
-//                        movesToSkip.removeAll(movesToPlay);
-//
-//                        for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
-//                            var moveToSkip = movesToSkip.get(i);
-//                            movesToPlay.remove(moveToSkip);
-//
-//                            //If the times on the next move ARE equal, we want them to both be added
-//                            if (moveToSkip.getTimeLeft() != movesToSkip.get(i + 1).getTimeLeft()) {
-//                                break;
-//                            }
-//                        }
-//                    }
-//
-//                    //ensure the moves are still sorted
-//                    movesToPlay.sort(RecordedMove::compareTo);
-//
-//                    //make sure indexes now match up
-//                    // in case the recording is paused we dont want to repeat the skip/step back
-//                    prevMoveIndex = moveIndex;
-//                    m.setTimeLeft(movesToPlay.get(0).timeLeft);
-//                    m.getGui().setTimer(movesToPlay.get(0).timeLeft);
-//                }
-//
-//                if (recordingPaused) continue;
-//                lock.unlock();
-//
-//                if (timeLeft == m.getTimeLeft()) {
-//                  continue;
-//                }
-                timeLeft = main.getTimeLeft();
-                var copiedList = new ArrayList<>(movesToPlay).stream().filter(move -> move.getTimeLeft() == main.getTimeLeft()).collect(Collectors.toList());
-
-                for (var move : copiedList) {
-                    //We want to play each move at this second
-                    main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
-                    main.getGui().getCanvas().refreshComponents();
-                    // m.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), m.getGui()));
-                    try {
-                        Thread.sleep(300);
-                    } catch (InterruptedException e) {
-                        if (Thread.holdsLock(lock)) {
-                            lock.unlock();
-                        }
-                        playRecordingThread.interrupt();
-                        return;
-                    }
-                    main.getGui().getCanvas().repaint();
-                    movesToPlay.remove(move);
-                    moveIndex++;
-                    prevMoveIndex = moveIndex;
-                }
-                timeLeft--;
-                main.setTimeLeft(timeLeft);
-                main.getGui().setTimer(timeLeft);
-            }
-        }
-
     }
 
     private static Maze loadGameState(JsonObject gameStateJson) {
@@ -462,71 +356,4 @@ public class RecordAndPlay {
         isRecording = false;
     }
 
-    /**
-     * A internal class which can represent a move, simply maps an Actor to a Direction
-     *
-     * @author callum mckay
-     */
-    static class RecordedMove implements Comparable<RecordedMove> {
-        private final Actor actor;
-        private final Maze.Direction direction;
-        private final int timeLeft;
-        private final int moveIndex;
-
-        /**
-         * @param actor     actor who this move has been done by
-         * @param direction direction of said move
-         * @param timeLeft  time left as this move was made
-         * @param moveIndex index this move was made on
-         * @author callum mckay
-         */
-        RecordedMove(Actor actor, Maze.Direction direction, int timeLeft, int moveIndex) {
-            this.actor = actor;
-            this.direction = direction;
-            this.timeLeft = timeLeft;
-            this.moveIndex = moveIndex;
-        }
-
-        /**
-         * @return the actor of this recorded move
-         * @author callum mckay
-         */
-        public Actor getActor() {
-            return actor;
-        }
-
-        /**
-         * @return the direction of this recorded move
-         * @author callum mckay
-         */
-        public Maze.Direction getDirection() {
-            return direction;
-        }
-
-
-        /**
-         * @return the time left as this move was made
-         */
-        public int getTimeLeft() {
-            return timeLeft;
-        }
-
-        /**
-         * @return gets the move index
-         */
-        public int getMoveIndex() {
-            return moveIndex;
-        }
-
-        @Override
-        public int compareTo(RecordedMove o) {
-            if (this.timeLeft > o.timeLeft) {
-                return -1;
-            } else if (this.timeLeft < o.timeLeft) {
-                return 1;
-            } else {
-                return Integer.compare(this.moveIndex, o.moveIndex);
-            }
-        }
-    }
 }

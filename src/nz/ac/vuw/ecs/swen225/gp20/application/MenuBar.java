@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
+
 import javax.swing.*;
 
 /**
@@ -78,12 +80,12 @@ public class MenuBar extends JMenuBar {
 
     // create and add the save recording button
     JMenuItem stepForward = new JMenuItem("Step Forward");
-    //saveRecording.addActionListener(method -> main.saveRecording());
+    saveRecording.addActionListener(method -> RecordAndPlay.stepForward());
     recordingOptions.add(stepForward);
 
     // create and add the save recording button
     JMenuItem stepBackward = new JMenuItem("Step Backward");
-    //saveRecording.addActionListener(method -> main.saveRecording());
+    saveRecording.addActionListener(method -> RecordAndPlay.stepBackward());
     recordingOptions.add(stepBackward);
 
     // create and add the load recording button
