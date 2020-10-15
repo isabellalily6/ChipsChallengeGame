@@ -190,7 +190,6 @@ public class RecordAndPlay {
             if (!lock.tryLock()) {
                 lock.unlock();
             }
-
         }
         playRecordingThread = new PlayerThread(m);
         playRecordingThread.start();
@@ -293,18 +292,17 @@ public class RecordAndPlay {
                     //We want to play each move at this second
                     main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
                     main.getGui().getCanvas().refreshComponents();
-                    main.getGui().getCanvas().repaint();
                     // m.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), m.getGui()));
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(300);
                     } catch (InterruptedException e) {
-                        playRecordingThread.interrupt();
-                        return;
-                    } finally {
                         if (Thread.holdsLock(lock)) {
                             lock.unlock();
                         }
+                        playRecordingThread.interrupt();
+                        return;
                     }
+                    main.getGui().getCanvas().repaint();
                     movesToPlay.remove(move);
                     moveIndex++;
                     prevMoveIndex = moveIndex;

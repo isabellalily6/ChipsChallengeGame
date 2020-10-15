@@ -5,8 +5,6 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Objects of this class provide a simple 2D view of the maze
@@ -22,7 +20,6 @@ public class Canvas extends JPanel {
     private static final int TILE_SIZE = 50;
     private Maze maze;
     private final JLabel[][] components;
-    private static final Lock lock = new ReentrantLock();
 
     /**
      * New canvas to render the game.
@@ -54,18 +51,10 @@ public class Canvas extends JPanel {
         components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
     }
 
-    @Override
-    public void repaint() {
-        lock.lock();
-        super.repaint();
-        lock.unlock();
-    }
-
     /**
      * Refresh the components for the canvas.
      **/
     public void refreshComponents() {
-        lock.lock();
         if (maze == null) return;
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
@@ -79,7 +68,6 @@ public class Canvas extends JPanel {
             }
         }
         components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
-        lock.unlock();
     }
 
     /**
