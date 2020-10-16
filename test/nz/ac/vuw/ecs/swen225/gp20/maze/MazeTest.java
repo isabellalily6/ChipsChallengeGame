@@ -3,6 +3,7 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Benjamin Doornbos 300487256
  */
-public class MazeTests {
+public class MazeTest {
     private Tile[][] createEmptyMazeArray() {
         Tile[][] tiles = new Tile[5][5];
         for (int x = 0; x < 5; x++) {
@@ -92,6 +93,13 @@ public class MazeTests {
         return tiles;
     }
 
+    /*
+        | L | B | C | L |
+
+        L - lava
+        B - block
+        C - chap
+     */
     private Tile[][] createLavaTestMaze() {
         Tile[][] tiles = new Tile[5][1];
 
@@ -104,6 +112,35 @@ public class MazeTests {
         return tiles;
     }
 
+    /*
+           | w | ld| w | w |
+           | w |   |   | w |
+           | w | c |   | w |
+           | w | w | w | w |
+
+           c - cobra
+           w = wall
+           ld - lockedDoor
+     */
+    private Tile[][] createCobraTestMaze() {
+        Tile[][] tiles = new Tile[4][4];
+
+        //set everything to wall by default
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                tiles[x][y] = new Wall(x, y);
+            }
+        }
+
+        tiles[1][1] = new Free(1, 1);
+        tiles[1][2] = new Free(1, 2);
+        tiles[2][1] = new Free(2, 1);
+        tiles[2][2] = new Free(2, 2);
+        tiles[1][0] = new LockedDoor(1, 0, Key.Colour.BLUE);
+
+        return tiles;
+    }
+
     private Maze initGeneralTestMaze() {
         return new Maze(createGeneralTestMaze(), 2);
     }
@@ -111,14 +148,20 @@ public class MazeTests {
     private Maze initBlockTestMaze() {
         return new Maze(createBlockTestMaze(), 1, new ArrayList<>() {{
             add(new Block(2, 2));
-        }});
+        }}, null);
     }
 
     private Maze initLavaTestMaze() {
-        //return new Maze(createLavaTestMaze(), 1, List.of(new Block(1, 0)));
         return new Maze(createLavaTestMaze(), 1, new ArrayList<>() {{
             add(new Block(1, 0));
-        }});
+        }}, null);
+    }
+
+    private Maze initCobraTestMaze() {
+        List<Cobra> cobras = new ArrayList<>() {{
+            add(new Cobra(new Free(1, 2), true));
+        }};
+        return new Maze(createCobraTestMaze(), 1, null, cobras);
     }
 
     private Location getChapLocation(Maze m) {
@@ -128,6 +171,11 @@ public class MazeTests {
     private Location getFirstBlockLocation(Maze m) {
         var b = m.getBlocks().get(0);
         return new Location(b.getCol(), b.getRow());
+    }
+
+    private Location getFirstCobraLocation(Maze m) {
+        var cobra = m.getCobras().get(0);
+        return new Location(cobra.getLocation().getCol(), cobra.getLocation().getRow());
     }
 
     private void assertChapPos(Maze m, Location loc) {
@@ -479,6 +527,105 @@ public class MazeTests {
         maze.moveChap(Maze.Direction.LEFT);
         assert (getChapLocation(maze).x - locBeforeMove.x == -1);
     }
+
+    @Test
+    public void cobraMoves() {
+        var maze = initCobraTestMaze();
+        var cobra = maze.getCobras().get(0);
+        maze.moveActor(cobra, Maze.Direction.UP);
+    }
+
+    @Test
+    public void cobraLoops() {
+        var maze = initCobraTestMaze();
+        var cobra = maze.getCobras().get(0);
+        maze.moveActor(cobra, Maze.Direction.UP);
+        maze.moveActor(cobra, Maze.Direction.RIGHT);
+        maze.moveActor(cobra, Maze.Direction.DOWN);
+        maze.moveActor(cobra, Maze.Direction.LEFT);
+    }
+
+    @Test
+    public void cobraCantMoveIntoWall() {
+        var maze = initCobraTestMaze();
+        var cobra = maze.getCobras().get(0);
+        var beforeMove = getFirstCobraLocation(maze);
+        maze.moveActor(cobra, Maze.Direction.DOWN);
+        assertEquals(beforeMove, getFirstCobraLocation(maze));
+        assert (maze.getCobras().get(0).getDir() == Maze.Direction.DOWN);
+    }
+
+    @Test
+    public void cobraCantMoveIntoLockedDoor() {
+        var maze = initCobraTestMaze();
+        var cobra = maze.getCobras().get(0);
+        maze.moveActor(cobra, Maze.Direction.UP);
+        var beforeMove = getFirstCobraLocation(maze);
+        maze.moveActor(cobra, Maze.Direction.UP);
+        assertEquals(beforeMove, getFirstCobraLocation(maze));
+        assert (maze.getCobras().get(0).getDir() == Maze.Direction.UP);
+    }
+
+    @Test
+    public void cobraMoveIntoChapKillsChap() {
+        var maze = initCobraTestMaze();
+        var cobra = maze.getCobras().get(0);
+        assertFalse(maze.isLevelOver());
+        assertEquals(maze.getChap().getLocation(), maze.getTiles()[2][2]);
+        maze.moveActor(cobra, Maze.Direction.RIGHT);
+        assert (maze.isLevelOver());
+    }
+
+    @Test
+    public void cobraMoveIntoChapCobraMoves() {
+        var maze = initCobraTestMaze();
+        var cobra = maze.getCobras().get(0);
+        assertFalse(maze.isLevelOver());
+        assertEquals(maze.getChap().getLocation(), maze.getTiles()[2][2]);
+        var locBeforeMove = getFirstCobraLocation(maze);
+        maze.moveActor(cobra, Maze.Direction.RIGHT);
+        assert (getFirstCobraLocation(maze).x - locBeforeMove.x == 1);
+    }
+
+    @Test
+    public void chapMovesIntoCobraChapDies() {
+        var maze = initCobraTestMaze();
+        maze.moveChap(Maze.Direction.LEFT);
+        assert (maze.isLevelOver());
+    }
+
+    @Test
+    public void chapMovesIntoCobraChapDoesntMove() {
+        var maze = initCobraTestMaze();
+        var locBeforeMove = getChapLocation(maze);
+        maze.moveChap(Maze.Direction.LEFT);
+        assertEquals(locBeforeMove, getChapLocation(maze));
+    }
+
+    @Test
+    public void cantMoveBlockOnTileWithNoBlock() {
+        var tiles = createLavaTestMaze();
+        tiles[1][0].setHasBlock(true);
+        var maze = new Maze(tiles, 1, new ArrayList<>(), null);
+        assertThrows(IllegalArgumentException.class, () -> maze.moveChap(Maze.Direction.LEFT));
+    }
+
+   /* @Test
+    public void testMovementThread() {
+        var tiles = createCobraTestMaze();
+        var cobra = new Cobra(new Free(1, 2),
+                new ArrayDeque<>(Arrays.asList(Maze.Direction.UP, Maze.Direction.RIGHT, Maze.Direction.DOWN)));
+        var maze = new Maze(tiles, 1, null, new ArrayList<>() {{
+            add(cobra);
+        }});
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        assert (maze.isLevelOver());
+        assert (maze.cobraThreadStopped());
+    }*/
 
 
     static class Location {

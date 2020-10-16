@@ -24,6 +24,7 @@ public abstract class Actor {
         //precondition- actor has a name
         checkArgument(name.length() > 0);
         this.location = location;
+        location.onEntry(this);
         this.dir = Maze.Direction.UP;
         this.name = name;
     }
@@ -41,6 +42,7 @@ public abstract class Actor {
      */
     public void setLocation(Tile location) {
         this.location = location;
+        location.onEntry(this);
     }
 
     /**

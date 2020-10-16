@@ -58,11 +58,22 @@ public class Maze {
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
      * @param blocks         list of blocks to be placed on the level
+     * @param cobras         list of cobras to be placed on the level
      */
-    public Maze(Tile[][] tiles, int totalTreasures, List<Block> blocks) {
+    public Maze(Tile[][] tiles, int totalTreasures, List<Block> blocks, List<Cobra> cobras) {
         this(tiles, totalTreasures);
-        this.blocks = blocks;
-        setBlocks();
+        if (blocks != null) {
+            this.blocks = blocks;
+            setBlocks();
+        }
+        if (cobras != null) {
+            this.cobras = cobras;
+            setCobras();
+            if (!cobras.get(0).inTestMode()) {
+                cobraThread = new MovementThreadHandler(this);
+                cobraThread.start();
+            }
+        }
     }
 
     /**
@@ -76,8 +87,11 @@ public class Maze {
         if (level == 2) {
             //this.blocks = LevelLoader.load(level).getBlocks();
             //this.cobras = LevelLoader.load(level).getCobras();
+            setCobras();
             setBlocks();
             this.cobraThread = new MovementThreadHandler(this);
+            this.cobraThread.start();
+            //chap.setLocation(LevelLoader.load(level).getChapPos);
         }
     }
 
@@ -85,6 +99,12 @@ public class Maze {
         for (Block b : blocks) {
             b.setLocation(tiles[b.getCol()][b.getRow()]);
             b.getLocation().setHasBlock(true);
+        }
+    }
+
+    private void setCobras() {
+        for (Cobra c : cobras) {
+            c.setLocation(tiles[c.getLocation().getCol()][c.getLocation().getRow()]);
         }
     }
 
@@ -142,16 +162,28 @@ public class Maze {
                 levelOver = true;
                 if (cobraThread != null) cobraThread.interrupt();
             } else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
-            else {
+            else if (newLoc.isOccupied()) {
+                levelOver = true; //TODO: enum
+                if (cobraThread != null) cobraThread.interrupt();
+                return null; //TODO: death sound?
+            } else {
                 //if this method returns null, chap is not allowed to move to newLoc
                 sound = interactWithTile(newLoc);
                 if (sound == null) return null;
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
                 newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
             }
+        } else {
+            if (!newLoc.isAccessible()) return null;
+            if (newLoc.isOccupied()) {
+                levelOver = true;
+                if (cobraThread != null) cobraThread.interrupt();
+            }
         }
         newLoc.onEntry(a);
         a.setLocation(newLoc);
+
+        //if a sound has already been determined, play it. Else, determine the sound
         if (sound != null) return sound;
         return playSound(newLoc);
     }
@@ -225,6 +257,8 @@ public class Maze {
                 break;
         }
 
+        checkNotNull(newLoc);
+
         if (newLoc.isAccessible()) {
             if (newLoc instanceof Lava) {
                 blocks.remove(b);
@@ -285,6 +319,10 @@ public class Maze {
      */
     public List<Cobra> getCobras() {
         return cobras;
+    }
+
+    public boolean cobraThreadStopped() {
+        return cobraThread.isInterrupted();
     }
 
     /**
