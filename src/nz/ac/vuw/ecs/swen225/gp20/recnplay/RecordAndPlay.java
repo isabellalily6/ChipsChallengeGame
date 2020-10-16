@@ -30,13 +30,11 @@ public class RecordAndPlay {
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
 
-
     static final List<RecordedMove> loadedMoves = new ArrayList<>();
     static final Lock lock = new ReentrantLock();
     static PlayerThread playRecordingThread;
     static boolean isRecording = false;
     static boolean playingRecording = false;
-    static boolean recordingPaused = true;
     static int moveIndex = -1;
 
     /**
@@ -63,14 +61,7 @@ public class RecordAndPlay {
      * @return See if a recording is paused
      */
     public static boolean isRecordingPaused() {
-        return recordingPaused;
-    }
-
-    /**
-     * @param recordingPaused Pauses the playing recording
-     */
-    public static void setRecordingPaused(boolean recordingPaused) {
-        RecordAndPlay.recordingPaused = recordingPaused;
+        return playRecordingThread.isRecordingPaused();
     }
 
     /**
@@ -118,7 +109,7 @@ public class RecordAndPlay {
     public static boolean addMove(Actor a, Maze.Direction d, int timeLeft) {
         lock.lock();
         if (isRecording && !playingRecording) {
-            recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size() - 1));
+            recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
             lock.unlock();
             return true;
         }
@@ -132,6 +123,24 @@ public class RecordAndPlay {
      */
     public static boolean isRecording() {
         return isRecording;
+    }
+
+    /**
+     * Pause the playing recording
+     */
+    public static void pauseRecording() {
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.pauseRecording();
+        }
+    }
+
+    /**
+     * Resume the playing recording
+     */
+    public static void resumeRecording() {
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.resumeRecording();
+        }
     }
 
     /**
@@ -184,20 +193,6 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static void playRecording(Main m) {
-//        if (loadedMoves.isEmpty()) return;
-//
-//        //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
-//        var movesToPlay = new ArrayList<>(loadedMoves);
-//
-//        //we want to keep track of where we are, for allowing the user to step through the moves
-//        moveIndex = 0;
-//        playingRecording = true;
-//        recordingPaused = false;
-//        m.getTimer().cancel();
-//        m.getTimer().purge();
-//        m.startTimer();
-//        m.setTimeLeft(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
-//        m.getGui().setTimer(Math.max(movesToPlay.get(0).timeLeft + 1, 100));
         if (playRecordingThread != null) {
             playRecordingThread.interrupt();
 
@@ -244,7 +239,8 @@ public class RecordAndPlay {
             if (actorName.equals("player")) {
                 //TODO: make this not get the mazes chap but instead the chap from the new maze
                 // once that has been loaded
-                recordedMove = new RecordedMove(p, dir, timeLeft, loadedMove.getInt("moveIndex"));
+                var moveIndex = loadedMove.getInt("moveIndex");
+                recordedMove = new RecordedMove(p, dir, timeLeft, Math.max(moveIndex, 0));
             } else {
                 //TODO support for other mobs in lvl 2
             }

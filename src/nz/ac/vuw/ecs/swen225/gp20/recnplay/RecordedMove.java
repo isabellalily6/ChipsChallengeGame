@@ -28,6 +28,16 @@ class RecordedMove implements Comparable<RecordedMove> {
         this.moveIndex = moveIndex;
     }
 
+    @Override
+    public String toString() {
+        return "RecordedMove{" +
+                "actor=" + actor.getName() +
+                ", direction=" + direction +
+                ", timeLeft=" + timeLeft +
+                ", moveIndex=" + moveIndex +
+                '}';
+    }
+
     /**
      * @return the actor of this recorded move
      * @author callum mckay
