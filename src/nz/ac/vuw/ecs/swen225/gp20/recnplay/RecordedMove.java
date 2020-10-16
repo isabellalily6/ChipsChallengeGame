@@ -70,6 +70,24 @@ class RecordedMove implements Comparable<RecordedMove> {
     }
 
     @Override
+    public int hashCode() {
+        return (int) Math.pow(timeLeft, moveIndex);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof RecordedMove) {
+            var move = (RecordedMove) obj;
+            return this.actor.equals(move.actor) &&
+                    this.direction.equals(move.direction) &&
+                    this.moveIndex == move.moveIndex &&
+                    this.timeLeft == move.timeLeft;
+        }
+
+        return super.equals(obj);
+    }
+
+    @Override
     public int compareTo(RecordedMove o) {
         if (this.timeLeft > o.timeLeft) {
             return -1;

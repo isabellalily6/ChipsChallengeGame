@@ -35,7 +35,6 @@ public class RecordAndPlay {
     static PlayerThread playRecordingThread;
     static boolean isRecording = false;
     static boolean playingRecording = false;
-    static int moveIndex = -1;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
@@ -107,14 +106,17 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static boolean addMove(Actor a, Maze.Direction d, int timeLeft) {
-        lock.lock();
-        if (isRecording && !playingRecording) {
-            recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
+        try {
+            lock.lock();
+            if (isRecording && !playingRecording) {
+                recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
+                return true;
+            }
+
+            return false;
+        } finally {
             lock.unlock();
-            return true;
         }
-        lock.unlock();
-        return false;
     }
 
     /**
@@ -166,26 +168,18 @@ public class RecordAndPlay {
      * Steps the recording forwards by 1 step
      */
     public static void stepForward() {
-        stepThroughRecording(true);
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.stepThroughRecording(true);
+        }
     }
 
     /**
      * Steps the recording backwards by 1 step
      */
     public static void stepBackward() {
-        stepThroughRecording(false);
-    }
-
-    /**
-     * @param forward, true if we are stepping forward, false if backward
-     */
-    private static void stepThroughRecording(boolean forward) {
-        if (!playingRecording) {
-            return;
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.stepThroughRecording(false);
         }
-
-        if (forward) moveIndex++;
-        else moveIndex--;
     }
 
     /**
@@ -193,7 +187,10 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static void playRecording(Main m) {
-        if (playRecordingThread != null) {
+        if (m == null) {
+            return;
+        }
+        if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
 
             if (!lock.tryLock()) {
@@ -205,7 +202,6 @@ public class RecordAndPlay {
     }
 
     private static Maze loadGameState(JsonObject gameStateJson) {
-        var level = gameStateJson.getJsonNumber("level").intValue();
         var rows = gameStateJson.getJsonNumber("rows").intValue();
         var cols = gameStateJson.getJsonNumber("cols").intValue();
         Tile[][] tiles = new Tile[cols][rows];

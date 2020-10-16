@@ -4,6 +4,7 @@ import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
@@ -11,75 +12,102 @@ import java.util.stream.Collectors;
 class PlayerThread extends Thread {
     private final Main main;
     private final Lock lock = new ReentrantLock();
-    private boolean recordingPaused;
+    private final AtomicBoolean recordingPaused = new AtomicBoolean(false);
     private int timeAtPause;
+    private int moveIndex;
     private int moveIndexAtPause;
     private int prevMoveIndex;
     private int timeLeft;
     private int lastMoveTime;
 
+
     /**
      * @param main main class which is running the replay
+     *             Passing in null allows this to be used as a fake, where the methods do nothing
      */
     public PlayerThread(Main main) {
         this.main = main;
     }
 
     /**
+     * @return If this is a real thread or a fake
+     */
+    public boolean isRealThread() {
+        return main != null;
+    }
+
+    /**
      * @return See if a recording is paused
      */
     public boolean isRecordingPaused() {
-        return recordingPaused;
+        return recordingPaused.get();
     }
 
     /**
      * * Pause the playing recording
      */
     public void pauseRecording() {
-        lock.lock();
-        if (!recordingPaused) {
-            recordingPaused = true;
-            main.pauseGame();
-            updatePausedRecording();
-        }
-        lock.unlock();
-    }
+        if (main == null) return;
 
-    private void updatePausedRecording() {
-        timeAtPause = lastMoveTime;
-        moveIndexAtPause = RecordAndPlay.moveIndex;
-        System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
-        System.out.println("Last move completed: " + prevMoveIndex);
+        try {
+            lock.lock();
+            if (!recordingPaused.getAndSet(true)) {
+                main.pauseGame();
+                updatePausedRecording();
+            }
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
      * Resume the playing recording
      */
     public void resumeRecording() {
-        if (recordingPaused) {
-            lock.lock();
-            RecordAndPlay.moveIndex = moveIndexAtPause;
-            main.setTimeLeft(timeAtPause);
-            main.getGui().setTimer(timeAtPause);
-            timeLeft = timeAtPause;
-            System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
-            recordingPaused = false;
-            main.playGame();
-            lock.unlock();
+        if (main == null) return;
+
+        if (recordingPaused.getAndSet(false)) {
+            try {
+                lock.lock();
+                moveIndex = moveIndexAtPause;
+                main.setTimeLeft(timeAtPause);
+                main.getGui().setTimer(timeAtPause);
+                timeLeft = timeAtPause;
+                System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
+                main.playGame();
+            } finally {
+                lock.unlock();
+            }
         }
+    }
+
+    /**
+     * @param forward, true if we are stepping forward, false if backward
+     */
+    public void stepThroughRecording(boolean forward) {
+        if (main == null) return;
+
+        if (!RecordAndPlay.playingRecording) {
+            return;
+        }
+
+        if (forward) moveIndex++;
+        else moveIndex--;
     }
 
     @Override
     public void run() {
+        if (main == null) return;
+
         if (RecordAndPlay.loadedMoves.isEmpty()) return;
 
         //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
         var movesToPlay = new ArrayList<>(RecordAndPlay.loadedMoves);
 
         //we want to keep track of where we are, for allowing the user to step through the moves
-        RecordAndPlay.moveIndex = 0;
+        moveIndex = 0;
         RecordAndPlay.playingRecording = true;
-        recordingPaused = false;
+        recordingPaused.set(false);
         main.getTimer().cancel();
         main.getTimer().purge();
         main.startTimer();
@@ -91,33 +119,23 @@ class PlayerThread extends Thread {
         timeLeft = main.getTimeLeft();
         while (!movesToPlay.isEmpty()) {
             if (!RecordAndPlay.playingRecording) {
-                RecordAndPlay.moveIndex = -1;
+                moveIndex = -1;
                 break;
             }
 
-            if (recordingPaused) {
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    if (Thread.holdsLock(RecordAndPlay.lock)) {
-                        RecordAndPlay.lock.unlock();
-                    }
-                    System.out.println("Exception thrown");
-                    RecordAndPlay.playRecordingThread.interrupt();
-                    return;
-                }
+            if (recordingPaused.get()) {
                 continue;
             }
 
-            if (Math.abs(prevMoveIndex - RecordAndPlay.moveIndex) != 1) {
+            if (Math.abs(prevMoveIndex - moveIndex) != 1) {
                 //We have gone backwards
-                if (prevMoveIndex > RecordAndPlay.moveIndex) {
+                if (prevMoveIndex > moveIndex) {
                     var playedMoves = new ArrayList<>(RecordAndPlay.loadedMoves);
                     playedMoves.removeAll(movesToPlay);
                     playedMoves.sort(RecordedMove::compareTo);
                     Collections.reverse(playedMoves);
 
-                    for (int i = 0; i < prevMoveIndex - RecordAndPlay.moveIndex; i++) {
+                    for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
                         var moveToAdd = playedMoves.get(i);
                         movesToPlay.add(moveToAdd);
 
@@ -131,7 +149,7 @@ class PlayerThread extends Thread {
                     var movesToSkip = new ArrayList<>(RecordAndPlay.loadedMoves);
                     movesToSkip.removeAll(movesToPlay);
 
-                    for (int i = 0; i < RecordAndPlay.moveIndex - prevMoveIndex; i++) {
+                    for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
                         var moveToSkip = movesToSkip.get(i);
                         movesToPlay.remove(moveToSkip);
 
@@ -147,23 +165,29 @@ class PlayerThread extends Thread {
 
                 //make sure indexes now match up
                 // in case the recording is paused we dont want to repeat the skip/step back
-                prevMoveIndex = RecordAndPlay.moveIndex - 1;
+                prevMoveIndex = moveIndex - 1;
                 main.setTimeLeft(movesToPlay.get(0).getTimeLeft());
                 main.getGui().setTimer(movesToPlay.get(0).getTimeLeft());
                 timeLeft = movesToPlay.get(0).getTimeLeft();
             }
 
             int finalTimeLeft = timeLeft;
-            var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream().filter(move -> move.getMoveIndex() > prevMoveIndex).collect(Collectors.toList());
-            var copiedList = new ArrayList<>(movesWithCorrectMoveIndices).stream().filter(move -> move.getTimeLeft() == finalTimeLeft).collect(Collectors.toList());
+            var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
+                    .filter(move -> move.getMoveIndex() > prevMoveIndex).collect(Collectors.toList());
+
+            //get the moves for the current second
+            //or the previous moves in the case where some moves were not processed properly (can happen if you pause mid second)
+            var copiedList = new ArrayList<>(movesWithCorrectMoveIndices).stream()
+                    .filter(move -> move.getTimeLeft() == finalTimeLeft || move.getTimeLeft() == finalTimeLeft + 1)
+                    .collect(Collectors.toList());
 
             for (var move : copiedList) {
-                if (recordingPaused) {
+                if (recordingPaused.get()) {
                     break;
                 }
                 if (lock.tryLock()) {
                     lock.unlock();
-                    if (recordingPaused) {
+                    if (recordingPaused.get()) {
                         break;
                     }
                     System.out.println("Processing: " + move.toString());
@@ -173,17 +197,20 @@ class PlayerThread extends Thread {
 
                     movesToPlay.remove(move);
 
-                    prevMoveIndex = RecordAndPlay.moveIndex;
-                    RecordAndPlay.moveIndex = move.getMoveIndex() + 1;
+                    prevMoveIndex = moveIndex;
+                    moveIndex = move.getMoveIndex() + 1;
                     lastMoveTime = move.getTimeLeft();
-                    if (recordingPaused) {
+                    if (recordingPaused.get()) {
                         System.out.println("Updating pausing var for move: " + move.toString());
                         updatePausedRecording();
                         break;
                     }
 
                     try {
-                        //do these moves over 1sec
+                        /*
+                            This is not busy waiting, even though this is in a loop
+                            This is what is simulating the timer, so that the moves happen in real time, not all at once
+                         */
                         Thread.sleep(1000 / copiedList.size());
                     } catch (InterruptedException e) {
                         if (Thread.holdsLock(RecordAndPlay.lock)) {
@@ -201,6 +228,10 @@ class PlayerThread extends Thread {
             if (copiedList.isEmpty()) {
                 try {
                     System.out.println("No moves found for: " + prevMoveIndex + " at time: " + timeLeft);
+                    /*
+                        This is not busy waiting, even though this is in a loop
+                        This is what is simulating the timer, so that the moves happen in real time, not all at once
+                    */
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     if (Thread.holdsLock(RecordAndPlay.lock)) {
@@ -212,7 +243,7 @@ class PlayerThread extends Thread {
                 }
             }
 
-            if (!recordingPaused) {
+            if (!recordingPaused.get()) {
                 timeLeft--;
                 main.setTimeLeft(timeLeft);
                 main.getGui().setTimer(timeLeft);
@@ -221,5 +252,12 @@ class PlayerThread extends Thread {
         System.out.println("Recording is over, no moves left");
         main.setTimeLeft(timeLeft);
         main.getGui().setTimer(timeLeft);
+    }
+
+    private void updatePausedRecording() {
+        timeAtPause = lastMoveTime;
+        moveIndexAtPause = moveIndex;
+        System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
+        System.out.println("Last move completed: " + prevMoveIndex);
     }
 }
