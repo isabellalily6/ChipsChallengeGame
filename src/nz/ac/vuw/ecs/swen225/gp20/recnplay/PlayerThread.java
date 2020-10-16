@@ -63,8 +63,8 @@ class PlayerThread extends Thread {
             main.getGui().setTimer(timeAtPause);
             timeLeft = timeAtPause;
             System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
-            main.playGame();
             recordingPaused = false;
+            main.playGame();
             lock.unlock();
         }
     }
@@ -89,18 +89,24 @@ class PlayerThread extends Thread {
         //if this is different to the moveIndex we know that the user has stepped through
         prevMoveIndex = -1;
         timeLeft = main.getTimeLeft();
-        var iter = 0;
         while (!movesToPlay.isEmpty()) {
             if (!RecordAndPlay.playingRecording) {
                 RecordAndPlay.moveIndex = -1;
-                recordingPaused = true;
                 break;
             }
 
             if (recordingPaused) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    if (Thread.holdsLock(RecordAndPlay.lock)) {
+                        RecordAndPlay.lock.unlock();
+                    }
+                    System.out.println("Exception thrown");
+                    RecordAndPlay.playRecordingThread.interrupt();
+                    return;
+                }
                 continue;
-            } else {
-                System.out.println("iteration: " + iter++);
             }
 
             if (Math.abs(prevMoveIndex - RecordAndPlay.moveIndex) != 1) {
@@ -183,6 +189,7 @@ class PlayerThread extends Thread {
                         if (Thread.holdsLock(RecordAndPlay.lock)) {
                             RecordAndPlay.lock.unlock();
                         }
+                        System.out.println("Exception thrown");
                         RecordAndPlay.playRecordingThread.interrupt();
                         return;
                     }
@@ -199,6 +206,7 @@ class PlayerThread extends Thread {
                     if (Thread.holdsLock(RecordAndPlay.lock)) {
                         RecordAndPlay.lock.unlock();
                     }
+                    System.out.println("Exception thrown");
                     RecordAndPlay.playRecordingThread.interrupt();
                     return;
                 }
@@ -210,7 +218,7 @@ class PlayerThread extends Thread {
                 main.getGui().setTimer(timeLeft);
             }
         }
-
+        System.out.println("Recording is over, no moves left");
         main.setTimeLeft(timeLeft);
         main.getGui().setTimer(timeLeft);
     }
