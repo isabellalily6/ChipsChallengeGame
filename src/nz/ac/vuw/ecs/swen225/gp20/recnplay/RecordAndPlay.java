@@ -6,6 +6,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -37,6 +38,7 @@ public class RecordAndPlay {
     static PlayerThread playRecordingThread = new PlayerThread(null);
     static boolean isRecording = false;
     static boolean playingRecording = false;
+    static ReplayModes replayMode;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
@@ -98,6 +100,7 @@ public class RecordAndPlay {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -304,4 +307,10 @@ public class RecordAndPlay {
         isRecording = false;
     }
 
+    /**
+     * @param mode sets the replay mode
+     */
+    public static void setRecordingMode(ReplayModes mode) {
+        replayMode = mode;
+    }
 }
