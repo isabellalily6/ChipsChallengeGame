@@ -10,7 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Objects of this class are sound effects to be used in the game. * * @author Seth Patel
+ * Objects of this class are sound effects to be used in the game.
+ *
+ * @author Seth Patel 300488677
  **/
 public class SoundEffect {
     private static Clip unlockDoorClip;
@@ -42,6 +44,11 @@ public class SoundEffect {
         }
     }
 
+    /**
+     * Play the clip.
+     *
+     * @param clip the clip to play.
+     **/
     private static void playSoundClip(Clip clip) {
         if (clip.isRunning()) {
             clip.stop();
@@ -51,7 +58,9 @@ public class SoundEffect {
     }
 
     /**
-     * Create and play a sound effect once.     *     * @param sound the sound to use
+     * Create and play a sound effect once.
+     *
+     * @param sound the sound to use
      **/
     public static void play(Sound sound) {
         new Thread(() -> {

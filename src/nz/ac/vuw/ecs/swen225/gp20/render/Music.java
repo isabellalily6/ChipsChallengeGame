@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * Objects of this class represent music to play in the game.
  *
- * @author Seth Patel
+ * @author Seth Patel 300488677
  **/
 public class Music {
 
@@ -32,23 +32,4 @@ public class Music {
         Thread thread = new Thread(runnable);
         thread.start();
     }
-
-//    /**
-//     * Play the music.
-//     **/
-//    public void play() {
-//        if (clip.isRunning()) clip.stop();
-//        clip.setFramePosition(0);
-//        clip.start();
-//        clip.loop(Clip.LOOP_CONTINUOUSLY);
-//    }
-
-//    /**
-//     * Stop the music.
-//     **/
-//    public void stop() {
-//        if (!clip.isRunning()) return;
-//        clip.stop();
-//        clip.setFramePosition(0);
-//    }
 }
