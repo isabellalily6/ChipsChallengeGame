@@ -130,6 +130,8 @@ class PlayerThread extends Thread {
                     var inverseMove = move.getInverse();
 
                     playMove(inverseMove);
+
+                    //make sure chap is facing the right direction
                     main.getMaze().getChap().setDir(move.getDirection());
                     main.getGui().getCanvas().refreshComponents();
                 }
