@@ -109,23 +109,23 @@ class PlayerThread extends Thread {
         //We have stepped either forwards or backwards
 
         //We have stepped forward in the recording, as there is less time left
-        var movesToSkip = new ArrayList<RecordedMove>();
+        var movesToAdjust = new ArrayList<RecordedMove>();
         if (forward) {
             for (var move : movesToPlay) {
                 if (move.getTimeLeft() > timeAfterPause) {
-                    movesToSkip.add(move);
+                    movesToAdjust.add(move);
 
                     //updates the gui with the correct move
                     playMove(move);
                 }
             }
 
-            movesToPlay.removeAll(movesToSkip);
-
+            movesToPlay.removeAll(movesToAdjust);
+            System.out.print("Stepping forwards: " + movesToAdjust.size());
         } else {
             for (var move : RecordAndPlay.loadedMoves) {
                 if (move.getTimeLeft() < timeAfterPause && !movesToPlay.contains(move)) {
-                    movesToSkip.add(move);
+                    movesToAdjust.add(move);
 
                     var inverseMove = move.getInverse();
 
@@ -137,7 +137,8 @@ class PlayerThread extends Thread {
                 }
             }
 
-            movesToPlay.addAll(movesToSkip);
+            movesToPlay.addAll(movesToAdjust);
+            System.out.print("Stepping backwards: " + movesToAdjust.size());
         }
 
         movesToPlay.sort(RecordedMove::compareTo);
