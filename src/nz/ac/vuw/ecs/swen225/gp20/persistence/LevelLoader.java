@@ -286,4 +286,5 @@ public class LevelLoader {
             default:
                 throw new IllegalArgumentException("Incorrect tile!");
         }
+	}
 }
