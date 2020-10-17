@@ -231,7 +231,7 @@ public class GUI extends JFrame implements KeyListener {
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE) {
       //SPACE - pause the game and display a “game is paused” dialog
       System.out.println("Pause and display");
-      main.pauseGame();
+      main.pauseGame(true);
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
       //ESC - close the “game is paused” dialog and resume the game
       System.out.println("Close dialogue and Resume");

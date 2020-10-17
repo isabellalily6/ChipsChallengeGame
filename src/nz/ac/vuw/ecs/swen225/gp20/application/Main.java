@@ -175,10 +175,14 @@ public class Main {
 
   /**
    * Pauses the game
+   *
+   * @param showDialogue
    **/
-  public void pauseGame(){
+  public void pauseGame(boolean showDialogue){
     gamePaused = true;
-    gui.displayPausedDialogue();
+    if(showDialogue) {
+      gui.displayPausedDialogue();
+    }
   }
 
   /**
@@ -223,6 +227,24 @@ public class Main {
    **/
   public int getTimeLeft() {
     return timeLeft;
+  }
+
+  /**
+   * Set the maze
+   *
+   * @param maze
+   **/
+  public void setMaze(Maze maze) {
+    this.maze = maze;
+  }
+
+  /**
+   * Returns the timer
+   *
+   * @return the timer
+   **/
+  public Timer getTimer() {
+    return timer;
   }
 
 
