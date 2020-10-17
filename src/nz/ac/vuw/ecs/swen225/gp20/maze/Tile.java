@@ -33,6 +33,7 @@ public abstract class Tile {
         this.row = row;
         this.accessible = accessible;
         this.freeOnEntry = freeOnEntry;
+        this.occupied = false;
     }
 
     /**
