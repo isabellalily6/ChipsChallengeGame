@@ -92,8 +92,9 @@ class PlayerThread extends Thread {
             return;
         }
 
+        //You can only step through if the game is paused
         if (!recordingPaused.get()) {
-            pauseRecording();
+            return;
         }
 
         if (forward) {
@@ -111,34 +112,35 @@ class PlayerThread extends Thread {
         //We have stepped forward in the recording, as there is less time left
         var movesToAdjust = new ArrayList<RecordedMove>();
         if (forward) {
+            if (movesToPlay.isEmpty()) return;
             for (var move : movesToPlay) {
                 if (move.getTimeLeft() > timeAfterPause) {
                     movesToAdjust.add(move);
 
                     //updates the gui with the correct move
                     playMove(move);
+                    System.out.println("Stepping forwards: " + move.getMoveIndex());
                 }
             }
 
             movesToPlay.removeAll(movesToAdjust);
-            System.out.print("Stepping forwards: " + movesToAdjust.size());
+            if (movesToPlay.isEmpty()) return;
         } else {
             for (var move : RecordAndPlay.loadedMoves) {
                 if (move.getTimeLeft() < timeAfterPause && !movesToPlay.contains(move)) {
                     movesToAdjust.add(move);
 
                     var inverseMove = move.getInverse();
-
                     playMove(inverseMove);
 
                     //make sure chap is facing the right direction
                     main.getMaze().getChap().setDir(move.getDirection());
                     main.getGui().getCanvas().refreshComponents();
+                    System.out.println("Stepping backwards: " + move.getMoveIndex());
                 }
             }
 
             movesToPlay.addAll(movesToAdjust);
-            System.out.print("Stepping backwards: " + movesToAdjust.size());
         }
 
         movesToPlay.sort(RecordedMove::compareTo);
@@ -190,50 +192,6 @@ class PlayerThread extends Thread {
             if (recordingPaused.get()) {
                 continue;
             }
-
-//            if (Math.abs(prevMoveIndex - moveIndex) != 1) {
-//                //We have gone backwards
-//                if (prevMoveIndex > moveIndex) {
-//                    var playedMoves = new ArrayList<>(RecordAndPlay.loadedMoves);
-//                    playedMoves.removeAll(movesToPlay);
-//                    playedMoves.sort(RecordedMove::compareTo);
-//                    Collections.reverse(playedMoves);
-//
-//                    for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
-//                        var moveToAdd = playedMoves.get(i);
-//                        movesToPlay.add(moveToAdd);
-//
-//                        //If the times on the next move ARE equal, we want them to both be added
-//                        if (moveToAdd.getTimeLeft() != playedMoves.get(i + 1).getTimeLeft()) {
-//                            break;
-//                        }
-//                    }
-//                } else {
-//                    //we have gone forwards
-//                    var movesToSkip = new ArrayList<>(RecordAndPlay.loadedMoves);
-//                    movesToSkip.removeAll(movesToPlay);
-//
-//                    for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
-//                        var moveToSkip = movesToSkip.get(i);
-//                        movesToPlay.remove(moveToSkip);
-//
-//                        //If the times on the next move ARE equal, we want them to both be added
-//                        if (moveToSkip.getTimeLeft() != movesToSkip.get(i + 1).getTimeLeft()) {
-//                            break;
-//                        }
-//                    }
-//                }
-//
-//                //ensure the moves are still sorted
-//                movesToPlay.sort(RecordedMove::compareTo);
-//
-//                //make sure indexes now match up
-//                // in case the recording is paused we dont want to repeat the skip/step back
-//                prevMoveIndex = moveIndex - 1;
-//                main.setTimeLeft(movesToPlay.get(0).getTimeLeft());
-//                main.getGui().setTimer(movesToPlay.get(0).getTimeLeft());
-//                timeLeft = movesToPlay.get(0).getTimeLeft();
-//            }
 
             int finalTimeLeft = timeLeft;
             var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
