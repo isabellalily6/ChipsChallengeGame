@@ -140,6 +140,7 @@ class PlayerThread extends Thread {
 
         movesToPlay.sort(RecordedMove::compareTo);
         moveIndexAtPause = movesToPlay.get(0).getMoveIndex();
+        prevMoveIndex = moveIndexAtPause - 1;
 
         updateTime(timeAfterPause);
 
