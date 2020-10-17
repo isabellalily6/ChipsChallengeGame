@@ -28,6 +28,31 @@ class RecordedMove implements Comparable<RecordedMove> {
         this.moveIndex = moveIndex;
     }
 
+    /**
+     * Returns a move which is the inverse of this one, ie opposite direction
+     *
+     * @return the inverse direction move
+     */
+    public RecordedMove getInverse() {
+        var newDir = getOppositeDirection(direction);
+        return new RecordedMove(actor, newDir, timeLeft, moveIndex);
+    }
+
+    private Maze.Direction getOppositeDirection(Maze.Direction direction) {
+        switch (direction) {
+            case UP:
+                return Maze.Direction.DOWN;
+            case DOWN:
+                return Maze.Direction.UP;
+            case LEFT:
+                return Maze.Direction.RIGHT;
+            case RIGHT:
+                return Maze.Direction.LEFT;
+            default:
+                throw new IllegalStateException("Unexpected value: " + direction);
+        }
+    }
+
     @Override
     public String toString() {
         return "RecordedMove{" +

@@ -3,7 +3,7 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -13,7 +13,9 @@ class PlayerThread extends Thread {
     private final Main main;
     private final Lock lock = new ReentrantLock();
     private final AtomicBoolean recordingPaused = new AtomicBoolean(false);
+    private List<RecordedMove> movesToPlay = new ArrayList<>();
     private int timeAtPause;
+    private int timeAfterPause;
     private int moveIndex;
     private int moveIndexAtPause;
     private int prevMoveIndex;
@@ -70,8 +72,7 @@ class PlayerThread extends Thread {
             try {
                 lock.lock();
                 moveIndex = moveIndexAtPause;
-                main.setTimeLeft(timeAtPause);
-                main.getGui().setTimer(timeAtPause);
+                updateTime(timeAtPause);
                 timeLeft = timeAtPause;
                 System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
                 main.playGame();
@@ -91,8 +92,68 @@ class PlayerThread extends Thread {
             return;
         }
 
-        if (forward) moveIndex++;
-        else moveIndex--;
+        if (!recordingPaused.get()) {
+            pauseRecording();
+        }
+
+        if (forward) {
+            timeAfterPause--;
+            updatePausedGame(true);
+        } else {
+            timeAfterPause++;
+            updatePausedGame(false);
+        }
+    }
+
+    private void updatePausedGame(boolean forward) {
+        //We have stepped either forwards or backwards
+
+        //We have stepped forward in the recording, as there is less time left
+        var movesToSkip = new ArrayList<RecordedMove>();
+        if (forward) {
+            for (var move : movesToPlay) {
+                if (move.getTimeLeft() > timeAfterPause) {
+                    movesToSkip.add(move);
+
+                    //updates the gui with the correct move
+                    playMove(move);
+                }
+            }
+
+            movesToPlay.removeAll(movesToSkip);
+
+        } else {
+            for (var move : RecordAndPlay.loadedMoves) {
+                if (move.getTimeLeft() < timeAfterPause && !movesToPlay.contains(move)) {
+                    movesToSkip.add(move);
+
+                    var inverseMove = move.getInverse();
+
+                    playMove(inverseMove);
+                    main.getMaze().getChap().setDir(move.getDirection());
+                    main.getGui().getCanvas().refreshComponents();
+                }
+            }
+
+            movesToPlay.addAll(movesToSkip);
+        }
+
+        movesToPlay.sort(RecordedMove::compareTo);
+        moveIndexAtPause = movesToPlay.get(0).getMoveIndex();
+
+        updateTime(timeAfterPause);
+
+        timeAtPause = timeAfterPause;
+    }
+
+    private void updateTime(int time) {
+        main.setTimeLeft(time);
+        main.getGui().setTimer(time);
+    }
+
+    private void playMove(RecordedMove move) {
+        main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
+        main.getGui().getCanvas().refreshComponents();
     }
 
     @Override
@@ -102,7 +163,7 @@ class PlayerThread extends Thread {
         if (RecordAndPlay.loadedMoves.isEmpty()) return;
 
         //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
-        var movesToPlay = new ArrayList<>(RecordAndPlay.loadedMoves);
+        movesToPlay = new ArrayList<>(RecordAndPlay.loadedMoves);
 
         //we want to keep track of where we are, for allowing the user to step through the moves
         moveIndex = 0;
@@ -111,8 +172,7 @@ class PlayerThread extends Thread {
         main.getTimer().cancel();
         main.getTimer().purge();
         main.startTimer();
-        main.setTimeLeft(Math.max(movesToPlay.get(0).getTimeLeft() + 2, 100));
-        main.getGui().setTimer(Math.max(movesToPlay.get(0).getTimeLeft() + 2, 100));
+        updateTime(Math.max(movesToPlay.get(0).getTimeLeft() + 2, 100));
 
         //if this is different to the moveIndex we know that the user has stepped through
         prevMoveIndex = -1;
@@ -127,49 +187,49 @@ class PlayerThread extends Thread {
                 continue;
             }
 
-            if (Math.abs(prevMoveIndex - moveIndex) != 1) {
-                //We have gone backwards
-                if (prevMoveIndex > moveIndex) {
-                    var playedMoves = new ArrayList<>(RecordAndPlay.loadedMoves);
-                    playedMoves.removeAll(movesToPlay);
-                    playedMoves.sort(RecordedMove::compareTo);
-                    Collections.reverse(playedMoves);
-
-                    for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
-                        var moveToAdd = playedMoves.get(i);
-                        movesToPlay.add(moveToAdd);
-
-                        //If the times on the next move ARE equal, we want them to both be added
-                        if (moveToAdd.getTimeLeft() != playedMoves.get(i + 1).getTimeLeft()) {
-                            break;
-                        }
-                    }
-                } else {
-                    //we have gone forwards
-                    var movesToSkip = new ArrayList<>(RecordAndPlay.loadedMoves);
-                    movesToSkip.removeAll(movesToPlay);
-
-                    for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
-                        var moveToSkip = movesToSkip.get(i);
-                        movesToPlay.remove(moveToSkip);
-
-                        //If the times on the next move ARE equal, we want them to both be added
-                        if (moveToSkip.getTimeLeft() != movesToSkip.get(i + 1).getTimeLeft()) {
-                            break;
-                        }
-                    }
-                }
-
-                //ensure the moves are still sorted
-                movesToPlay.sort(RecordedMove::compareTo);
-
-                //make sure indexes now match up
-                // in case the recording is paused we dont want to repeat the skip/step back
-                prevMoveIndex = moveIndex - 1;
-                main.setTimeLeft(movesToPlay.get(0).getTimeLeft());
-                main.getGui().setTimer(movesToPlay.get(0).getTimeLeft());
-                timeLeft = movesToPlay.get(0).getTimeLeft();
-            }
+//            if (Math.abs(prevMoveIndex - moveIndex) != 1) {
+//                //We have gone backwards
+//                if (prevMoveIndex > moveIndex) {
+//                    var playedMoves = new ArrayList<>(RecordAndPlay.loadedMoves);
+//                    playedMoves.removeAll(movesToPlay);
+//                    playedMoves.sort(RecordedMove::compareTo);
+//                    Collections.reverse(playedMoves);
+//
+//                    for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
+//                        var moveToAdd = playedMoves.get(i);
+//                        movesToPlay.add(moveToAdd);
+//
+//                        //If the times on the next move ARE equal, we want them to both be added
+//                        if (moveToAdd.getTimeLeft() != playedMoves.get(i + 1).getTimeLeft()) {
+//                            break;
+//                        }
+//                    }
+//                } else {
+//                    //we have gone forwards
+//                    var movesToSkip = new ArrayList<>(RecordAndPlay.loadedMoves);
+//                    movesToSkip.removeAll(movesToPlay);
+//
+//                    for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
+//                        var moveToSkip = movesToSkip.get(i);
+//                        movesToPlay.remove(moveToSkip);
+//
+//                        //If the times on the next move ARE equal, we want them to both be added
+//                        if (moveToSkip.getTimeLeft() != movesToSkip.get(i + 1).getTimeLeft()) {
+//                            break;
+//                        }
+//                    }
+//                }
+//
+//                //ensure the moves are still sorted
+//                movesToPlay.sort(RecordedMove::compareTo);
+//
+//                //make sure indexes now match up
+//                // in case the recording is paused we dont want to repeat the skip/step back
+//                prevMoveIndex = moveIndex - 1;
+//                main.setTimeLeft(movesToPlay.get(0).getTimeLeft());
+//                main.getGui().setTimer(movesToPlay.get(0).getTimeLeft());
+//                timeLeft = movesToPlay.get(0).getTimeLeft();
+//            }
 
             int finalTimeLeft = timeLeft;
             var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
@@ -191,9 +251,8 @@ class PlayerThread extends Thread {
                         break;
                     }
                     System.out.println("Processing: " + move.toString());
-                    //We want to play each move at this second
-                    main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
-                    main.getGui().getCanvas().refreshComponents();
+
+                    playMove(move);
 
                     movesToPlay.remove(move);
 
@@ -245,17 +304,16 @@ class PlayerThread extends Thread {
 
             if (!recordingPaused.get()) {
                 timeLeft--;
-                main.setTimeLeft(timeLeft);
-                main.getGui().setTimer(timeLeft);
+                updateTime(timeLeft);
             }
         }
         System.out.println("Recording is over, no moves left");
-        main.setTimeLeft(timeLeft);
-        main.getGui().setTimer(timeLeft);
+        updateTime(timeLeft);
     }
 
     private void updatePausedRecording() {
         timeAtPause = lastMoveTime;
+        timeAfterPause = lastMoveTime;
         moveIndexAtPause = moveIndex;
         System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
         System.out.println("Last move completed: " + prevMoveIndex);

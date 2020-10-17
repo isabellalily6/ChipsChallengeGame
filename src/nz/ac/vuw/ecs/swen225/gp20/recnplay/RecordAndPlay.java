@@ -32,7 +32,7 @@ public class RecordAndPlay {
 
     static final List<RecordedMove> loadedMoves = new ArrayList<>();
     static final Lock lock = new ReentrantLock();
-    static PlayerThread playRecordingThread;
+    static PlayerThread playRecordingThread = new PlayerThread(null);
     static boolean isRecording = false;
     static boolean playingRecording = false;
 
