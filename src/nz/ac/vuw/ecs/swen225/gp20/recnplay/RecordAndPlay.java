@@ -2,7 +2,9 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.maze.*;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
 import javax.json.Json;
@@ -79,7 +81,7 @@ public class RecordAndPlay {
             var jsonArr = parser.readArray();
 
             var gameStateJson = jsonArr.getJsonObject(0);
-            var maze = loadGameState(gameStateJson);
+            var maze = LevelLoader.loadGameState(gameStateJson);
 
             m.setMaze(maze);
             m.getGui().setMaze(maze);
@@ -201,26 +203,6 @@ public class RecordAndPlay {
         playRecordingThread.start();
     }
 
-    private static Maze loadGameState(JsonObject gameStateJson) {
-        var rows = gameStateJson.getJsonNumber("rows").intValue();
-        var cols = gameStateJson.getJsonNumber("cols").intValue();
-        Tile[][] tiles = new Tile[cols][rows];
-
-        for (var tileValue : gameStateJson.getJsonArray("map")) {
-            var tileJsonObj = tileValue.asJsonObject();
-            int col = tileJsonObj.asJsonObject().getInt("col");
-            int row = tileJsonObj.asJsonObject().getInt("row");
-
-            tiles[col][row] = makeTileFromName(tileJsonObj.asJsonObject(), col, row);
-        }
-
-        var maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
-        var chapCol = gameStateJson.getJsonNumber("chapCol");
-        var chapRow = gameStateJson.getJsonNumber("chapRow");
-        maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
-        return maze;
-    }
-
     private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
         var toReturn = new ArrayList<RecordedMove>();
 
@@ -245,32 +227,6 @@ public class RecordAndPlay {
         }
 
         return toReturn;
-    }
-
-    private static Tile makeTileFromName(JsonObject tile, int col, int row) {
-        String name = tile.getString("type");
-        switch (name) {
-            case "Free":
-                return new Free(col, row);
-            case "Exit":
-                return new Exit(col, row);
-            case "ExitLock":
-                return new ExitLock(col, row);
-            case "InfoField":
-                return new InfoField(col, row, tile.getString("info"));
-            case "Key":
-                return new Key(col, row, Key.Colour.valueOf(tile.getString("color")));
-            case "Lava":
-                return new Lava(col, row);
-            case "LockedDoor":
-                return new LockedDoor(col, row, Key.Colour.valueOf(tile.getString("color")));
-            case "Treasure":
-                return new Treasure(col, row);
-            case "Wall":
-                return new Wall(col, row);
-            default:
-                throw new IllegalArgumentException("Incorrect tile!");
-        }
     }
 
     private static JsonArray buildJson() {
