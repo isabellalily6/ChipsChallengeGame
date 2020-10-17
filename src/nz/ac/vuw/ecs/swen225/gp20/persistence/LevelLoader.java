@@ -1,12 +1,35 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
-import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.maze.*;
-
-import javax.json.*;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonReader;
+
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
+import nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Free;
+import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Lava;
+import nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
 
 public class LevelLoader {
 	
@@ -19,43 +42,43 @@ public class LevelLoader {
 	 */
 	public static Level load(int levelNumber) {
 		String filename = "levels/level" + levelNumber + ".json";
-
+		
 		int mapWidth;
 		int mapHeight;
-
-		if (levelNumber == 1) {
+		
+		if(levelNumber == 1) {
 			mapWidth = 15;
 			mapHeight = 15;
 		} else {
 			mapWidth = 18;
 			mapHeight = 11;
 		}
-
-		Tile[][] map = new Tile[mapWidth][mapHeight];
+		
+		Tile[][] map = new Tile[mapWidth][mapHeight]; 
 		int treasures = 0; //total treasures in the level
 		Player chap = null;
 		ArrayList<Block> blocks = new ArrayList<Block>();
-
+		
 		try {
-
+			
 			//Read JSON file into a list of JsonObjects
 			JsonReader reader = Json.createReader(new FileReader(filename));
 			JsonArray jsonArray = reader.readArray();
 			reader.close();
 			List<JsonObject> jsonTiles = jsonArray.getValuesAs(JsonObject.class);
-
+			
 			//Iterate through the JsonArray to create new tile objects and put them in the map
-			for (int i = 0; i < jsonTiles.size(); i++) {
-
+			for(int i = 0; i < jsonTiles.size(); i++) {
+				
 				JsonObject jsonTileObj = jsonTiles.get(i);
 				String tileType = jsonTileObj.getString("type");
 				int row = i / mapWidth;
 				int col = i % mapWidth;
-
-
+				
+				
 				//Determine the colour if applicable
 				Key.Colour tileColor = null;
-				if (tileType.equals("Key") || tileType.equals("LockedDoor")) {
+				if(tileType.equals("Key") || tileType.equals("LockedDoor")) {
 					String colorName = jsonTileObj.getString("color");
 					if(colorName.contentEquals("red")) {
 						tileColor = Key.Colour.RED;
@@ -219,6 +242,49 @@ public class LevelLoader {
 		}
 	}
 	
+	public static Maze loadGameState(JsonObject gameStateJson) {
+        var rows = gameStateJson.getJsonNumber("rows").intValue();
+        var cols = gameStateJson.getJsonNumber("cols").intValue();
+        Tile[][] tiles = new Tile[cols][rows];
+ 
+        for (var tileValue : gameStateJson.getJsonArray("map")) {
+            var tileJsonObj = tileValue.asJsonObject();
+            int col = tileJsonObj.asJsonObject().getInt("col");
+            int row = tileJsonObj.asJsonObject().getInt("row");
+ 
+            tiles[col][row] = makeTileFromName(tileJsonObj.asJsonObject(), col, row);
+        }
+ 
+        var maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
+        var chapCol = gameStateJson.getJsonNumber("chapCol");
+        var chapRow = gameStateJson.getJsonNumber("chapRow");
+        maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
+        return maze;
+    }
 	
-	
+	private static Tile makeTileFromName(JsonObject tile, int col, int row) {
+        String name = tile.getString("type");
+        switch (name) {
+            case "Free":
+                return new Free(col, row);
+            case "Exit":
+                return new Exit(col, row);
+            case "ExitLock":
+                return new ExitLock(col, row);
+            case "InfoField":
+                return new InfoField(col, row, tile.getString("info"));
+            case "Key":
+                return new Key(col, row, Key.Colour.valueOf(tile.getString("color")));
+            case "Lava":
+                return new Lava(col, row);
+            case "LockedDoor":
+                return new LockedDoor(col, row, Key.Colour.valueOf(tile.getString("color")));
+            case "Treasure":
+                return new Treasure(col, row);
+            case "Wall":
+                return new Wall(col, row);
+            default:
+                throw new IllegalArgumentException("Incorrect tile!");
+        }
+	}
 }
