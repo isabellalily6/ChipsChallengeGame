@@ -50,4 +50,11 @@ public class Block {
         col = loc.getCol();
         row = loc.getRow();
     }
+
+    /**
+     * @return the string name of the image file for this class
+     */
+    public String getImageURL() {
+        return "data/block.png";
+    }
 }
