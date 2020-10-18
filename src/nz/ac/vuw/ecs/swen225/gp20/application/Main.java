@@ -95,7 +95,7 @@ public class Main {
           timer.cancel();
         }
         // if the timer has reached 0, cancel the timer
-        if(timeLeft==0){
+        else if(timeLeft==0){
           gui.getGameLost().setVisible(true);
           timer.cancel();
         }
@@ -161,13 +161,14 @@ public class Main {
    **/
   public void startGame(int level){
     // if the timer is still going, cancel it
-    if(timeLeft != 0 && timeLeft != maxTime){
+    if(timeLeft != 0 && timeLeft != maxTime && !maze.isLevelOver()){
       timer.cancel();
     }
     // create a new maze and set this in canvas and the gui
     this.maze = new Maze(level);
     gui.getCanvas().setMaze(maze);
     gui.setMaze(maze);
+    gui.getCanvas().refreshComponents();
     gui.getCanvas().repaint();
     startTimer();
   }

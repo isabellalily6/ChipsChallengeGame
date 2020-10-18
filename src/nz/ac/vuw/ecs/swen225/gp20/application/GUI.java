@@ -196,7 +196,10 @@ public class GUI extends JFrame implements KeyListener {
   @Override
   public void keyReleased(KeyEvent keyEvent) {
     Sound sound = null;
-    if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
+    if(RecordAndPlay.isRecording()){
+
+    }
+    else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       sound = maze.moveChap(Maze.Direction.UP);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP, main.getTimeLeft());
