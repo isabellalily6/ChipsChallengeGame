@@ -198,6 +198,8 @@ public class RecordAndPlay {
      */
     public static void endPlayingRecording() {
         playingRecording.set(false);
+        dialog.setVisible(false);
+        dialog.dispose();
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
 

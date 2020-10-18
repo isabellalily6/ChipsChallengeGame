@@ -280,7 +280,9 @@ class PlayerThread extends Thread {
             return;
         }
         System.out.println("Recording is over, no moves left");
-        updateTime(timeLeft.get());
+        main.startGame(1);
+        main.playGame();
+        RecordAndPlay.endPlayingRecording();
     }
 
     private void playMove(RecordedMove move) {
