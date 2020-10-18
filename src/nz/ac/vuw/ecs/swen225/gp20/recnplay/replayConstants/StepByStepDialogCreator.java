@@ -10,23 +10,22 @@ import java.util.ArrayList;
 import static nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker.styleButton;
 
 /**
- * Options for auto play
+ * Creates the step by step dialog for step by step playback
  */
-public class AutoPlayOptionButtons implements ReplayDialog {
-
+public class StepByStepDialogCreator implements ReplayDialogCreator {
     @Override
     public ReplayOptionDialog createDialog(Main m) {
         var buttons = new ArrayList<JButton>();
-        var resumeButton = new JButton("Resume");
-        styleButton(resumeButton);
-        resumeButton.addActionListener(e -> RecordAndPlay.resumeRecording());
+        var stepForward = new JButton("Step forward");
+        styleButton(stepForward);
+        stepForward.addActionListener(e -> RecordAndPlay.stepForward());
 
-        var pauseButton = new JButton("Pause");
-        styleButton(pauseButton);
-        pauseButton.addActionListener(e -> RecordAndPlay.pauseRecording());
+        var stepBackwards = new JButton("Step backwards");
+        styleButton(stepBackwards);
+        stepBackwards.addActionListener(e -> RecordAndPlay.stepBackward());
 
-        buttons.add(resumeButton);
-        buttons.add(pauseButton);
+        buttons.add(stepForward);
+        buttons.add(stepBackwards);
 
         return new ReplayOptionDialog(m, "", buttons, null);
     }

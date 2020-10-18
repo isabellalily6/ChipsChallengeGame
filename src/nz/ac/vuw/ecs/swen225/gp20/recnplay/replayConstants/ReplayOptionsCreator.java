@@ -12,29 +12,33 @@ import static nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker.st
 /**
  * Button options for replaying a game, ie: auto play, speed options, and step by step
  */
-public class ReplayOptions implements ReplayDialog {
+public class ReplayOptionsCreator implements ReplayDialogCreator {
+
+    static int speed = 0;
 
     @Override
     public ReplayOptionDialog createDialog(Main m) {
-        m.pauseGame();
+        m.pauseGame(false);
         var buttons = new ArrayList<JButton>();
         var autoReplayButton = new JButton("Auto play");
-        styleButton(autoReplayButton, ReplayModes.AUTO_PLAY);
+
 
         var stepByStep = new JButton("Step by Step");
-        styleButton(stepByStep, ReplayModes.STEP_BY_STEP);
+        styleButton(stepByStep, m, ReplayModes.STEP_BY_STEP, false);
 
         buttons.add(autoReplayButton);
         buttons.add(stepByStep);
 
-        var slider = new JSlider(25, 150, 100);
+        var slider = new JSlider(25, 200, 100);
         slider.setPaintLabels(true);
 
         Hashtable<Integer, JLabel> table = new Hashtable<>();
         table.put(25, new JLabel("25%"));
         table.put(100, new JLabel("100%"));
-        table.put(150, new JLabel("150%"));
+        table.put(200, new JLabel("200%"));
         slider.setLabelTable(table);
+        slider.addChangeListener(c -> speed = slider.getValue());
+        styleButton(autoReplayButton, m, ReplayModes.AUTO_PLAY, true);
 
         return new ReplayOptionDialog(m, "Playback speed", buttons, slider);
     }

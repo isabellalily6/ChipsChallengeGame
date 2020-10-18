@@ -6,7 +6,7 @@ import nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog;
 /**
  * Interface for replay dialogs
  */
-public interface ReplayDialog {
+public interface ReplayDialogCreator {
     /**
      * @param m main class to create the dialog with
      * @return a ReplayOptionDialog

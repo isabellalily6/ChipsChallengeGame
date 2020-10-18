@@ -32,6 +32,7 @@ public class ReplayOptionDialog extends JDialog {
     Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
 
     if (slider != null) {
+      this.setLayout(new GridLayout(buttons.size() + 3, 1));
       if (sliderText != null && !sliderText.isBlank()) {
         // Components of the JDialogue
         JLabel label = new JLabel(sliderText, SwingConstants.CENTER);
@@ -40,6 +41,8 @@ public class ReplayOptionDialog extends JDialog {
         this.add(label);
       }
       this.add(slider, BorderLayout.NORTH);
+    } else {
+      this.setLayout(new GridLayout(buttons.size() + 1, 1));
     }
 
     for (var button : buttons) {

@@ -6,7 +6,9 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -32,13 +34,15 @@ public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
+    static PlayerThread playRecordingThread = new PlayerThread(null, null, 0);
 
     static final List<RecordedMove> loadedMoves = new ArrayList<>();
     static final Lock lock = new ReentrantLock();
-    static PlayerThread playRecordingThread = new PlayerThread(null);
+    static int replaySpeed = 0;
     static boolean isRecording = false;
     static boolean playingRecording = false;
     static ReplayModes replayMode;
+    private static ReplayOptionDialog dialog;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
@@ -96,7 +100,8 @@ public class RecordAndPlay {
             loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
-            playRecording(m);
+            dialog = new ReplayOptionsCreator().createDialog(m);
+            dialog.setVisible(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -195,6 +200,7 @@ public class RecordAndPlay {
         if (m == null) {
             return;
         }
+        dialog.setVisible(false);
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
 
@@ -202,8 +208,12 @@ public class RecordAndPlay {
                 lock.unlock();
             }
         }
-        playRecordingThread = new PlayerThread(m);
+        playRecordingThread = new PlayerThread(m, replayMode, replaySpeed);
         playRecordingThread.start();
+        if (replayMode == ReplayModes.AUTO_PLAY) {
+            dialog = new AutoPlayDialogCreator().createDialog(m);
+            dialog.setVisible(true);
+        }
     }
 
     private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
@@ -310,7 +320,8 @@ public class RecordAndPlay {
     /**
      * @param mode sets the replay mode
      */
-    public static void setRecordingMode(ReplayModes mode) {
+    public static void setRecordingMode(ReplayModes mode, int speed) {
         replayMode = mode;
+        replaySpeed = speed;
     }
 }
