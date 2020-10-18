@@ -34,7 +34,7 @@ public class Key extends Tile {
 
     @Override
     public JsonObjectBuilder getJson() {
-        return super.getJson().add("color", colour.getName());
+        return super.getJson().add("color", colour.toString());
     }
 
     public enum Colour {

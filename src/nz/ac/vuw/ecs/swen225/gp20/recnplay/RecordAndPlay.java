@@ -13,11 +13,11 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -28,16 +28,15 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author callum mckay
  */
 public class RecordAndPlay {
-    private static boolean isRecording = false;
-    private static boolean playingRecording = false;
-    private static boolean recordingPaused = true;
-    private static int moveIndex = -1;
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
-    private static final List<RecordedMove> loadedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
-    private static final Lock lock = new ReentrantLock();
 
+    static final List<RecordedMove> loadedMoves = new ArrayList<>();
+    static final Lock lock = new ReentrantLock();
+    static PlayerThread playRecordingThread = new PlayerThread(null);
+    static boolean isRecording = false;
+    static boolean playingRecording = false;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
@@ -63,14 +62,7 @@ public class RecordAndPlay {
      * @return See if a recording is paused
      */
     public static boolean isRecordingPaused() {
-        return recordingPaused;
-    }
-
-    /**
-     * @param recordingPaused Pauses the playing recording
-     */
-    public static void setRecordingPaused(boolean recordingPaused) {
-        RecordAndPlay.recordingPaused = recordingPaused;
+        return playRecordingThread.isRecordingPaused();
     }
 
     /**
@@ -88,16 +80,25 @@ public class RecordAndPlay {
             var parser = Json.createReader(new FileReader(jsonFile, StandardCharsets.UTF_8));
             var jsonArr = parser.readArray();
 
-            var movesFromJson = jsonArr.getJsonObject(1);
-            var moves = loadMoves(movesFromJson, m.getMaze().getChap());
+            var gameStateJson = jsonArr.getJsonObject(0);
+            var maze = LevelLoader.loadGameState(gameStateJson);
 
+            m.setMaze(maze);
+            m.getGui().setMaze(maze);
+            m.getGui().getCanvas().setMaze(maze);
+            m.getGui().getCanvas().refreshComponents();
+            m.getGui().getCanvas().repaint();
+
+            var movesFromJson = jsonArr.getJsonObject(1);
+            var moves = loadMoves(movesFromJson, maze.getChap());
+            loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
+            playRecording(m);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
     /**
      * @param a        actor who performed this move
@@ -107,12 +108,17 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static boolean addMove(Actor a, Maze.Direction d, int timeLeft) {
-        if (isRecording) {
-            recordedMoves.add(new RecordedMove(a, d, timeLeft));
-            return true;
-        }
+        try {
+            lock.lock();
+            if (isRecording && !playingRecording) {
+                recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
+                return true;
+            }
 
-        return false;
+            return false;
+        } finally {
+            lock.unlock();
+        }
     }
 
     /**
@@ -121,6 +127,24 @@ public class RecordAndPlay {
      */
     public static boolean isRecording() {
         return isRecording;
+    }
+
+    /**
+     * Pause the playing recording
+     */
+    public static void pauseRecording() {
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.pauseRecording();
+        }
+    }
+
+    /**
+     * Resume the playing recording
+     */
+    public static void resumeRecording() {
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.resumeRecording();
+        }
     }
 
     /**
@@ -143,15 +167,21 @@ public class RecordAndPlay {
     }
 
     /**
-     * @param forward, true if we are stepping forward, false if backward
+     * Steps the recording forwards by 1 step
      */
-    public static void stepThroughRecording(boolean forward) {
-        if (!playingRecording) {
-            return;
+    public static void stepForward() {
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.stepThroughRecording(true);
         }
+    }
 
-        if (forward) moveIndex++;
-        else moveIndex--;
+    /**
+     * Steps the recording backwards by 1 step
+     */
+    public static void stepBackward() {
+        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
+            playRecordingThread.stepThroughRecording(false);
+        }
     }
 
     /**
@@ -159,87 +189,18 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static void playRecording(Main m) {
-        if (loadedMoves.isEmpty()) return;
+        if (m == null) {
+            return;
+        }
+        if (playRecordingThread.isRealThread()) {
+            playRecordingThread.interrupt();
 
-        //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
-        var movesToPlay = new ArrayList<>(loadedMoves);
-
-        //we want to keep track of where we are, for allowing the user to step through the moves
-        moveIndex = 0;
-        playingRecording = true;
-        recordingPaused = false;
-
-        new Thread(() -> {
-            //if this is different to the moveIndex we know that the user has stepped through
-            int prevMoveIndex = 0;
-
-            while (!movesToPlay.isEmpty()) {
-                lock.lock();
-                if (!playingRecording) {
-                    moveIndex = -1;
-                    recordingPaused = true;
-                    return;
-                }
-
-                if (prevMoveIndex != moveIndex) {
-                    //We have gone backwards
-                    if (prevMoveIndex > moveIndex) {
-                        var playedMoves = new ArrayList<>(loadedMoves);
-                        playedMoves.removeAll(movesToPlay);
-                        playedMoves.sort(RecordedMove::compareTo);
-                        Collections.reverse(playedMoves);
-
-                        for (int i = 0; i < prevMoveIndex - moveIndex; i++) {
-                            var moveToAdd = playedMoves.get(i);
-                            movesToPlay.add(moveToAdd);
-
-                            //If the times on the next move ARE equal, we want them to both be added
-                            if (moveToAdd.getTimeLeft() != playedMoves.get(i + 1).getTimeLeft()) {
-                                break;
-                            }
-                        }
-                    } else {
-                        //we have gone forwards
-                        var movesToSkip = new ArrayList<>(loadedMoves);
-                        movesToSkip.removeAll(movesToPlay);
-
-                        for (int i = 0; i < moveIndex - prevMoveIndex; i++) {
-                            var moveToSkip = movesToSkip.get(i);
-                            movesToPlay.remove(moveToSkip);
-
-                            //If the times on the next move ARE equal, we want them to both be added
-                            if (moveToSkip.getTimeLeft() != movesToSkip.get(i + 1).getTimeLeft()) {
-                                break;
-                            }
-                        }
-                    }
-
-                    //ensure the moves are still sorted
-                    movesToPlay.sort(RecordedMove::compareTo);
-
-                    //make sure indexes now match up
-                    // in case the recording is paused we dont want to repeat the skip/step back
-                    prevMoveIndex = moveIndex;
-                    //TODO: SET TIMER ON MAIN TO BE THAT OF THE FIRST MOVE
-                }
-
-                if (recordingPaused) continue;
+            if (!lock.tryLock()) {
                 lock.unlock();
-
-                int timeLeft = m.getTimeLeft();
-                var copiedList = new ArrayList<>(movesToPlay);
-
-                for (var move : copiedList) {
-                    //We want to play each move at this second
-                    if (timeLeft == move.getTimeLeft()) {
-                        m.getMaze().moveActor(move.getActor(), move.getDirection());
-                        movesToPlay.remove(move);
-                        moveIndex++;
-                        prevMoveIndex = moveIndex;
-                    } else break;
-                }
             }
-        }).start();
+        }
+        playRecordingThread = new PlayerThread(m);
+        playRecordingThread.start();
     }
 
     private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
@@ -248,18 +209,16 @@ public class RecordAndPlay {
         for (var move : movesJson.getJsonArray("moves")) {
             var loadedMove = move.asJsonObject();
 
-            var actorName = loadedMove.get("actor").toString();
-
-            //this is due to the value being stored as a string, so it would come out as ""player""
-            actorName = turnJsonStringToString(actorName);
-            var dir = getDirection(loadedMove.get("dir").toString());
+            var actorName = loadedMove.getString("actor");
+            var dir = Maze.Direction.valueOf(loadedMove.getString("dir"));
             var timeLeft = loadedMove.getInt("timeLeft");
 
             RecordedMove recordedMove = null;
             if (actorName.equals("player")) {
                 //TODO: make this not get the mazes chap but instead the chap from the new maze
                 // once that has been loaded
-                recordedMove = new RecordedMove(p, dir, timeLeft);
+                var moveIndex = loadedMove.getInt("moveIndex");
+                recordedMove = new RecordedMove(p, dir, timeLeft, Math.max(moveIndex, 0));
             } else {
                 //TODO support for other mobs in lvl 2
             }
@@ -281,7 +240,8 @@ public class RecordAndPlay {
             var obj = Json.createObjectBuilder()
                     .add("timeLeft", move.getTimeLeft())
                     .add("actor", move.getActor().getName())
-                    .add("dir", move.getDirection().toString());
+                    .add("dir", move.getDirection().toString())
+                    .add("moveIndex", move.getMoveIndex());
             movesArray.add(obj);
         }
 
@@ -289,6 +249,21 @@ public class RecordAndPlay {
 
         gameJson.add(movesArrayObj.build());
         return gameJson.build();
+    }
+
+    private static KeyEvent keyEventFromDirection(Maze.Direction d, GUI gui) {
+        switch (d) {
+            case UP:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
+            case DOWN:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
+            case LEFT:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
+            case RIGHT:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
+            default:
+                throw new IllegalStateException("Unexpected value: " + d);
+        }
     }
 
     private static File getJsonFileToLoad(GUI g) {
@@ -329,68 +304,4 @@ public class RecordAndPlay {
         isRecording = false;
     }
 
-    private static String turnJsonStringToString(String s) {
-        if (s == null) return null;
-        if (s.length() < 2) return "";
-
-        return s.substring(1, s.length() - 1);
-    }
-
-    private static Maze.Direction getDirection(String dir) {
-        dir = turnJsonStringToString(dir);
-        return Maze.Direction.valueOf(dir);
-    }
-
-
-    /**
-     * A internal class which can represent a move, simply maps an Actor to a Direction
-     *
-     * @author callum mckay
-     */
-    static class RecordedMove implements Comparable<RecordedMove> {
-        private final Actor actor;
-        private final Maze.Direction direction;
-        private final int timeLeft;
-
-        /**
-         * @param actor     actor who this move has been done by
-         * @param direction direction of said move
-         * @param timeLeft  time left as this move was made
-         * @author callum mckay
-         */
-        RecordedMove(Actor actor, Maze.Direction direction, int timeLeft) {
-            this.actor = actor;
-            this.direction = direction;
-            this.timeLeft = timeLeft;
-        }
-
-        /**
-         * @return the actor of this recorded move
-         * @author callum mckay
-         */
-        public Actor getActor() {
-            return actor;
-        }
-
-        /**
-         * @return the direction of this recorded move
-         * @author callum mckay
-         */
-        public Maze.Direction getDirection() {
-            return direction;
-        }
-
-
-        /**
-         * @return the time left as this move was made
-         */
-        public int getTimeLeft() {
-            return timeLeft;
-        }
-
-        @Override
-        public int compareTo(RecordedMove o) {
-            return Integer.compare(this.timeLeft, o.timeLeft);
-        }
-    }
 }

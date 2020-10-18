@@ -189,6 +189,10 @@ public class GUI extends JFrame implements KeyListener {
   public void keyPressed(KeyEvent keyEvent) {
   }
 
+  public Maze getMaze() {
+    return maze;
+  }
+
   @Override
   public void keyReleased(KeyEvent keyEvent) {
     Sound sound = null;
@@ -196,7 +200,7 @@ public class GUI extends JFrame implements KeyListener {
       // Move the chap up
       sound = maze.moveChap(Maze.Direction.UP);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.UP, main.getTimeLeft());
-    }else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
+    } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       sound = maze.moveChap(Maze.Direction.DOWN);
       RecordAndPlay.addMove(maze.getChap(), Maze.Direction.DOWN, main.getTimeLeft());
