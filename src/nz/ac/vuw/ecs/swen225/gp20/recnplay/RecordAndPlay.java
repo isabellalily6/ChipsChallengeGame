@@ -3,6 +3,7 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
@@ -124,7 +125,7 @@ public class RecordAndPlay {
             m.getGui().getCanvas().repaint();
 
             var movesFromJson = jsonArr.getJsonObject(1);
-            var moves = loadMoves(movesFromJson, maze.getChap());
+            var moves = loadMoves(movesFromJson, maze.getChap(), maze.getCobras().get(0));
             loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
@@ -197,6 +198,8 @@ public class RecordAndPlay {
      */
     public static void endPlayingRecording() {
         playingRecording.set(false);
+        dialog.setVisible(false);
+        dialog.dispose();
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
 
@@ -263,7 +266,7 @@ public class RecordAndPlay {
         }
     }
 
-    private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
+    private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p, Cobra c) {
         var toReturn = new ArrayList<RecordedMove>();
 
         for (var move : movesJson.getJsonArray("moves")) {
@@ -273,14 +276,13 @@ public class RecordAndPlay {
             var dir = Maze.Direction.valueOf(loadedMove.getString("dir"));
             var timeLeft = loadedMove.getInt("timeLeft");
 
-            RecordedMove recordedMove = null;
+            RecordedMove recordedMove;
             if (actorName.equals("player")) {
-                //TODO: make this not get the mazes chap but instead the chap from the new maze
-                // once that has been loaded
                 var moveIndex = loadedMove.getInt("moveIndex");
                 recordedMove = new RecordedMove(p, dir, timeLeft, Math.max(moveIndex, 0));
             } else {
-                //TODO support for other mobs in lvl 2
+                var moveIndex = loadedMove.getInt("moveIndex");
+                recordedMove = new RecordedMove(c, dir, timeLeft, Math.max(moveIndex, 0));
             }
 
             toReturn.add(recordedMove);

@@ -3,6 +3,7 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
 import java.awt.event.KeyEvent;
@@ -279,11 +280,17 @@ class PlayerThread extends Thread {
             return;
         }
         System.out.println("Recording is over, no moves left");
-        updateTime(timeLeft.get());
+        main.startGame(1);
+        main.playGame();
+        RecordAndPlay.endPlayingRecording();
     }
 
     private void playMove(RecordedMove move) {
-        main.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), main.getGui()));
+        if (move.getActor() instanceof Player) {
+            main.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), main.getGui()));
+        } else {
+            main.getMaze().moveActor(move.getActor(), move.getDirection());
+        }
 
         //repaint the gui
         main.getGui().getCanvas().refreshComponents();
