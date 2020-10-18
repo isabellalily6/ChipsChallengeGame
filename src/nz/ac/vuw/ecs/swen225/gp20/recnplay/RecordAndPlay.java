@@ -17,7 +17,6 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.event.KeyEvent;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
@@ -267,21 +266,6 @@ public class RecordAndPlay {
 
         gameJson.add(movesArrayObj.build());
         return gameJson.build();
-    }
-
-    private static KeyEvent keyEventFromDirection(Maze.Direction d, GUI gui) {
-        switch (d) {
-            case UP:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
-            case DOWN:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
-            case LEFT:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
-            case RIGHT:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
-            default:
-                throw new IllegalStateException("Unexpected value: " + d);
-        }
     }
 
     private static File getJsonFileToLoad(GUI g) {

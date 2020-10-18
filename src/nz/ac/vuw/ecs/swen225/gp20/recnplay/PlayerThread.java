@@ -1,8 +1,11 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -17,7 +20,6 @@ class PlayerThread extends Thread {
     private final AtomicBoolean recordingPaused = new AtomicBoolean(false);
     private List<RecordedMove> movesToPlay = new ArrayList<>();
     private final AtomicInteger timeAtPause = new AtomicInteger(100);
-    private int timeAfterPause;
     private final AtomicInteger moveIndex = new AtomicInteger(0);
     private final AtomicInteger moveIndexAtPause = new AtomicInteger(0);
     private final AtomicInteger prevMoveIndex = new AtomicInteger(0);
@@ -119,9 +121,19 @@ class PlayerThread extends Thread {
         main.getGui().setTimer(time);
     }
 
-    private void playMove(RecordedMove move) {
-        main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
-        main.getGui().getCanvas().refreshComponents();
+    private static KeyEvent keyEventFromDirection(Maze.Direction d, GUI gui) {
+        switch (d) {
+            case UP:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
+            case DOWN:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
+            case LEFT:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
+            case RIGHT:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
+            default:
+                throw new IllegalStateException("Unexpected value: " + d);
+        }
     }
 
     @Override
@@ -268,9 +280,17 @@ class PlayerThread extends Thread {
         updateTime(timeLeft);
     }
 
+    private void playMove(RecordedMove move) {
+        main.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), main.getGui()));
+
+        //repaint the gui
+        main.getGui().getCanvas().refreshComponents();
+        main.getGui().getCanvas().repaint();
+        main.getGui().repaint();
+    }
+
     private void updatePausedRecording() {
         timeAtPause.set(lastMoveTime);
-        timeAfterPause = lastMoveTime;
         moveIndexAtPause.set(moveIndex.get());
         System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
         System.out.println("Last move completed: " + prevMoveIndex);
