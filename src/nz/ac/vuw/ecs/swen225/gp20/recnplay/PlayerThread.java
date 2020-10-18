@@ -25,7 +25,7 @@ class PlayerThread extends Thread {
     private final AtomicInteger moveIndexAtPause = new AtomicInteger(0);
     private final AtomicInteger prevMoveIndex = new AtomicInteger(0);
     private final AtomicInteger timeLeft = new AtomicInteger(100);
-    private int lastMoveTime;
+    private final AtomicInteger lastMoveTime = new AtomicInteger(100);
     private final ReplayModes replayMode;
     private final int sleepTime;
 
@@ -62,6 +62,7 @@ class PlayerThread extends Thread {
      */
     public void pauseRecording() {
         if (main == null) return;
+        if (replayMode != ReplayModes.AUTO_PLAY) return;
 
         try {
             lock.lock();
@@ -79,7 +80,7 @@ class PlayerThread extends Thread {
      */
     public void resumeRecording() {
         if (main == null) return;
-
+        if (replayMode != ReplayModes.AUTO_PLAY) return;
         if (recordingPaused.getAndSet(false)) {
             try {
                 lock.lock();
@@ -104,16 +105,24 @@ class PlayerThread extends Thread {
             return;
         }
 
-        if (forward) {
-            if (moveIndex.get() + 1 >= movesToPlay.size()) {
-                return;
+        if (replayMode != ReplayModes.STEP_BY_STEP) return;
+
+        if (lock.tryLock()) {
+            try {
+                if (forward) {
+                    if (moveIndex.get() + 1 >= movesToPlay.size()) {
+                        return;
+                    }
+                    moveIndex.getAndIncrement();
+                } else {
+                    if (moveIndex.get() - 1 < -1) {
+                        return;
+                    }
+                    moveIndex.getAndDecrement();
+                }
+            } finally {
+                lock.unlock();
             }
-            moveIndex.getAndIncrement();
-        } else {
-            if (moveIndex.get() - 1 < -1) {
-                return;
-            }
-            moveIndex.getAndDecrement();
         }
     }
 
@@ -159,7 +168,6 @@ class PlayerThread extends Thread {
         prevMoveIndex.set(-1);
         timeLeft.set(main.getTimeLeft());
         if (replayMode == ReplayModes.AUTO_PLAY) {
-            main.startTimer(sleepTime);
             while (!movesToPlay.isEmpty()) {
                 if (!RecordAndPlay.playingRecording.get()) {
                     moveIndex.set(-1);
@@ -185,21 +193,24 @@ class PlayerThread extends Thread {
                         break;
                     }
                     if (lock.tryLock()) {
-                        lock.unlock();
-                        if (recordingPaused.get()) {
-                            break;
+                        try {
+                            if (recordingPaused.get()) {
+                                break;
+                            }
+                            System.out.println("Processing: " + move.toString());
+
+                            playMove(move);
+
+                            movesToPlay.remove(move);
+
+                            prevMoveIndex.set(moveIndex.get());
+                            moveIndex.set(move.getMoveIndex() + 1);
+
+                            //used in case the pause has happened while processing this move
+                            lastMoveTime.set(move.getTimeLeft());
+                        } finally {
+                            lock.unlock();
                         }
-                        System.out.println("Processing: " + move.toString());
-
-                        playMove(move);
-
-                        movesToPlay.remove(move);
-
-                        prevMoveIndex.set(moveIndex.get());
-                        moveIndex.set(move.getMoveIndex() + 1);
-
-                        //used in case the pause has happened while processing this move
-                        lastMoveTime = move.getTimeLeft();
                         if (recordingPaused.get()) {
                             System.out.println("Updating pausing var for move: " + move.toString());
                             updatePausedRecording();
@@ -251,30 +262,37 @@ class PlayerThread extends Thread {
         } else if (replayMode == ReplayModes.STEP_BY_STEP) {
             prevMoveIndex.set(-1);
             moveIndex.set(-1);
-            main.startTimer();
+
             main.pauseGame(false);
             while (RecordAndPlay.playingRecording.get()) {
                 if (prevMoveIndex.get() != moveIndex.get()) {
-                    //Moved forwards
-                    if (prevMoveIndex.get() < moveIndex.get()) {
-                        var move = movesToPlay.get(moveIndex.get());
-                        playMove(move);
-                        prevMoveIndex.set(moveIndex.get());
-                        updateTime(move.getTimeLeft());
-                    } else {
-                        var move = movesToPlay.get(moveIndex.get() + 1);
-                        var inverseMove = move.getInverse();
-                        playMove(inverseMove);
+                    if (lock.tryLock()) {
+                        try {
+                            //Moved forwards
+                            if (prevMoveIndex.get() < moveIndex.get()) {
+                                var move = movesToPlay.get(moveIndex.get());
+                                playMove(move);
+                                prevMoveIndex.set(moveIndex.get());
+                                updateTime(move.getTimeLeft());
+                            } else {
+                                var move = movesToPlay.get(moveIndex.get() + 1);
+                                var inverseMove = move.getInverse();
+                                playMove(inverseMove);
 
-                        //make sure chap is facing the right direction
-                        main.getMaze().getChap().setDir(move.getDirection());
-                        main.getGui().getCanvas().refreshComponents();
-                        prevMoveIndex.set(moveIndex.get());
-                        updateTime(move.getTimeLeft());
+                                //make sure chap is facing the right direction
+                                main.getMaze().getChap().setDir(move.getDirection());
+                                main.getGui().getCanvas().refreshComponents();
+                                prevMoveIndex.set(moveIndex.get());
+                                updateTime(move.getTimeLeft());
+                            }
+                        } finally {
+                            lock.unlock();
+                        }
                     }
-
                 }
             }
+
+            return;
         } else {
             //invalid state
             return;
@@ -290,16 +308,16 @@ class PlayerThread extends Thread {
             main.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), main.getGui()));
         } else {
             main.getMaze().moveActor(move.getActor(), move.getDirection());
-        }
 
-        //repaint the gui
-        main.getGui().getCanvas().refreshComponents();
-        main.getGui().getCanvas().repaint();
-        main.getGui().repaint();
+            //repaint the gui
+            main.getGui().getCanvas().refreshComponents();
+            main.getGui().getCanvas().repaint();
+            main.getGui().repaint();
+        }
     }
 
     private void updatePausedRecording() {
-        timeAtPause.set(lastMoveTime);
+        timeAtPause.set(lastMoveTime.get());
         moveIndexAtPause.set(moveIndex.get());
         System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
         System.out.println("Last move completed: " + prevMoveIndex);

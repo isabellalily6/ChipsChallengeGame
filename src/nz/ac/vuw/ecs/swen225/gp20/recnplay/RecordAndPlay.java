@@ -125,7 +125,8 @@ public class RecordAndPlay {
             m.getGui().getCanvas().repaint();
 
             var movesFromJson = jsonArr.getJsonObject(1);
-            var moves = loadMoves(movesFromJson, maze.getChap(), maze.getCobras().get(0));
+            var cobra = maze.getCobras() != null && maze.getCobras().size() > 0 ? maze.getCobras().get(0) : null;
+            var moves = loadMoves(movesFromJson, maze.getChap(), cobra);
             loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
@@ -199,15 +200,31 @@ public class RecordAndPlay {
     public static void endPlayingRecording() {
         playingRecording.set(false);
         dialog.setVisible(false);
-        dialog.dispose();
+
         if (playRecordingThread.isRealThread()) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                if (!lock.tryLock()) {
+                    try {
+                        lock.unlock();
+                    } catch (IllegalMonitorStateException ignored) {
+
+                    }
+                }
+            }
             playRecordingThread.interrupt();
 
             if (!lock.tryLock()) {
-                lock.unlock();
+                try {
+                    lock.unlock();
+                } catch (IllegalMonitorStateException ignored) {
+
+                }
             }
         }
     }
+
 
     /**
      * Starts recording this game
