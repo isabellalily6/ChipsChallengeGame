@@ -54,7 +54,7 @@ class PlayerThread extends Thread {
         try {
             lock.lock();
             if (!recordingPaused.getAndSet(true)) {
-                main.pauseGame();
+                main.pauseGame(false);
                 updatePausedRecording();
             }
         } finally {
