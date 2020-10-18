@@ -77,7 +77,7 @@ public class GUI extends JFrame implements KeyListener {
         if(maze.getState().equals(Maze.LevelState.WON) && main.getLevel()!=2){
           main.startGame(main.getLevel()+1);
         }else {
-          main.startGame(main.getLevel());
+          main.startGame(1);
         }
         gameWon.dispose();
       }
