@@ -30,6 +30,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 
 public class LevelLoader {
 	
@@ -58,6 +59,7 @@ public class LevelLoader {
 		int treasures = 0; //total treasures in the level
 		Player chap = null;
 		ArrayList<Block> blocks = new ArrayList<Block>();
+		ArrayList<Cobra> cobras = new ArrayList<Cobra>();
 		
 		try {
 			
@@ -142,7 +144,7 @@ public class LevelLoader {
 		if(levelNumber == 1) {
 			return new Level(map, treasures, chap);
 		} else {
-			return new Level(map, treasures, chap, blocks);
+			return new Level(map, treasures, chap, blocks, cobras);
 		}
 	}
 	
