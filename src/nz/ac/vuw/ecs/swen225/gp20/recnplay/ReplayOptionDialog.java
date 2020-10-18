@@ -56,6 +56,7 @@ public class ReplayOptionDialog extends JDialog {
     closeButton.addActionListener(method -> {
       RecordAndPlay.endPlayingRecording();
       main.startGame(1);
+      main.playGame();
       dispose();
     });
 
