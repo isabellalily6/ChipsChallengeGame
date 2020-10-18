@@ -23,7 +23,7 @@ class PlayerThread extends Thread {
     private final AtomicInteger moveIndex = new AtomicInteger(0);
     private final AtomicInteger moveIndexAtPause = new AtomicInteger(0);
     private final AtomicInteger prevMoveIndex = new AtomicInteger(0);
-    private int timeLeft;
+    private final AtomicInteger timeLeft = new AtomicInteger(100);
     private int lastMoveTime;
     private final ReplayModes replayMode;
     private final int sleepTime;
@@ -84,7 +84,7 @@ class PlayerThread extends Thread {
                 lock.lock();
                 moveIndex.set(moveIndexAtPause.get());
                 updateTime(timeAtPause.get());
-                timeLeft = timeAtPause.get();
+                timeLeft.set(timeAtPause.get());
                 System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
                 main.playGame();
             } finally {
@@ -156,7 +156,7 @@ class PlayerThread extends Thread {
 
         //if this is different to the moveIndex we know that the user has stepped through
         prevMoveIndex.set(-1);
-        timeLeft = main.getTimeLeft();
+        timeLeft.set(main.getTimeLeft());
         if (replayMode == ReplayModes.AUTO_PLAY) {
             main.startTimer(sleepTime);
             while (!movesToPlay.isEmpty()) {
@@ -169,7 +169,7 @@ class PlayerThread extends Thread {
                     continue;
                 }
 
-                int finalTimeLeft = timeLeft;
+                int finalTimeLeft = timeLeft.get();
                 var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
                         .filter(move -> move.getMoveIndex() > prevMoveIndex.get()).collect(Collectors.toList());
 
@@ -196,6 +196,8 @@ class PlayerThread extends Thread {
 
                         prevMoveIndex.set(moveIndex.get());
                         moveIndex.set(move.getMoveIndex() + 1);
+
+                        //used in case the pause has happened while processing this move
                         lastMoveTime = move.getTimeLeft();
                         if (recordingPaused.get()) {
                             System.out.println("Updating pausing var for move: " + move.toString());
@@ -241,8 +243,8 @@ class PlayerThread extends Thread {
                 }
 
                 if (!recordingPaused.get()) {
-                    timeLeft--;
-                    updateTime(timeLeft);
+                    timeLeft.decrementAndGet();
+                    updateTime(timeLeft.get());
                 }
             }
         } else if (replayMode == ReplayModes.STEP_BY_STEP) {
@@ -277,7 +279,7 @@ class PlayerThread extends Thread {
             return;
         }
         System.out.println("Recording is over, no moves left");
-        updateTime(timeLeft);
+        updateTime(timeLeft.get());
     }
 
     private void playMove(RecordedMove move) {
