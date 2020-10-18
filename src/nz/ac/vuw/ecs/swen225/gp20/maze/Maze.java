@@ -105,7 +105,7 @@ public class Maze {
         this.level = level;
         if (level == 2) {
             this.blocks = LevelLoader.load(level).getBlocks();
-            //this.cobras = LevelLoader.load(level).getCobras();
+            this.cobras = LevelLoader.load(level).getCobras();
             setCobras();
             setBlocks();
             this.cobraThread = new MovementThreadHandler(this);
