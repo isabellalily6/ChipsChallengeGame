@@ -94,7 +94,11 @@ public class Main {
         // show the time on the gui label
         gui.setTimer(timeLeft);
         if(maze.isLevelOver()){
-          gui.getGameWon().setVisible(true);
+          if(maze.getState().equals(Maze.LevelState.WON)) {
+            gui.getGameWon().setVisible(true);
+          }else{
+            gui.getGameLost().setVisible(true);
+          }
           timeLeft = maxTime;
           timer.cancel();
         }
