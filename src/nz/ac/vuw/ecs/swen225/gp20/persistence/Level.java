@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 
 public class Level {
 	
@@ -11,6 +12,7 @@ public class Level {
 	private int treasures; //number of treasures in the level
 	private Player chap;
 	private ArrayList<Block> blocks;
+	private ArrayList<Cobra> cobras;
 	
 	public Level(Tile[][] map, int treasures, Player chap) {
 		this.map = map;
@@ -18,11 +20,12 @@ public class Level {
 		this.chap = chap;
 	}
 	
-	public Level(Tile[][] map, int treasures, Player chap, ArrayList<Block> blocks) {
+	public Level(Tile[][] map, int treasures, Player chap, ArrayList<Block> blocks, ArrayList<Cobra> cobras) {
 		this.map = map;
 		this.treasures = treasures;
 		this.chap = chap;
 		this.blocks = blocks;
+		this.cobras = cobras;
 	}
 	
 	public Tile[][] getMap(){
@@ -39,5 +42,9 @@ public class Level {
 
 	public ArrayList<Block> getBlocks() {
 		return blocks;
+	}
+	
+	public ArrayList<Cobra> getCobras() {
+		return cobras;
 	}
 }
