@@ -69,10 +69,14 @@ public class Canvas extends JPanel {
                 }
             }
         }
-        for(Block block : maze.getBlocks()) {
-            components[block.getCol()][block.getRow()].setIcon(makeImageIcon("data/block.png"));
+        if(maze != null && maze.getBlocks() != null && !maze.getBlocks().isEmpty()) {
+            for (Block block : maze.getBlocks()) {
+                components[block.getCol()][block.getRow()].setIcon(makeImageIcon("data/block.png"));
+            }
         }
-        components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
+        if(maze != null && maze.getChap() != null) {
+            components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
+        }
     }
 
     /**
