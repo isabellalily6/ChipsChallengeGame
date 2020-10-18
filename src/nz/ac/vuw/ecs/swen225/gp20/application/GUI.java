@@ -6,7 +6,6 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -61,7 +60,7 @@ public class GUI extends JFrame implements KeyListener {
 
     // create dialogues
     pausedDialogue = new Dialogues(main, "GAME IS PAUSED", "RESUME");
-    gameWon = new Dialogues(main, "You have won the level!!!", "RESTART");
+    gameWon = new Dialogues(main, "You have won the level!!!", "NEXT GAME");
     gameLost = new Dialogues(main, "You have lost the game", "RETRY");
     setButtonActionListeners();
   }
@@ -70,8 +69,11 @@ public class GUI extends JFrame implements KeyListener {
    * Set the action listeners for the buttons on the JDialogues
    **/
   public void setButtonActionListeners(){
-    pausedDialogue.getButton().addActionListener(method -> main.playGame());
-    gameWon.setActionListener(new ActionListener() {
+    // add action listeners to the buttons in the possible dialogues
+    pausedDialogue.setActionListener(method -> main.playGame());
+    gameWon.setActionListener(
+
+            new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         if(maze.getState().equals(Maze.LevelState.WON) && main.getLevel()!=2){
@@ -86,7 +88,6 @@ public class GUI extends JFrame implements KeyListener {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         main.startGame(main.getLevel());
-        System.out.println("test");
         gameLost.dispose();
       }
     });
