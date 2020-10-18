@@ -146,6 +146,13 @@ class PlayerThread extends Thread {
         }
     }
 
+    /**
+     * @return the main class associated with this thread
+     */
+    public Main getMain() {
+        return main;
+    }
+
     @Override
     public void run() {
         if (main == null) return;
@@ -298,8 +305,6 @@ class PlayerThread extends Thread {
             return;
         }
         System.out.println("Recording is over, no moves left");
-        main.startGame(1);
-        main.playGame();
         RecordAndPlay.endPlayingRecording();
     }
 

@@ -206,23 +206,17 @@ public class RecordAndPlay {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 if (!lock.tryLock()) {
-                    try {
-                        lock.unlock();
-                    } catch (IllegalMonitorStateException ignored) {
-
-                    }
+                    lock.unlock();
                 }
             }
             playRecordingThread.interrupt();
 
             if (!lock.tryLock()) {
-                try {
-                    lock.unlock();
-                } catch (IllegalMonitorStateException ignored) {
-
-                }
+                lock.unlock();
             }
         }
+        playRecordingThread.getMain().playGame();
+        playRecordingThread.getMain().startGame(1);
     }
 
 
