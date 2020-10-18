@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @author Benjamin Doornbos 300487256
  */
 public class Cobra extends Actor {
-    private final Queue<Maze.Direction> moves;
+    private final Queue<Direction> moves;
     private boolean testMode;
 
     /**
@@ -20,7 +20,7 @@ public class Cobra extends Actor {
      * @param location the tile this actor is standing on
      * @param moves    a queue of moves that the cobra will take
      */
-    public Cobra(Tile location, Queue<Maze.Direction> moves) {
+    public Cobra(Tile location, Queue<Direction> moves) {
         super(location, "cobra");
         this.moves = moves;
         this.testMode = false;
@@ -44,9 +44,9 @@ public class Cobra extends Actor {
      *
      * @return the next move this cobra needs to take
      */
-    public Maze.Direction nextMove() {
+    public Direction nextMove() {
         checkArgument(!testMode && !moves.isEmpty(), "This cobra has no moves");
-        Maze.Direction move = moves.poll();
+        Direction move = moves.poll();
         moves.offer(move);
         return move;
     }

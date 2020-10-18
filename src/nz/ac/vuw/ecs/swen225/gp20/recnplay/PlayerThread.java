@@ -2,7 +2,7 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
@@ -122,7 +122,7 @@ class PlayerThread extends Thread {
         main.getGui().setTimer(time);
     }
 
-    private static KeyEvent keyEventFromDirection(Maze.Direction d, GUI gui) {
+    private static KeyEvent keyEventFromDirection(Direction d, GUI gui) {
         switch (d) {
             case UP:
                 return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);

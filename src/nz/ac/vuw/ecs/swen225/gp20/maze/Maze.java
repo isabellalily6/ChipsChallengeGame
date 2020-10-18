@@ -34,7 +34,7 @@ public class Maze {
     private Thread cobraThread;
     private int treasuresLeft;
     private int level;
-    private boolean levelOver;
+    private LevelState state;
 
     /**
      * TEST CONSTRUCTOR - Do not use in production code
@@ -50,6 +50,7 @@ public class Maze {
         checkArgument(totalTreasures >= 0, "amount of treasures must not be negative");
         this.totalTreasures = treasuresLeft = totalTreasures;
         chap = new Player(tiles[cols / 2][rows / 2]);
+        this.state = LevelState.RUNNING;
     }
 
     /**
@@ -90,6 +91,7 @@ public class Maze {
         this.chap = chap;
         // this is so getLocation will point to the right object
         this.chap.setLocation(this.tiles[chap.getLocation().getCol()][chap.getLocation().getRow()]);
+        this.state = LevelState.RUNNING;
     }
 
 
@@ -102,13 +104,12 @@ public class Maze {
         this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures(), LevelLoader.load(level).getChap());
         this.level = level;
         if (level == 2) {
-            //this.blocks = LevelLoader.load(level).getBlocks();
+            this.blocks = LevelLoader.load(level).getBlocks();
             //this.cobras = LevelLoader.load(level).getCobras();
             setCobras();
             setBlocks();
             this.cobraThread = new MovementThreadHandler(this);
             this.cobraThread.start();
-            //chap.setLocation(LevelLoader.load(level).getChapPos);
         }
     }
 
@@ -176,11 +177,11 @@ public class Maze {
 
         if (a == chap) {
             if (newLoc instanceof Exit) {
-                levelOver = true;
+                state = LevelState.WON;
                 if (cobraThread != null) cobraThread.interrupt();
             } else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
             else if (newLoc.isOccupied()) {
-                levelOver = true; //TODO: enum
+                state = LevelState.DIED;
                 if (cobraThread != null) cobraThread.interrupt();
                 return null; //TODO: death sound?
             } else {
@@ -193,7 +194,7 @@ public class Maze {
         } else {
             if (!newLoc.isAccessible()) return null;
             if (newLoc.isOccupied()) {
-                levelOver = true;
+                state = LevelState.DIED;
                 if (cobraThread != null) cobraThread.interrupt();
             }
         }
@@ -220,7 +221,7 @@ public class Maze {
             if (!chap.backpackContains(ld.getLockColour())) return null;
         } else if (loc instanceof Lava) {
             //TODO: potentially make levelOver an int 0=not over 1=win 2=die
-            levelOver = true;
+            state = LevelState.DIED;
             if (cobraThread != null) cobraThread.interrupt();
             return null;
         }
@@ -295,16 +296,19 @@ public class Maze {
         }
         return toRet;
     }
-    /*
-    private void checkMaze() {
-        for (int col = 0; );
-    }*/
 
     /**
      * @return Whether the level is over (chap died or reached exit)
      */
     public boolean isLevelOver() {
-        return levelOver;
+        return state != LevelState.RUNNING;
+    }
+
+    /**
+     * @return Which state this level is in
+     */
+    public LevelState getState() {
+        return state;
     }
 
     /**
@@ -342,10 +346,6 @@ public class Maze {
         return cobras;
     }
 
-    public boolean cobraThreadStopped() {
-        return cobraThread.isInterrupted();
-    }
-
     /**
      * @return a list of all the blocks in the game
      */
@@ -354,39 +354,22 @@ public class Maze {
     }
 
     /**
-     * Enum that determines the direction of one of chap's moves
+     * a enum that determines what state the level is in
      *
-     * @author Benjamin Doornbos
+     * @author Benjamin Doornbos 300487256
      */
-    public enum Direction {
+    public enum LevelState {
         /**
-         * Moving up one row
+         * the game is running
          */
-        UP("Up"),
+        RUNNING,
         /**
-         * Moving down one row
+         * chap collected all the treasures
          */
-        DOWN("Down"),
+        WON,
         /**
-         * Moving left one column
+         * chap has died :(
          */
-        LEFT("Left"),
-        /**
-         * Moving right one column
-         */
-        RIGHT("Right");
-
-        private final String name;
-
-        Direction(String name) {
-            this.name = name;
-        }
-
-        /**
-         * @return Properly formatted name of this direction
-         */
-        public String getName() {
-            return name;
-        }
+        DIED,
     }
 }

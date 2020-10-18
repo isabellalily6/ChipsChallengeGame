@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.locks.Lock;
 
 /**
  * class made to test application of game
@@ -26,11 +25,11 @@ public class MonkeyTesting {
         double initialTime = System.currentTimeMillis();
         Random random = new Random();
         // fill up direction ArrayList
-        ArrayList<Maze.Direction> directions = new ArrayList<>();
-        directions.add(Maze.Direction.UP);
-        directions.add(Maze.Direction.DOWN);
-        directions.add(Maze.Direction.LEFT);
-        directions.add(Maze.Direction.RIGHT);
+        ArrayList<Direction> directions = new ArrayList<>();
+        directions.add(Direction.UP);
+        directions.add(Direction.DOWN);
+        directions.add(Direction.LEFT);
+        directions.add(Direction.RIGHT);
         Main main = new Main(false);
         Maze maze = main.getMaze();
         int x = 0;
@@ -39,8 +38,7 @@ public class MonkeyTesting {
             try {
                 x++;
                 maze.moveChap(directions.get(random.nextInt(4)));
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -59,11 +57,11 @@ public class MonkeyTesting {
         double initialTime = System.currentTimeMillis();
         Random random = new Random();
         // fill up direction ArrayList
-        ArrayList<Maze.Direction> directions = new ArrayList<>();
-        directions.add(Maze.Direction.UP);
-        directions.add(Maze.Direction.DOWN);
-        directions.add(Maze.Direction.LEFT);
-        directions.add(Maze.Direction.RIGHT);
+        ArrayList<Direction> directions = new ArrayList<>();
+        directions.add(Direction.UP);
+        directions.add(Direction.DOWN);
+        directions.add(Direction.LEFT);
+        directions.add(Direction.RIGHT);
         Main main = new Main(false);
         Maze maze = main.getMaze();
         int x = 0;

@@ -10,7 +10,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 public abstract class Actor {
     private Tile location;
     private final String name;
-    private Maze.Direction dir;
+    private Direction dir;
 
     /**
      * Creates a new Actor
@@ -25,7 +25,7 @@ public abstract class Actor {
         checkArgument(name.length() > 0);
         this.location = location;
         location.onEntry(this);
-        this.dir = Maze.Direction.UP;
+        this.dir = Direction.UP;
         this.name = name;
     }
 
@@ -48,14 +48,14 @@ public abstract class Actor {
     /**
      * @return the direction this actor is facing
      */
-    public Maze.Direction getDir() {
+    public Direction getDir() {
         return dir;
     }
 
     /**
      * @param dir direction this actor is now facing
      */
-    public void setDir(Maze.Direction dir) {
+    public void setDir(Direction dir) {
         this.dir = dir;
     }
 
