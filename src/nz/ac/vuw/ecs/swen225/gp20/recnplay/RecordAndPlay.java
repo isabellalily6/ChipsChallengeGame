@@ -37,12 +37,39 @@ public class RecordAndPlay {
     private static GUI parentComponent;
     static PlayerThread playRecordingThread = new PlayerThread(null, null, 0);
 
+    /**
+     * Moves which have been loaded in
+     */
     static final List<RecordedMove> loadedMoves = new ArrayList<>();
+
+    /**
+     * Lock, to ensure only one PlayerThread is running at once
+     */
     static final Lock lock = new ReentrantLock();
+
+    /**
+     * The speed that the player runs at
+     */
     static int replaySpeed = 0;
+
+    /**
+     * Is recording? tells us if we are currently recording a game
+     */
     static boolean isRecording = false;
+
+    /**
+     * Tells us if a recording is playing
+     */
     static AtomicBoolean playingRecording = new AtomicBoolean(false);
+
+    /**
+     * What mode are we going to replay in? Auto or step by step etc
+     */
     static ReplayModes replayMode;
+
+    /**
+     * the dialog which displays buttons for the user to interact with
+     */
     private static ReplayOptionDialog dialog;
 
     /**
@@ -161,6 +188,13 @@ public class RecordAndPlay {
      */
     public static void endPlayingRecording() {
         playingRecording.set(false);
+        if (playRecordingThread.isRealThread()) {
+            playRecordingThread.interrupt();
+
+            if (!lock.tryLock()) {
+                lock.unlock();
+            }
+        }
     }
 
     /**
