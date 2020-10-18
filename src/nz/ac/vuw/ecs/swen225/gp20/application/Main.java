@@ -27,8 +27,8 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private int level = 1;
-  private int maxTime = 100;
+  private final int level = 1;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -59,24 +59,28 @@ public class Main {
   public Main(Boolean monkeyTest) {
     // create the maze and the gui for the game
     maze = new Maze(level);
-    if(monkeyTest){
+    if (monkeyTest) {
       gui = new GUI(this, maze);
       gui.setUpGui();
     }
 
   }
 
+  public void startTimer() {
+    startTimer(1000);
+  }
+
   /**
    * Start a timer to do the timer task every second
    **/
-  public void startTimer(){
+  public void startTimer(int period) {
     // set the start time of the timer
     timeLeft = maxTime;
     // create the time and the timer task
     timer = new Timer();
     createTimerTask();
     // schedule the timer to do the task every second
-    timer.schedule(timerTask, 0,1000);
+    timer.schedule(timerTask, 0, period);
   }
 
   /**

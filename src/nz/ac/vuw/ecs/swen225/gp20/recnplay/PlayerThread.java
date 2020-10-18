@@ -1,10 +1,15 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
+import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
@@ -14,21 +19,27 @@ class PlayerThread extends Thread {
     private final Lock lock = new ReentrantLock();
     private final AtomicBoolean recordingPaused = new AtomicBoolean(false);
     private List<RecordedMove> movesToPlay = new ArrayList<>();
-    private int timeAtPause;
-    private int timeAfterPause;
-    private int moveIndex;
-    private int moveIndexAtPause;
-    private int prevMoveIndex;
-    private int timeLeft;
+    private final AtomicInteger timeAtPause = new AtomicInteger(100);
+    private final AtomicInteger moveIndex = new AtomicInteger(0);
+    private final AtomicInteger moveIndexAtPause = new AtomicInteger(0);
+    private final AtomicInteger prevMoveIndex = new AtomicInteger(0);
+    private final AtomicInteger timeLeft = new AtomicInteger(100);
     private int lastMoveTime;
+    private final ReplayModes replayMode;
+    private final int sleepTime;
 
 
     /**
-     * @param main main class which is running the replay
-     *             Passing in null allows this to be used as a fake, where the methods do nothing
+     * @param main  main class which is running the replay
+     *              Passing in null allows this to be used as a fake, where the methods do nothing
+     * @param mode  the mode of replay, ie: autoplay, step by step
+     * @param speed the speed the replay plays at
      */
-    public PlayerThread(Main main) {
+    public PlayerThread(Main main, ReplayModes mode, int speed) {
         this.main = main;
+        this.replayMode = mode;
+        //1000 is 1 sec, if speed is 100%, then it will run at 1000 / (100/100) = 1000
+        this.sleepTime = speed == 0 ? 1000 : (int) (1000 / (speed / 100.0));
     }
 
     /**
@@ -71,9 +82,9 @@ class PlayerThread extends Thread {
         if (recordingPaused.getAndSet(false)) {
             try {
                 lock.lock();
-                moveIndex = moveIndexAtPause;
-                updateTime(timeAtPause);
-                timeLeft = timeAtPause;
+                moveIndex.set(moveIndexAtPause.get());
+                updateTime(timeAtPause.get());
+                timeLeft.set(timeAtPause.get());
                 System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
                 main.playGame();
             } finally {
@@ -88,68 +99,21 @@ class PlayerThread extends Thread {
     public void stepThroughRecording(boolean forward) {
         if (main == null) return;
 
-        if (!RecordAndPlay.playingRecording) {
-            return;
-        }
-
-        //You can only step through if the game is paused
-        if (!recordingPaused.get()) {
+        if (!RecordAndPlay.playingRecording.get()) {
             return;
         }
 
         if (forward) {
-            timeAfterPause--;
-            updatePausedGame(true);
-        } else {
-            timeAfterPause++;
-            updatePausedGame(false);
-        }
-    }
-
-    private void updatePausedGame(boolean forward) {
-        //We have stepped either forwards or backwards
-
-        //We have stepped forward in the recording, as there is less time left
-        var movesToAdjust = new ArrayList<RecordedMove>();
-        if (forward) {
-            if (movesToPlay.isEmpty()) return;
-            for (var move : movesToPlay) {
-                if (move.getTimeLeft() > timeAfterPause) {
-                    movesToAdjust.add(move);
-
-                    //updates the gui with the correct move
-                    playMove(move);
-                    System.out.println("Stepping forwards: " + move.getMoveIndex());
-                }
+            if (moveIndex.get() + 1 >= movesToPlay.size()) {
+                return;
             }
-
-            movesToPlay.removeAll(movesToAdjust);
-            if (movesToPlay.isEmpty()) return;
+            moveIndex.getAndIncrement();
         } else {
-            for (var move : RecordAndPlay.loadedMoves) {
-                if (move.getTimeLeft() < timeAfterPause && !movesToPlay.contains(move)) {
-                    movesToAdjust.add(move);
-
-                    var inverseMove = move.getInverse();
-                    playMove(inverseMove);
-
-                    //make sure chap is facing the right direction
-                    main.getMaze().getChap().setDir(move.getDirection());
-                    main.getGui().getCanvas().refreshComponents();
-                    System.out.println("Stepping backwards: " + move.getMoveIndex());
-                }
+            if (moveIndex.get() - 1 < -1) {
+                return;
             }
-
-            movesToPlay.addAll(movesToAdjust);
+            moveIndex.getAndDecrement();
         }
-
-        movesToPlay.sort(RecordedMove::compareTo);
-        moveIndexAtPause = movesToPlay.get(0).getMoveIndex();
-        prevMoveIndex = moveIndexAtPause - 1;
-
-        updateTime(timeAfterPause);
-
-        timeAtPause = timeAfterPause;
     }
 
     private void updateTime(int time) {
@@ -157,9 +121,19 @@ class PlayerThread extends Thread {
         main.getGui().setTimer(time);
     }
 
-    private void playMove(RecordedMove move) {
-        main.getGui().getMaze().moveActor(move.getActor(), move.getDirection());
-        main.getGui().getCanvas().refreshComponents();
+    private static KeyEvent keyEventFromDirection(Maze.Direction d, GUI gui) {
+        switch (d) {
+            case UP:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
+            case DOWN:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
+            case LEFT:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
+            case RIGHT:
+                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
+            default:
+                throw new IllegalStateException("Unexpected value: " + d);
+        }
     }
 
     @Override
@@ -172,67 +146,92 @@ class PlayerThread extends Thread {
         movesToPlay = new ArrayList<>(RecordAndPlay.loadedMoves);
 
         //we want to keep track of where we are, for allowing the user to step through the moves
-        moveIndex = 0;
-        RecordAndPlay.playingRecording = true;
+        moveIndex.set(0);
+        RecordAndPlay.playingRecording.set(true);
         recordingPaused.set(false);
         main.getTimer().cancel();
         main.getTimer().purge();
-        main.startTimer();
+
         updateTime(Math.max(movesToPlay.get(0).getTimeLeft() + 2, 100));
 
         //if this is different to the moveIndex we know that the user has stepped through
-        prevMoveIndex = -1;
-        timeLeft = main.getTimeLeft();
-        while (!movesToPlay.isEmpty()) {
-            if (!RecordAndPlay.playingRecording) {
-                moveIndex = -1;
-                break;
-            }
-
-            if (recordingPaused.get()) {
-                continue;
-            }
-
-            int finalTimeLeft = timeLeft;
-            var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
-                    .filter(move -> move.getMoveIndex() > prevMoveIndex).collect(Collectors.toList());
-
-            //get the moves for the current second
-            //or the previous moves in the case where some moves were not processed properly (can happen if you pause mid second)
-            var copiedList = new ArrayList<>(movesWithCorrectMoveIndices).stream()
-                    .filter(move -> move.getTimeLeft() == finalTimeLeft || move.getTimeLeft() == finalTimeLeft + 1)
-                    .collect(Collectors.toList());
-
-            for (var move : copiedList) {
-                if (recordingPaused.get()) {
+        prevMoveIndex.set(-1);
+        timeLeft.set(main.getTimeLeft());
+        if (replayMode == ReplayModes.AUTO_PLAY) {
+            main.startTimer(sleepTime);
+            while (!movesToPlay.isEmpty()) {
+                if (!RecordAndPlay.playingRecording.get()) {
+                    moveIndex.set(-1);
                     break;
                 }
-                if (lock.tryLock()) {
-                    lock.unlock();
+
+                if (recordingPaused.get()) {
+                    continue;
+                }
+
+                int finalTimeLeft = timeLeft.get();
+                var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
+                        .filter(move -> move.getMoveIndex() > prevMoveIndex.get()).collect(Collectors.toList());
+
+                //get the moves for the current second
+                //or the previous moves in the case where some moves were not processed properly (can happen if you pause mid second)
+                var copiedList = new ArrayList<>(movesWithCorrectMoveIndices).stream()
+                        .filter(move -> move.getTimeLeft() == finalTimeLeft || move.getTimeLeft() == finalTimeLeft + 1)
+                        .collect(Collectors.toList());
+
+                for (var move : copiedList) {
                     if (recordingPaused.get()) {
                         break;
                     }
-                    System.out.println("Processing: " + move.toString());
+                    if (lock.tryLock()) {
+                        lock.unlock();
+                        if (recordingPaused.get()) {
+                            break;
+                        }
+                        System.out.println("Processing: " + move.toString());
 
-                    playMove(move);
+                        playMove(move);
 
-                    movesToPlay.remove(move);
+                        movesToPlay.remove(move);
 
-                    prevMoveIndex = moveIndex;
-                    moveIndex = move.getMoveIndex() + 1;
-                    lastMoveTime = move.getTimeLeft();
-                    if (recordingPaused.get()) {
-                        System.out.println("Updating pausing var for move: " + move.toString());
-                        updatePausedRecording();
-                        break;
-                    }
+                        prevMoveIndex.set(moveIndex.get());
+                        moveIndex.set(move.getMoveIndex() + 1);
 
-                    try {
+                        //used in case the pause has happened while processing this move
+                        lastMoveTime = move.getTimeLeft();
+                        if (recordingPaused.get()) {
+                            System.out.println("Updating pausing var for move: " + move.toString());
+                            updatePausedRecording();
+                            break;
+                        }
+
+                        try {
                         /*
-                            This is not busy waiting, even though this is in a loop
-                            This is what is simulating the timer, so that the moves happen in real time, not all at once
+                          This is not busy waiting, even though this is in a loop
+                          This is what is simulating the timer, so that the moves happen in real time, not all at once
                          */
-                        Thread.sleep(1000 / copiedList.size());
+                            Thread.sleep(sleepTime / copiedList.size());
+                        } catch (InterruptedException e) {
+                            if (Thread.holdsLock(RecordAndPlay.lock)) {
+                                RecordAndPlay.lock.unlock();
+                            }
+                            System.out.println("Exception thrown");
+                            RecordAndPlay.playRecordingThread.interrupt();
+                            return;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+
+                if (copiedList.isEmpty()) {
+                    try {
+                        System.out.println("No moves found for: " + prevMoveIndex + " at time: " + timeLeft);
+                    /*
+                        This is not busy waiting, even though this is in a loop
+                        This is what is simulating the timer, so that the moves happen in real time, not all at once
+                    */
+                        Thread.sleep(sleepTime);
                     } catch (InterruptedException e) {
                         if (Thread.holdsLock(RecordAndPlay.lock)) {
                             RecordAndPlay.lock.unlock();
@@ -241,42 +240,60 @@ class PlayerThread extends Thread {
                         RecordAndPlay.playRecordingThread.interrupt();
                         return;
                     }
-                } else {
-                    break;
+                }
+
+                if (!recordingPaused.get()) {
+                    timeLeft.decrementAndGet();
+                    updateTime(timeLeft.get());
                 }
             }
+        } else if (replayMode == ReplayModes.STEP_BY_STEP) {
+            prevMoveIndex.set(-1);
+            moveIndex.set(-1);
+            main.startTimer();
+            main.pauseGame(false);
+            while (RecordAndPlay.playingRecording.get()) {
+                if (prevMoveIndex.get() != moveIndex.get()) {
+                    //Moved forwards
+                    if (prevMoveIndex.get() < moveIndex.get()) {
+                        var move = movesToPlay.get(moveIndex.get());
+                        playMove(move);
+                        prevMoveIndex.set(moveIndex.get());
+                        updateTime(move.getTimeLeft());
+                    } else {
+                        var move = movesToPlay.get(moveIndex.get() + 1);
+                        var inverseMove = move.getInverse();
+                        playMove(inverseMove);
 
-            if (copiedList.isEmpty()) {
-                try {
-                    System.out.println("No moves found for: " + prevMoveIndex + " at time: " + timeLeft);
-                    /*
-                        This is not busy waiting, even though this is in a loop
-                        This is what is simulating the timer, so that the moves happen in real time, not all at once
-                    */
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    if (Thread.holdsLock(RecordAndPlay.lock)) {
-                        RecordAndPlay.lock.unlock();
+                        //make sure chap is facing the right direction
+                        main.getMaze().getChap().setDir(move.getDirection());
+                        main.getGui().getCanvas().refreshComponents();
+                        prevMoveIndex.set(moveIndex.get());
+                        updateTime(move.getTimeLeft());
                     }
-                    System.out.println("Exception thrown");
-                    RecordAndPlay.playRecordingThread.interrupt();
-                    return;
+
                 }
             }
-
-            if (!recordingPaused.get()) {
-                timeLeft--;
-                updateTime(timeLeft);
-            }
+        } else {
+            //invalid state
+            return;
         }
         System.out.println("Recording is over, no moves left");
-        updateTime(timeLeft);
+        updateTime(timeLeft.get());
+    }
+
+    private void playMove(RecordedMove move) {
+        main.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), main.getGui()));
+
+        //repaint the gui
+        main.getGui().getCanvas().refreshComponents();
+        main.getGui().getCanvas().repaint();
+        main.getGui().repaint();
     }
 
     private void updatePausedRecording() {
-        timeAtPause = lastMoveTime;
-        timeAfterPause = lastMoveTime;
-        moveIndexAtPause = moveIndex;
+        timeAtPause.set(lastMoveTime);
+        moveIndexAtPause.set(moveIndex.get());
         System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
         System.out.println("Last move completed: " + prevMoveIndex);
     }

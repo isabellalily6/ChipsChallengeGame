@@ -6,6 +6,10 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -13,12 +17,12 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.event.KeyEvent;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -31,12 +35,15 @@ public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
+    static PlayerThread playRecordingThread = new PlayerThread(null, null, 0);
 
     static final List<RecordedMove> loadedMoves = new ArrayList<>();
     static final Lock lock = new ReentrantLock();
-    static PlayerThread playRecordingThread = new PlayerThread(null);
+    static int replaySpeed = 0;
     static boolean isRecording = false;
-    static boolean playingRecording = false;
+    static AtomicBoolean playingRecording = new AtomicBoolean(false);
+    static ReplayModes replayMode;
+    private static ReplayOptionDialog dialog;
 
     /**
      * saves a recorded game in Json format to a file for replaying later
@@ -94,10 +101,12 @@ public class RecordAndPlay {
             loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
-            playRecording(m);
+            dialog = new ReplayOptionsCreator().createDialog(m);
+            dialog.setVisible(true);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
@@ -110,7 +119,7 @@ public class RecordAndPlay {
     public static boolean addMove(Actor a, Maze.Direction d, int timeLeft) {
         try {
             lock.lock();
-            if (isRecording && !playingRecording) {
+            if (isRecording && !playingRecording.get()) {
                 recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
                 return true;
             }
@@ -151,7 +160,7 @@ public class RecordAndPlay {
      * Stop the recording from playing
      */
     public static void endPlayingRecording() {
-        playingRecording = false;
+        playingRecording.set(false);
     }
 
     /**
@@ -192,6 +201,7 @@ public class RecordAndPlay {
         if (m == null) {
             return;
         }
+        dialog.setVisible(false);
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
 
@@ -199,8 +209,15 @@ public class RecordAndPlay {
                 lock.unlock();
             }
         }
-        playRecordingThread = new PlayerThread(m);
+        playRecordingThread = new PlayerThread(m, replayMode, replaySpeed);
         playRecordingThread.start();
+        if (replayMode == ReplayModes.AUTO_PLAY) {
+            dialog = new AutoPlayDialogCreator().createDialog(m);
+            dialog.setVisible(true);
+        } else if (replayMode == ReplayModes.STEP_BY_STEP) {
+            dialog = new StepByStepDialogCreator().createDialog(m);
+            dialog.setVisible(true);
+        }
     }
 
     private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p) {
@@ -251,21 +268,6 @@ public class RecordAndPlay {
         return gameJson.build();
     }
 
-    private static KeyEvent keyEventFromDirection(Maze.Direction d, GUI gui) {
-        switch (d) {
-            case UP:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
-            case DOWN:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
-            case LEFT:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
-            case RIGHT:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
-            default:
-                throw new IllegalStateException("Unexpected value: " + d);
-        }
-    }
-
     private static File getJsonFileToLoad(GUI g) {
         var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
         fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
@@ -304,4 +306,12 @@ public class RecordAndPlay {
         isRecording = false;
     }
 
+    /**
+     * @param mode  sets the replay mode
+     * @param speed speed to play recording at
+     */
+    public static void setRecordingMode(ReplayModes mode, int speed) {
+        replayMode = mode;
+        replaySpeed = speed;
+    }
 }
