@@ -4,7 +4,7 @@ import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator;
@@ -144,7 +144,7 @@ public class RecordAndPlay {
      * @return true if the move was recorded, false if not
      * @author callum mckay
      */
-    public static boolean addMove(Actor a, Maze.Direction d, int timeLeft) {
+    public static boolean addMove(Actor a, Direction d, int timeLeft) {
         try {
             lock.lock();
             if (isRecording && !playingRecording.get()) {
@@ -273,7 +273,7 @@ public class RecordAndPlay {
             var loadedMove = move.asJsonObject();
 
             var actorName = loadedMove.getString("actor");
-            var dir = Maze.Direction.valueOf(loadedMove.getString("dir"));
+            var dir = Direction.valueOf(loadedMove.getString("dir"));
             var timeLeft = loadedMove.getInt("timeLeft");
 
             RecordedMove recordedMove;

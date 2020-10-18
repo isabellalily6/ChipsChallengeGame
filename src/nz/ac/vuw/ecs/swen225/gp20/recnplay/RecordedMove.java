@@ -1,7 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 
 /**
  * A internal class which can represent a move, simply maps an Actor to a Direction
@@ -10,7 +10,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
  */
 class RecordedMove implements Comparable<RecordedMove> {
     private final Actor actor;
-    private final Maze.Direction direction;
+    private final Direction direction;
     private final int timeLeft;
     private final int moveIndex;
 
@@ -21,7 +21,7 @@ class RecordedMove implements Comparable<RecordedMove> {
      * @param moveIndex index this move was made on
      * @author callum mckay
      */
-    RecordedMove(Actor actor, Maze.Direction direction, int timeLeft, int moveIndex) {
+    RecordedMove(Actor actor, Direction direction, int timeLeft, int moveIndex) {
         this.actor = actor;
         this.direction = direction;
         this.timeLeft = timeLeft;
@@ -38,16 +38,16 @@ class RecordedMove implements Comparable<RecordedMove> {
         return new RecordedMove(actor, newDir, timeLeft, moveIndex);
     }
 
-    private Maze.Direction getOppositeDirection(Maze.Direction direction) {
+    private Direction getOppositeDirection(Direction direction) {
         switch (direction) {
             case UP:
-                return Maze.Direction.DOWN;
+                return Direction.DOWN;
             case DOWN:
-                return Maze.Direction.UP;
+                return Direction.UP;
             case LEFT:
-                return Maze.Direction.RIGHT;
+                return Direction.RIGHT;
             case RIGHT:
-                return Maze.Direction.LEFT;
+                return Direction.LEFT;
             default:
                 throw new IllegalStateException("Unexpected value: " + direction);
         }
@@ -75,7 +75,7 @@ class RecordedMove implements Comparable<RecordedMove> {
      * @return the direction of this recorded move
      * @author callum mckay
      */
-    public Maze.Direction getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
