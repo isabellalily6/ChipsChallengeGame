@@ -27,8 +27,8 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private final int level = 1;
-  private final int maxTime = 100;
+  private int level = 1;
+  private int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -51,6 +51,7 @@ public class Main {
     startTimer();
   }
 
+
   /**
    * Create a new instance of the game which doesnt start a timer
    * or create the GUI for testing purposes
@@ -58,32 +59,24 @@ public class Main {
   public Main(Boolean monkeyTest) {
     // create the maze and the gui for the game
     maze = new Maze(level);
-    if (monkeyTest) {
+    if(monkeyTest){
       gui = new GUI(this, maze);
       gui.setUpGui();
     }
 
   }
 
-  public void setGui(GUI gui) {
-    this.gui = gui;
-  }
-
-  public void setMaze(Maze maze) {
-    this.maze = maze;
-  }
-
   /**
    * Start a timer to do the timer task every second
    **/
-  public void startTimer() {
+  public void startTimer(){
     // set the start time of the timer
     timeLeft = maxTime;
     // create the time and the timer task
     timer = new Timer();
     createTimerTask();
     // schedule the timer to do the task every second
-    timer.schedule(timerTask, 0, 1000);
+    timer.schedule(timerTask, 0,1000);
   }
 
   /**
@@ -168,7 +161,7 @@ public class Main {
    **/
   public void startGame(int level){
     // if the timer is still going, cancel it
-    if (timeLeft != 0 && timeLeft != maxTime) {
+    if(timeLeft != 0 && timeLeft != maxTime){
       timer.cancel();
     }
     // create a new maze and set this in canvas and the gui
@@ -179,16 +172,16 @@ public class Main {
     startTimer();
   }
 
-  public Timer getTimer() {
-    return timer;
-  }
-
   /**
    * Pauses the game
+   *
+   * @param showDialogue
    **/
-  public void pauseGame() {
+  public void pauseGame(boolean showDialogue){
     gamePaused = true;
- //   gui.displayPausedDialogue();
+    if(showDialogue) {
+      gui.displayPausedDialogue();
+    }
   }
 
   /**
@@ -196,7 +189,7 @@ public class Main {
    **/
   public void playGame(){
     gamePaused = false;
-    //  gui.hidePausedDialogue();
+    gui.hidePausedDialogue();
   }
 
   /**
@@ -233,6 +226,24 @@ public class Main {
    **/
   public int getTimeLeft() {
     return timeLeft;
+  }
+
+  /**
+   * Set the maze
+   *
+   * @param maze
+   **/
+  public void setMaze(Maze maze) {
+    this.maze = maze;
+  }
+
+  /**
+   * Returns the timer
+   *
+   * @return the timer
+   **/
+  public Timer getTimer() {
+    return timer;
   }
 
 
