@@ -74,7 +74,11 @@ public class GUI extends JFrame implements KeyListener {
     gameWon.setActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
-        main.startGame(main.getLevel());
+        if(maze.getState().equals(Maze.LevelState.WON) && main.getLevel()!=2){
+          main.startGame(main.getLevel()+1);
+        }else {
+          main.startGame(1);
+        }
         gameWon.dispose();
       }
     });
@@ -197,7 +201,7 @@ public class GUI extends JFrame implements KeyListener {
   @Override
   public void keyReleased(KeyEvent keyEvent) {
     Sound sound = null;
-    if(RecordAndPlay.isRecording()){
+    if(RecordAndPlay.getPlayingRecording()){
 
     }
     else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
