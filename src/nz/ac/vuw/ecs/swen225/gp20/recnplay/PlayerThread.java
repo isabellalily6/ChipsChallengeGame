@@ -6,6 +6,7 @@ import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
@@ -15,11 +16,11 @@ class PlayerThread extends Thread {
     private final Lock lock = new ReentrantLock();
     private final AtomicBoolean recordingPaused = new AtomicBoolean(false);
     private List<RecordedMove> movesToPlay = new ArrayList<>();
-    private int timeAtPause;
+    private final AtomicInteger timeAtPause = new AtomicInteger(100);
     private int timeAfterPause;
-    private int moveIndex;
-    private int moveIndexAtPause;
-    private int prevMoveIndex;
+    private final AtomicInteger moveIndex = new AtomicInteger(0);
+    private final AtomicInteger moveIndexAtPause = new AtomicInteger(0);
+    private final AtomicInteger prevMoveIndex = new AtomicInteger(0);
     private int timeLeft;
     private int lastMoveTime;
     private final ReplayModes replayMode;
@@ -79,9 +80,9 @@ class PlayerThread extends Thread {
         if (recordingPaused.getAndSet(false)) {
             try {
                 lock.lock();
-                moveIndex = moveIndexAtPause;
-                updateTime(timeAtPause);
-                timeLeft = timeAtPause;
+                moveIndex.set(moveIndexAtPause.get());
+                updateTime(timeAtPause.get());
+                timeLeft = timeAtPause.get();
                 System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
                 main.playGame();
             } finally {
@@ -96,68 +97,21 @@ class PlayerThread extends Thread {
     public void stepThroughRecording(boolean forward) {
         if (main == null) return;
 
-        if (!RecordAndPlay.playingRecording) {
-            return;
-        }
-
-        //You can only step through if the game is paused
-        if (!recordingPaused.get()) {
+        if (!RecordAndPlay.playingRecording.get()) {
             return;
         }
 
         if (forward) {
-            timeAfterPause--;
-            updatePausedGame(true);
-        } else {
-            timeAfterPause++;
-            updatePausedGame(false);
-        }
-    }
-
-    private void updatePausedGame(boolean forward) {
-        //We have stepped either forwards or backwards
-
-        //We have stepped forward in the recording, as there is less time left
-        var movesToAdjust = new ArrayList<RecordedMove>();
-        if (forward) {
-            if (movesToPlay.isEmpty()) return;
-            for (var move : movesToPlay) {
-                if (move.getTimeLeft() > timeAfterPause) {
-                    movesToAdjust.add(move);
-
-                    //updates the gui with the correct move
-                    playMove(move);
-                    System.out.println("Stepping forwards: " + move.getMoveIndex());
-                }
+            if (moveIndex.get() + 1 >= movesToPlay.size()) {
+                return;
             }
-
-            movesToPlay.removeAll(movesToAdjust);
-            if (movesToPlay.isEmpty()) return;
+            moveIndex.getAndIncrement();
         } else {
-            for (var move : RecordAndPlay.loadedMoves) {
-                if (move.getTimeLeft() < timeAfterPause && !movesToPlay.contains(move)) {
-                    movesToAdjust.add(move);
-
-                    var inverseMove = move.getInverse();
-                    playMove(inverseMove);
-
-                    //make sure chap is facing the right direction
-                    main.getMaze().getChap().setDir(move.getDirection());
-                    main.getGui().getCanvas().refreshComponents();
-                    System.out.println("Stepping backwards: " + move.getMoveIndex());
-                }
+            if (moveIndex.get() - 1 < -1) {
+                return;
             }
-
-            movesToPlay.addAll(movesToAdjust);
+            moveIndex.getAndDecrement();
         }
-
-        movesToPlay.sort(RecordedMove::compareTo);
-        moveIndexAtPause = movesToPlay.get(0).getMoveIndex();
-        prevMoveIndex = moveIndexAtPause - 1;
-
-        updateTime(timeAfterPause);
-
-        timeAtPause = timeAfterPause;
     }
 
     private void updateTime(int time) {
@@ -180,8 +134,8 @@ class PlayerThread extends Thread {
         movesToPlay = new ArrayList<>(RecordAndPlay.loadedMoves);
 
         //we want to keep track of where we are, for allowing the user to step through the moves
-        moveIndex = 0;
-        RecordAndPlay.playingRecording = true;
+        moveIndex.set(0);
+        RecordAndPlay.playingRecording.set(true);
         recordingPaused.set(false);
         main.getTimer().cancel();
         main.getTimer().purge();
@@ -189,13 +143,13 @@ class PlayerThread extends Thread {
         updateTime(Math.max(movesToPlay.get(0).getTimeLeft() + 2, 100));
 
         //if this is different to the moveIndex we know that the user has stepped through
-        prevMoveIndex = -1;
+        prevMoveIndex.set(-1);
         timeLeft = main.getTimeLeft();
         if (replayMode == ReplayModes.AUTO_PLAY) {
             main.startTimer(sleepTime);
             while (!movesToPlay.isEmpty()) {
-                if (!RecordAndPlay.playingRecording) {
-                    moveIndex = -1;
+                if (!RecordAndPlay.playingRecording.get()) {
+                    moveIndex.set(-1);
                     break;
                 }
 
@@ -205,7 +159,7 @@ class PlayerThread extends Thread {
 
                 int finalTimeLeft = timeLeft;
                 var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
-                        .filter(move -> move.getMoveIndex() > prevMoveIndex).collect(Collectors.toList());
+                        .filter(move -> move.getMoveIndex() > prevMoveIndex.get()).collect(Collectors.toList());
 
                 //get the moves for the current second
                 //or the previous moves in the case where some moves were not processed properly (can happen if you pause mid second)
@@ -228,8 +182,8 @@ class PlayerThread extends Thread {
 
                         movesToPlay.remove(move);
 
-                        prevMoveIndex = moveIndex;
-                        moveIndex = move.getMoveIndex() + 1;
+                        prevMoveIndex.set(moveIndex.get());
+                        moveIndex.set(move.getMoveIndex() + 1);
                         lastMoveTime = move.getTimeLeft();
                         if (recordingPaused.get()) {
                             System.out.println("Updating pausing var for move: " + move.toString());
@@ -279,15 +233,45 @@ class PlayerThread extends Thread {
                     updateTime(timeLeft);
                 }
             }
+        } else if (replayMode == ReplayModes.STEP_BY_STEP) {
+            prevMoveIndex.set(-1);
+            moveIndex.set(-1);
+            main.startTimer();
+            main.pauseGame(false);
+            while (RecordAndPlay.playingRecording.get()) {
+                if (prevMoveIndex.get() != moveIndex.get()) {
+                    //Moved forwards
+                    if (prevMoveIndex.get() < moveIndex.get()) {
+                        var move = movesToPlay.get(moveIndex.get());
+                        playMove(move);
+                        prevMoveIndex.set(moveIndex.get());
+                        updateTime(move.getTimeLeft());
+                    } else {
+                        var move = movesToPlay.get(moveIndex.get() + 1);
+                        var inverseMove = move.getInverse();
+                        playMove(inverseMove);
+
+                        //make sure chap is facing the right direction
+                        main.getMaze().getChap().setDir(move.getDirection());
+                        main.getGui().getCanvas().refreshComponents();
+                        prevMoveIndex.set(moveIndex.get());
+                        updateTime(move.getTimeLeft());
+                    }
+
+                }
+            }
+        } else {
+            //invalid state
+            return;
         }
         System.out.println("Recording is over, no moves left");
         updateTime(timeLeft);
     }
 
     private void updatePausedRecording() {
-        timeAtPause = lastMoveTime;
+        timeAtPause.set(lastMoveTime);
         timeAfterPause = lastMoveTime;
-        moveIndexAtPause = moveIndex;
+        moveIndexAtPause.set(moveIndex.get());
         System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
         System.out.println("Last move completed: " + prevMoveIndex);
     }

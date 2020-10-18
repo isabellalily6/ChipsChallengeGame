@@ -9,6 +9,7 @@ import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -22,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -40,7 +42,7 @@ public class RecordAndPlay {
     static final Lock lock = new ReentrantLock();
     static int replaySpeed = 0;
     static boolean isRecording = false;
-    static boolean playingRecording = false;
+    static AtomicBoolean playingRecording = new AtomicBoolean(false);
     static ReplayModes replayMode;
     private static ReplayOptionDialog dialog;
 
@@ -118,7 +120,7 @@ public class RecordAndPlay {
     public static boolean addMove(Actor a, Maze.Direction d, int timeLeft) {
         try {
             lock.lock();
-            if (isRecording && !playingRecording) {
+            if (isRecording && !playingRecording.get()) {
                 recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
                 return true;
             }
@@ -159,7 +161,7 @@ public class RecordAndPlay {
      * Stop the recording from playing
      */
     public static void endPlayingRecording() {
-        playingRecording = false;
+        playingRecording.set(false);
     }
 
     /**
@@ -212,6 +214,9 @@ public class RecordAndPlay {
         playRecordingThread.start();
         if (replayMode == ReplayModes.AUTO_PLAY) {
             dialog = new AutoPlayDialogCreator().createDialog(m);
+            dialog.setVisible(true);
+        } else if (replayMode == ReplayModes.STEP_BY_STEP) {
+            dialog = new StepByStepDialogCreator().createDialog(m);
             dialog.setVisible(true);
         }
     }
@@ -318,7 +323,8 @@ public class RecordAndPlay {
     }
 
     /**
-     * @param mode sets the replay mode
+     * @param mode  sets the replay mode
+     * @param speed speed to play recording at
      */
     public static void setRecordingMode(ReplayModes mode, int speed) {
         replayMode = mode;
