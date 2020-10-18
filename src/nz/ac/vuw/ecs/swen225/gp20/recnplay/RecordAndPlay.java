@@ -184,6 +184,15 @@ public class RecordAndPlay {
     }
 
     /**
+     * Returns if a recording is currently playing
+     *
+     * @return boolean that states if a recording is playing
+     */
+    public static boolean getPlayingRecording() {
+        return playingRecording.get();
+    }
+
+    /**
      * Stop the recording from playing
      */
     public static void endPlayingRecording() {
