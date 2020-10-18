@@ -77,12 +77,29 @@ public class Maze {
     }
 
     /**
+     * @param chap           the protagonist
+     * @param tiles          the tiles that make up the maze
+     * @param totalTreasures the total treasures that are in this level
+     */
+    public Maze(Tile[][] tiles, int totalTreasures, Player chap) {
+        this.cols = tiles.length;
+        this.rows = tiles[0].length;
+        this.tiles = copy2dTileArray(tiles);
+        checkArgument(totalTreasures >= 0, "amount of treasures must not be negative");
+        this.totalTreasures = treasuresLeft = totalTreasures;
+        this.chap = chap;
+        // this is so getLocation will point to the right object
+        this.chap.setLocation(this.tiles[chap.getLocation().getCol()][chap.getLocation().getRow()]);
+    }
+
+
+    /**
      * Generates a Maze from JSON file corresponding to the level number provided
      *
      * @param level the level for this Maze to load
      */
     public Maze(int level) {
-        this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures());
+        this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures(), LevelLoader.load(level).getChap());
         this.level = level;
         if (level == 2) {
             //this.blocks = LevelLoader.load(level).getBlocks();
@@ -180,7 +197,7 @@ public class Maze {
                 if (cobraThread != null) cobraThread.interrupt();
             }
         }
-        newLoc.onEntry(a);
+        //newLoc.onEntry(a);
         a.setLocation(newLoc);
 
         //if a sound has already been determined, play it. Else, determine the sound
@@ -278,6 +295,10 @@ public class Maze {
         }
         return toRet;
     }
+    /*
+    private void checkMaze() {
+        for (int col = 0; );
+    }*/
 
     /**
      * @return Whether the level is over (chap died or reached exit)

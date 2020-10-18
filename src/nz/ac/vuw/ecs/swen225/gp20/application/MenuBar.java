@@ -38,7 +38,7 @@ public class MenuBar extends JMenuBar {
 
     // create and add the pause button
     JMenuItem pause = new JMenuItem("Pause");
-    pause.addActionListener(method -> main.pauseGame());
+    pause.addActionListener(method -> main.pauseGame(true));
     game.add(pause);
 
     // Create the recording menu
