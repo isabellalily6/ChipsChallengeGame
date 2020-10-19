@@ -311,7 +311,7 @@ class PlayerThread extends Thread {
     }
 
     private void playMove(RecordedMove move) {
-        var sound = main.getMaze().moveActor(move.getActor(), move.getDirection());
+        var sound = main.getMaze().moveChap(move.getDirection());
         if (sound != null) SoundEffect.play(sound);
         try {
             //Thread safe repainting
