@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 

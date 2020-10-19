@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

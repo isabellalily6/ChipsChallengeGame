@@ -1,39 +1,15 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
+import nz.ac.vuw.ecs.swen225.gp20.maze.*;
+
+import javax.json.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
-import javax.json.JsonReader;
-
-import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
-import nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Free;
-import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Lava;
-import nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 
 public class LevelLoader {
 	
@@ -144,7 +120,7 @@ public class LevelLoader {
 					JsonArray jsonMoves = jsonTileObj.getJsonArray("moves");
 					
 					for(int j = 0; j < jsonMoves.size(); j++) {
-						JsonObject directionObj = jsonTiles.get(i);
+						JsonObject directionObj = jsonTiles.get(j);
 						String direction = directionObj.getString("direction");
 						
 						if(direction.contentEquals("Up")) {
