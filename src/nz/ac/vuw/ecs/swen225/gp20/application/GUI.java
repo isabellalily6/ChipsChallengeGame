@@ -77,7 +77,8 @@ public class GUI extends JFrame implements KeyListener {
       @Override
       public void actionPerformed(ActionEvent actionEvent) {
         if(maze.getState().equals(Maze.LevelState.WON) && main.getLevel()!=2){
-          main.startGame(main.getLevel()+1);
+          main.setLevel(main.getLevel()+1);
+          main.startGame(main.getLevel());
         }else {
           main.startGame(1);
         }
@@ -225,18 +226,20 @@ public class GUI extends JFrame implements KeyListener {
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
       System.out.println("EXIT But save level");
+      main.saveFile(true);
       main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
-      main.saveFile();
+      main.saveFile(false);
       main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
+
       System.out.println("Resume a saved game");
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_P){
       //CTRL-P  - start a new game at the last unfinished level
-      System.out.println("Start a new game as last unfinished level");
+      main.startGame(main.getLevel());
     }else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1) {
       //CTRL-1 - start a new game at level 1
       main.startGame(1);
