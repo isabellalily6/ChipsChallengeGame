@@ -25,7 +25,7 @@ public class MenuBar extends JMenuBar {
 
     // create and add the save button
     JMenuItem save = new JMenuItem("Save");
-    save.addActionListener(method -> main.saveFile());
+    save.addActionListener(method -> main.saveFile(false));
     file.add(save);
 
     // create and add the quit button
