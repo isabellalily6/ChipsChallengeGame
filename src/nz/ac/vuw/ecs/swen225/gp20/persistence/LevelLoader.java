@@ -266,7 +266,8 @@ public class LevelLoader {
         var maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
         var chapCol = gameStateJson.getJsonNumber("chapCol");
         var chapRow = gameStateJson.getJsonNumber("chapRow");
-        maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
+        maze.getChap().getLocation().onExit();
+		maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
         return maze;
     }
 	

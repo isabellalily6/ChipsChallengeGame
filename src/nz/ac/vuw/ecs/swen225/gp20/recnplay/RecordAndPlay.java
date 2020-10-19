@@ -120,11 +120,10 @@ public class RecordAndPlay {
             var jsonArr = parser.readArray();
 
             var gameStateJson = jsonArr.getJsonObject(0);
-            var maze = LevelLoader.loadGameState(gameStateJson);
 
-            m.setMaze(maze);
-            m.getGui().setMaze(maze);
-            m.getGui().getCanvas().setMaze(maze);
+            m.setMaze(LevelLoader.loadGameState(gameStateJson));
+            m.getGui().setMaze(LevelLoader.loadGameState(gameStateJson));
+            m.getGui().getCanvas().setMaze(LevelLoader.loadGameState(gameStateJson));
             m.getGui().getCanvas().refreshComponents();
             m.getGui().getCanvas().repaint();
 
@@ -306,7 +305,6 @@ public class RecordAndPlay {
         for (var move : recordedMoves) {
             var obj = Json.createObjectBuilder()
                     .add("timeLeft", move.getTimeLeft())
-                    .add("actor", move.getActor().getName())
                     .add("dir", move.getDirection().toString())
                     .add("moveIndex", move.getMoveIndex());
             movesArray.add(obj);

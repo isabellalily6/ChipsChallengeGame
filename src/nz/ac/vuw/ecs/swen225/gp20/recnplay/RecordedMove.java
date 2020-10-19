@@ -52,7 +52,7 @@ public class RecordedMove implements Comparable<RecordedMove> {
     @Override
     public String toString() {
         return "RecordedMove{" +
-                ", direction=" + direction +
+                "direction=" + direction +
                 ", timeLeft=" + timeLeft +
                 ", moveIndex=" + moveIndex +
                 '}';
