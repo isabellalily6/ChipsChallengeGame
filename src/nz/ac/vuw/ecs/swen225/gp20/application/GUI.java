@@ -5,6 +5,7 @@ import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
 import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
@@ -220,19 +221,19 @@ public class GUI extends JFrame implements KeyListener {
     else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       sound = maze.moveChap(Direction.UP);
-      RecordAndPlay.addMove(maze.getChap(), Direction.UP, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       sound = maze.moveChap(Direction.DOWN);
-      RecordAndPlay.addMove(maze.getChap(), Direction.DOWN, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       sound = maze.moveChap(Direction.RIGHT);
-      RecordAndPlay.addMove(maze.getChap(), Direction.RIGHT, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       sound = maze.moveChap(Direction.LEFT);
-      RecordAndPlay.addMove(maze.getChap(), Direction.LEFT, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level

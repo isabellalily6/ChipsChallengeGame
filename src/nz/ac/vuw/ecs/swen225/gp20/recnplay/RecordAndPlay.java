@@ -3,7 +3,6 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
@@ -74,6 +73,13 @@ public class RecordAndPlay {
     private static ReplayOptionDialog dialog;
 
     /**
+     * @return the size of the recorded moves list
+     */
+    public static int recordedMovesSize() {
+        return recordedMoves.size();
+    }
+
+    /**
      * saves a recorded game in Json format to a file for replaying later
      *
      * @author callum mckay
@@ -139,17 +145,15 @@ public class RecordAndPlay {
     }
 
     /**
-     * @param a        actor who performed this move
-     * @param d        direction of this move
-     * @param timeLeft time that was left in the game as this move was made
+     * @param move the move to record
      * @return true if the move was recorded, false if not
      * @author callum mckay
      */
-    public static boolean addMove(Actor a, Direction d, int timeLeft) {
+    public static boolean addMove(RecordedMove move) {
         try {
             lock.lock();
             if (isRecording && !playingRecording.get()) {
-                recordedMoves.add(new RecordedMove(a, d, timeLeft, recordedMoves.size()));
+                recordedMoves.add(move);
                 return true;
             }
 

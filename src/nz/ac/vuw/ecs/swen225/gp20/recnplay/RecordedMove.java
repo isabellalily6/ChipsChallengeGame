@@ -8,7 +8,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
  *
  * @author callum mckay
  */
-class RecordedMove implements Comparable<RecordedMove> {
+public class RecordedMove implements Comparable<RecordedMove> {
     private final Actor actor;
     private final Direction direction;
     private final int timeLeft;
@@ -21,7 +21,7 @@ class RecordedMove implements Comparable<RecordedMove> {
      * @param moveIndex index this move was made on
      * @author callum mckay
      */
-    RecordedMove(Actor actor, Direction direction, int timeLeft, int moveIndex) {
+    public RecordedMove(Actor actor, Direction direction, int timeLeft, int moveIndex) {
         this.actor = actor;
         this.direction = direction;
         this.timeLeft = timeLeft;
