@@ -46,7 +46,7 @@ public class RecordAndPlay {
     /**
      * Lock, to ensure only one PlayerThread is running at once
      */
-    static final Lock lock = new ReentrantLock();
+    static Lock lock = new ReentrantLock();
 
     /**
      * The speed that the player runs at
@@ -125,7 +125,8 @@ public class RecordAndPlay {
             m.getGui().getCanvas().repaint();
 
             var movesFromJson = jsonArr.getJsonObject(1);
-            var moves = loadMoves(movesFromJson, maze.getChap(), maze.getCobras().get(0));
+            var cobra = maze.getCobras() != null && maze.getCobras().size() > 0 ? maze.getCobras().get(0) : null;
+            var moves = loadMoves(movesFromJson, maze.getChap(), cobra);
             loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
@@ -199,15 +200,16 @@ public class RecordAndPlay {
     public static void endPlayingRecording() {
         playingRecording.set(false);
         dialog.setVisible(false);
-        dialog.dispose();
+
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
-
-            if (!lock.tryLock()) {
-                lock.unlock();
-            }
         }
+
+        lock = new ReentrantLock();
+        playRecordingThread.getMain().playGame();
+        playRecordingThread.getMain().startGame(1);
     }
+
 
     /**
      * Starts recording this game
