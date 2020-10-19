@@ -188,6 +188,15 @@ public class GUI extends JFrame implements KeyListener {
     return gameLost;
   }
 
+  /**
+   * Get the dashboard
+   *
+   * @return the dashboard
+   **/
+  public Dashboard getDashboard() {
+    return dashboard;
+  }
+
   @Override
   public void keyTyped(KeyEvent keyEvent) {
   }
