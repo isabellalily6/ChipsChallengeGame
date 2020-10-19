@@ -46,7 +46,7 @@ public class RecordAndPlay {
     /**
      * Lock, to ensure only one PlayerThread is running at once
      */
-    static final Lock lock = new ReentrantLock();
+    static Lock lock = new ReentrantLock();
 
     /**
      * The speed that the player runs at
@@ -202,19 +202,10 @@ public class RecordAndPlay {
         dialog.setVisible(false);
 
         if (playRecordingThread.isRealThread()) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                if (!lock.tryLock()) {
-                    lock.unlock();
-                }
-            }
             playRecordingThread.interrupt();
-
-            if (!lock.tryLock()) {
-                lock.unlock();
-            }
         }
+
+        lock = new ReentrantLock();
         playRecordingThread.getMain().playGame();
         playRecordingThread.getMain().startGame(1);
     }
