@@ -3,8 +3,8 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
+import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -309,16 +309,11 @@ class PlayerThread extends Thread {
     }
 
     private void playMove(RecordedMove move) {
-        if (move.getActor() instanceof Player) {
-            main.getGui().dispatchEvent(keyEventFromDirection(move.getDirection(), main.getGui()));
-        } else {
-            main.getMaze().moveActor(move.getActor(), move.getDirection());
-
-            //repaint the gui
-            main.getGui().getCanvas().refreshComponents();
-            main.getGui().getCanvas().repaint();
-            main.getGui().repaint();
-        }
+        var sound = main.getMaze().moveActor(move.getActor(), move.getDirection());
+        if (sound != null) SoundEffect.play(sound);
+        main.getGui().getDashboard.updateDashboard();
+        main.getGui().getCanvas().refreshComponents();
+        main.getGui().getCanvas().repaint();
     }
 
     private void updatePausedRecording() {
