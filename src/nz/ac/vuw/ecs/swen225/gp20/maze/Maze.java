@@ -179,8 +179,9 @@ public class Maze {
             if (newLoc instanceof Exit) {
                 state = LevelState.WON;
                 if (cobraThread != null) cobraThread.interrupt();
-            } else if (newLoc.hasBlock()) moveBlock(newLoc, dir);
-            else if (newLoc.isOccupied()) {
+            } else if (newLoc.hasBlock()) {
+                if (!moveBlock(newLoc, dir)) return null;
+            } else if (newLoc.isOccupied()) {
                 state = LevelState.DIED;
                 if (cobraThread != null) cobraThread.interrupt();
                 return null; //TODO: death sound?
@@ -254,7 +255,7 @@ public class Maze {
         }
     }
 
-    private void moveBlock(Tile loc, Direction dir) {
+    private boolean moveBlock(Tile loc, Direction dir) {
         Optional<Block> opt = blocks.stream().filter(b -> b.getLocation().equals(loc)).findFirst();
         if (opt.isEmpty()) throw new IllegalArgumentException("No block at this location");
         Block b = opt.get();
@@ -277,16 +278,17 @@ public class Maze {
 
         checkNotNull(newLoc);
 
-        if (newLoc.isAccessible()) {
+        if (newLoc.isAccessible() && !newLoc.hasBlock()) {
+            b.getLocation().setHasBlock(false);
             if (newLoc instanceof Lava) {
                 blocks.remove(b);
                 setFree(newLoc);
             } else {
-                b.getLocation().setHasBlock(false);
                 b.setLocation(newLoc);
                 b.getLocation().setHasBlock(true);
             }
-        }
+        } else return false;
+        return true;
     }
 
     private Tile[][] copy2dTileArray(Tile[][] toCopy) {
