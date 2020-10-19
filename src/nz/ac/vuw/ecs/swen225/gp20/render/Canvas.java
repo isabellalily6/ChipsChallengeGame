@@ -64,19 +64,23 @@ public class Canvas extends JPanel {
                 if (row < 0 || row > maze.getTiles()[0].length - 1 || col < 0 || col > maze.getTiles().length - 1) {
                     components[x][y].setIcon(makeImageIcon("data/free.png"));
                 } else {
-                    ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
-                    components[x][y].setIcon(icon);
+                    int finalCol = col;
+                    int finalRow = row;
+                    if (maze != null && maze.getBlocks() != null && !maze.getBlocks().isEmpty()) {
+                        if(maze.getBlocks().stream().anyMatch(b -> b.getLocation().equals(maze.getTiles()[finalCol][finalRow]))) {
+                            components[x][y].setIcon(makeImageIcon("data/block.png"));
+                        } else {
+                            ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
+                            components[x][y].setIcon(icon);
+                        }
+                    } else {
+                        ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
+                        components[x][y].setIcon(icon);
+                    }
                 }
             }
         }
-        if(maze != null && maze.getBlocks() != null && !maze.getBlocks().isEmpty()) {
-            for (Block block : maze.getBlocks()) {
-                components[block.getCol()][block.getRow()].setIcon(makeImageIcon("data/block.png"));
-            }
-        }
-        if(maze != null && maze.getChap() != null) {
-            components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
-        }
+        components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
     }
 
     /**
