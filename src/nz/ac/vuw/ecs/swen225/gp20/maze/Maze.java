@@ -32,7 +32,6 @@ public class Maze {
     private final Player chap;
     private List<Cobra> cobras;
     private List<Block> blocks;
-    private Thread cobraThread;
     private int treasuresLeft;
     private int level;
     private LevelState state;
@@ -71,10 +70,6 @@ public class Maze {
         if (cobras != null) {
             this.cobras = cobras;
             setCobras();
-            if (!cobras.get(0).inTestMode()) {
-                cobraThread = new MovementThreadHandler(this);
-                cobraThread.start();
-            }
         }
     }
 
@@ -109,8 +104,6 @@ public class Maze {
             this.cobras = LevelLoader.load(level).getCobras();
             setCobras();
             setBlocks();
-            this.cobraThread = new MovementThreadHandler(this);
-            this.cobraThread.start();
         }
     }
 
@@ -134,7 +127,18 @@ public class Maze {
      * @return the sound that should be played, null if there is no sound to be played
      */
     public Sound moveChap(Direction dir) {
+        moveCobras();
         return moveActor(chap, dir);
+    }
+
+    private void moveCobras() {
+        if (level == 2) {
+            //don't move cobras in test mode
+            if (cobras.get(0).inTestMode()) return;
+            for (Cobra cobra : cobras) {
+                moveActor(cobra, cobra.nextMove());
+            }
+        }
     }
 
     /**
@@ -179,12 +183,10 @@ public class Maze {
         if (a == chap) {
             if (newLoc instanceof Exit) {
                 state = LevelState.WON;
-                if (cobraThread != null) cobraThread.interrupt();
             } else if (newLoc.hasBlock()) {
                 if (!moveBlock(newLoc, dir)) return null;
             } else if (newLoc.isOccupied()) {
                 state = LevelState.DIED;
-                if (cobraThread != null) cobraThread.interrupt();
                 return null; //TODO: death sound?
             } else {
                 //if this method returns null, chap is not allowed to move to newLoc
@@ -197,7 +199,6 @@ public class Maze {
             if (!newLoc.isAccessible()) return null;
             if (newLoc.isOccupied()) {
                 state = LevelState.DIED;
-                if (cobraThread != null) cobraThread.interrupt();
             }
         }
         //newLoc.onEntry(a);
@@ -222,9 +223,7 @@ public class Maze {
             //TODO: better error handling
             if (!chap.backpackContains(ld.getLockColour())) return null;
         } else if (loc instanceof Lava) {
-            //TODO: potentially make levelOver an int 0=not over 1=win 2=die
             state = LevelState.DIED;
-            if (cobraThread != null) cobraThread.interrupt();
             return null;
         }
         if (loc.isFreeOnEntry()) {
