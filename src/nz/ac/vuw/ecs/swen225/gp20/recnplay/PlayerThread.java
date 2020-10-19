@@ -311,7 +311,7 @@ class PlayerThread extends Thread {
     private void playMove(RecordedMove move) {
         var sound = main.getMaze().moveActor(move.getActor(), move.getDirection());
         if (sound != null) SoundEffect.play(sound);
-        main.getGui().getDashboard.updateDashboard();
+        main.getGui().getDashboard().updateDashboard();
         main.getGui().getCanvas().refreshComponents();
         main.getGui().getCanvas().repaint();
     }
