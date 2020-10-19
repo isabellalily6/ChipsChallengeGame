@@ -2,6 +2,7 @@ package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
+import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
@@ -266,5 +267,13 @@ public class GUI extends JFrame implements KeyListener {
     dashboard.updateDashboard();
     canvas.refreshComponents();
     canvas.repaint();
+    if(maze.getChap().getLocation() instanceof InfoField){
+      InfoField location = (InfoField) maze.getChap().getLocation();
+      String info = location.getInfo();
+        Dialogues infoPanel = new Dialogues(main, info, "Close");
+        infoPanel.setActionListener(method -> infoPanel.dispose());
+        infoPanel.setVisible(true);
+    }
+
   }
 }
