@@ -1,7 +1,5 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
 /**
  * A class to handle the movement of the cobras on a separate thread
  *
@@ -14,7 +12,7 @@ public class MovementThreadHandler extends Thread {
      * @param maze The maze the cobras are being moved on
      */
     public MovementThreadHandler(Maze maze) {
-        checkArgument(maze.getCobras() != null && !maze.getCobras().isEmpty());
+        //checkArgument(maze.getCobras() != null && !maze.getCobras().isEmpty());
         this.maze = maze;
     }
 
@@ -26,8 +24,7 @@ public class MovementThreadHandler extends Thread {
             }
             try {
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (InterruptedException ignored) {
             }
         }
     }
