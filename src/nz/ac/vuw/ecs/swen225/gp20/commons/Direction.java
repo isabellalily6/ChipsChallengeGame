@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.gp20.maze;
+package nz.ac.vuw.ecs.swen225.gp20.commons;
 
 /**
  * Enum that determines the direction of one of chap's moves
