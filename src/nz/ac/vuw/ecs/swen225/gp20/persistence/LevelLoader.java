@@ -7,7 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -31,6 +33,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 
 public class LevelLoader {
 	
@@ -60,13 +63,14 @@ public class LevelLoader {
 		Player chap = null;
 		ArrayList<Block> blocks = new ArrayList<Block>();
 		ArrayList<Cobra> cobras = new ArrayList<Cobra>();
+		ArrayList<Queue<Direction>> cobraMoves = new ArrayList<Queue<Direction>>();
 		
 		try {
 			
 			//Read JSON file into a list of JsonObjects
 			JsonReader reader = Json.createReader(new FileReader(filename));
 			JsonArray jsonArray = reader.readArray();
-			reader.close();
+			
 			List<JsonObject> jsonTiles = jsonArray.getValuesAs(JsonObject.class);
 			
 			//Iterate through the JsonArray to create new tile objects and put them in the map
@@ -133,9 +137,35 @@ public class LevelLoader {
 					chap = new Player(playerTile);
 					map[col][row] = playerTile;
 					
+				}else if(tileType.equals("Cobra")) {
+					Tile playerTile = new Free(col, row);
+					
+					Queue<Direction> moves = new LinkedList<Direction>();
+					JsonArray jsonMoves = jsonTileObj.getJsonArray("moves");
+					
+					for(int j = 0; j < jsonMoves.size(); j++) {
+						JsonObject directionObj = jsonTiles.get(i);
+						String direction = directionObj.getString("direction");
+						
+						if(direction.contentEquals("Up")) {
+							moves.add(Direction.UP);
+						} else if(direction.contentEquals("Down")) {
+							moves.add(Direction.DOWN);
+						} else if(direction.contentEquals("Left")) {
+							moves.add(Direction.LEFT);
+						} else if(direction.contentEquals("Right")) {
+							moves.add(Direction.RIGHT);
+						} 
+					}
+					
+					cobras.add(new Cobra(playerTile, moves));
+					map[col][row] = playerTile;
+					
 				}
 				
 			}
+			
+			reader.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
