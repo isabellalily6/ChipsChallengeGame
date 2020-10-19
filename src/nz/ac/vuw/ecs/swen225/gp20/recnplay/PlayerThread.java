@@ -317,10 +317,12 @@ class PlayerThread extends Thread {
             //Thread safe repainting
             SwingUtilities.invokeAndWait(main.getGui().getCanvas()::refreshComponents);
             SwingUtilities.invokeAndWait(main.getGui().getCanvas()::repaint);
+            SwingUtilities.invokeAndWait(main.getGui()::repaint);
         } catch (InterruptedException | InvocationTargetException e) {
             //redo them without thread safety
             main.getGui().getCanvas().refreshComponents();
             main.getGui().getCanvas().repaint();
+            main.getGui().repaint();
         }
         main.getGui().getDashboard().updateDashboard();
     }
