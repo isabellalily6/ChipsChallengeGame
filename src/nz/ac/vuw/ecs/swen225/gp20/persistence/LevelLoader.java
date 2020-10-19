@@ -144,7 +144,7 @@ public class LevelLoader {
 					JsonArray jsonMoves = jsonTileObj.getJsonArray("moves");
 					
 					for(int j = 0; j < jsonMoves.size(); j++) {
-						JsonObject directionObj = jsonTiles.get(i);
+						JsonObject directionObj = jsonTiles.get(j);
 						String direction = directionObj.getString("direction");
 						
 						if(direction.contentEquals("Up")) {
