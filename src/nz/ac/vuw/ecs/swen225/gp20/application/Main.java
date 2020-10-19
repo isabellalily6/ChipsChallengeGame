@@ -27,8 +27,8 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private final int level = 1;
-  private final int maxTime = 100;
+  private int level = 1;
+  private int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -37,7 +37,6 @@ public class Main {
 
   // variable to check whether the game is paused or not
   private boolean gamePaused = false;
-
 
   /**
    * Create a new instance of the game application
@@ -50,7 +49,6 @@ public class Main {
     new Music();
     startTimer();
   }
-
 
   /**
    * Create a new instance of the game which doesnt start a timer
@@ -94,7 +92,11 @@ public class Main {
         // show the time on the gui label
         gui.setTimer(timeLeft);
         if(maze.isLevelOver()){
-          gui.getGameWon().setVisible(true);
+          if(maze.getState().equals(Maze.LevelState.WON)) {
+            gui.getGameWon().setVisible(true);
+          }else{
+            gui.getGameLost().setVisible(true);
+          }
           timeLeft = maxTime;
           timer.cancel();
         }
@@ -149,8 +151,13 @@ public class Main {
   /**
    * Save a game to a file
    **/
-  public void saveFile(){
-    LevelLoader.saveGameState(LevelLoader.getGameState(this));
+  public void saveFile(Boolean level){
+    if(level){
+      startGame(this.level);
+      LevelLoader.saveGameState(LevelLoader.getGameState(this));
+    }else {
+      LevelLoader.saveGameState(LevelLoader.getGameState(this));
+    }
   }
 
   /**
@@ -222,6 +229,15 @@ public class Main {
    **/
   public int getLevel() {
     return level;
+  }
+
+  /**
+   * Get the level
+   *
+   * @return the current maze
+   **/
+  public void setLevel(int level) {
+    this.level = level;
   }
 
   /**

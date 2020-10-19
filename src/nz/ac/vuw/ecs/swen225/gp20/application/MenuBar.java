@@ -59,11 +59,6 @@ public class MenuBar extends JMenuBar {
     loadRecording.addActionListener(method -> main.loadRecording());
     recording.add(loadRecording);
 
-    // create and add the replay recording button
-    JMenuItem replayRecording = new JMenuItem("Replay Recording");
-    replayRecording.addActionListener(method -> main.replayRecording());
-    recording.add(replayRecording);
-
     // add each section to the menu bar
     add(file);
     add(game);
