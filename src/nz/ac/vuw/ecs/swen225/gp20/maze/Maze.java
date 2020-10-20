@@ -7,6 +7,7 @@ import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.locks.ReentrantLock;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -35,10 +36,10 @@ public class Maze {
     private int treasuresLeft;
     private int level;
     private LevelState state;
+    private static final ReentrantLock moveLock = new ReentrantLock();
 
     /**
-     * TEST CONSTRUCTOR - Do not use in production code
-     * a real maze needs many more fields than this
+     * ------TEST CONSTRUCTOR---------
      *
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
@@ -127,8 +128,13 @@ public class Maze {
      * @return the sound that should be played, null if there is no sound to be played
      */
     public Sound moveChap(Direction dir) {
-        moveCobras();
-        return moveActor(chap, dir);
+        moveLock.lock();
+        try {
+            moveCobras();
+            return moveActor(chap, dir);
+        } finally {
+            moveLock.unlock();
+        }
     }
 
     private void moveCobras() {
@@ -141,6 +147,32 @@ public class Maze {
         }
     }
 
+    private Tile getTileInDirection(Direction dir, Tile loc) {
+        Tile newLoc = null;
+        switch (dir) {
+            case UP:
+                checkArgument(loc.getRow() > 0, "Cannot move any higher!");
+                newLoc = tiles[loc.getCol()][loc.getRow() - 1];
+                break;
+            case DOWN:
+                checkArgument(loc.getRow() < rows - 1, "Cannot move any lower!");
+
+                newLoc = tiles[loc.getCol()][loc.getRow() + 1];
+                break;
+            case LEFT:
+                checkArgument(loc.getCol() > 0, "Cannot move any further left!");
+
+                newLoc = tiles[loc.getCol() - 1][loc.getRow()];
+                break;
+            case RIGHT:
+                checkArgument(loc.getCol() < cols - 1, "Cannot move any further right!");
+
+                newLoc = tiles[loc.getCol() + 1][loc.getRow()];
+                break;
+        }
+        return newLoc;
+    }
+
     /**
      * Moves the given actor one square in the given direction
      *
@@ -150,26 +182,7 @@ public class Maze {
      */
     public Sound moveActor(Actor a, Direction dir) {
         checkNotNull(a);
-        Tile newLoc = null;
-        switch (dir) {
-            case UP:
-                checkArgument(a.getLocation().getRow() > 0, "Actor cannot move any higher!");
-                newLoc = tiles[a.getLocation().getCol()][a.getLocation().getRow() - 1];
-                break;
-            case DOWN:
-                checkArgument(a.getLocation().getRow() < rows - 1, "Actor cannot move any lower!");
-                newLoc = tiles[a.getLocation().getCol()][a.getLocation().getRow() + 1];
-                break;
-            case LEFT:
-                checkArgument(a.getLocation().getCol() > 0, "Actor cannot move any further left!");
-                newLoc = tiles[a.getLocation().getCol() - 1][a.getLocation().getRow()];
-                break;
-            case RIGHT:
-                checkArgument(a.getLocation().getCol() < cols - 1, "Actor cannot move any further right!");
-                newLoc = tiles[a.getLocation().getCol() + 1][a.getLocation().getRow()];
-                break;
-        }
-        //TODO: better error handling
+        Tile newLoc = getTileInDirection(dir, a.getLocation());
         checkNotNull(newLoc);
 
         a.setDir(dir);
@@ -187,7 +200,7 @@ public class Maze {
                 if (!moveBlock(newLoc, dir)) return null;
             } else if (newLoc.isOccupied()) {
                 state = LevelState.DIED;
-                return null; //TODO: death sound?
+                return Sound.HIT_BY_MOB;
             } else {
                 //if this method returns null, chap is not allowed to move to newLoc
                 sound = interactWithTile(newLoc);
@@ -201,7 +214,6 @@ public class Maze {
                 state = LevelState.DIED;
             }
         }
-        //newLoc.onEntry(a);
         a.setLocation(newLoc);
 
         //if a sound has already been determined, play it. Else, determine the sound
@@ -220,11 +232,10 @@ public class Maze {
             chap.addToBackPack(k.getColour());
         } else if (loc instanceof LockedDoor) {
             var ld = (LockedDoor) loc;
-            //TODO: better error handling
             if (!chap.backpackContains(ld.getLockColour())) return null;
         } else if (loc instanceof Lava) {
             state = LevelState.DIED;
-            return null;
+            return Sound.HIT_BY_MOB;
         }
         if (loc.isFreeOnEntry()) {
             Sound sound = playSound(loc);
@@ -260,21 +271,7 @@ public class Maze {
         if (opt.isEmpty()) throw new IllegalArgumentException("No block at this location");
         Block b = opt.get();
 
-        Tile newLoc = null;
-        switch (dir) {
-            case UP:
-                newLoc = tiles[loc.getCol()][loc.getRow() - 1];
-                break;
-            case DOWN:
-                newLoc = tiles[loc.getCol()][loc.getRow() + 1];
-                break;
-            case LEFT:
-                newLoc = tiles[loc.getCol() - 1][loc.getRow()];
-                break;
-            case RIGHT:
-                newLoc = tiles[loc.getCol() + 1][loc.getRow()];
-                break;
-        }
+        Tile newLoc = getTileInDirection(dir, loc);
 
         checkNotNull(newLoc);
 
