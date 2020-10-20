@@ -20,12 +20,12 @@ public class MenuBar extends JMenuBar {
 
     // create and add the load button
     JMenuItem load = new JMenuItem("Load");
-    load.addActionListener(method -> main.loadFile());
+    load.addActionListener(method -> main.loadFile(false));
     file.add(load);
 
     // create and add the save button
     JMenuItem save = new JMenuItem("Save");
-    save.addActionListener(method -> main.saveFile(false, false));
+    save.addActionListener(method -> main.saveFile(false, true));
     file.add(save);
 
     // create and add the quit button
