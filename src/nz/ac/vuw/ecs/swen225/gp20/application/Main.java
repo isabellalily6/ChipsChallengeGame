@@ -176,16 +176,13 @@ public class Main {
       timer.cancel();
     }
     // create a new maze and set this in canvas and the gui
-    this.maze = new Maze(level);
-    gui.getCanvas().setMaze(maze);
-    gui.setMaze(maze);
-    gui.getCanvas().refreshComponents();
-    gui.getCanvas().repaint();
+    setMaze(new Maze(level));
+    gui.updateGui();
     startTimer();
   }
 
   /**
-   * Pauses the game
+   * Pauses the game.
    *
    * @param showDialogue
    **/
@@ -232,9 +229,9 @@ public class Main {
   }
 
   /**
-   * Get the level
+   * Set the level.
    *
-   * @return the current maze
+   * @param level
    **/
   public void setLevel(int level) {
     this.level = level;
@@ -250,12 +247,13 @@ public class Main {
   }
 
   /**
-   * Set the maze
+   * Set the maze.
    *
    * @param maze
    **/
   public void setMaze(Maze maze) {
     this.maze = maze;
+    gui.setMaze(maze);
   }
 
   /**
@@ -269,7 +267,7 @@ public class Main {
 
 
   /**
-   * Set the time left
+   * Set the time left.
    *
    * @param time
    **/
@@ -278,7 +276,7 @@ public class Main {
   }
 
   /**
-   * Creates a new instance of main to run the ChapsChallenge game
+   * Creates a new instance of main to run the ChapsChallenge game.
    *
    * @param args
    **/
