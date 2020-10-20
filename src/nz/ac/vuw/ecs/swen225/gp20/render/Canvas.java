@@ -6,6 +6,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -69,8 +70,11 @@ public class Canvas extends JPanel {
                 } else {
                     int finalCol = col;
                     int finalRow = row;
-                    List<Cobra> cobras = maze.getCobras().stream().filter(c -> c.getLocation().equals(maze.getTiles()[finalCol][finalRow])).collect(Collectors.toList());
-                    if (maze != null && maze.getBlocks() != null && !maze.getBlocks().isEmpty()) {
+                    List<Cobra> cobras = new ArrayList<>();
+                    if(maze.getCobras() != null) {
+                        cobras = maze.getCobras().stream().filter(c -> c.getLocation().equals(maze.getTiles()[finalCol][finalRow])).collect(Collectors.toList());
+                    }
+                    if (maze != null && maze.getBlocks() != null) {
                         if(maze.getBlocks().stream().anyMatch(b -> b.getLocation().equals(maze.getTiles()[finalCol][finalRow]))) {
                             components[x][y].setIcon(makeImageIcon("data/block.png"));
                         } else if(!cobras.isEmpty()) {
