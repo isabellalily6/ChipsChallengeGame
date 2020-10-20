@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -22,7 +21,7 @@ public class MonkeyTesting {
      * tests monkey test without GUI
      */
     @Test
-    public void randomMonkeyTestWithoutGUI () {
+    public void randomMonkeyTestWithoutGUI() {
         double initialTime = System.currentTimeMillis(); // get start time
         Random random = new Random(); // initialise random number generator
 
@@ -37,12 +36,12 @@ public class MonkeyTesting {
         Main main = new Main(false); // start test game
         Maze maze = main.getMaze();
 
-        int x = 0; // count number of steps
+        int steps = 0;
 
         // run until level is complete
         while (!maze.isLevelOver()) {
             try {
-                x++; // add step
+                steps++; // add step
                 maze.moveChap(directions.get(random.nextInt(4))); // move randomly
             } catch (Exception e) {
                 e.printStackTrace(); // print exception
@@ -50,21 +49,25 @@ public class MonkeyTesting {
         }
         // print time taken and steps
         double endTime = System.currentTimeMillis();
-        int seconds = (int)((endTime - initialTime)/1000.0);
-        int minutes = (int)(seconds/60.0);
-        seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
+        int seconds = (int) ((endTime - initialTime) / 1000.0);
+        int minutes = (int) (seconds / 60.0);
+        seconds -= minutes * 60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + steps);
     }
 
     /**
      * tests random monkey test with GUI
      */
     @Test
-    public void randomMonkeyTestWithGUI () {
-        double initialTime = System.currentTimeMillis();
-        Random random = new Random();
+    public void randomMonkeyTestWithGUI() {
+        double initialTime = System.currentTimeMillis(); // get start time
+        Random random = new Random(); // initialise random number generator
+
+        // initialise game elements
         Main main = new Main(true);
         GUI gui = main.getGui();
+
+        // initialise KeyEvent's
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
         // up
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38));
@@ -74,37 +77,39 @@ public class MonkeyTesting {
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37));
         // right
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
-        int x = 0;
 
+        int steps = 0;
+
+        // run until level is complete
         while (!main.getMaze().isLevelOver()) {
             try {
                 gui.dispatchEvent(keyEvents.get(random.nextInt(4)));
-                x++;
-            }
-            catch (Exception e) {
+                steps++;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         double endTime = System.currentTimeMillis();
-        int seconds = (int)((endTime - initialTime)/1000.0);
-        int minutes = (int)(seconds/60.0);
-        seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
+        int seconds = (int) ((endTime - initialTime) / 1000.0);
+        int minutes = (int) (seconds / 60.0);
+        seconds -= minutes * 60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + steps);
     }
 
     /**
      * return the value of a given tile
+     * only used for intelligent tests
+     *
      * @param tile the tile to check
      * @param maze the state of the maze
      * @return value of the tile
      */
-    public int getValue (Tile tile, Maze maze) {
+    public int getValue(Tile tile, Maze maze) {
         // check if tile is valuable
         if (tile instanceof Treasure || tile instanceof Key || tile instanceof Exit || (tile instanceof LockedDoor
                 && maze.getChap().backpackContains(((LockedDoor) tile).getLockColour()))) {
             return 1; // tile is valuable
-        }
-        else if (tile.isAccessible()) return 0; // tile is not valuable
+        } else if (tile.isAccessible()) return 0; // tile is not valuable
         return -1; // tile is not accessible
     }
 
@@ -112,7 +117,7 @@ public class MonkeyTesting {
      * tests intelligent monkey test without GUI
      */
     @Test
-    public void intelligentMonkeyTestWithoutGUI () {
+    public void intelligentMonkeyTestWithoutGUI() {
         double initialTime = System.currentTimeMillis(); // get start time
         Random random = new Random(); // initialise random number generator
 
@@ -127,7 +132,7 @@ public class MonkeyTesting {
         Main main = new Main(false); // start test game
         Maze maze = main.getMaze();
 
-        int x = 0; // count number of steps
+        int steps = 0;
 
         // run until level is complete
         while (!maze.isLevelOver()) {
@@ -136,26 +141,23 @@ public class MonkeyTesting {
                 HashMap<Tile, Integer> candidates = new HashMap<>(); // initialise HashMap
 
                 // get up tile
-                Tile up = tiles[maze.getChap().getLocation().getCol()]
-                        [Math.max(maze.getChap().getLocation().getRow() - 1, 0)];
+                Tile up = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() - 1];
 
                 // get down tile
-                Tile down = tiles[maze.getChap().getLocation().getCol()]
-                        [Math.min(maze.getChap().getLocation().getRow() + 1, tiles.length - 1)];
+                Tile down = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() + 1];
 
                 // get left tile
-                Tile left = tiles[Math.max(maze.getChap().getLocation().getCol() - 1, 0)]
-                        [maze.getChap().getLocation().getRow()];
+                Tile left = tiles[maze.getChap().getLocation().getCol() - 1][maze.getChap().getLocation().getRow()];
 
                 // get right tile
-                Tile right = tiles[Math.min(maze.getChap().getLocation().getCol() + 1, tiles[0].length)]
-                        [maze.getChap().getLocation().getRow()];
+                Tile right = tiles[maze.getChap().getLocation().getCol() + 1][maze.getChap().getLocation().getRow()];
 
                 // check for value of the tiles
-                if (getValue(up, maze) != -1) candidates.put(up, getValue(up, maze));
-                if (getValue(down, maze) != -1) candidates.put(down, getValue(down, maze));
-                if (getValue(left, maze) != -1) candidates.put(left, getValue(left, maze));
-                if (getValue(right, maze) != -1) candidates.put(right, getValue(right, maze));
+                int tileValue;
+                if ((tileValue = getValue(up, maze)) != -1) candidates.put(up, tileValue);
+                if ((tileValue = getValue(down, maze)) != -1) candidates.put(down, tileValue);
+                if ((tileValue = getValue(left, maze)) != -1) candidates.put(left, tileValue);
+                if ((tileValue = getValue(right, maze)) != -1) candidates.put(right, tileValue);
                 // wall tile is never added into the map as it is never a valuable move
 
 
@@ -164,10 +166,10 @@ public class MonkeyTesting {
                 // modify map into a list
                 ArrayList<Tile> updatedCandidates = new ArrayList<>(candidates.keySet());
                 if (candidates.containsValue(1)) { // a valuable tile exists
-                    for (Map.Entry entry : candidates.entrySet()) {
+                    candidates.forEach((key, value) -> {
                         // remove non-valuable tiles
-                        if ((int) entry.getValue() == 0) updatedCandidates.remove(entry.getKey());
-                    }
+                        if (value == 0) updatedCandidates.remove(key);
+                    });
                 }
                 // get random input from remaining candidates
                 candidate = updatedCandidates.get(random.nextInt(updatedCandidates.size()));
@@ -177,30 +179,33 @@ public class MonkeyTesting {
                 else if (candidate == down) maze.moveChap(directions.get(1));
                 else if (candidate == left) maze.moveChap(directions.get(2));
                 else maze.moveChap(directions.get(3));
-                x++; // a step has been taken
-            }
-            catch (Exception e) {
+                steps++; // a step has been taken
+            } catch (Exception e) {
                 e.printStackTrace(); // print exception
             }
         }
         // print time taken and steps
         double endTime = System.currentTimeMillis();
-        int seconds = (int)((endTime - initialTime)/1000.0);
-        int minutes = (int)(seconds/60.0);
-        seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
+        int seconds = (int) ((endTime - initialTime) / 1000.0);
+        int minutes = (int) (seconds / 60.0);
+        seconds -= minutes * 60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + steps);
     }
 
     /**
      * tests intelligent monkey test with GUI
      */
     @Test
-    public void intelligentMonkeyTestWithGUI () {
-        double initialTime = System.currentTimeMillis();
-        Random random = new Random();
-        Main main = new Main(true);
-        Maze maze = main.getMaze();
-        GUI gui = main.getGui();
+    public void intelligentMonkeyTestWithGUI() {
+        double initialTime = System.currentTimeMillis(); // get start time
+        Random random = new Random(); // initialise random number generator
+
+        // initialise game elements
+        Main main = new Main(true); // start test game
+        Maze maze = main.getMaze(); // get the game maze
+        GUI gui = main.getGui(); // get the game gui
+
+        // initialise list of KeyEvent's
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
         // up
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38));
@@ -210,64 +215,61 @@ public class MonkeyTesting {
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37));
         // right
         keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
-        int x = 0;
 
+        int steps = 0;
+
+        // run until level is complete
         while (!maze.isLevelOver()) {
             try {
-                Tile[][] tiles = maze.getTiles();
-                HashMap<Tile, Integer> candidates = new HashMap<>();
+                Tile[][] tiles = maze.getTiles(); // get current state of game
+                HashMap<Tile, Integer> candidates = new HashMap<>(); // initialise HashMap
 
+                // get up tile
                 Tile up = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() - 1];
-                if (up instanceof Treasure || up instanceof Key || up instanceof Exit || (up instanceof LockedDoor
-                        && maze.getChap().backpackContains(((LockedDoor) up).getLockColour()))) {
-                    candidates.put(up, 1);
-                }
-                else if (up.isAccessible()) candidates.put(up, 0);
 
+                // get down tile
                 Tile down = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() + 1];
-                if (down instanceof Treasure || down instanceof Key || (down instanceof LockedDoor
-                        && maze.getChap().backpackContains(((LockedDoor) down).getLockColour()))) {
-                    candidates.put(down, 1);
-                }
-                else if (down.isAccessible()) candidates.put(down, 0);
 
+                // get left tile
                 Tile left = tiles[maze.getChap().getLocation().getCol() - 1][maze.getChap().getLocation().getRow()];
-                if (left instanceof Treasure || left instanceof Key || (left instanceof LockedDoor
-                        && maze.getChap().backpackContains(((LockedDoor) left).getLockColour()))) {
-                    candidates.put(left, 1);
-                }
-                else if (left.isAccessible()) candidates.put(left, 0);
 
+                // get right tile
                 Tile right = tiles[maze.getChap().getLocation().getCol() + 1][maze.getChap().getLocation().getRow()];
-                if (right instanceof Treasure || right instanceof Key || (right instanceof LockedDoor
-                        && maze.getChap().backpackContains(((LockedDoor) right).getLockColour()))) {
-                    candidates.put(right, 1);
-                }
-                else if (right.isAccessible()) candidates.put(right, 0);
 
-                Tile candidate;
+                // check for value of the tiles
+                int tileValue;
+                if ((tileValue = getValue(up, maze)) != -1) candidates.put(up, tileValue);
+                if ((tileValue = getValue(down, maze)) != -1) candidates.put(down, tileValue);
+                if ((tileValue = getValue(left, maze)) != -1) candidates.put(left, tileValue);
+                if ((tileValue = getValue(right, maze)) != -1) candidates.put(right, tileValue);
+
+                // move valuable candidates to an ArrayList
+                Tile candidate; // initialise final candidate
                 ArrayList<Tile> updatedCandidates = new ArrayList<>(candidates.keySet());
-                if (candidates.containsValue(1)) {
-                    for (Map.Entry entry : candidates.entrySet()) {
-                        if ((int) entry.getValue() == 0) updatedCandidates.remove(entry.getKey());
-                    }
+                if (candidates.containsValue(1)) { // 1 or more tiles are valuable
+                    candidates.forEach((key, value) -> {
+                        if (value == 0) updatedCandidates.remove(key); // remove invaluable tiles
+                    });
                 }
+                // get random move from remaining candidates
                 candidate = updatedCandidates.get(random.nextInt(updatedCandidates.size()));
 
+                // move chap
                 if (candidate == up) gui.dispatchEvent(keyEvents.get(0));
                 else if (candidate == down) gui.dispatchEvent(keyEvents.get(1));
                 else if (candidate == left) gui.dispatchEvent(keyEvents.get(2));
                 else gui.dispatchEvent(keyEvents.get(3));
-                x++;
-            }
-            catch (Exception e) {
-                e.printStackTrace();
+                steps++; // a move has been made
+            } catch (Exception e) {
+                e.printStackTrace(); // print exception
             }
         }
+
+        // print time taken and steps
         double endTime = System.currentTimeMillis();
-        int seconds = (int)((endTime - initialTime)/1000.0);
-        int minutes = (int)(seconds/60.0);
-        seconds -= minutes*60;
-        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + x);
+        int seconds = (int) ((endTime - initialTime) / 1000.0);
+        int minutes = (int) (seconds / 60.0);
+        seconds -= minutes * 60;
+        System.out.println("Time taken: " + minutes + " minutes. " + seconds + " seconds." + " steps: " + steps);
     }
 }
