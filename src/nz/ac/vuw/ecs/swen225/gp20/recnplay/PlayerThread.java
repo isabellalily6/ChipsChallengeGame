@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
 import java.util.ArrayList;
@@ -216,9 +218,14 @@ class PlayerThread extends Thread {
                                 RecordAndPlay.lock.unlock();
                             }
                             System.out.println("Exception thrown");
-                            RecordAndPlay.playRecordingThread.interrupt();
+                            RecordAndPlay.endPlayingRecording();
                             return;
                         }
+
+                        if (main.isLevelWon()) {
+
+                        }
+
                     } else {
                         break;
                     }
@@ -237,7 +244,7 @@ class PlayerThread extends Thread {
                             RecordAndPlay.lock.unlock();
                         }
                         System.out.println("Exception thrown");
-                        RecordAndPlay.playRecordingThread.interrupt();
+                        RecordAndPlay.endPlayingRecording();
                         return;
                     }
                 }
@@ -296,6 +303,24 @@ class PlayerThread extends Thread {
         }
         //Thread safe repainting
         main.getGui().updateGui(true);
+    }
+
+    /**
+     * Sees if the chap is on the exit tile.
+     *
+     * @return true if the chap is on the exit tile
+     */
+    public boolean isChapOnExit() {
+        Exit exit = new Exit(-1, -1);
+        for (Tile[] tiles : main.getMaze().getTiles()) {
+            for (Tile tile : tiles) {
+                if (tile instanceof Exit) {
+                    exit = (Exit) tile;
+                }
+            }
+        }
+
+        return main.getMaze().getChap().getLocation().equals(exit);
     }
 
     private void updatePausedRecording() {

@@ -35,7 +35,11 @@ public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
-    static PlayerThread playRecordingThread = new PlayerThread(null, null, 0);
+    /**
+     * Stores how many level changes have happened in this recording
+     */
+    static int levelChanges = 0;
+    private static PlayerThread playRecordingThread = new PlayerThread(null, null, 0);
 
     /**
      * Moves which have been loaded in
@@ -66,10 +70,6 @@ public class RecordAndPlay {
      * What mode are we going to replay in? Auto or step by step etc
      */
     static ReplayModes replayMode;
-
-    /**
-     * the dialog which displays buttons for the user to interact with
-     */
     private static ReplayOptionDialog dialog;
 
     /**
@@ -208,6 +208,12 @@ public class RecordAndPlay {
         playRecordingThread.getMain().startGame(1);
     }
 
+    /**
+     * Increments the number of level changes that have occurred.
+     */
+    public static void recordLevelChange() {
+        if (isRecording) levelChanges++;
+    }
 
     /**
      * Starts recording this game
@@ -317,6 +323,7 @@ public class RecordAndPlay {
 
     private static void resetRecordingState() {
         recordedMoves.clear();
+        levelChanges = 0;
         gameState = null;
         isRecording = false;
     }
