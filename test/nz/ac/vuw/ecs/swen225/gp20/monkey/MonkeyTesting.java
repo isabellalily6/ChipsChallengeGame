@@ -71,13 +71,17 @@ public class MonkeyTesting {
         // initialise KeyEvent's
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
         // up
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38,
+                KeyEvent.CHAR_UNDEFINED));
         // down
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 40));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 40,
+                KeyEvent.CHAR_UNDEFINED));
         // left
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37,
+                KeyEvent.CHAR_UNDEFINED));
         // right
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39,
+                KeyEvent.CHAR_UNDEFINED));
 
         int steps = 0;
 
@@ -240,16 +244,20 @@ public class MonkeyTesting {
         Maze maze = main.getMaze(); // get the game maze
         GUI gui = main.getGui(); // get the game gui
 
-        // initialise list of KeyEvent's
+        // initialise KeyEvent's
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
         // up
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 38,
+                KeyEvent.CHAR_UNDEFINED));
         // down
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 40));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 40,
+                KeyEvent.CHAR_UNDEFINED));
         // left
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 37,
+                KeyEvent.CHAR_UNDEFINED));
         // right
-        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39));
+        keyEvents.add(new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, 39,
+                KeyEvent.CHAR_UNDEFINED));
 
         int steps = 0;
 
