@@ -18,7 +18,6 @@ import java.nio.file.Paths;
  */
 public class FileChooser {
 
-
     /**
      * @param g         The gui (parent component)
      * @param jsonArray The json array to save to the file
@@ -60,6 +59,29 @@ public class FileChooser {
             File jsonFile = fileChooser.getSelectedFile();
             if (!jsonFile.getName().endsWith(".json")) return null;
 
+            return jsonFile;
+        }
+
+        return null;
+    }
+
+    /**
+     * @param g         The gui to add this file chooser to
+     * @param directory the directory to open with this file chooser
+     * @return the json file that is found
+     */
+    public static File getFileToSave(GUI g, String directory) {
+        var pathString = Paths.get(".", directory).toAbsolutePath().normalize().toString();
+        var fileChooser = new JFileChooser(pathString);
+        var result = fileChooser.showOpenDialog(g);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            var fileName = fileChooser.getSelectedFile().getName();
+            if (!fileName.endsWith(".json")) {
+                fileName += ".json";
+            }
+            System.out.println(pathString);
+            File jsonFile = new File(pathString + File.separator + fileName);
             return jsonFile;
         }
 
