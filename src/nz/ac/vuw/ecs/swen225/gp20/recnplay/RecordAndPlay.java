@@ -35,7 +35,12 @@ public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
-    static PlayerThread playRecordingThread = new PlayerThread(null, null, 0);
+    /**
+     * Stores how many level changes have happened in this loaded recording
+     */
+    static boolean loadedLevelChange = false;
+    private static PlayerThread playRecordingThread = new PlayerThread(null, null, 0, false);
+    private static boolean levelChange = false;
 
     /**
      * Moves which have been loaded in
@@ -66,10 +71,6 @@ public class RecordAndPlay {
      * What mode are we going to replay in? Auto or step by step etc
      */
     static ReplayModes replayMode;
-
-    /**
-     * the dialog which displays buttons for the user to interact with
-     */
     private static ReplayOptionDialog dialog;
 
     /**
@@ -126,7 +127,9 @@ public class RecordAndPlay {
             m.setMaze(LevelLoader.loadGameState(gameStateJson));
             m.getGui().updateGui(false);
 
-            var movesFromJson = jsonArr.getJsonObject(1);
+            loadedLevelChange = jsonArr.getJsonObject(1).getBoolean("levelChanges");
+
+            var movesFromJson = jsonArr.getJsonObject(2);
             var moves = loadMoves(movesFromJson);
             loadedMoves.clear();
             loadedMoves.addAll(moves);
@@ -208,6 +211,12 @@ public class RecordAndPlay {
         playRecordingThread.getMain().startGame(1);
     }
 
+    /**
+     * Increments the number of level changes that have occurred.
+     */
+    public static void recordLevelChange() {
+        if (isRecording) levelChange = true;
+    }
 
     /**
      * Starts recording this game
@@ -255,7 +264,7 @@ public class RecordAndPlay {
                 lock.unlock();
             }
         }
-        playRecordingThread = new PlayerThread(m, replayMode, replaySpeed);
+        playRecordingThread = new PlayerThread(m, replayMode, replaySpeed, loadedLevelChange);
         playRecordingThread.start();
         if (replayMode == ReplayModes.AUTO_PLAY) {
             dialog = new AutoPlayDialogCreator().createDialog(m);
@@ -283,10 +292,10 @@ public class RecordAndPlay {
 
             var dir = Direction.valueOf(loadedMove.getString("dir"));
             var timeLeft = loadedMove.getInt("timeLeft");
-
-            RecordedMove recordedMove;
             var moveIndex = loadedMove.getInt("moveIndex");
-            recordedMove = new RecordedMove(dir, timeLeft, Math.max(moveIndex, 0));
+            var level = loadedMove.getInt("level");
+
+            var recordedMove = new RecordedMove(dir, timeLeft, Math.max(moveIndex, 0), level);
 
             toReturn.add(recordedMove);
         }
@@ -299,13 +308,18 @@ public class RecordAndPlay {
 
         gameJson.add(gameState.build());
 
+        var levelCount = Json.createObjectBuilder();
+        levelCount.add("levelChanges", levelChange);
+        gameJson.add(levelCount.build());
+
         var movesArray = Json.createArrayBuilder();
 
         for (var move : recordedMoves) {
             var obj = Json.createObjectBuilder()
                     .add("timeLeft", move.getTimeLeft())
                     .add("dir", move.getDirection().toString())
-                    .add("moveIndex", move.getMoveIndex());
+                    .add("moveIndex", move.getMoveIndex())
+                    .add("level", move.getLevel());
             movesArray.add(obj);
         }
 
@@ -317,6 +331,7 @@ public class RecordAndPlay {
 
     private static void resetRecordingState() {
         recordedMoves.clear();
+        levelChange = false;
         gameState = null;
         isRecording = false;
     }

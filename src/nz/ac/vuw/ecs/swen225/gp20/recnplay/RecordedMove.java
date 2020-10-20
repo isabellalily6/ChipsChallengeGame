@@ -11,17 +11,20 @@ public class RecordedMove implements Comparable<RecordedMove> {
     private final Direction direction;
     private final int timeLeft;
     private final int moveIndex;
+    private final int level;
 
     /**
      * @param direction direction of said move
      * @param timeLeft  time left as this move was made
      * @param moveIndex index this move was made on
+     * @param level     the level this move was made on
      * @author callum mckay
      */
-    public RecordedMove(Direction direction, int timeLeft, int moveIndex) {
+    public RecordedMove(Direction direction, int timeLeft, int moveIndex, int level) {
         this.direction = direction;
         this.timeLeft = timeLeft;
         this.moveIndex = moveIndex;
+        this.level = level;
     }
 
     /**
@@ -31,7 +34,7 @@ public class RecordedMove implements Comparable<RecordedMove> {
      */
     public RecordedMove getInverse() {
         var newDir = getOppositeDirection(direction);
-        return new RecordedMove(newDir, timeLeft, moveIndex);
+        return new RecordedMove(newDir, timeLeft, moveIndex, level);
     }
 
     private Direction getOppositeDirection(Direction direction) {
@@ -100,12 +103,19 @@ public class RecordedMove implements Comparable<RecordedMove> {
 
     @Override
     public int compareTo(RecordedMove o) {
-        if (this.timeLeft > o.timeLeft) {
-            return -1;
-        } else if (this.timeLeft < o.timeLeft) {
+        if (this.moveIndex > o.moveIndex) {
             return 1;
+        } else if (this.moveIndex < o.moveIndex) {
+            return -1;
         } else {
-            return Integer.compare(this.moveIndex, o.moveIndex);
+            return Integer.compare(o.timeLeft, this.timeLeft);
         }
+    }
+
+    /**
+     * @return the level this move was made on
+     */
+    public int getLevel() {
+        return level;
     }
 }

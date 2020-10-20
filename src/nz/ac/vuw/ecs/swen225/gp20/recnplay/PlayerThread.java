@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
 import java.util.ArrayList;
@@ -24,19 +26,22 @@ class PlayerThread extends Thread {
     private final AtomicInteger lastMoveTime = new AtomicInteger(100);
     private final ReplayModes replayMode;
     private final int sleepTime;
+    private boolean levelChange;
 
 
     /**
-     * @param main  main class which is running the replay
-     *              Passing in null allows this to be used as a fake, where the methods do nothing
-     * @param mode  the mode of replay, ie: autoplay, step by step
-     * @param speed the speed the replay plays at
+     * @param main        main class which is running the replay
+     *                    Passing in null allows this to be used as a fake, where the methods do nothing
+     * @param mode        the mode of replay, ie: autoplay, step by step
+     * @param speed       the speed the replay plays at
+     * @param levelChange if the level changes once completed, ie level 1 -> complete -> level 2
      */
-    public PlayerThread(Main main, ReplayModes mode, int speed) {
+    public PlayerThread(Main main, ReplayModes mode, int speed, boolean levelChange) {
         this.main = main;
         this.replayMode = mode;
         //1000 is 1 sec, if speed is 100%, then it will run at 1000 / (100/100) = 1000
         this.sleepTime = speed == 0 ? 1000 : (int) (1000 / (speed / 100.0));
+        this.levelChange = levelChange;
     }
 
     /**
@@ -142,6 +147,7 @@ class PlayerThread extends Thread {
 
         //We don't want to delete the move from the real list, as the user needs to be able to step back through the list
         movesToPlay = new ArrayList<>(RecordAndPlay.loadedMoves);
+        movesToPlay.sort(RecordedMove::compareTo);
 
         //we want to keep track of where we are, for allowing the user to step through the moves
         moveIndex.set(0);
@@ -149,6 +155,12 @@ class PlayerThread extends Thread {
         recordingPaused.set(false);
         main.getTimer().cancel();
         main.getTimer().purge();
+        var isLevelOne = movesToPlay.stream().filter(m -> m.getLevel() == 1).findFirst();
+        if (isLevelOne.isPresent()) {
+            main.setLevel(1);
+        } else {
+            main.setLevel(2);
+        }
 
         updateTime(Math.max(movesToPlay.get(0).getTimeLeft() + 2, 100));
 
@@ -173,7 +185,8 @@ class PlayerThread extends Thread {
                 //get the moves for the current second
                 //or the previous moves in the case where some moves were not processed properly (can happen if you pause mid second)
                 var copiedList = new ArrayList<>(movesWithCorrectMoveIndices).stream()
-                        .filter(move -> move.getTimeLeft() == finalTimeLeft || move.getTimeLeft() == finalTimeLeft + 1)
+                        .filter(move -> (move.getTimeLeft() == finalTimeLeft || move.getTimeLeft() == finalTimeLeft + 1)
+                                && move.getLevel() == main.getLevel())
                         .collect(Collectors.toList());
 
                 for (var move : copiedList) {
@@ -216,9 +229,17 @@ class PlayerThread extends Thread {
                                 RecordAndPlay.lock.unlock();
                             }
                             System.out.println("Exception thrown");
-                            RecordAndPlay.playRecordingThread.interrupt();
+                            RecordAndPlay.endPlayingRecording();
                             return;
                         }
+
+                        if (main.isLevelWon() && levelChange) {
+                            incrementLevelToPlay();
+                        } else if (main.isLevelWon()) {
+                            RecordAndPlay.endPlayingRecording();
+                            return;
+                        }
+
                     } else {
                         break;
                     }
@@ -237,7 +258,7 @@ class PlayerThread extends Thread {
                             RecordAndPlay.lock.unlock();
                         }
                         System.out.println("Exception thrown");
-                        RecordAndPlay.playRecordingThread.interrupt();
+                        RecordAndPlay.endPlayingRecording();
                         return;
                     }
                 }
@@ -262,6 +283,9 @@ class PlayerThread extends Thread {
                                 playMove(move);
                                 prevMoveIndex.set(moveIndex.get());
                                 updateTime(move.getTimeLeft());
+                                if (main.isLevelWon() && levelChange) {
+                                    incrementLevelToPlay();
+                                }
                             } else {
                                 var move = movesToPlay.get(moveIndex.get() + 1);
                                 var inverseMove = move.getInverse();
@@ -289,6 +313,18 @@ class PlayerThread extends Thread {
         RecordAndPlay.endPlayingRecording();
     }
 
+    private void incrementLevelToPlay() {
+        if (main.getLevel() != 2) {
+            main.startGame(2);
+            main.setLevel(2);
+            main.getTimer().cancel();
+            main.getTimer().purge();
+            updateTime(100);
+            timeLeft.set(100);
+            levelChange = false;
+        }
+    }
+
     private void playMove(RecordedMove move) {
         var sound = main.getMaze().moveChap(move.getDirection());
         if (sound != null) {
@@ -296,6 +332,24 @@ class PlayerThread extends Thread {
         }
         //Thread safe repainting
         main.getGui().updateGui(true);
+    }
+
+    /**
+     * Sees if the chap is on the exit tile.
+     *
+     * @return true if the chap is on the exit tile
+     */
+    public boolean isChapOnExit() {
+        Exit exit = new Exit(-1, -1);
+        for (Tile[] tiles : main.getMaze().getTiles()) {
+            for (Tile tile : tiles) {
+                if (tile instanceof Exit) {
+                    exit = (Exit) tile;
+                }
+            }
+        }
+
+        return main.getMaze().getChap().getLocation().equals(exit);
     }
 
     private void updatePausedRecording() {

@@ -28,7 +28,7 @@ public class GUI extends JFrame implements KeyListener {
   private final int screenHeight = 650;
 
   // initialize GUI fields
-  private JPanel mainPanel = new JPanel();
+  private final JPanel mainPanel = new JPanel();
   private Dashboard dashboard = null;
   private Canvas canvas = null;
   private Dialogues pausedDialogue = null;
@@ -87,6 +87,7 @@ public class GUI extends JFrame implements KeyListener {
         if(maze.getState().equals(Maze.LevelState.WON) && main.getLevel()!=2){
           main.setLevel(main.getLevel()+1);
           main.startGame(main.getLevel());
+          RecordAndPlay.recordLevelChange();
         }else {
           main.startGame(1);
         }
@@ -285,19 +286,19 @@ public class GUI extends JFrame implements KeyListener {
     else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       sound = maze.moveChap(Direction.UP);
-      RecordAndPlay.addMove(new RecordedMove(Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       sound = maze.moveChap(Direction.DOWN);
-      RecordAndPlay.addMove(new RecordedMove(Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       sound = maze.moveChap(Direction.RIGHT);
-      RecordAndPlay.addMove(new RecordedMove(Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       sound = maze.moveChap(Direction.LEFT);
-      RecordAndPlay.addMove(new RecordedMove(Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
