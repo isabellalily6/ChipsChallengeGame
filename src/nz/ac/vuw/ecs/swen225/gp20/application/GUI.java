@@ -28,16 +28,20 @@ public class GUI extends JFrame implements KeyListener {
   private final int screenHeight = 650;
 
   // initialize GUI fields
-  private final JPanel mainPanel = new JPanel();
-  private final Dashboard dashboard;
-  private final Canvas canvas;
-  private final Dialogues pausedDialogue;
-  private final Dialogues gameWon;
-  private final Dialogues gameLost;
+  private JPanel mainPanel = new JPanel();
+  private Dashboard dashboard = null;
+  private Canvas canvas = null;
+  private Dialogues pausedDialogue = null;
+  private Dialogues gameWon = null;
+  private Dialogues gameLost = null;
 
   // initialize application
-  private final Main main;
+  private Main main = null;
   private Maze maze;
+
+
+  public GUI(){
+  }
 
   /**
    * Create the JFrame for the game and sets all the default values.
