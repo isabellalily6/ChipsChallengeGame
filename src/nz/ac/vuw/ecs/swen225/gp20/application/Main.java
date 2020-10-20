@@ -7,6 +7,8 @@ import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
 
 import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObjectBuilder;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -182,9 +184,9 @@ public class Main {
     }else if(!chooseFile){
       LevelLoader.saveGameState(LevelLoader.getGameState(this), file);
     }else{
-      var gameJson = Json.createArrayBuilder();
-      gameJson.add(LevelLoader.getGameState(this).build());
-      FileChooser.saveToFile(gui, gameJson.build(), "/levels");
+
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), FileChooser.getFileToSave(gui, "levels"));
+
     }
   }
 
