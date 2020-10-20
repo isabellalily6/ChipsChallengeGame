@@ -3,6 +3,8 @@ package nz.ac.vuw.ecs.swen225.gp20.maze;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Queue;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -53,6 +55,12 @@ public class Cobra extends Actor {
         return move;
     }
 
+    /**
+     * @return a list equivalent to the queue of cobra moves
+     */
+    public List<Direction> getListOfMoves() {
+        return new ArrayList<>(moves);
+    }
 
     /**
      * @return if the moves of this cobra contains null, then it is a test cobra that needs no thread
