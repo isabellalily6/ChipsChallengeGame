@@ -37,12 +37,9 @@ public abstract class Tile {
     }
 
     /**
-     * This will perform actions required once an actor enters this tile (to be overridden by classes like Treasure)
-     * TODO: this method may be redundant
-     *
-     * @param actor the actor entering this tile
+     * This will perform actions required once an actor enters this tile
      */
-    public void onEntry(Actor actor) {
+    public void onEntry() {
         setOccupied(true);
     }
 

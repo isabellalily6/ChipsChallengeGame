@@ -80,6 +80,7 @@ public class Maze {
      * @param totalTreasures the total treasures that are in this level
      */
     public Maze(Tile[][] tiles, int totalTreasures, Player chap) {
+        checkArgument(tiles[0].length > 0, "Tiles cannot be empty");
         this.cols = tiles.length;
         this.rows = tiles[0].length;
         this.tiles = copy2dTileArray(tiles);
@@ -87,6 +88,9 @@ public class Maze {
         this.totalTreasures = treasuresLeft = totalTreasures;
         this.chap = chap;
         // this is so getLocation will point to the right object
+        checkArgument(chap.getLocation().getCol() > 0 && chap.getLocation().getRow() > 0 &&
+                        chap.getLocation().getRow() < rows && chap.getLocation().getCol() < cols,
+                "Chap's location is not valid!");
         this.chap.setLocation(this.tiles[chap.getLocation().getCol()][chap.getLocation().getRow()]);
         this.state = LevelState.RUNNING;
     }
@@ -99,6 +103,7 @@ public class Maze {
      */
     public Maze(int level) {
         this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures(), LevelLoader.load(level).getChap());
+        checkArgument(level == 1 || level == 2, "Level has to be 1 or 2");
         this.level = level;
         if (level == 2) {
             this.blocks = LevelLoader.load(level).getBlocks();
@@ -148,6 +153,7 @@ public class Maze {
     }
 
     private Tile getTileInDirection(Direction dir, Tile loc) {
+        checkNotNull(loc);
         Tile newLoc = null;
         switch (dir) {
             case UP:
@@ -218,10 +224,13 @@ public class Maze {
 
         //if a sound has already been determined, play it. Else, determine the sound
         if (sound != null) return sound;
-        return playSound(newLoc);
+        sound = playSound(newLoc);
+        checkNotNull(sound);
+        return sound;
     }
 
     private Sound interactWithTile(Tile loc) {
+        checkNotNull(loc);
         if (loc instanceof Treasure) {
             chap.incrementTreasures();
             treasuresLeft--;
@@ -230,6 +239,7 @@ public class Maze {
         } else if (loc instanceof Key) {
             var k = (Key) loc;
             chap.addToBackPack(k.getColour());
+            assert (chap.getBackpack().size() < 4);
         } else if (loc instanceof LockedDoor) {
             var ld = (LockedDoor) loc;
             if (!chap.backpackContains(ld.getLockColour())) return null;
@@ -237,6 +247,7 @@ public class Maze {
             state = LevelState.DIED;
             return Sound.HIT_BY_MOB;
         }
+
         if (loc.isFreeOnEntry()) {
             Sound sound = playSound(loc);
             setFree(loc);
