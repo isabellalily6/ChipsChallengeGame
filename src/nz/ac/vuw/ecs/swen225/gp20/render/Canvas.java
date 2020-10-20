@@ -90,7 +90,9 @@ public class Canvas extends JPanel {
                 }
             }
         }
-        components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
+        if(maze != null) {
+            components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
+        }
     }
 
     /**
