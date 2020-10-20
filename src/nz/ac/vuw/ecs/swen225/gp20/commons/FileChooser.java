@@ -32,7 +32,11 @@ public class FileChooser {
             var writer = new StringWriter();
             Json.createWriter(writer).write(jsonArray);
             try {
-                var bw = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile() + ".json", StandardCharsets.UTF_8));
+                var fileName = fileChooser.getName();
+                if (!fileName.endsWith(".json")) {
+                    fileName += ".json";
+                }
+                var bw = new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8));
                 bw.write(writer.toString());
                 bw.close();
             } catch (IOException e) {
