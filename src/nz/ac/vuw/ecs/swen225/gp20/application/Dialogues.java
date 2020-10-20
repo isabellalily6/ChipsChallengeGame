@@ -2,6 +2,9 @@ package nz.ac.vuw.ecs.swen225.gp20.application;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,7 +15,7 @@ import java.awt.event.KeyListener;
  **/
 public class Dialogues extends JDialog implements KeyListener {
   // Components of the JDialogue
-  private JTextArea text;
+  private JTextPane text = new JTextPane();
   private JButton button;
   private JButton closeButton;
   private Main main;
@@ -36,17 +39,27 @@ public class Dialogues extends JDialog implements KeyListener {
     this.setBackground(Color.lightGray);
 
     // create the components for the dialogue
-    text = new JTextArea();
+
+    // create the field for the text label
     text.setText(labelText);
     text.setEditable(false);
-    text.setWrapStyleWord(true);
-    text.setLineWrap(true);
+
+    // center the text on the JTextPane
+    StyledDocument doc = text.getStyledDocument();
+    SimpleAttributeSet centerAlign = new SimpleAttributeSet();
+    StyleConstants.setAlignment(centerAlign, StyleConstants.ALIGN_CENTER);
+    doc.setParagraphAttributes(0, doc.getLength(), centerAlign, false);
+
     text.setFont(new Font("Verdana", Font.PLAIN, 25));
+
+    // create the button based on what the user passes in as a parameter
     button = new JButton(buttonText);
     button.setBackground(Color.lightGray);
     button.setFont(new Font("Verdana", Font.PLAIN, 20));
     Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
     button.setBorder(border);
+
+    // create the button to close the game
     closeButton = new JButton("Exit Game");
     closeButton.setBorder(border);
     closeButton.setBackground(Color.lightGray);
@@ -59,15 +72,6 @@ public class Dialogues extends JDialog implements KeyListener {
     this.add(closeButton);
     this.toFront();
     this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-  }
-
-  /**
-   * Get the first button on the JDialogue
-   *
-   * @return the first button
-   **/
-  public JButton getButton() {
-    return button;
   }
 
   /**
