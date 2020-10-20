@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.maze;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -609,23 +610,6 @@ public class MazeTest {
         var maze = new Maze(tiles, 1, new ArrayList<>(), null);
         assertThrows(IllegalArgumentException.class, () -> maze.moveChap(Direction.LEFT));
     }
-
-   /* @Test
-    public void testMovementThread() {
-        var tiles = createCobraTestMaze();
-        var cobra = new Cobra(new Free(1, 2),
-                new ArrayDeque<>(Arrays.asList(Maze.Direction.UP, Maze.Direction.RIGHT, Maze.Direction.DOWN)));
-        var maze = new Maze(tiles, 1, null, new ArrayList<>() {{
-            add(cobra);
-        }});
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        assert (maze.isLevelOver());
-        assert (maze.cobraThreadStopped());
-    }*/
 
 
     static class Location {

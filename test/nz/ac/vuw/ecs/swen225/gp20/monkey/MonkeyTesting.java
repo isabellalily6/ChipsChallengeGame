@@ -2,6 +2,7 @@ package nz.ac.vuw.ecs.swen225.gp20.monkey;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.*;
 import org.junit.jupiter.api.Test;
 

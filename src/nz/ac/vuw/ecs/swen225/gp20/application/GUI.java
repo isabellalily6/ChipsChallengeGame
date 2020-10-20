@@ -1,12 +1,14 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -15,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Create a GUI which displays the game on the screen
@@ -155,6 +158,7 @@ public class GUI extends JFrame implements KeyListener {
   public void setMaze(Maze maze) {
     this.maze = maze;
     dashboard.setMaze(maze);
+    canvas.setMaze(maze);
   }
 
   /**
@@ -190,6 +194,15 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
+   * Get the Maze
+   *
+   * @return the maze
+   **/
+  public Maze getMaze() {
+    return maze;
+  }
+
+  /**
    * Get the dashboard
    *
    * @return the dashboard
@@ -198,16 +211,65 @@ public class GUI extends JFrame implements KeyListener {
     return dashboard;
   }
 
+  /**
+   * Set the direction of the chap.
+   *
+   * @param direction
+   **/
+  public void setChapDirection(Direction direction){
+    maze.getChap().setDir(direction);
+  }
+
+  /**
+   * Move the chap.
+   *
+   * @param direction
+   **/
+  public void moveChap(Direction direction){
+    maze.moveChap(direction);
+  }
+
+  /**
+   * Play the sound passed in as a parameter.
+   *
+   * @param sound
+   **/
+  public void playSound(Sound sound){
+    SoundEffect.play(sound);
+  }
+
+  /**
+   * Update the GUI
+   *
+   * @param useThread
+   **/
+  public void updateGui(Boolean useThread){
+    if(useThread) {
+      try {
+        // thread safe repainting
+        SwingUtilities.invokeAndWait((canvas::refreshComponents));
+        SwingUtilities.invokeAndWait((canvas::repaint));
+        SwingUtilities.invokeAndWait((this::repaint));
+      } catch (InterruptedException | InvocationTargetException e) {
+        // redo them without thread safety
+        canvas.refreshComponents();
+        canvas.repaint();
+        repaint();
+      }
+    }else{
+      canvas.refreshComponents();
+      canvas.repaint();
+      repaint();
+    }
+    dashboard.updateDashboard();
+  }
+
   @Override
   public void keyTyped(KeyEvent keyEvent) {
   }
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-  }
-
-  public Maze getMaze() {
-    return maze;
   }
 
   @Override
@@ -219,33 +281,32 @@ public class GUI extends JFrame implements KeyListener {
     else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       sound = maze.moveChap(Direction.UP);
-      RecordAndPlay.addMove(maze.getChap(), Direction.UP, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       sound = maze.moveChap(Direction.DOWN);
-      RecordAndPlay.addMove(maze.getChap(), Direction.DOWN, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       sound = maze.moveChap(Direction.RIGHT);
-      RecordAndPlay.addMove(maze.getChap(), Direction.RIGHT, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       sound = maze.moveChap(Direction.LEFT);
-      RecordAndPlay.addMove(maze.getChap(), Direction.LEFT, main.getTimeLeft());
+      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
       System.out.println("EXIT But save level");
-      main.saveFile(true);
+      main.saveFile(true, false);
       main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
       //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
       System.out.println("EXIT, save game state");
-      main.saveFile(false);
+      main.saveFile(false, false);
       main.exitGame();
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
       //CTRL-R  - resume a saved game
-
       System.out.println("Resume a saved game");
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_P){
       //CTRL-P  - start a new game at the last unfinished level
