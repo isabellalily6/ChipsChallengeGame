@@ -331,10 +331,12 @@ public class LevelLoader {
         Maze maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
         JsonNumber chapCol = gameStateJson.getJsonNumber("chapCol");
         JsonNumber chapRow = gameStateJson.getJsonNumber("chapRow");
+        maze.getChap().getLocation().onExit();
         maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
         
         for(JsonValue cValue : gameStateJson.getJsonArray("keysCollected")) {
-        	maze.getChap().addToBackPack(Key.Colour.valueOf(cValue.toString()));
+        	String color = cValue.asJsonObject().getString("color");
+        	maze.getChap().addToBackPack(Key.Colour.valueOf(color));
         }
         
         return maze;
