@@ -15,16 +15,18 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import static nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser.getJsonFileToLoad;
+import static nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser.saveToFile;
 
 /**
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
@@ -93,7 +95,7 @@ public class RecordAndPlay {
         var jsonToSave = buildJson();
 
         //Save this to a file
-        saveToFile(jsonToSave);
+        saveToFile(parentComponent, jsonToSave, "recordings");
 
         //reset the recording state
         resetRecordingState();
@@ -113,7 +115,7 @@ public class RecordAndPlay {
      * @author callum mckay
      */
     public static void loadRecording(Main m) {
-        File jsonFile = getJsonFileToLoad(m.getGui());
+        File jsonFile = getJsonFileToLoad(m.getGui(), "recordings");
 
         if (jsonFile == null) return;
 
@@ -317,38 +319,6 @@ public class RecordAndPlay {
 
         gameJson.add(movesArrayObj.build());
         return gameJson.build();
-    }
-
-    private static File getJsonFileToLoad(GUI g) {
-        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
-        fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
-        var result = fileChooser.showOpenDialog(g);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File jsonFile = fileChooser.getSelectedFile();
-            if (!jsonFile.getName().endsWith(".json")) return null;
-
-            return jsonFile;
-        }
-
-        return null;
-    }
-
-    private static void saveToFile(JsonArray jsonArray) {
-        var fileChooser = new JFileChooser(Paths.get(".", "recordings").toAbsolutePath().normalize().toString());
-        var result = fileChooser.showOpenDialog(parentComponent);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            var writer = new StringWriter();
-            Json.createWriter(writer).write(jsonArray);
-            try {
-                var bw = new BufferedWriter(new FileWriter(fileChooser.getSelectedFile() + ".json", StandardCharsets.UTF_8));
-                bw.write(writer.toString());
-                bw.close();
-            } catch (IOException e) {
-                throw new Error("Game was not able to be saved due to an exception");
-            }
-        }
     }
 
     private static void resetRecordingState() {

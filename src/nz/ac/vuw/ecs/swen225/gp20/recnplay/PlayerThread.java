@@ -1,13 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
-import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -131,21 +128,6 @@ class PlayerThread extends Thread {
     private void updateTime(int time) {
         main.setTimeLeft(time);
         main.getGui().setTimer(time);
-    }
-
-    private static KeyEvent keyEventFromDirection(Direction d, GUI gui) {
-        switch (d) {
-            case UP:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_UP, KeyEvent.CHAR_UNDEFINED);
-            case DOWN:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_DOWN, KeyEvent.CHAR_UNDEFINED);
-            case LEFT:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_LEFT, KeyEvent.CHAR_UNDEFINED);
-            case RIGHT:
-                return new KeyEvent(gui, KeyEvent.KEY_RELEASED, System.currentTimeMillis(), 0, KeyEvent.VK_RIGHT, KeyEvent.CHAR_UNDEFINED);
-            default:
-                throw new IllegalStateException("Unexpected value: " + d);
-        }
     }
 
     /**
