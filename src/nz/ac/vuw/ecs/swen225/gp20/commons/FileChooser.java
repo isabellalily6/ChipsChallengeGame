@@ -25,18 +25,19 @@ public class FileChooser {
      * @param directory The directory to save
      */
     public static void saveToFile(GUI g, JsonArray jsonArray, String directory) {
-        var fileChooser = new JFileChooser(Paths.get(".", directory).toAbsolutePath().normalize().toString());
+        var pathString = Paths.get(".", directory).toAbsolutePath().normalize().toString();
+        var fileChooser = new JFileChooser(pathString);
         var result = fileChooser.showOpenDialog(g);
 
         if (result == JFileChooser.APPROVE_OPTION) {
             var writer = new StringWriter();
             Json.createWriter(writer).write(jsonArray);
             try {
-                var fileName = fileChooser.getName();
+                var fileName = fileChooser.getSelectedFile().getName();
                 if (!fileName.endsWith(".json")) {
                     fileName += ".json";
                 }
-                var bw = new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8));
+                var bw = new BufferedWriter(new FileWriter(pathString + File.separator + fileName, StandardCharsets.UTF_8));
                 bw.write(writer.toString());
                 bw.close();
             } catch (IOException e) {
