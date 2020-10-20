@@ -234,15 +234,7 @@ class PlayerThread extends Thread {
                         }
 
                         if (main.isLevelWon() && levelChange) {
-                            if (main.getLevel() != 2) {
-                                main.startGame(2);
-                                main.setLevel(2);
-                                main.getTimer().cancel();
-                                main.getTimer().purge();
-                                updateTime(100);
-                                timeLeft.set(100);
-                                levelChange = false;
-                            }
+                            incrementLevelToPlay();
                         } else if (main.isLevelWon()) {
                             RecordAndPlay.endPlayingRecording();
                             return;
@@ -291,6 +283,9 @@ class PlayerThread extends Thread {
                                 playMove(move);
                                 prevMoveIndex.set(moveIndex.get());
                                 updateTime(move.getTimeLeft());
+                                if (main.isLevelWon() && levelChange) {
+                                    incrementLevelToPlay();
+                                }
                             } else {
                                 var move = movesToPlay.get(moveIndex.get() + 1);
                                 var inverseMove = move.getInverse();
@@ -316,6 +311,18 @@ class PlayerThread extends Thread {
         }
         System.out.println("Recording is over, no moves left");
         RecordAndPlay.endPlayingRecording();
+    }
+
+    private void incrementLevelToPlay() {
+        if (main.getLevel() != 2) {
+            main.startGame(2);
+            main.setLevel(2);
+            main.getTimer().cancel();
+            main.getTimer().purge();
+            updateTime(100);
+            timeLeft.set(100);
+            levelChange = false;
+        }
     }
 
     private void playMove(RecordedMove move) {
