@@ -284,7 +284,7 @@ public class LevelLoader {
 			JsonObject gameObject = reader.readObject();
 			
 			Maze maze = loadGameState(gameObject);
-			
+			main.setGui(maze);
 			main.setMaze(maze);
 			main.setTimeLeft(gameObject.getJsonNumber("timeLeft").intValue());
 			
