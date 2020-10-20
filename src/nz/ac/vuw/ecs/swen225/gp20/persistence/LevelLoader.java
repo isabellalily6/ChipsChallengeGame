@@ -1,42 +1,15 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
+import nz.ac.vuw.ecs.swen225.gp20.maze.*;
+
+import javax.json.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonNumber;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
-import javax.json.JsonReader;
-import javax.json.JsonValue;
-
-import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
-import nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Free;
-import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Lava;
-import nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 
 public class LevelLoader {
 	
@@ -60,22 +33,22 @@ public class LevelLoader {
 			mapWidth = 18;
 			mapHeight = 11;
 		}
-		
-		Tile[][] map = new Tile[mapWidth][mapHeight]; 
+
+		Tile[][] map = new Tile[mapWidth][mapHeight];
 		int treasures = 0; //total treasures in the level
 		Player chap = null;
 		ArrayList<Block> blocks = new ArrayList<Block>();
 		ArrayList<Cobra> cobras = new ArrayList<Cobra>();
-		ArrayList<Queue<Direction>> cobraMoves = new ArrayList<Queue<Direction>>();
-		
+		ArrayList<Queue<Direction>> cobraMoves = new ArrayList<>();
+
 		try {
-			
+
 			//Read JSON file into a list of JsonObjects
 			JsonReader reader = Json.createReader(new FileReader(filename));
 			JsonArray jsonArray = reader.readArray();
-			
+
 			List<JsonObject> jsonTiles = jsonArray.getValuesAs(JsonObject.class);
-			
+
 			//Iterate through the JsonArray to create new tile objects and put them in the map
 			for(int i = 0; i < jsonTiles.size(); i++) {
 				
