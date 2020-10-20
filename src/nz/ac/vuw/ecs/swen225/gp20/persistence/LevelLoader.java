@@ -147,7 +147,7 @@ public class LevelLoader {
 					JsonArray jsonMoves = jsonTileObj.getJsonArray("moves");
 					
 					for(int j = 0; j < jsonMoves.size(); j++) {
-						JsonObject directionObj = jsonTiles.get(j);
+						JsonObject directionObj = (JsonObject) jsonMoves.get(j);
 						String direction = directionObj.getString("direction");
 						
 						if(direction.contentEquals("Up")) {
@@ -237,6 +237,57 @@ public class LevelLoader {
 		gameState += "\"chapRow\": \"" + game.getChap().getLocation().getRow() + "\",";
 		objectBuilder.add("chapRow", game.getChap().getLocation().getRow());
 		
+		//cobras
+		gameState += "\"cobras\": [";
+		JsonArrayBuilder cobrasArrayBuilder = Json.createArrayBuilder();
+		if(game.getCobras() != null) {
+			for(Cobra c : game.getCobras()) {
+				JsonObjectBuilder cobraObjectBuilder = Json.createObjectBuilder();
+				gameState += "{\"cobraCol\": \"" + c.getLocation().getCol() + "\",";
+				cobraObjectBuilder.add("cobraCol", c.getLocation().getCol());
+				gameState += "\"cobraRow\": \"" + c.getLocation().getRow() + "\",";
+				cobraObjectBuilder.add("cobraRow", c.getLocation().getRow());
+				
+				gameState += "\"moves\": [";
+				JsonArrayBuilder cobraDirectionBuilder = Json.createArrayBuilder();
+				for(Direction d : c.getMoves()) {
+					JsonObjectBuilder directionObjectBuilder = Json.createObjectBuilder();
+					gameState += "{\"direction\": \"" + d.getName() + "\"},";
+					directionObjectBuilder.add("direction", d.getName());
+					cobraDirectionBuilder.add(directionObjectBuilder);
+				}
+				if(!c.getMoves().isEmpty()) {
+					gameState = gameState.substring(0, gameState.length() - 1);
+				}
+				gameState += "]},";
+				cobrasArrayBuilder.add(cobraObjectBuilder);
+			}
+			if(!game.getCobras().isEmpty()) {
+				gameState = gameState.substring(0, gameState.length() - 1);
+			}
+		}
+		gameState += "],";
+		objectBuilder.add("cobras", cobrasArrayBuilder);
+		
+		//blocks
+		gameState += "\blocks\": [";
+		JsonArrayBuilder blocksArrayBuilder = Json.createArrayBuilder();
+		if(game.getBlocks() != null) {
+			for(Block b : game.getBlocks()) {
+				JsonObjectBuilder blockObjectBuilder = Json.createObjectBuilder();
+				gameState += "{\"blockCol\": \"" + b.getCol() + "\",";
+				blockObjectBuilder.add("blockCol", b.getCol());
+				gameState += "\"blockRow\": \"" + b.getRow() + "\"},";
+				blockObjectBuilder.add("blockRow", b.getRow());
+				blocksArrayBuilder.add(blockObjectBuilder);
+			}
+			if(!game.getBlocks().isEmpty()) {
+				gameState = gameState.substring(0, gameState.length() - 1);
+			}
+		}
+		gameState += "],";
+		objectBuilder.add("blocks", blocksArrayBuilder);
+		
 		//keysCollected
 		JsonArrayBuilder keysArrayBuilder = Json.createArrayBuilder();
 		gameState += "\"keysCollected\": [";
@@ -244,15 +295,13 @@ public class LevelLoader {
 			gameState += "{\"color\": \"" + colour + "\"},";
 			JsonObjectBuilder keyObjectBuilder = Json.createObjectBuilder();
 			keyObjectBuilder.add("color", colour.toString());
-			mapArrayBuilder.add(keyObjectBuilder);
+			keysArrayBuilder.add(keyObjectBuilder);
 		}
 		objectBuilder.add("keysCollected", keysArrayBuilder);
 		if(!game.getChap().getBackpack().isEmpty()) {
 			gameState = gameState.substring(0, gameState.length() - 1);
 		}
-		gameState += "]";
-		
-		gameState += "}";
+		gameState += "]}";
 		
 		return objectBuilder;
 		
@@ -282,14 +331,14 @@ public class LevelLoader {
 		try {
 			reader = Json.createReader(new FileReader(file));
 			JsonObject gameObject = reader.readObject();
+			reader.close();
 			
 			Maze maze = loadGameState(gameObject);
-			main.setGui(maze);
 			main.setMaze(maze);
 			main.setTimeLeft(gameObject.getJsonNumber("timeLeft").intValue());
+			main.setLevel(gameObject.getJsonNumber("level").intValue());
 			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		} catch (FileNotFoundException | javax.json.stream.JsonParsingException ignored) {
 		}
 	}
 	
@@ -310,6 +359,10 @@ public class LevelLoader {
         JsonNumber chapCol = gameStateJson.getJsonNumber("chapCol");
         JsonNumber chapRow = gameStateJson.getJsonNumber("chapRow");
         maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
+        
+        for(JsonValue cValue : gameStateJson.getJsonArray("keysCollected")) {
+        	maze.getChap().addToBackPack(Key.Colour.valueOf(cValue.toString()));
+        }
         
         return maze;
     }
