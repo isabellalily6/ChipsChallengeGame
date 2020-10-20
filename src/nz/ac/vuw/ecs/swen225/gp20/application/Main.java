@@ -25,7 +25,7 @@ import java.util.TimerTask;
  */
 public class Main {
   // initialize the game variables
-  private GUI gui;
+  private GUI gui = null;
   private Maze maze;
 
   // initialise the game information
@@ -41,21 +41,22 @@ public class Main {
   private boolean gamePaused = false;
 
   // name of the file to save current game state and load game state from
-  private String filename = "levels/GameState.json";
+  private File file = new File("levels/GameState.json");
 
   /**
    * Create a new instance of the game application
    **/
   public Main() {
     // create the maze and the gui for the game
-    if(checkFileExists(filename)){
-
-      deleteFile(filename);
+    gui = new GUI(this, new Maze(1));
+    if(checkFileExists(file)){
+      loadFile();
+      deleteFile(file);
     }else{
       maze = new Maze(level);
-      gui = new GUI(this, maze);
-      gui.setUpGui();
     }
+    gui = new GUI(this, maze);
+    gui.setUpGui();
     new Music();
     startTimer();
   }
@@ -155,7 +156,7 @@ public class Main {
    * Load a file for the game
    **/
   public void loadFile(){
-
+    LevelLoader.loadOldGame(this, file);
   }
 
   /**
@@ -167,9 +168,9 @@ public class Main {
   public void saveFile(Boolean saveCurrentLevel, Boolean chooseFile){
     if(saveCurrentLevel){
       startGame(level);
-      LevelLoader.saveGameState(LevelLoader.getGameState(this), filename);
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), file);
     }else if(!chooseFile){
-      LevelLoader.saveGameState(LevelLoader.getGameState(this), filename);
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), file);
     }else{
 
     }
@@ -192,7 +193,7 @@ public class Main {
     }
     // create a new maze and set this in canvas and the gui
     setMaze(new Maze(level));
-    gui.updateGui();
+    gui.updateGui(false);
     startTimer();
   }
 
@@ -268,7 +269,19 @@ public class Main {
    **/
   public void setMaze(Maze maze) {
     this.maze = maze;
-    gui.setMaze(maze);
+    if(gui!=null) {
+      gui.setMaze(maze);
+    }
+  }
+
+
+  /**
+   * Set the maze.
+   *
+   * @param maze
+   **/
+  public void setGui(Maze maze) {
+    gui = new GUI(this, maze);
   }
 
   /**
@@ -293,22 +306,20 @@ public class Main {
   /**
    * Check whether a file exists
    *
-   * @param filename
+   * @param file
    *
    * @return true if the file exists, otherwise false
    **/
-  public boolean checkFileExists(String filename){
-    File file = new File(filename);
+  public boolean checkFileExists(File file){
     return file.exists();
   }
 
   /**
    * Delete File
    *
-   * @param filename
+   * @param file
    **/
-  public void deleteFile(String filename){
-    File file = new File(filename);
+  public void deleteFile(File file){
     file.delete();
   }
 
