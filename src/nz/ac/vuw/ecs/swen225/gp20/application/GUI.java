@@ -238,14 +238,25 @@ public class GUI extends JFrame implements KeyListener {
     SoundEffect.play(sound);
   }
 
-  public void updateGui(){
-    try{
-      // thread safe repainting
-      SwingUtilities.invokeAndWait((canvas::refreshComponents));
-      SwingUtilities.invokeAndWait((canvas::repaint));
-      SwingUtilities.invokeAndWait((this::repaint));
-    } catch(InterruptedException | InvocationTargetException e){
-      // redo them without thread safety
+  /**
+   * Update the GUI
+   *
+   * @param useThread
+   **/
+  public void updateGui(Boolean useThread){
+    if(useThread) {
+      try {
+        // thread safe repainting
+        SwingUtilities.invokeAndWait((canvas::refreshComponents));
+        SwingUtilities.invokeAndWait((canvas::repaint));
+        SwingUtilities.invokeAndWait((this::repaint));
+      } catch (InterruptedException | InvocationTargetException e) {
+        // redo them without thread safety
+        canvas.refreshComponents();
+        canvas.repaint();
+        repaint();
+      }
+    }else{
       canvas.refreshComponents();
       canvas.repaint();
       repaint();
