@@ -1,9 +1,10 @@
 package nz.ac.vuw.ecs.swen225.gp20.render;
 
-import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -75,26 +76,26 @@ public class Canvas extends JPanel {
                     int finalCol = col;
                     int finalRow = row;
                     List<Cobra> cobras = new ArrayList<>();
-                    if(maze.getCobras() != null) {
+                    if (maze.getCobras() != null) {
                         cobras = maze.getCobras().stream().filter(c -> c.getLocation().equals(maze.getTiles()[finalCol][finalRow])).collect(Collectors.toList());
                     }
                     if (maze != null && maze.getBlocks() != null) {
-                        if(maze.getBlocks().stream().anyMatch(b -> b.getLocation().equals(maze.getTiles()[finalCol][finalRow]))) {
+                        if (maze.getBlocks().stream().anyMatch(b -> b.getLocation().equals(maze.getTiles()[finalCol][finalRow]))) {
                             components[x][y].setIcon(makeImageIcon("data/block.png"));
-                        } else if(!cobras.isEmpty()) {
+                        } else if (!cobras.isEmpty()) {
                             components[x][y].setIcon(makeImageIcon(cobras.get(0).getImageURl()));
                         } else {
                             ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                             components[x][y].setIcon(icon);
                         }
-                    } else if(maze != null) {
+                    } else if (maze != null) {
                         ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                         components[x][y].setIcon(icon);
                     }
                 }
             }
         }
-        if(maze != null) {
+        if (maze != null) {
             components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
         }
     }

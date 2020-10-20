@@ -316,6 +316,16 @@ public class Main {
   }
 
   /**
+   * Return whether the player has one the game or not
+   *
+   * @return true if the player has won, otherwise false
+   **/
+  public boolean isLevelWon() {
+    return maze.getState().equals(Maze.LevelState.WON);
+  }
+
+
+  /**
    * Creates a new instance of main to run the ChapsChallenge game.
    *
    * @param args
