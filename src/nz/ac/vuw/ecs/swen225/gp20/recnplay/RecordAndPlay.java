@@ -124,10 +124,7 @@ public class RecordAndPlay {
             var gameStateJson = jsonArr.getJsonObject(0);
 
             m.setMaze(LevelLoader.loadGameState(gameStateJson));
-            m.getGui().setMaze(m.getMaze());
-            m.getGui().getCanvas().setMaze(m.getMaze());
-            m.getGui().getCanvas().refreshComponents();
-            m.getGui().getCanvas().repaint();
+            m.getGui().updateGui(false);
 
             var movesFromJson = jsonArr.getJsonObject(1);
             var moves = loadMoves(movesFromJson);

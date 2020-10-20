@@ -2,10 +2,7 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
-import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -294,19 +291,11 @@ class PlayerThread extends Thread {
 
     private void playMove(RecordedMove move) {
         var sound = main.getMaze().moveChap(move.getDirection());
-        if (sound != null) SoundEffect.play(sound);
-        try {
-            //Thread safe repainting
-            SwingUtilities.invokeAndWait(main.getGui().getCanvas()::refreshComponents);
-            SwingUtilities.invokeAndWait(main.getGui().getCanvas()::repaint);
-            SwingUtilities.invokeAndWait(main.getGui()::repaint);
-        } catch (InterruptedException | InvocationTargetException e) {
-            //redo them without thread safety
-            main.getGui().getCanvas().refreshComponents();
-            main.getGui().getCanvas().repaint();
-            main.getGui().repaint();
+        if (sound != null) {
+            main.getGui().playSound(sound);
         }
-        main.getGui().getDashboard().updateDashboard();
+        //Thread safe repainting
+        main.getGui().updateGui(true);
     }
 
     private void updatePausedRecording() {
