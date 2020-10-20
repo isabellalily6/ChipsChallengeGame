@@ -12,7 +12,7 @@ import java.awt.event.KeyListener;
  **/
 public class Dialogues extends JDialog implements KeyListener {
   // Components of the JDialogue
-  private JLabel label;
+  private JTextArea text;
   private JButton button;
   private JButton closeButton;
   private Main main;
@@ -36,8 +36,12 @@ public class Dialogues extends JDialog implements KeyListener {
     this.setBackground(Color.lightGray);
 
     // create the components for the dialogue
-    label = new JLabel(labelText, SwingConstants.CENTER);
-    label.setFont(new Font("Verdana", Font.PLAIN, 25));
+    text = new JTextArea();
+    text.setText(labelText);
+    text.setEditable(false);
+    text.setWrapStyleWord(true);
+    text.setLineWrap(true);
+    text.setFont(new Font("Verdana", Font.PLAIN, 25));
     button = new JButton(buttonText);
     button.setBackground(Color.lightGray);
     button.setFont(new Font("Verdana", Font.PLAIN, 20));
@@ -50,7 +54,7 @@ public class Dialogues extends JDialog implements KeyListener {
     closeButton.addActionListener(method -> {dispose(); main.exitGame();});
 
     // add the components to the dialogue
-    this.add(label);
+    this.add(text);
     this.add(button);
     this.add(closeButton);
     this.toFront();
