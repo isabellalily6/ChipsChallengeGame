@@ -65,6 +65,7 @@ public class MonkeyTesting {
 
         // initialise game elements
         Main main = new Main(true);
+        Maze maze = main.getMaze();
         GUI gui = main.getGui();
 
         // initialise KeyEvent's
@@ -83,8 +84,42 @@ public class MonkeyTesting {
         // run until level is complete
         while (!main.getMaze().isLevelOver()) {
             try {
-                gui.dispatchEvent(keyEvents.get(random.nextInt(4)));
-                steps++;
+                Tile[][] tiles = maze.getTiles(); // get maze tiles
+                HashMap<Tile, Integer> candidates = new HashMap<>(); // initialise HashMap
+
+                // get up tile
+                Tile up = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() - 1];
+
+                // get down tile
+                Tile down = tiles[maze.getChap().getLocation().getCol()][maze.getChap().getLocation().getRow() + 1];
+
+                // get left tile
+                Tile left = tiles[maze.getChap().getLocation().getCol() - 1][maze.getChap().getLocation().getRow()];
+
+                // get right tile
+                Tile right = tiles[maze.getChap().getLocation().getCol() + 1][maze.getChap().getLocation().getRow()];
+
+                // check for value of the tiles
+                int tileValue;
+                if ((tileValue = getValue(up, maze)) != -1) candidates.put(up, tileValue);
+                if ((tileValue = getValue(down, maze)) != -1) candidates.put(down, tileValue);
+                if ((tileValue = getValue(left, maze)) != -1) candidates.put(left, tileValue);
+                if ((tileValue = getValue(right, maze)) != -1) candidates.put(right, tileValue);
+                // wall tile is never added into the map as it is never a valuable move
+
+
+                // final candidate
+                Tile candidate;
+                // modify map into a list
+                // get random input from remaining candidates
+                candidate = (Tile)candidates.keySet().toArray()[random.nextInt(candidates.size())];
+
+                // move chap
+                if (candidate == up) gui.dispatchEvent(keyEvents.get(0));
+                else if (candidate == down) gui.dispatchEvent(keyEvents.get(1));
+                else if (candidate == left) gui.dispatchEvent(keyEvents.get(2));
+                else gui.dispatchEvent(keyEvents.get(3));
+                steps++; // a step has been taken
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -109,7 +144,7 @@ public class MonkeyTesting {
         if (tile instanceof Treasure || tile instanceof Key || tile instanceof Exit || (tile instanceof LockedDoor
                 && maze.getChap().backpackContains(((LockedDoor) tile).getLockColour()))) {
             return 1; // tile is valuable
-        } else if (tile.isAccessible()) return 0; // tile is not valuable
+        } else if (tile.isAccessible() && !(tile instanceof InfoField)) return 0; // tile is not valuable
         return -1; // tile is not accessible
     }
 
