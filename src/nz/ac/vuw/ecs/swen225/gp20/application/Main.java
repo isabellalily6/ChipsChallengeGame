@@ -5,6 +5,8 @@ import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
 
+import javax.swing.text.StyledEditorKit;
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,14 +40,22 @@ public class Main {
   // variable to check whether the game is paused or not
   private boolean gamePaused = false;
 
+  // name of the file to save current game state and load game state from
+  private String filename = "levels/GameState.json";
+
   /**
    * Create a new instance of the game application
    **/
   public Main() {
     // create the maze and the gui for the game
-    maze = new Maze(level);
-    gui = new GUI(this, maze);
-    gui.setUpGui();
+    if(checkFileExists(filename)){
+
+      deleteFile(filename);
+    }else{
+      maze = new Maze(level);
+      gui = new GUI(this, maze);
+      gui.setUpGui();
+    }
     new Music();
     startTimer();
   }
@@ -150,13 +160,18 @@ public class Main {
 
   /**
    * Save a game to a file
+   *
+   * @param saveCurrentLevel
+   * @param chooseFile
    **/
-  public void saveFile(Boolean level){
-    if(level){
-      startGame(this.level);
-      LevelLoader.saveGameState(LevelLoader.getGameState(this));
-    }else {
-      LevelLoader.saveGameState(LevelLoader.getGameState(this));
+  public void saveFile(Boolean saveCurrentLevel, Boolean chooseFile){
+    if(saveCurrentLevel){
+      startGame(level);
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), filename);
+    }else if(!chooseFile){
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), filename);
+    }else{
+
     }
   }
 
@@ -273,6 +288,28 @@ public class Main {
    **/
   public void setTimeLeft(int time) {
     timeLeft = time;
+  }
+
+  /**
+   * Check whether a file exists
+   *
+   * @param filename
+   *
+   * @return true if the file exists, otherwise false
+   **/
+  public boolean checkFileExists(String filename){
+    File file = new File(filename);
+    return file.exists();
+  }
+
+  /**
+   * Delete File
+   *
+   * @param filename
+   **/
+  public void deleteFile(String filename){
+    File file = new File(filename);
+    file.delete();
   }
 
   /**
