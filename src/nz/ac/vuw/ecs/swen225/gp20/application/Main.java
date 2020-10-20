@@ -5,7 +5,6 @@ import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
 
-import javax.swing.text.StyledEditorKit;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,7 +29,7 @@ public class Main {
 
   // initialise the game information
   private int level = 1;
-  private int maxTime = 100;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -41,7 +40,7 @@ public class Main {
   private boolean gamePaused = false;
 
   // name of the file to save current game state and load game state from
-  private String filename = "levels/GameState.json";
+  private final String filename = "levels/GameState.json";
 
   /**
    * Create a new instance of the game application
@@ -167,9 +166,9 @@ public class Main {
   public void saveFile(Boolean saveCurrentLevel, Boolean chooseFile){
     if(saveCurrentLevel){
       startGame(level);
-      LevelLoader.saveGameState(LevelLoader.getGameState(this), filename);
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), new File(filename));
     }else if(!chooseFile){
-      LevelLoader.saveGameState(LevelLoader.getGameState(this), filename);
+      LevelLoader.saveGameState(LevelLoader.getGameState(this), new File(filename));
     }else{
 
     }
@@ -192,7 +191,7 @@ public class Main {
     }
     // create a new maze and set this in canvas and the gui
     setMaze(new Maze(level));
-    gui.updateGui();
+    gui.updateGui(false);
     startTimer();
   }
 

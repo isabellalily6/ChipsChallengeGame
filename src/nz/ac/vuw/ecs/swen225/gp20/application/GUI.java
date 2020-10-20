@@ -281,19 +281,19 @@ public class GUI extends JFrame implements KeyListener {
     else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
       sound = maze.moveChap(Direction.UP);
-      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
       sound = maze.moveChap(Direction.DOWN);
-      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
       sound = maze.moveChap(Direction.RIGHT);
-      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
       sound = maze.moveChap(Direction.LEFT);
-      RecordAndPlay.addMove(new RecordedMove(maze.getChap(), Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
+      RecordAndPlay.addMove(new RecordedMove(Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize()));
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
       //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
       // it will resume from the last unfinished level
