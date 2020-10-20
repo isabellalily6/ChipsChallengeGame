@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.render;
 
 import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import javax.swing.*;
@@ -69,11 +70,13 @@ public class Canvas extends JPanel {
                     if (maze != null && maze.getBlocks() != null && !maze.getBlocks().isEmpty()) {
                         if(maze.getBlocks().stream().anyMatch(b -> b.getLocation().equals(maze.getTiles()[finalCol][finalRow]))) {
                             components[x][y].setIcon(makeImageIcon("data/block.png"));
+                        } else if(maze.getCobras().stream().anyMatch(c -> c.getLocation().equals(maze.getTiles()[finalCol][finalRow]))) {
+                            components[x][y].setIcon(makeImageIcon(maze.getCobras().get(0).getImageURl()));
                         } else {
                             ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                             components[x][y].setIcon(icon);
                         }
-                    } else {
+                    } else if(maze != null) {
                         ImageIcon icon = makeImageIcon(maze.getTiles()[col][row].getImageURl());
                         components[x][y].setIcon(icon);
                     }
