@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.persistence;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,9 +15,11 @@ import java.util.Queue;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonNumber;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
@@ -261,12 +264,12 @@ public class LevelLoader {
 	 * Saves the game state to levels/gameState.json
 	 * @param toSave 
 	 */
-	public static void saveGameState(JsonObjectBuilder toSave) {
+	public static void saveGameState(JsonObjectBuilder toSave, File file) {
 		try {
 			StringWriter writer = new StringWriter();
 			Json.createWriter(writer).write(toSave.build());
 			
-			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("levels/gameState.json"));
+			BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 		    bufferedWriter.write(writer.toString());
 		    bufferedWriter.close();
 		} catch (IOException e) {
@@ -274,23 +277,40 @@ public class LevelLoader {
 		}
 	}
 	
+	public static void loadOldGame(Main main, File file) {
+		JsonReader reader;
+		try {
+			reader = Json.createReader(new FileReader(file));
+			JsonObject gameObject = reader.readObject();
+			
+			Maze maze = loadGameState(gameObject);
+			
+			main.setMaze(maze);
+			main.setTimeLeft(gameObject.getJsonNumber("timeLeft").intValue());
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static Maze loadGameState(JsonObject gameStateJson) {
-        var rows = gameStateJson.getJsonNumber("rows").intValue();
-        var cols = gameStateJson.getJsonNumber("cols").intValue();
+        int rows = gameStateJson.getJsonNumber("rows").intValue();
+        int cols = gameStateJson.getJsonNumber("cols").intValue();
         Tile[][] tiles = new Tile[cols][rows];
  
-        for (var tileValue : gameStateJson.getJsonArray("map")) {
-            var tileJsonObj = tileValue.asJsonObject();
+        for (JsonValue tileValue : gameStateJson.getJsonArray("map")) {
+            JsonObject tileJsonObj = tileValue.asJsonObject();
             int col = tileJsonObj.asJsonObject().getInt("col");
             int row = tileJsonObj.asJsonObject().getInt("row");
  
             tiles[col][row] = makeTileFromName(tileJsonObj.asJsonObject(), col, row);
         }
  
-        var maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
-        var chapCol = gameStateJson.getJsonNumber("chapCol");
-        var chapRow = gameStateJson.getJsonNumber("chapRow");
+        Maze maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
+        JsonNumber chapCol = gameStateJson.getJsonNumber("chapCol");
+        JsonNumber chapRow = gameStateJson.getJsonNumber("chapRow");
         maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
+        
         return maze;
     }
 	
