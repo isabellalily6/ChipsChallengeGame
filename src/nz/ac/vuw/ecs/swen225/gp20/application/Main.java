@@ -1,10 +1,12 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
 
+import javax.json.Json;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,17 +49,17 @@ public class Main {
    **/
   public Main() {
     // create the maze and the gui for the game
-    gui = new GUI(this, new Maze(1));
-    if(checkFileExists(file)){
-      loadFile();
-      deleteFile(file);
+    if(file.exists()){
+      loadFile(true);
+      file.delete();
     }else{
       maze = new Maze(level);
     }
     gui = new GUI(this, maze);
     gui.setUpGui();
     new Music();
-    startTimer();
+    startTimer(maxTime !=timeLeft);
+    gui.updateGui(false);
   }
 
   /**
@@ -74,16 +76,18 @@ public class Main {
 
   }
 
-  public void startTimer() {
+  public void startTimer(Boolean loadedGame) {
     startTimer(1000);
+    if(!loadedGame){
+      // set the start time of the timer
+      timeLeft = maxTime;
+    }
   }
 
   /**
    * Start a timer to do the timer task every second
    **/
   public void startTimer(int period) {
-    // set the start time of the timer
-    timeLeft = maxTime;
     // create the time and the timer task
     timer = new Timer();
     createTimerTask();
@@ -154,8 +158,15 @@ public class Main {
   /**
    * Load a file for the game
    **/
-  public void loadFile(){
-    LevelLoader.loadOldGame(this, file);
+  public void loadFile(Boolean defaultFile){
+    if(defaultFile) {
+      LevelLoader.loadOldGame(this, file);
+    } else{
+      File chosenFile = FileChooser.getJsonFileToLoad(gui, "/levels");
+      if(chosenFile!=null) {
+        LevelLoader.loadOldGame(this, chosenFile);
+      }
+    }
   }
 
   /**
@@ -171,7 +182,9 @@ public class Main {
     }else if(!chooseFile){
       LevelLoader.saveGameState(LevelLoader.getGameState(this), file);
     }else{
-
+      var gameJson = Json.createArrayBuilder();
+      gameJson.add(LevelLoader.getGameState(this).build());
+      FileChooser.saveToFile(gui, gameJson.build(), "/levels");
     }
   }
 
@@ -193,7 +206,7 @@ public class Main {
     // create a new maze and set this in canvas and the gui
     setMaze(new Maze(level));
     gui.updateGui(false);
-    startTimer();
+    startTimer(false);
   }
 
   /**
@@ -300,26 +313,6 @@ public class Main {
    **/
   public void setTimeLeft(int time) {
     timeLeft = time;
-  }
-
-  /**
-   * Check whether a file exists
-   *
-   * @param file
-   *
-   * @return true if the file exists, otherwise false
-   **/
-  public boolean checkFileExists(File file){
-    return file.exists();
-  }
-
-  /**
-   * Delete File
-   *
-   * @param file
-   **/
-  public void deleteFile(File file){
-    file.delete();
   }
 
   /**
