@@ -14,9 +14,11 @@ import java.util.Queue;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
+import javax.json.JsonNumber;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
@@ -144,7 +146,7 @@ public class LevelLoader {
 					JsonArray jsonMoves = jsonTileObj.getJsonArray("moves");
 					
 					for(int j = 0; j < jsonMoves.size(); j++) {
-						JsonObject directionObj = jsonTiles.get(j);
+						JsonObject directionObj = (JsonObject) jsonMoves.get(j);
 						String direction = directionObj.getString("direction");
 						
 						if(direction.contentEquals("Up")) {
@@ -275,21 +277,21 @@ public class LevelLoader {
 	}
 	
 	public static Maze loadGameState(JsonObject gameStateJson) {
-        var rows = gameStateJson.getJsonNumber("rows").intValue();
-        var cols = gameStateJson.getJsonNumber("cols").intValue();
+        int rows = gameStateJson.getJsonNumber("rows").intValue();
+        int cols = gameStateJson.getJsonNumber("cols").intValue();
         Tile[][] tiles = new Tile[cols][rows];
  
-        for (var tileValue : gameStateJson.getJsonArray("map")) {
-            var tileJsonObj = tileValue.asJsonObject();
+        for (JsonValue tileValue : gameStateJson.getJsonArray("map")) {
+            JsonObject tileJsonObj = tileValue.asJsonObject();
             int col = tileJsonObj.asJsonObject().getInt("col");
             int row = tileJsonObj.asJsonObject().getInt("row");
  
             tiles[col][row] = makeTileFromName(tileJsonObj.asJsonObject(), col, row);
         }
  
-        var maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
-        var chapCol = gameStateJson.getJsonNumber("chapCol");
-        var chapRow = gameStateJson.getJsonNumber("chapRow");
+        Maze maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
+        JsonNumber chapCol = gameStateJson.getJsonNumber("chapCol");
+        JsonNumber chapRow = gameStateJson.getJsonNumber("chapRow");
         maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
         return maze;
     }
