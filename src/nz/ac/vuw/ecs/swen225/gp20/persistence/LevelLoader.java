@@ -223,13 +223,13 @@ public class LevelLoader {
 				
 				gameState += "\"moves\": [";
 				JsonArrayBuilder cobraDirectionBuilder = Json.createArrayBuilder();
-				for(Direction d : c.getMoves()) {
+				for(Direction d : c.getListOfMoves()) {
 					JsonObjectBuilder directionObjectBuilder = Json.createObjectBuilder();
 					gameState += "{\"direction\": \"" + d.getName() + "\"},";
 					directionObjectBuilder.add("direction", d.getName());
 					cobraDirectionBuilder.add(directionObjectBuilder);
 				}
-				if(!c.getMoves().isEmpty()) {
+				if(!c.getListOfMoves().isEmpty()) {
 					gameState = gameState.substring(0, gameState.length() - 1);
 				}
 				gameState += "]},";
