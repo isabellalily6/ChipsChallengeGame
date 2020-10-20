@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
 
 /**
  * A internal class which can represent a move, simply maps an Actor to a Direction
@@ -9,20 +8,17 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Actor;
  * @author callum mckay
  */
 public class RecordedMove implements Comparable<RecordedMove> {
-    private final Actor actor;
     private final Direction direction;
     private final int timeLeft;
     private final int moveIndex;
 
     /**
-     * @param actor     actor who this move has been done by
      * @param direction direction of said move
      * @param timeLeft  time left as this move was made
      * @param moveIndex index this move was made on
      * @author callum mckay
      */
-    public RecordedMove(Actor actor, Direction direction, int timeLeft, int moveIndex) {
-        this.actor = actor;
+    public RecordedMove(Direction direction, int timeLeft, int moveIndex) {
         this.direction = direction;
         this.timeLeft = timeLeft;
         this.moveIndex = moveIndex;
@@ -35,7 +31,7 @@ public class RecordedMove implements Comparable<RecordedMove> {
      */
     public RecordedMove getInverse() {
         var newDir = getOppositeDirection(direction);
-        return new RecordedMove(actor, newDir, timeLeft, moveIndex);
+        return new RecordedMove(newDir, timeLeft, moveIndex);
     }
 
     private Direction getOppositeDirection(Direction direction) {
@@ -56,19 +52,10 @@ public class RecordedMove implements Comparable<RecordedMove> {
     @Override
     public String toString() {
         return "RecordedMove{" +
-                "actor=" + actor.getName() +
-                ", direction=" + direction +
+                "direction=" + direction +
                 ", timeLeft=" + timeLeft +
                 ", moveIndex=" + moveIndex +
                 '}';
-    }
-
-    /**
-     * @return the actor of this recorded move
-     * @author callum mckay
-     */
-    public Actor getActor() {
-        return actor;
     }
 
     /**
@@ -103,8 +90,7 @@ public class RecordedMove implements Comparable<RecordedMove> {
     public boolean equals(Object obj) {
         if (obj instanceof RecordedMove) {
             var move = (RecordedMove) obj;
-            return this.actor.equals(move.actor) &&
-                    this.direction.equals(move.direction) &&
+            return this.direction.equals(move.direction) &&
                     this.moveIndex == move.moveIndex &&
                     this.timeLeft == move.timeLeft;
         }

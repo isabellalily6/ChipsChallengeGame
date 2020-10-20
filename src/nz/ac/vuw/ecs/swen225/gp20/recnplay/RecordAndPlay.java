@@ -3,8 +3,6 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Player;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
@@ -124,17 +122,12 @@ public class RecordAndPlay {
             var jsonArr = parser.readArray();
 
             var gameStateJson = jsonArr.getJsonObject(0);
-            var maze = LevelLoader.loadGameState(gameStateJson);
 
-            m.setMaze(maze);
-            m.getGui().setMaze(maze);
-            m.getGui().getCanvas().setMaze(maze);
-            m.getGui().getCanvas().refreshComponents();
-            m.getGui().getCanvas().repaint();
+            m.setMaze(LevelLoader.loadGameState(gameStateJson));
+            m.getGui().updateGui(false);
 
             var movesFromJson = jsonArr.getJsonObject(1);
-            var cobra = maze.getCobras() != null && maze.getCobras().size() > 0 ? maze.getCobras().get(0) : null;
-            var moves = loadMoves(movesFromJson, maze.getChap(), cobra);
+            var moves = loadMoves(movesFromJson);
             loadedMoves.clear();
             loadedMoves.addAll(moves);
             loadedMoves.sort(RecordedMove::compareTo);
@@ -143,7 +136,6 @@ public class RecordAndPlay {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
@@ -274,24 +266,27 @@ public class RecordAndPlay {
         }
     }
 
-    private static List<RecordedMove> loadMoves(JsonObject movesJson, Player p, Cobra c) {
+    /**
+     * @param mode  sets the replay mode
+     * @param speed speed to play recording at
+     */
+    public static void setRecordingMode(ReplayModes mode, int speed) {
+        replayMode = mode;
+        replaySpeed = speed;
+    }
+
+    private static List<RecordedMove> loadMoves(JsonObject movesJson) {
         var toReturn = new ArrayList<RecordedMove>();
 
         for (var move : movesJson.getJsonArray("moves")) {
             var loadedMove = move.asJsonObject();
 
-            var actorName = loadedMove.getString("actor");
             var dir = Direction.valueOf(loadedMove.getString("dir"));
             var timeLeft = loadedMove.getInt("timeLeft");
 
             RecordedMove recordedMove;
-            if (actorName.equals("player")) {
-                var moveIndex = loadedMove.getInt("moveIndex");
-                recordedMove = new RecordedMove(p, dir, timeLeft, Math.max(moveIndex, 0));
-            } else {
-                var moveIndex = loadedMove.getInt("moveIndex");
-                recordedMove = new RecordedMove(c, dir, timeLeft, Math.max(moveIndex, 0));
-            }
+            var moveIndex = loadedMove.getInt("moveIndex");
+            recordedMove = new RecordedMove(dir, timeLeft, Math.max(moveIndex, 0));
 
             toReturn.add(recordedMove);
         }
@@ -309,7 +304,6 @@ public class RecordAndPlay {
         for (var move : recordedMoves) {
             var obj = Json.createObjectBuilder()
                     .add("timeLeft", move.getTimeLeft())
-                    .add("actor", move.getActor().getName())
                     .add("dir", move.getDirection().toString())
                     .add("moveIndex", move.getMoveIndex());
             movesArray.add(obj);
@@ -325,14 +319,5 @@ public class RecordAndPlay {
         recordedMoves.clear();
         gameState = null;
         isRecording = false;
-    }
-
-    /**
-     * @param mode  sets the replay mode
-     * @param speed speed to play recording at
-     */
-    public static void setRecordingMode(ReplayModes mode, int speed) {
-        replayMode = mode;
-        replaySpeed = speed;
     }
 }

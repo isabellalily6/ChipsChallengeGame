@@ -5,7 +5,6 @@ import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
 
-import javax.swing.text.StyledEditorKit;
 import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,7 +29,7 @@ public class Main {
 
   // initialise the game information
   private int level = 1;
-  private int maxTime = 100;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
