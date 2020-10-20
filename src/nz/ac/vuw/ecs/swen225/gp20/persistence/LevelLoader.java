@@ -22,6 +22,7 @@ import javax.json.JsonReader;
 import javax.json.JsonValue;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
+import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
 import nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Free;
@@ -36,7 +37,6 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Wall;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Block;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Cobra;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Direction;
 
 public class LevelLoader {
 	
