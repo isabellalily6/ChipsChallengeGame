@@ -155,7 +155,7 @@ public class LevelLoader {
 	}
 	
 	/**
-	 * Gets the current game state as a JsonObectBuilder
+	 * Gets the current game state as a JsonObjectBuilder
 	 * @param game
 	 * @return JsonObjectBuilder
 	 */
@@ -283,7 +283,7 @@ public class LevelLoader {
 	}
 	
 	/**
-	 * Saves the game state to levels/gameState.json
+	 * Saves the game state to file
 	 * @param toSave 
 	 */
 	public static void saveGameState(JsonObjectBuilder toSave, File file) {
@@ -316,6 +316,8 @@ public class LevelLoader {
 	}
 	
 	public static Maze loadGameState(JsonObject gameStateJson) {
+        Maze maze;
+        
         int rows = gameStateJson.getJsonNumber("rows").intValue();
         int cols = gameStateJson.getJsonNumber("cols").intValue();
         Tile[][] tiles = new Tile[cols][rows];
@@ -327,8 +329,37 @@ public class LevelLoader {
  
             tiles[col][row] = makeTileFromName(tileJsonObj.asJsonObject(), col, row);
         }
- 
-        Maze maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
+        
+        List<Block> blocks = new ArrayList<Block>();
+        for(JsonValue bValue : gameStateJson.getJsonArray("blocks")) {
+        	JsonObject blockObject = bValue.asJsonObject();
+        	int col = blockObject.getInt("blockCol");
+        	int row = blockObject.getInt("blockRow");
+        	blocks.add(new Block(col, row));
+        }
+        
+        List<Cobra> cobras = new ArrayList<Cobra>();
+        for(JsonValue cValue : gameStateJson.getJsonArray("blocks")) {
+        	JsonObject cobraObject = cValue.asJsonObject();
+        	
+        	int col = cobraObject.getInt("cobraCol");
+        	int row = cobraObject.getInt("cobraRow");
+        	
+        	Queue<Direction> moves = new LinkedList<Direction>();
+        	for(JsonValue mValue : cobraObject.getJsonArray("moves")) {
+        		JsonObject moveObject = mValue.asJsonObject();
+        		String direction = moveObject.getString("direction");
+        		moves.add(Direction.valueOf(direction));
+        	}
+        	
+        	cobras.add(new Cobra(tiles[col][row], moves));
+        }
+        
+        if(gameStateJson.getJsonNumber("level").intValue() == 1) {
+        	maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue());
+        } else {
+        	maze = new Maze(tiles, gameStateJson.getJsonNumber("treasuresLeft").intValue(), blocks, cobras);
+        }
         JsonNumber chapCol = gameStateJson.getJsonNumber("chapCol");
         JsonNumber chapRow = gameStateJson.getJsonNumber("chapRow");
         maze.getChap().getLocation().onExit();
@@ -338,6 +369,7 @@ public class LevelLoader {
         	String color = cValue.asJsonObject().getString("color");
         	maze.getChap().addToBackPack(Key.Colour.valueOf(color));
         }
+        
         
         return maze;
     }
