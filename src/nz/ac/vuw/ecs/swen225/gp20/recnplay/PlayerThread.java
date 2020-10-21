@@ -76,11 +76,6 @@ class PlayerThread extends Thread {
         }
     }
 
-    private void updateTime(int time) {
-        main.setTimeLeft(time);
-        main.getGui().setTimer(time);
-    }
-
     /**
      * @return the main class associated with this thread
      */
@@ -88,6 +83,9 @@ class PlayerThread extends Thread {
         return main;
     }
 
+    /**
+     *
+     */
     @Override
     public void run() {
         if (main == null) return;
@@ -248,6 +246,11 @@ class PlayerThread extends Thread {
             timeLeft.set(100);
             levelChange = false;
         }
+    }
+
+    private void updateTime(int time) {
+        main.setTimeLeft(time);
+        main.getGui().setTimer(time);
     }
 
     private void playMove(RecordedMove move) {
