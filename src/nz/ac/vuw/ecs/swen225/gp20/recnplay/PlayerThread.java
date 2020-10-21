@@ -5,7 +5,6 @@ import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -14,11 +13,8 @@ import java.util.stream.Collectors;
 class PlayerThread extends Thread {
     private final Main main;
     private final Lock lock = new ReentrantLock();
-    private final AtomicBoolean recordingPaused = new AtomicBoolean(false);
     private List<RecordedMove> movesToPlay = new ArrayList<>();
-    private final AtomicInteger timeAtPause = new AtomicInteger(100);
     private final AtomicInteger moveIndex = new AtomicInteger(0);
-    private final AtomicInteger moveIndexAtPause = new AtomicInteger(0);
     private final AtomicInteger prevMoveIndex = new AtomicInteger(0);
     private final AtomicInteger timeLeft = new AtomicInteger(100);
     private final AtomicInteger lastMoveTime = new AtomicInteger(100);
@@ -47,50 +43,6 @@ class PlayerThread extends Thread {
      */
     public boolean isRealThread() {
         return main != null;
-    }
-
-    /**
-     * @return See if a recording is paused
-     */
-    public boolean isRecordingPaused() {
-        return recordingPaused.get();
-    }
-
-    /**
-     * * Pause the playing recording
-     */
-    public void pauseRecording() {
-        if (main == null) return;
-        if (replayMode != ReplayModes.AUTO_PLAY) return;
-
-        try {
-            lock.lock();
-            if (!recordingPaused.getAndSet(true)) {
-                main.pauseGame(false);
-                updatePausedRecording();
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    /**
-     * Resume the playing recording
-     */
-    public void resumeRecording() {
-        if (main == null) return;
-        if (replayMode != ReplayModes.AUTO_PLAY) return;
-        if (recordingPaused.getAndSet(false)) {
-            try {
-                lock.lock();
-                moveIndex.set(moveIndexAtPause.get());
-                updateTime(timeAtPause.get());
-                timeLeft.set(timeAtPause.get());
-                System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
-            } finally {
-                lock.unlock();
-            }
-        }
     }
 
     /**
@@ -149,7 +101,6 @@ class PlayerThread extends Thread {
         //we want to keep track of where we are, for allowing the user to step through the moves
         moveIndex.set(0);
         RecordAndPlay.playingRecording.set(true);
-        recordingPaused.set(false);
         main.getTimer().cancel();
         main.getTimer().purge();
         var isLevelOne = movesToPlay.stream().filter(m -> m.getLevel() == 1).findFirst();
@@ -171,10 +122,6 @@ class PlayerThread extends Thread {
                     break;
                 }
 
-                if (recordingPaused.get()) {
-                    continue;
-                }
-
                 int finalTimeLeft = timeLeft.get();
                 var movesWithCorrectMoveIndices = new ArrayList<>(movesToPlay).stream()
                         .filter(move -> move.getMoveIndex() > prevMoveIndex.get()).collect(Collectors.toList());
@@ -187,14 +134,8 @@ class PlayerThread extends Thread {
                         .collect(Collectors.toList());
 
                 for (var move : copiedList) {
-                    if (recordingPaused.get()) {
-                        break;
-                    }
                     if (lock.tryLock()) {
                         try {
-                            if (recordingPaused.get()) {
-                                break;
-                            }
                             System.out.println("Processing: " + move.toString());
 
                             playMove(move);
@@ -208,11 +149,6 @@ class PlayerThread extends Thread {
                             lastMoveTime.set(move.getTimeLeft());
                         } finally {
                             lock.unlock();
-                        }
-                        if (recordingPaused.get()) {
-                            System.out.println("Updating pausing var for move: " + move.toString());
-                            updatePausedRecording();
-                            break;
                         }
 
                         try {
@@ -263,10 +199,8 @@ class PlayerThread extends Thread {
                     }
                 }
 
-                if (!recordingPaused.get()) {
-                    timeLeft.decrementAndGet();
-                    updateTime(timeLeft.get());
-                }
+                timeLeft.decrementAndGet();
+                updateTime(timeLeft.get());
             }
         } else if (replayMode == ReplayModes.STEP_BY_STEP) {
             prevMoveIndex.set(-1);
@@ -333,12 +267,5 @@ class PlayerThread extends Thread {
         }
         //Thread safe repainting
         main.getGui().updateGui(true);
-    }
-
-    private void updatePausedRecording() {
-        timeAtPause.set(lastMoveTime.get());
-        moveIndexAtPause.set(moveIndex.get());
-        System.out.println("Pausing at move: " + moveIndexAtPause + " at time: " + timeAtPause);
-        System.out.println("Last move completed: " + prevMoveIndex);
     }
 }
