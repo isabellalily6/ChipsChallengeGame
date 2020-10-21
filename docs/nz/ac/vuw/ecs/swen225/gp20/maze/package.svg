@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+     contentScriptType="application/ecmascript" contentStyleType="text/css" height="1054px" preserveAspectRatio="none"
+     style="width:1624px;height:1054px;" version="1.1" viewBox="0 0 1624 1054" width="1624px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f1be4t23ohz5fo" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
+                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g><!--MD5=[832757d115beb7bc045eef4d6b42e302]
+cluster nz.ac.vuw.ecs.swen225.gp20.maze-->
+        <polygon fill="#FFFFFF" filter="url(#f1be4t23ohz5fo)"
+                 points="89.52,6,378.52,6,385.52,28.2969,1602.52,28.2969,1602.52,1026,89.52,1026,89.52,6"
+                 style="stroke: #000000; stroke-width: 1.5;"/>
+        <line style="stroke: #000000; stroke-width: 1.5;" x1="89.52" x2="385.52" y1="28.2969" y2="28.2969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
+              textLength="283" x="93.52" y="20.9951">nz.ac.vuw.ecs.swen225.gp20.maze
+        </text><!--MD5=[50dd2a0a7e341e12af3ebb5a9554cce9]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Player-->
+        <a href="Player.html" target="_top" title="Player.html" xlink:actuate="onRequest" xlink:href="Player.html"
+           xlink:show="new" xlink:title="Player.html" xlink:type="simple">
+            <rect codeLine="3" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="112.0234"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Player" style="stroke: #A80036; stroke-width: 1.5;" width="226"
+                  x="352.52" y="268"/>
+            <ellipse cx="442.27" cy="284" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M445.2388,289.6406 Q444.6606,289.9375 444.02,290.0781 Q443.3794,290.2344 442.6763,290.2344 Q440.1763,290.2344 438.8481,288.5938 Q437.5356,286.9375 437.5356,283.8125 Q437.5356,280.6875 438.8481,279.0313 Q440.1763,277.375 442.6763,277.375 Q443.3794,277.375 444.02,277.5313 Q444.6763,277.6875 445.2388,277.9844 L445.2388,280.7031 Q444.6138,280.125 444.02,279.8594 Q443.4263,279.5781 442.8013,279.5781 Q441.4575,279.5781 440.77,280.6563 Q440.0825,281.7188 440.0825,283.8125 Q440.0825,285.9063 440.77,286.9844 Q441.4575,288.0469 442.8013,288.0469 Q443.4263,288.0469 444.02,287.7813 Q444.6138,287.5 445.2388,286.9219 L445.2388,289.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38"
+                  x="462.77" y="288.1543">Player
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="353.52" x2="577.52" y1="300" y2="300"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="353.52" x2="577.52" y1="308" y2="308"/>
+            <ellipse cx="363.52" cy="319" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63"
+                  x="372.52" y="322.2104">Player(Tile)
+            </text>
+            <ellipse cx="363.52" cy="331.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="155" x="372.52" y="335.0151">incrementTreasures(): void
+            </text>
+            <ellipse cx="363.52" cy="344.6094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="159" x="372.52" y="347.8198">getTreasuresCollected(): int
+            </text>
+            <ellipse cx="363.52" cy="357.4141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="164" x="372.52" y="360.6245">addToBackPack(Colour): void
+            </text>
+            <ellipse cx="363.52" cy="370.2188" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="200" x="372.52" y="373.4292">backpackContains(Colour): boolean
+            </text>
+        </a><!--MD5=[9f99bbfac2b4e17e05d3acadb753a5ed]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Exit-->
+        <a href="Exit.html" target="_top" title="Exit.html" xlink:actuate="onRequest" xlink:href="Exit.html"
+           xlink:show="new" xlink:title="Exit.html" xlink:type="simple">
+            <rect codeLine="11" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Exit" style="stroke: #A80036; stroke-width: 1.5;" width="90"
+                  x="1087.52" y="760.5"/>
+            <ellipse cx="1118.72" cy="776.5" fill="#ADD1B2" rx="11" ry="11"
+                     style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M1121.6888,782.1406 Q1121.1106,782.4375 1120.47,782.5781 Q1119.8294,782.7344 1119.1263,782.7344 Q1116.6263,782.7344 1115.2981,781.0938 Q1113.9856,779.4375 1113.9856,776.3125 Q1113.9856,773.1875 1115.2981,771.5313 Q1116.6263,769.875 1119.1263,769.875 Q1119.8294,769.875 1120.47,770.0313 Q1121.1263,770.1875 1121.6888,770.4844 L1121.6888,773.2031 Q1121.0638,772.625 1120.47,772.3594 Q1119.8763,772.0781 1119.2513,772.0781 Q1117.9075,772.0781 1117.22,773.1563 Q1116.5325,774.2188 1116.5325,776.3125 Q1116.5325,778.4063 1117.22,779.4844 Q1117.9075,780.5469 1119.2513,780.5469 Q1119.8763,780.5469 1120.47,780.2813 Q1121.0638,780 1121.6888,779.4219 L1121.6888,782.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="22"
+                  x="1136.32" y="780.6543">Exit
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1088.52" x2="1176.52" y1="792.5" y2="792.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1088.52" x2="1176.52" y1="800.5" y2="800.5"/>
+            <ellipse cx="1098.52" cy="811.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="64"
+                  x="1107.52" y="814.7104">Exit(int, int)
+            </text>
+        </a><!--MD5=[5be3bcbc4bdfe863e1cae2799ec0a5bc]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Wall-->
+        <a href="Wall.html" target="_top" title="Wall.html" xlink:actuate="onRequest" xlink:href="Wall.html"
+           xlink:show="new" xlink:title="Wall.html" xlink:type="simple">
+            <rect codeLine="15" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Wall" style="stroke: #A80036; stroke-width: 1.5;" width="92"
+                  x="1212.52" y="760.5"/>
+            <ellipse cx="1243.27" cy="776.5" fill="#ADD1B2" rx="11" ry="11"
+                     style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M1246.2388,782.1406 Q1245.6606,782.4375 1245.02,782.5781 Q1244.3794,782.7344 1243.6763,782.7344 Q1241.1763,782.7344 1239.8481,781.0938 Q1238.5356,779.4375 1238.5356,776.3125 Q1238.5356,773.1875 1239.8481,771.5313 Q1241.1763,769.875 1243.6763,769.875 Q1244.3794,769.875 1245.02,770.0313 Q1245.6763,770.1875 1246.2388,770.4844 L1246.2388,773.2031 Q1245.6138,772.625 1245.02,772.3594 Q1244.4263,772.0781 1243.8013,772.0781 Q1242.4575,772.0781 1241.77,773.1563 Q1241.0825,774.2188 1241.0825,776.3125 Q1241.0825,778.4063 1241.77,779.4844 Q1242.4575,780.5469 1243.8013,780.5469 Q1244.4263,780.5469 1245.02,780.2813 Q1245.6138,780 1246.2388,779.4219 L1246.2388,782.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="25"
+                  x="1260.77" y="780.6543">Wall
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1213.52" x2="1303.52" y1="792.5" y2="792.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1213.52" x2="1303.52" y1="800.5" y2="800.5"/>
+            <ellipse cx="1223.52" cy="811.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66"
+                  x="1232.52" y="814.7104">Wall(int, int)
+            </text>
+        </a><!--MD5=[19562d724fdf8d0f6405f80d81fba2d2]
+class nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock-->
+        <a href="ExitLock.html" target="_top" title="ExitLock.html" xlink:actuate="onRequest" xlink:href="ExitLock.html"
+           xlink:show="new" xlink:title="ExitLock.html" xlink:type="simple">
+            <rect codeLine="19" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock" style="stroke: #A80036; stroke-width: 1.5;" width="115"
+                  x="1340.02" y="760.5"/>
+            <ellipse cx="1369.87" cy="776.5" fill="#ADD1B2" rx="11" ry="11"
+                     style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M1372.8388,782.1406 Q1372.2606,782.4375 1371.62,782.5781 Q1370.9794,782.7344 1370.2763,782.7344 Q1367.7763,782.7344 1366.4481,781.0938 Q1365.1356,779.4375 1365.1356,776.3125 Q1365.1356,773.1875 1366.4481,771.5313 Q1367.7763,769.875 1370.2763,769.875 Q1370.9794,769.875 1371.62,770.0313 Q1372.2763,770.1875 1372.8388,770.4844 L1372.8388,773.2031 Q1372.2138,772.625 1371.62,772.3594 Q1371.0263,772.0781 1370.4013,772.0781 Q1369.0575,772.0781 1368.37,773.1563 Q1367.6825,774.2188 1367.6825,776.3125 Q1367.6825,778.4063 1368.37,779.4844 Q1369.0575,780.5469 1370.4013,780.5469 Q1371.0263,780.5469 1371.62,780.2813 Q1372.2138,780 1372.8388,779.4219 L1372.8388,782.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="50"
+                  x="1387.17" y="780.6543">ExitLock
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1341.02" x2="1454.02" y1="792.5" y2="792.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1341.02" x2="1454.02" y1="800.5" y2="800.5"/>
+            <ellipse cx="1351.02" cy="811.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89"
+                  x="1360.02" y="814.7104">ExitLock(int, int)
+            </text>
+        </a><!--MD5=[52f0a52808e0233a7588b041290cc25d]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Lava-->
+        <a href="Lava.html" target="_top" title="Lava.html" xlink:actuate="onRequest" xlink:href="Lava.html"
+           xlink:show="new" xlink:title="Lava.html" xlink:type="simple">
+            <rect codeLine="23" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Lava" style="stroke: #A80036; stroke-width: 1.5;" width="96"
+                  x="1490.52" y="760.5"/>
+            <ellipse cx="1521.72" cy="776.5" fill="#ADD1B2" rx="11" ry="11"
+                     style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M1524.6888,782.1406 Q1524.1106,782.4375 1523.47,782.5781 Q1522.8294,782.7344 1522.1263,782.7344 Q1519.6263,782.7344 1518.2981,781.0938 Q1516.9856,779.4375 1516.9856,776.3125 Q1516.9856,773.1875 1518.2981,771.5313 Q1519.6263,769.875 1522.1263,769.875 Q1522.8294,769.875 1523.47,770.0313 Q1524.1263,770.1875 1524.6888,770.4844 L1524.6888,773.2031 Q1524.0638,772.625 1523.47,772.3594 Q1522.8763,772.0781 1522.2513,772.0781 Q1520.9075,772.0781 1520.22,773.1563 Q1519.5325,774.2188 1519.5325,776.3125 Q1519.5325,778.4063 1520.22,779.4844 Q1520.9075,780.5469 1522.2513,780.5469 Q1522.8763,780.5469 1523.47,780.2813 Q1524.0638,780 1524.6888,779.4219 L1524.6888,782.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28"
+                  x="1539.32" y="780.6543">Lava
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1491.52" x2="1585.52" y1="792.5" y2="792.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1491.52" x2="1585.52" y1="800.5" y2="800.5"/>
+            <ellipse cx="1501.52" cy="811.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70"
+                  x="1510.52" y="814.7104">Lava(int, int)
+            </text>
+        </a><!--MD5=[ebdaee7fa58e62f08d6c7bba919cec24]
+class nz.ac.vuw.ecs.swen225.gp20.maze.InfoField-->
+        <a href="InfoField.html" target="_top" title="InfoField.html" xlink:actuate="onRequest"
+           xlink:href="InfoField.html" xlink:show="new" xlink:title="InfoField.html" xlink:type="simple">
+            <rect codeLine="27" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="86.4141"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.InfoField" style="stroke: #A80036; stroke-width: 1.5;" width="184"
+                  x="142.52" y="748"/>
+            <ellipse cx="204.27" cy="764" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M207.2387,769.6406 Q206.6606,769.9375 206.02,770.0781 Q205.3794,770.2344 204.6762,770.2344 Q202.1762,770.2344 200.8481,768.5938 Q199.5356,766.9375 199.5356,763.8125 Q199.5356,760.6875 200.8481,759.0313 Q202.1762,757.375 204.6762,757.375 Q205.3794,757.375 206.02,757.5313 Q206.6762,757.6875 207.2387,757.9844 L207.2387,760.7031 Q206.6137,760.125 206.02,759.8594 Q205.4262,759.5781 204.8012,759.5781 Q203.4575,759.5781 202.77,760.6563 Q202.0825,761.7188 202.0825,763.8125 Q202.0825,765.9063 202.77,766.9844 Q203.4575,768.0469 204.8012,768.0469 Q205.4262,768.0469 206.02,767.7813 Q206.6137,767.5 207.2387,766.9219 L207.2387,769.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="52"
+                  x="224.77" y="768.1543">InfoField
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="143.52" x2="325.52" y1="780" y2="780"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="143.52" x2="325.52" y1="788" y2="788"/>
+            <ellipse cx="153.52" cy="799" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="133" x="162.52" y="802.2104">InfoField(int, int, String)
+            </text>
+            <ellipse cx="153.52" cy="811.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89"
+                  x="162.52" y="815.0151">getInfo(): String
+            </text>
+            <ellipse cx="153.52" cy="824.6094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="158" x="162.52" y="827.8198">getJson(): JsonObjectBuilder
+            </text>
+        </a><!--MD5=[54fde58f7326cc2c612cca37468e25d5]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Block-->
+        <a href="Block.html" target="_top" title="Block.html" xlink:actuate="onRequest" xlink:href="Block.html"
+           xlink:show="new" xlink:title="Block.html" xlink:type="simple">
+            <rect codeLine="33" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="99.2188"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Block" style="stroke: #A80036; stroke-width: 1.5;" width="150"
+                  x="836.52" y="274.5"/>
+            <ellipse cx="890.77" cy="290.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M893.7388,296.1406 Q893.1606,296.4375 892.52,296.5781 Q891.8794,296.7344 891.1763,296.7344 Q888.6763,296.7344 887.3481,295.0938 Q886.0356,293.4375 886.0356,290.3125 Q886.0356,287.1875 887.3481,285.5313 Q888.6763,283.875 891.1763,283.875 Q891.8794,283.875 892.52,284.0313 Q893.1763,284.1875 893.7388,284.4844 L893.7388,287.2031 Q893.1138,286.625 892.52,286.3594 Q891.9263,286.0781 891.3013,286.0781 Q889.9575,286.0781 889.27,287.1563 Q888.5825,288.2188 888.5825,290.3125 Q888.5825,292.4063 889.27,293.4844 Q889.9575,294.5469 891.3013,294.5469 Q891.9263,294.5469 892.52,294.2813 Q893.1138,294 893.7388,293.4219 L893.7388,296.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="33"
+                  x="911.27" y="294.6543">Block
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="837.52" x2="985.52" y1="306.5" y2="306.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="837.52" x2="985.52" y1="314.5" y2="314.5"/>
+            <ellipse cx="847.52" cy="325.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74"
+                  x="856.52" y="328.7104">Block(int, int)
+            </text>
+            <ellipse cx="847.52" cy="338.3047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66"
+                  x="856.52" y="341.5151">getCol(): int
+            </text>
+            <ellipse cx="847.52" cy="351.1094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71"
+                  x="856.52" y="354.3198">getRow(): int
+            </text>
+            <ellipse cx="847.52" cy="363.9141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="124" x="856.52" y="367.1245">getImageURL(): String
+            </text>
+        </a><!--MD5=[35253307ccbb806488115b08bb7fb43e]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Tiles-->
+        <a href="Tiles.html" target="_top" title="Tiles.html" xlink:actuate="onRequest" xlink:href="Tiles.html"
+           xlink:show="new" xlink:title="Tiles.html" xlink:type="simple">
+            <rect codeLine="40" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Tiles" style="stroke: #A80036; stroke-width: 1.5;" width="89"
+                  x="712.02" y="293.5"/>
+            <ellipse cx="740.07" cy="309.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M743.0387,315.1406 Q742.4606,315.4375 741.82,315.5781 Q741.1794,315.7344 740.4762,315.7344 Q737.9762,315.7344 736.6481,314.0938 Q735.3356,312.4375 735.3356,309.3125 Q735.3356,306.1875 736.6481,304.5313 Q737.9762,302.875 740.4762,302.875 Q741.1794,302.875 741.82,303.0313 Q742.4762,303.1875 743.0387,303.4844 L743.0387,306.2031 Q742.4137,305.625 741.82,305.3594 Q741.2262,305.0781 740.6012,305.0781 Q739.2575,305.0781 738.57,306.1563 Q737.8825,307.2188 737.8825,309.3125 Q737.8825,311.4063 738.57,312.4844 Q739.2575,313.5469 740.6012,313.5469 Q741.2262,313.5469 741.82,313.2813 Q742.4137,313 743.0387,312.4219 L743.0387,315.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28"
+                  x="756.97" y="313.6543">Tiles
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="713.02" x2="800.02" y1="325.5" y2="325.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="713.02" x2="800.02" y1="333.5" y2="333.5"/>
+            <ellipse cx="723.02" cy="344.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63"
+                  x="732.02" y="347.7104">Tiles(Tile[])
+            </text>
+        </a><!--MD5=[db3315daaa2942e97c7d13b0e35d8aed]
+class nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-->
+        <a href="LockedDoor.html" target="_top" title="LockedDoor.html" xlink:actuate="onRequest"
+           xlink:href="LockedDoor.html" xlink:show="new" xlink:title="LockedDoor.html" xlink:type="simple">
+            <rect codeLine="44" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="73.6094"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="184" x="361.52" y="754"/>
+            <ellipse cx="412.27" cy="770" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M415.2388,775.6406 Q414.6606,775.9375 414.02,776.0781 Q413.3794,776.2344 412.6763,776.2344 Q410.1763,776.2344 408.8481,774.5938 Q407.5356,772.9375 407.5356,769.8125 Q407.5356,766.6875 408.8481,765.0313 Q410.1763,763.375 412.6763,763.375 Q413.3794,763.375 414.02,763.5313 Q414.6763,763.6875 415.2388,763.9844 L415.2388,766.7031 Q414.6138,766.125 414.02,765.8594 Q413.4263,765.5781 412.8013,765.5781 Q411.4575,765.5781 410.77,766.6563 Q410.0825,767.7188 410.0825,769.8125 Q410.0825,771.9063 410.77,772.9844 Q411.4575,774.0469 412.8013,774.0469 Q413.4263,774.0469 414.02,773.7813 Q414.6138,773.5 415.2388,772.9219 L415.2388,775.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="74"
+                  x="432.77" y="774.1543">LockedDoor
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="362.52" x2="544.52" y1="786" y2="786"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="362.52" x2="544.52" y1="794" y2="794"/>
+            <ellipse cx="372.52" cy="805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="155" x="381.52" y="808.2104">LockedDoor(int, int, Colour)
+            </text>
+            <ellipse cx="372.52" cy="817.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="158" x="381.52" y="821.0151">getJson(): JsonObjectBuilder
+            </text>
+        </a><!--MD5=[fafcc6fd3183200345fc6613b6a00cbb]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Free-->
+        <a href="Free.html" target="_top" title="Free.html" xlink:actuate="onRequest" xlink:href="Free.html"
+           xlink:show="new" xlink:title="Free.html" xlink:type="simple">
+            <rect codeLine="49" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Free" style="stroke: #A80036; stroke-width: 1.5;" width="95"
+                  x="581.02" y="760.5"/>
+            <ellipse cx="611.77" cy="776.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M614.7388,782.1406 Q614.1606,782.4375 613.52,782.5781 Q612.8794,782.7344 612.1763,782.7344 Q609.6763,782.7344 608.3481,781.0938 Q607.0356,779.4375 607.0356,776.3125 Q607.0356,773.1875 608.3481,771.5313 Q609.6763,769.875 612.1763,769.875 Q612.8794,769.875 613.52,770.0313 Q614.1763,770.1875 614.7388,770.4844 L614.7388,773.2031 Q614.1138,772.625 613.52,772.3594 Q612.9263,772.0781 612.3013,772.0781 Q610.9575,772.0781 610.27,773.1563 Q609.5825,774.2188 609.5825,776.3125 Q609.5825,778.4063 610.27,779.4844 Q610.9575,780.5469 612.3013,780.5469 Q612.9263,780.5469 613.52,780.2813 Q614.1138,780 614.7388,779.4219 L614.7388,782.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28"
+                  x="629.27" y="780.6543">Free
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="582.02" x2="675.02" y1="792.5" y2="792.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="582.02" x2="675.02" y1="800.5" y2="800.5"/>
+            <ellipse cx="592.02" cy="811.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="69"
+                  x="601.02" y="814.7104">Free(int, int)
+            </text>
+        </a><!--MD5=[d4fa7740169997c9d89c81c5a1cac5f6]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Actor-->
+        <a href="Actor.html" target="_top" title="Actor.html" xlink:actuate="onRequest" xlink:href="Actor.html"
+           xlink:show="new" xlink:title="Actor.html" xlink:type="simple">
+            <rect codeLine="53" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="99.2188"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor" style="stroke: #A80036; stroke-width: 1.5;" width="149"
+                  x="1056.02" y="66.5"/>
+            <ellipse cx="1109.77" cy="82.5" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M1109.8794,77.8438 L1108.7231,82.9219 L1111.0513,82.9219 L1109.8794,77.8438 Z M1108.395,75.6094 L1111.3794,75.6094 L1114.7388,88 L1112.2856,88 L1111.52,84.9375 L1108.2388,84.9375 L1107.4888,88 L1105.0513,88 L1108.395,75.6094 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+                  lengthAdjust="spacingAndGlyphs" textLength="33" x="1130.27" y="86.6543">Actor
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1057.02" x2="1204.02" y1="98.5" y2="98.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1057.02" x2="1204.02" y1="106.5" y2="106.5"/>
+            <ellipse cx="1067.02" cy="117.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="99"
+                  x="1076.02" y="120.7104">Actor(Tile, String)
+            </text>
+            <ellipse cx="1067.02" cy="130.3047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="100" x="1076.02" y="133.5151">getDir(): Direction
+            </text>
+            <ellipse cx="1067.02" cy="143.1094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="123" x="1076.02" y="146.3198">setDir(Direction): void
+            </text>
+            <ellipse cx="1067.02" cy="155.9141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="121" x="1076.02" y="159.1245">getImageURl(): String
+            </text>
+        </a><!--MD5=[9a7d1fe5e7e205b9dd3fbf94307f920e]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Maze-->
+        <a href="Maze.html" target="_top" title="Maze.html" xlink:actuate="onRequest" xlink:href="Maze.html"
+           xlink:show="new" xlink:title="Maze.html" xlink:type="simple">
+            <rect codeLine="60" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="150.4375"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze" style="stroke: #A80036; stroke-width: 1.5;" width="268"
+                  x="468.52" y="41"/>
+            <ellipse cx="582.77" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M585.7388,62.6406 Q585.1606,62.9375 584.52,63.0781 Q583.8794,63.2344 583.1763,63.2344 Q580.6763,63.2344 579.3481,61.5938 Q578.0356,59.9375 578.0356,56.8125 Q578.0356,53.6875 579.3481,52.0313 Q580.6763,50.375 583.1763,50.375 Q583.8794,50.375 584.52,50.5313 Q585.1763,50.6875 585.7388,50.9844 L585.7388,53.7031 Q585.1138,53.125 584.52,52.8594 Q583.9263,52.5781 583.3013,52.5781 Q581.9575,52.5781 581.27,53.6563 Q580.5825,54.7188 580.5825,56.8125 Q580.5825,58.9063 581.27,59.9844 Q581.9575,61.0469 583.3013,61.0469 Q583.9263,61.0469 584.52,60.7813 Q585.1138,60.5 585.7388,59.9219 L585.7388,62.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="31"
+                  x="603.27" y="61.1543">Maze
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="469.52" x2="735.52" y1="73" y2="73"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="469.52" x2="735.52" y1="81" y2="81"/>
+            <ellipse cx="479.52" cy="92" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="86"
+                  x="488.52" y="95.2104">Maze(Tile[], int)
+            </text>
+            <ellipse cx="479.52" cy="104.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="242" x="488.52" y="108.0151">Maze(Tile[], int, List&lt;Block&gt;, List&lt;Cobra&gt;)
+            </text>
+            <ellipse cx="479.52" cy="117.6094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50"
+                  x="488.52" y="120.8198">Maze(int)
+            </text>
+            <ellipse cx="479.52" cy="130.4141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="162" x="488.52" y="133.6245">moveChap(Direction): Sound
+            </text>
+            <ellipse cx="479.52" cy="143.2188" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="199" x="488.52" y="146.4292">moveActor(Actor, Direction): Sound
+            </text>
+            <ellipse cx="479.52" cy="156.0234" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="127" x="488.52" y="159.2339">isLevelOver(): boolean
+            </text>
+            <ellipse cx="479.52" cy="168.8281" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="128" x="488.52" y="172.0386">getTreasuresLeft(): int
+            </text>
+            <ellipse cx="479.52" cy="181.6328" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
+                  x="488.52" y="184.8433">getLevel(): int
+            </text>
+        </a><!--MD5=[faf426d5a98c1d7f10ac5c53406938e5]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
+        <a href="Maze.LevelState.html" target="_top" title="Maze.LevelState.html" xlink:actuate="onRequest"
+           xlink:href="Maze.LevelState.html" xlink:show="new" xlink:title="Maze.LevelState.html" xlink:type="simple">
+            <rect codeLine="71" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="86.4141"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="132" x="185.52" y="281"/>
+            <ellipse cx="200.52" cy="297" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M204.6294,303 L196.9106,303 L196.9106,290.6094 L204.6294,290.6094 L204.6294,292.7656 L199.3637,292.7656 L199.3637,295.4375 L204.1294,295.4375 L204.1294,297.5938 L199.3637,297.5938 L199.3637,300.8438 L204.6294,300.8438 L204.6294,303 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
+                  textLength="100" x="214.52" y="301.1543">Maze.LevelState
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="186.52" x2="316.52" y1="313" y2="313"/>
+            <ellipse cx="196.52" cy="324" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="51" x="205.52" y="327.2104">RUNNING
+            </text>
+            <ellipse cx="196.52" cy="336.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="26" x="205.52" y="340.0151">WON
+            </text>
+            <ellipse cx="196.52" cy="349.6094" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="26" x="205.52" y="352.8198">DIED
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="186.52" x2="316.52" y1="359.4141" y2="359.4141"/>
+        </a><!--MD5=[3e3665cc1ffb44cac881a87139464485]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Cobra-->
+        <a href="Cobra.html" target="_top" title="Cobra.html" xlink:actuate="onRequest" xlink:href="Cobra.html"
+           xlink:show="new" xlink:title="Cobra.html" xlink:type="simple">
+            <rect codeLine="77" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="112.0234"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Cobra" style="stroke: #A80036; stroke-width: 1.5;" width="217"
+                  x="1022.02" y="268"/>
+            <ellipse cx="1107.77" cy="284" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M1110.7388,289.6406 Q1110.1606,289.9375 1109.52,290.0781 Q1108.8794,290.2344 1108.1763,290.2344 Q1105.6763,290.2344 1104.3481,288.5938 Q1103.0356,286.9375 1103.0356,283.8125 Q1103.0356,280.6875 1104.3481,279.0313 Q1105.6763,277.375 1108.1763,277.375 Q1108.8794,277.375 1109.52,277.5313 Q1110.1763,277.6875 1110.7388,277.9844 L1110.7388,280.7031 Q1110.1138,280.125 1109.52,279.8594 Q1108.9263,279.5781 1108.3013,279.5781 Q1106.9575,279.5781 1106.27,280.6563 Q1105.5825,281.7188 1105.5825,283.8125 Q1105.5825,285.9063 1106.27,286.9844 Q1106.9575,288.0469 1108.3013,288.0469 Q1108.9263,288.0469 1109.52,287.7813 Q1110.1138,287.5 1110.7388,286.9219 L1110.7388,289.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37"
+                  x="1128.27" y="288.1543">Cobra
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1023.02" x2="1238.02" y1="300" y2="300"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1023.02" x2="1238.02" y1="308" y2="308"/>
+            <ellipse cx="1033.02" cy="319" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="175" x="1042.02" y="322.2104">Cobra(Tile, Queue&lt;Direction&gt;)
+            </text>
+            <ellipse cx="1033.02" cy="331.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="115" x="1042.02" y="335.0151">Cobra(Tile, boolean)
+            </text>
+            <ellipse cx="1033.02" cy="344.6094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="119" x="1042.02" y="347.8198">nextMove(): Direction
+            </text>
+            <ellipse cx="1033.02" cy="357.4141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="191" x="1042.02" y="360.6245">getListOfMoves(): List&lt;Direction&gt;
+            </text>
+            <ellipse cx="1033.02" cy="370.2188" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="126" x="1042.02" y="373.4292">inTestMode(): boolean
+            </text>
+        </a><!--MD5=[76c7e6ed5bb0aaabc8404e6911d01ede]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
+        <a href="Tile.html" target="_top" title="Tile.html" xlink:actuate="onRequest" xlink:href="Tile.html"
+           xlink:show="new" xlink:title="Tile.html" xlink:type="simple">
+            <rect codeLine="85" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="214.4609"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.5;" width="238"
+                  x="792.52" y="457"/>
+            <ellipse cx="896.77" cy="473" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M896.8794,468.3438 L895.7231,473.4219 L898.0513,473.4219 L896.8794,468.3438 Z M895.395,466.1094 L898.3794,466.1094 L901.7388,478.5 L899.2856,478.5 L898.52,475.4375 L895.2388,475.4375 L894.4888,478.5 L892.0513,478.5 L895.395,466.1094 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+                  lengthAdjust="spacingAndGlyphs" textLength="21" x="917.27" y="477.1543">Tile
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="793.52" x2="1029.52" y1="489" y2="489"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="793.52" x2="1029.52" y1="497" y2="497"/>
+            <ellipse cx="803.52" cy="508" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="212" x="812.52" y="511.2104">Tile(String, int, int, boolean, boolean)
+            </text>
+            <ellipse cx="803.52" cy="520.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="82"
+                  x="812.52" y="524.0151">onEntry(): void
+            </text>
+            <ellipse cx="803.52" cy="533.6094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73"
+                  x="812.52" y="536.8198">onExit(): void
+            </text>
+            <ellipse cx="803.52" cy="546.4141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="123" x="812.52" y="549.6245">isOccupied(): boolean
+            </text>
+            <ellipse cx="803.52" cy="559.2188" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="154" x="812.52" y="562.4292">setOccupied(boolean): void
+            </text>
+            <ellipse cx="803.52" cy="572.0234" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="141" x="812.52" y="575.2339">isFreeOnEntry(): boolean
+            </text>
+            <ellipse cx="803.52" cy="584.8281" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="131" x="812.52" y="588.0386">isAccessible(): boolean
+            </text>
+            <ellipse cx="803.52" cy="597.6328" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="121" x="812.52" y="600.8433">getImageURl(): String
+            </text>
+            <ellipse cx="803.52" cy="610.4375" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66"
+                  x="812.52" y="613.6479">getCol(): int
+            </text>
+            <ellipse cx="803.52" cy="623.2422" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71"
+                  x="812.52" y="626.4526">getRow(): int
+            </text>
+            <ellipse cx="803.52" cy="636.0469" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="112" x="812.52" y="639.2573">hasBlock(): boolean
+            </text>
+            <ellipse cx="803.52" cy="648.8516" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="154" x="812.52" y="652.062">setHasBlock(boolean): void
+            </text>
+            <ellipse cx="803.52" cy="661.6563" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="158" x="812.52" y="664.8667">getJson(): JsonObjectBuilder
+            </text>
+        </a><!--MD5=[378be45096ed9409c119dd69d9943dea]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Key-->
+        <a href="Key.html" target="_top" title="Key.html" xlink:actuate="onRequest" xlink:href="Key.html"
+           xlink:show="new" xlink:title="Key.html" xlink:type="simple">
+            <rect codeLine="101" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="73.6094"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Key" style="stroke: #A80036; stroke-width: 1.5;" width="184"
+                  x="711.52" y="754"/>
+            <ellipse cx="788.77" cy="770" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M791.7388,775.6406 Q791.1606,775.9375 790.52,776.0781 Q789.8794,776.2344 789.1763,776.2344 Q786.6763,776.2344 785.3481,774.5938 Q784.0356,772.9375 784.0356,769.8125 Q784.0356,766.6875 785.3481,765.0313 Q786.6763,763.375 789.1763,763.375 Q789.8794,763.375 790.52,763.5313 Q791.1763,763.6875 791.7388,763.9844 L791.7388,766.7031 Q791.1138,766.125 790.52,765.8594 Q789.9263,765.5781 789.3013,765.5781 Q787.9575,765.5781 787.27,766.6563 Q786.5825,767.7188 786.5825,769.8125 Q786.5825,771.9063 787.27,772.9844 Q787.9575,774.0469 789.3013,774.0469 Q789.9263,774.0469 790.52,773.7813 Q791.1138,773.5 791.7388,772.9219 L791.7388,775.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="21"
+                  x="809.27" y="774.1543">Key
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="712.52" x2="894.52" y1="786" y2="786"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="712.52" x2="894.52" y1="794" y2="794"/>
+            <ellipse cx="722.52" cy="805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="109" x="731.52" y="808.2104">Key(int, int, Colour)
+            </text>
+            <ellipse cx="722.52" cy="817.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="158" x="731.52" y="821.0151">getJson(): JsonObjectBuilder
+            </text>
+        </a><!--MD5=[c6460d12b68ebf9e00cc19d6b4702b70]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
+        <a href="Key.Colour.html" target="_top" title="Key.Colour.html" xlink:actuate="onRequest"
+           xlink:href="Key.Colour.html" xlink:show="new" xlink:title="Key.Colour.html" xlink:type="simple">
+            <rect codeLine="106" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="99.2188"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="127" x="468.02" y="911"/>
+            <ellipse cx="496.52" cy="927" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M500.6294,933 L492.9106,933 L492.9106,920.6094 L500.6294,920.6094 L500.6294,922.7656 L495.3638,922.7656 L495.3638,925.4375 L500.1294,925.4375 L500.1294,927.5938 L495.3638,927.5938 L495.3638,930.8438 L500.6294,930.8438 L500.6294,933 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65"
+                  x="513.52" y="931.1543">Key.Colour
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="469.02" x2="594.02" y1="943" y2="943"/>
+            <ellipse cx="479.02" cy="954" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="22" x="488.02" y="957.2104">RED
+            </text>
+            <ellipse cx="479.02" cy="966.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="38" x="488.02" y="970.0151">GREEN
+            </text>
+            <ellipse cx="479.02" cy="979.6094" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="29" x="488.02" y="982.8198">BLUE
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="469.02" x2="594.02" y1="989.4141" y2="989.4141"/>
+            <ellipse cx="479.02" cy="1000.4141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="101" x="488.02" y="1003.6245">getName(): String
+            </text>
+        </a><!--MD5=[2b1393bff161ef46f7d27967c31afb05]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Treasure-->
+        <a href="Treasure.html" target="_top" title="Treasure.html" xlink:actuate="onRequest" xlink:href="Treasure.html"
+           xlink:show="new" xlink:title="Treasure.html" xlink:type="simple">
+            <rect codeLine="113" fill="#FEFECE" filter="url(#f1be4t23ohz5fo)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Treasure" style="stroke: #A80036; stroke-width: 1.5;" width="122"
+                  x="930.52" y="760.5"/>
+            <ellipse cx="960.82" cy="776.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M963.7887,782.1406 Q963.2106,782.4375 962.57,782.5781 Q961.9294,782.7344 961.2262,782.7344 Q958.7262,782.7344 957.3981,781.0938 Q956.0856,779.4375 956.0856,776.3125 Q956.0856,773.1875 957.3981,771.5313 Q958.7262,769.875 961.2262,769.875 Q961.9294,769.875 962.57,770.0313 Q963.2262,770.1875 963.7887,770.4844 L963.7887,773.2031 Q963.1637,772.625 962.57,772.3594 Q961.9762,772.0781 961.3512,772.0781 Q960.0075,772.0781 959.32,773.1563 Q958.6325,774.2188 958.6325,776.3125 Q958.6325,778.4063 959.32,779.4844 Q960.0075,780.5469 961.3512,780.5469 Q961.9762,780.5469 962.57,780.2813 Q963.1637,780 963.7887,779.4219 L963.7887,782.1406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="56"
+                  x="978.22" y="780.6543">Treasure
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="931.52" x2="1051.52" y1="792.5" y2="792.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="931.52" x2="1051.52" y1="800.5" y2="800.5"/>
+            <ellipse cx="941.52" cy="811.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="96"
+                  x="950.52" y="814.7104">Treasure(int, int)
+            </text>
+        </a><!--MD5=[4a5cb7536213d0e1e4b81247d88128b1]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Player-->
+        <path codeLine="117"
+              d="M1070.31,179.42 C1044.84,201.87 1013.46,224.87 980.52,238 C825.21,299.91 768.43,230.36 605.52,268 C596.74,270.03 587.79,272.51 578.86,275.28 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Player"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1065.89,173.97,1085.36,165.61,1075.35,184.29,1065.89,173.97"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[83767f93c295af198402246bd327fa76]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Player to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
+        <path codeLine="118"
+              d="M380.17,380.17 C244.38,474.82 6,673.43 124.52,834 C164.94,888.76 357.66,929.66 462.77,948.31 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Player-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="467.7,949.19,459.5339,943.6841,462.7764,948.3194,458.141,951.5619,467.7,949.19"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="60"
+              x="98.52" y="714.0669">backpack
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
+              x="452.9161" y="944.077">*
+        </text><!--MD5=[9db3a5ded47292c095093eaea19e1946]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Exit-->
+        <path codeLine="119" d="M1030.12,685.74 C1057.31,713.43 1083.84,740.44 1103.08,760.03 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Exit"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1024.89,690.41,1015.87,671.24,1034.88,680.6,1024.89,690.41"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b3904b93be8fd53266ed918884e9c18a]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Wall-->
+        <path codeLine="120"
+              d="M1047.63,652.1 C1094.59,682.31 1147.46,716.5 1195.52,748 C1201.57,751.96 1207.92,756.16 1214.18,760.31 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Wall"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1043.66,657.86,1030.62,641.16,1051.23,646.09,1043.66,657.86"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b996d1f71f2a1ea9cb5bf3b19590347d]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock-->
+        <path codeLine="121"
+              d="M1049.06,622.5 C1129.61,657.09 1232.8,703.02 1322.52,748 C1330.26,751.88 1338.34,756.16 1346.21,760.45 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1046.3,628.93,1030.67,614.63,1051.81,616.06,1046.3,628.93"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[390f79909ac3b931bb0cec2f90726eb3]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Lava-->
+        <path codeLine="122"
+              d="M1050.15,599.73 C1166.01,631.21 1334.04,682.63 1472.52,748 C1480.13,751.59 1487.93,755.91 1495.38,760.39 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Lava"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1048.08,606.42,1030.58,594.47,1051.72,592.9,1048.08,606.42"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[d24b1fc37fea0aa2333f86ceda4715e3]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.InfoField-->
+        <path codeLine="123"
+              d="M772.82,607.53 C657.6,643.39 489.67,696.9 344.52,748 C338.74,750.04 332.8,752.17 326.82,754.36 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.InfoField"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="771.09,600.74,792.27,601.49,775.25,614.11,771.09,600.74"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e200314dd42774524740759839b58ce6]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Block to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
+        <path codeLine="124" d="M911.52,373.74 C911.52,396.4 911.52,424.36 911.52,451.76 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Block-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="911.52,456.87,915.52,447.87,911.52,451.87,907.52,447.87,911.52,456.87"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50"
+              x="912.52" y="423.0669">location
+        </text><!--MD5=[c0d74b452ae5274e332754e67bec71f3]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Tiles to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
+        <path codeLine="125" d="M775.84,354.66 C791.98,379.45 816.06,416.42 839.47,452.37 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tiles-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="842.32,456.75,840.7561,447.0261,839.5895,452.5614,834.0543,451.3949,842.32,456.75"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="53"
+              x="820.52" y="423.0669">tileArray
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
+              x="830.4355" y="446.0961">*
+        </text><!--MD5=[6b0b4bb532b3358470f848047d59811f]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-->
+        <path codeLine="126" d="M774.3,632.41 C693.1,672.3 593.46,721.25 526.98,753.91 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="771.34,626.06,792.38,623.53,777.52,638.63,771.34,626.06"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[3e9ee57e5ccc9ccee4d457b927ea040f]
+link nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
+        <path codeLine="127" d="M470.44,828.35 C481.03,851.08 494.86,880.77 506.67,906.14 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="508.86,910.83,508.7026,900.9824,506.7565,906.294,501.445,904.3479,508.86,910.83"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="66"
+              x="495.52" y="877.0669">lockColour
+        </text><!--MD5=[929cdba72941f6e862670b174d49e690]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Free-->
+        <path codeLine="128" d="M776.51,672.34 C735.86,704.66 694.51,737.54 665.88,760.29 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Free"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="772.31,666.74,792.32,659.77,781.02,677.69,772.31,666.74"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[a4209d1d6cce0398bb0d403ad571d384]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
+        <path codeLine="129"
+              d="M1186.28,165.62 C1213.05,192.71 1242.33,228.84 1256.52,268 C1273.48,314.8 1282.18,337.34 1256.52,380 C1208.81,459.31 1113.89,506.07 1035.67,532.44 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="1030.55,534.15,1040.3513,535.1164,1035.2963,532.5774,1037.8352,527.5224,1030.55,534.15"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50"
+              x="1273.52" y="328.5669">location
+        </text><!--MD5=[06a91cefc5865c61be5948ec6b116abe]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
+        <path codeLine="130"
+              d="M468.28,164.93 C431.99,180.46 393.63,199.35 360.52,221 C336.42,236.76 312.71,258.05 293.59,277.1 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="289.83,280.88,299.0152,277.3259,293.3584,277.3373,293.347,271.6805,289.83,280.88"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="33"
+              x="361.52" y="234.0669">state
+        </text><!--MD5=[5d1011535aa03f29bfbc3e59911c37fc]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
+        <path codeLine="135"
+              d="M469.5,198.83 C446.39,212.32 422.42,225.84 399.52,238 C371.77,252.73 362.95,252.69 335.52,268 C328.37,271.99 321.01,276.37 313.76,280.86 "
+              fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <ellipse cx="475.7114" cy="195.1908" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="468.8128" x2="482.61" y1="199.2417" y2="191.14"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="471.6606" x2="479.7622" y1="188.2922" y2="202.0894"/><!--MD5=[a09edf45f7411f1238fa0cbd3e943896]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
+        <path codeLine="131"
+              d="M607.09,191.26 C613.57,247.12 629.15,323.45 666.52,380 C697.15,426.34 743.66,465.37 787.96,495.32 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="792.24,498.19,786.9901,489.857,788.0863,495.4066,782.5367,496.5028,792.24,498.19"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="26"
+              x="667.52" y="328.5669">tiles
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
+              x="777.3744" y="490.55">*
+        </text><!--MD5=[abc169298ad62b1f95973d1231d26643]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Player-->
+        <path codeLine="132" d="M553.25,191.08 C537.37,214.97 519.98,241.12 504.9,263.79 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Player"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="502.11,267.98,510.4222,262.6972,504.8769,263.8154,503.7587,258.2701,502.11,267.98"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="31"
+              x="530.52" y="234.0669">chap
+        </text><!--MD5=[02de3a96a0c071fe13931d9fd6efc86f]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Cobra-->
+        <path codeLine="133"
+              d="M736.74,165.42 C815.2,194.22 915.92,232.05 1004.52,268 C1008.66,269.68 1012.87,271.41 1017.12,273.17 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Cobra"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="1021.74,275.09,1014.9598,267.9466,1017.1217,273.174,1011.8942,275.3359,1021.74,275.09"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="43"
+              x="928.52" y="234.0669">cobras
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
+              x="1006.8453" y="268.1944">*
+        </text><!--MD5=[be0757a0c0ade79cfb01a52dfb60e7a9]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Block-->
+        <path codeLine="134" d="M713.64,191.08 C753.54,217.68 797.65,247.08 834.07,271.37 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Block"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="838.47,274.3,833.2069,265.9753,834.3119,271.5232,828.7641,272.6282,838.47,274.3"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="40"
+              x="776.52" y="234.0669">blocks
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
+              x="821.662" y="264.0326">*
+        </text><!--MD5=[130996cf979dd08dfcc11741955a1549]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Cobra-->
+        <path codeLine="136" d="M1130.52,185.63 C1130.52,212.36 1130.52,242.58 1130.52,267.86 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Cobra"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="1123.52,185.56,1130.52,165.56,1137.52,185.56,1123.52,185.56"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[46d2c15a8e9dc6cf171109ce90730fa1]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Key-->
+        <path codeLine="137" d="M851.84,689.34 C840.52,712.92 829.54,735.8 820.91,753.77 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Key"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="845.56,686.24,860.52,671.24,858.18,692.3,845.56,686.24"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[cb6e4f24162dba301f717462b36201a8]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Key to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
+        <path codeLine="138" d="M744.83,828.14 C702.17,854.41 644.3,890.05 599.61,917.57 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Key-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="595.32,920.21,605.0793,918.8852,599.5744,917.5831,600.8764,912.0782,595.32,920.21"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="39"
+              x="684.52" y="877.0669">colour
+        </text><!--MD5=[bfc3e10d2a57bb7e7fcb07ecb82a8cff]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Key to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
+        <path codeLine="139"
+              d="M772.03,840.77 C760.91,855.19 747.41,870.03 732.52,881 C691.35,911.33 636.94,931.63 595.11,943.98 "
+              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Key-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <ellipse cx="776.4461" cy="834.7591" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="771.7122" x2="781.18" y1="841.2081" y2="828.31"/>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="769.9971" x2="782.8952" y1="830.0252" y2="839.4929"/><!--MD5=[a1911b10b75f55b1bdaddac856c7f366]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Treasure-->
+        <path codeLine="140" d="M956.07,690.31 C965.34,716.38 974.28,741.52 980.86,760.03 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Treasure"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="949.4,692.43,949.29,671.24,962.59,687.74,949.4,692.43"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
+              x="707.26" y="1041.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16
+        </text><!--MD5=[77f88802a7cac9bc450fd04d120f8615]
+@startuml
+    namespace nz.ac.vuw.ecs.swen225.gp20.maze {
+
+        class Player [[Player.html]] {
+            +Player(Tile)
+            +incrementTreasures(): void
+            +getTreasuresCollected(): int
+            +addToBackPack(Colour): void
+            +backpackContains(Colour): boolean
+        }
+
+        class Exit [[Exit.html]] {
+            +Exit(int, int)
+        }
+
+        class Wall [[Wall.html]] {
+            +Wall(int, int)
+        }
+
+        class ExitLock [[ExitLock.html]] {
+            +ExitLock(int, int)
+        }
+
+        class Lava [[Lava.html]] {
+            +Lava(int, int)
+        }
+
+        class InfoField [[InfoField.html]] {
+            +InfoField(int, int, String)
+            +getInfo(): String
+            +getJson(): JsonObjectBuilder
+        }
+
+        class Block [[Block.html]] {
+            +Block(int, int)
+            +getCol(): int
+            +getRow(): int
+            +getImageURL(): String
+        }
+
+        class Tiles [[Tiles.html]] {
+            +Tiles(Tile[])
+        }
+
+        class LockedDoor [[LockedDoor.html]] {
+            +LockedDoor(int, int, Colour)
+            +getJson(): JsonObjectBuilder
+        }
+
+        class Free [[Free.html]] {
+            +Free(int, int)
+        }
+
+        abstract class Actor [[Actor.html]] {
+            +Actor(Tile, String)
+            +getDir(): Direction
+            +setDir(Direction): void
+            +getImageURl(): String
+        }
+
+        class Maze [[Maze.html]] {
+            +Maze(Tile[], int)
+            +Maze(Tile[], int, List<Block>, List<Cobra>)
+            +Maze(int)
+            +moveChap(Direction): Sound
+            +moveActor(Actor, Direction): Sound
+            +isLevelOver(): boolean
+            +getTreasuresLeft(): int
+            +getLevel(): int
+        }
+
+        enum nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState [[Maze.LevelState.html]] {
+            {static} +RUNNING
+            {static} +WON
+            {static} +DIED
+        }
+
+        class Cobra [[Cobra.html]] {
+            +Cobra(Tile, Queue<Direction>)
+            +Cobra(Tile, boolean)
+            +nextMove(): Direction
+            +getListOfMoves(): List<Direction>
+            +inTestMode(): boolean
+        }
+
+        abstract class Tile [[Tile.html]] {
+            +Tile(String, int, int, boolean, boolean)
+            +onEntry(): void
+            +onExit(): void
+            +isOccupied(): boolean
+            +setOccupied(boolean): void
+            +isFreeOnEntry(): boolean
+            +isAccessible(): boolean
+            +getImageURl(): String
+            +getCol(): int
+            +getRow(): int
+            +hasBlock(): boolean
+            +setHasBlock(boolean): void
+            +getJson(): JsonObjectBuilder
+        }
+
+        class Key [[Key.html]] {
+            +Key(int, int, Colour)
+            +getJson(): JsonObjectBuilder
+        }
+
+        enum nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour [[Key.Colour.html]] {
+            {static} +RED
+            {static} +GREEN
+            {static} +BLUE
+            +getName(): String
+        }
+
+        class Treasure [[Treasure.html]] {
+            +Treasure(int, int)
+        }
+
+        Actor <|- - Player
+        Player - -> "*" nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour: backpack
+        Tile <|- - Exit
+        Tile <|- - Wall
+        Tile <|- - ExitLock
+        Tile <|- - Lava
+        Tile <|- - InfoField
+        Block - -> Tile: location
+        Tiles - -> "*" Tile: tileArray
+        Tile <|- - LockedDoor
+        LockedDoor - -> nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour: lockColour
+        Tile <|- - Free
+        Actor - -> Tile: location
+        Maze - -> nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState: state
+        Maze - -> "*" Tile: tiles
+        Maze - -> Player: chap
+        Maze - -> "*" Cobra: cobras
+        Maze - -> "*" Block: blocks
+        Maze +- - nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState
+        Actor <|- - Cobra
+        Tile <|- - Key
+        Key - -> nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour: colour
+        Key +- - nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour
+        Tile <|- - Treasure
+    }
+
+    center footer UMLDoclet 2.0.12, PlantUML 1.2020.16
+@enduml
+
+PlantUML version 1.2020.16(Mon Aug 24 08:20:43 NZST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: NZ
+-->
+    </g>
+</svg>

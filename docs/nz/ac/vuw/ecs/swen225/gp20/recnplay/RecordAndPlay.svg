@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+     contentScriptType="application/ecmascript" contentStyleType="text/css" height="287px" preserveAspectRatio="none"
+     style="width:291px;height:287px;" version="1.1" viewBox="0 0 291 287" width="291px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f137fckipzjbhb" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
+                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g><!--MD5=[edf7b49df920cefbcb929cbf9d37eb22]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay-->
+        <a href="RecordAndPlay.html" target="_top" title="RecordAndPlay.html" xlink:actuate="onRequest"
+           xlink:href="RecordAndPlay.html" xlink:show="new" xlink:title="RecordAndPlay.html" xlink:type="simple">
+            <rect codeLine="5" fill="#FEFECE" filter="url(#f137fckipzjbhb)" height="250.8125"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="265" x="7" y="7"/>
+            <ellipse cx="44.05" cy="25.9688" fill="#ADD1B2" rx="11" ry="11"
+                     style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M47.0188,31.6094 Q46.4406,31.9063 45.8,32.0469 Q45.1594,32.2031 44.4563,32.2031 Q41.9563,32.2031 40.6281,30.5625 Q39.3156,28.9063 39.3156,25.7813 Q39.3156,22.6563 40.6281,21 Q41.9563,19.3438 44.4563,19.3438 Q45.1594,19.3438 45.8,19.5 Q46.4563,19.6563 47.0188,19.9531 L47.0188,22.6719 Q46.3938,22.0938 45.8,21.8281 Q45.2063,21.5469 44.5813,21.5469 Q43.2375,21.5469 42.55,22.625 Q41.8625,23.6875 41.8625,25.7813 Q41.8625,27.875 42.55,28.9531 Q43.2375,30.0156 44.5813,30.0156 Q45.2063,30.0156 45.8,29.75 Q46.3938,29.4688 47.0188,28.8906 L47.0188,31.6094 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs"
+                  textLength="104" x="102.95" y="24.9951">RecordAndPlay
+            </text>
+            <text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs"
+                  textLength="184" x="62.95" y="37.5791">nz.ac.vuw.ecs.swen225.gp20.recnplay
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="271" y1="44.9375" y2="44.9375"/>
+            <ellipse cx="18" cy="55.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="140" x="27" y="59.1479">recordedMovesSize(): int
+            </text>
+            <ellipse cx="18" cy="68.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="122" x="27" y="71.9526">saveRecording(): void
+            </text>
+            <ellipse cx="18" cy="81.5469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="169" x="27" y="84.7573">isRecordingPaused(): boolean
+            </text>
+            <ellipse cx="18" cy="94.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="145" x="27" y="97.562">loadRecording(Main): void
+            </text>
+            <ellipse cx="18" cy="107.1563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="193" x="27" y="110.3667">addMove(RecordedMove): boolean
+            </text>
+            <ellipse cx="18" cy="119.9609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="127" x="27" y="123.1714">isRecording(): boolean
+            </text>
+            <ellipse cx="18" cy="132.7656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="130" x="27" y="135.9761">pauseRecording(): void
+            </text>
+            <ellipse cx="18" cy="145.5703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="139" x="27" y="148.7808">resumeRecording(): void
+            </text>
+            <ellipse cx="18" cy="158.375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="175" x="27" y="161.5854">getPlayingRecording(): boolean
+            </text>
+            <ellipse cx="18" cy="171.1797" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="156" x="27" y="174.3901">endPlayingRecording(): void
+            </text>
+            <ellipse cx="18" cy="183.9844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="148" x="27" y="187.1948">recordLevelChange(): void
+            </text>
+            <ellipse cx="18" cy="196.7891" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="148" x="27" y="199.9995">startRecording(Main): void
+            </text>
+            <ellipse cx="18" cy="209.5938" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="110" x="27" y="212.8042">stepForward(): void
+            </text>
+            <ellipse cx="18" cy="222.3984" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="119" x="27" y="225.6089">stepBackward(): void
+            </text>
+            <ellipse cx="18" cy="235.2031" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="144" x="27" y="238.4136">playRecording(Main): void
+            </text>
+            <ellipse cx="18" cy="248.0078" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="239" x="27" y="251.2183">setRecordingMode(ReplayModes, int):
+                void
+            </text>
+        </a>
+        <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
+              x="43.5" y="274.0947">UMLDoclet 2.0.12, PlantUML 1.2020.16
+        </text><!--MD5=[f66c41dc102ab3ba7079aa48714f954d]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>RecordAndPlay\n<size:10>nz.ac.vuw.ecs.swen225.gp20.recnplay" as nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay [[RecordAndPlay.html]] {
+        {static} +recordedMovesSize(): int
+        {static} +saveRecording(): void
+        {static} +isRecordingPaused(): boolean
+        {static} +loadRecording(Main): void
+        {static} +addMove(RecordedMove): boolean
+        {static} +isRecording(): boolean
+        {static} +pauseRecording(): void
+        {static} +resumeRecording(): void
+        {static} +getPlayingRecording(): boolean
+        {static} +endPlayingRecording(): void
+        {static} +recordLevelChange(): void
+        {static} +startRecording(Main): void
+        {static} +stepForward(): void
+        {static} +stepBackward(): void
+        {static} +playRecording(Main): void
+        {static} +setRecordingMode(ReplayModes, int): void
+    }
+
+    center footer UMLDoclet 2.0.12, PlantUML 1.2020.16
+@enduml
+
+PlantUML version 1.2020.16(Mon Aug 24 08:20:43 NZST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: NZ
+-->
+    </g>
+</svg>

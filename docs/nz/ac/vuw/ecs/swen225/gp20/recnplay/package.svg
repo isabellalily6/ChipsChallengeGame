@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+     contentScriptType="application/ecmascript" contentStyleType="text/css" height="508px" preserveAspectRatio="none"
+     style="width:1085px;height:508px;" version="1.1" viewBox="0 0 1085 508" width="1085px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="fp2e3b4volhm3" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
+                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
+        </filter>
+    </defs>
+    <g><!--MD5=[55497ca6df5e1e80d97c2ba5f282a5c4]
+cluster nz.ac.vuw.ecs.swen225.gp20.recnplay-->
+        <polygon fill="#FFFFFF" filter="url(#fp2e3b4volhm3)"
+                 points="16,176,331,176,338,198.2969,1063,198.2969,1063,480,16,480,16,176"
+                 style="stroke: #000000; stroke-width: 1.5;"/>
+        <line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="338" y1="198.2969" y2="198.2969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
+              textLength="309" x="20" y="190.9951">nz.ac.vuw.ecs.swen225.gp20.recnplay
+        </text><!--MD5=[535aab4de90d4dfa371a9b40d5438fc3]
+cluster javax.swing-->
+        <polygon fill="#FFFFFF" filter="url(#fp2e3b4volhm3)"
+                 points="382,6,480,6,487,28.2969,654,28.2969,654,143,382,143,382,6"
+                 style="stroke: #000000; stroke-width: 1.5;"/>
+        <line style="stroke: #000000; stroke-width: 1.5;" x1="382" x2="487" y1="28.2969" y2="28.2969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
+              textLength="92" x="386" y="20.9951">javax.swing
+        </text><!--MD5=[aa8f7b917213fcc1c2766e2d59b49067]
+cluster java.lang-->
+        <polygon fill="#FFFFFF" filter="url(#fp2e3b4volhm3)"
+                 points="775,18.5,850,18.5,857,40.7969,935,40.7969,935,130.5,775,130.5,775,18.5"
+                 style="stroke: #000000; stroke-width: 1.5;"/>
+        <line style="stroke: #000000; stroke-width: 1.5;" x1="775" x2="857" y1="40.7969" y2="40.7969"/>
+        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
+              textLength="69" x="779" y="33.4951">java.lang
+        </text><!--MD5=[eb078421526276a38cf020610a62fb10]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog-->
+        <a href="ReplayOptionDialog.html" target="_top" title="ReplayOptionDialog.html" xlink:actuate="onRequest"
+           xlink:href="ReplayOptionDialog.html" xlink:show="new" xlink:title="ReplayOptionDialog.html"
+           xlink:type="simple">
+            <rect codeLine="3" fill="#FEFECE" filter="url(#fp2e3b4volhm3)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog"
+                  style="stroke: #A80036; stroke-width: 1.5;" width="371" x="332.5" y="307"/>
+            <ellipse cx="453.25" cy="323" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M456.2188,328.6406 Q455.6406,328.9375 455,329.0781 Q454.3594,329.2344 453.6563,329.2344 Q451.1563,329.2344 449.8281,327.5938 Q448.5156,325.9375 448.5156,322.8125 Q448.5156,319.6875 449.8281,318.0313 Q451.1563,316.375 453.6563,316.375 Q454.3594,316.375 455,316.5313 Q455.6563,316.6875 456.2188,316.9844 L456.2188,319.7031 Q455.5938,319.125 455,318.8594 Q454.4063,318.5781 453.7813,318.5781 Q452.4375,318.5781 451.75,319.6563 Q451.0625,320.7188 451.0625,322.8125 Q451.0625,324.9063 451.75,325.9844 Q452.4375,327.0469 453.7813,327.0469 Q454.4063,327.0469 455,326.7813 Q455.5938,326.5 456.2188,325.9219 L456.2188,328.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
+                  textLength="121" x="473.75" y="327.1543">ReplayOptionDialog
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="333.5" x2="702.5" y1="339" y2="339"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="333.5" x2="702.5" y1="347" y2="347"/>
+            <ellipse cx="343.5" cy="358" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="345" x="352.5" y="361.2104">ReplayOptionDialog(Main, String, ArrayList&lt;JButton&gt;,
+                JSlider)
+            </text>
+        </a><!--MD5=[95456585febf57da48f20dfb18bb04f7]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove-->
+        <a href="RecordedMove.html" target="_top" title="RecordedMove.html" xlink:actuate="onRequest"
+           xlink:href="RecordedMove.html" xlink:show="new" xlink:title="RecordedMove.html" xlink:type="simple">
+            <rect codeLine="7" fill="#FEFECE" filter="url(#fp2e3b4volhm3)" height="124.8281"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="232" x="739" y="275"/>
+            <ellipse cx="804.75" cy="291" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M807.7188,296.6406 Q807.1406,296.9375 806.5,297.0781 Q805.8594,297.2344 805.1563,297.2344 Q802.6563,297.2344 801.3281,295.5938 Q800.0156,293.9375 800.0156,290.8125 Q800.0156,287.6875 801.3281,286.0313 Q802.6563,284.375 805.1563,284.375 Q805.8594,284.375 806.5,284.5313 Q807.1563,284.6875 807.7188,284.9844 L807.7188,287.7031 Q807.0938,287.125 806.5,286.8594 Q805.9063,286.5781 805.2813,286.5781 Q803.9375,286.5781 803.25,287.6563 Q802.5625,288.7188 802.5625,290.8125 Q802.5625,292.9063 803.25,293.9844 Q803.9375,295.0469 805.2813,295.0469 Q805.9063,295.0469 806.5,294.7813 Q807.0938,294.5 807.7188,293.9219 L807.7188,296.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="92"
+                  x="825.25" y="295.1543">RecordedMove
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="740" x2="970" y1="307" y2="307"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="740" x2="970" y1="315" y2="315"/>
+            <ellipse cx="750" cy="326" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="206" x="759" y="329.2104">RecordedMove(Direction, int, int, int)
+            </text>
+            <ellipse cx="750" cy="338.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="134" x="759" y="342.0151">getDirection(): Direction
+            </text>
+            <ellipse cx="750" cy="351.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97"
+                  x="759" y="354.8198">getTimeLeft(): int
+            </text>
+            <ellipse cx="750" cy="364.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="107" x="759" y="367.6245">getMoveIndex(): int
+            </text>
+            <ellipse cx="750" cy="377.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="176" x="759" y="380.4292">compareTo(RecordedMove): int
+            </text>
+            <ellipse cx="750" cy="390.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
+                  x="759" y="393.2339">getLevel(): int
+            </text>
+        </a><!--MD5=[edf7b49df920cefbcb929cbf9d37eb22]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay-->
+        <a href="RecordAndPlay.html" target="_top" title="RecordAndPlay.html" xlink:actuate="onRequest"
+           xlink:href="RecordAndPlay.html" xlink:show="new" xlink:title="RecordAndPlay.html" xlink:type="simple">
+            <rect codeLine="16" fill="#FEFECE" filter="url(#fp2e3b4volhm3)" height="252.875"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="265" x="32.5" y="211"/>
+            <ellipse cx="114.25" cy="227" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M117.2188,232.6406 Q116.6406,232.9375 116,233.0781 Q115.3594,233.2344 114.6563,233.2344 Q112.1563,233.2344 110.8281,231.5938 Q109.5156,229.9375 109.5156,226.8125 Q109.5156,223.6875 110.8281,222.0313 Q112.1563,220.375 114.6563,220.375 Q115.3594,220.375 116,220.5313 Q116.6563,220.6875 117.2188,220.9844 L117.2188,223.7031 Q116.5938,223.125 116,222.8594 Q115.4063,222.5781 114.7813,222.5781 Q113.4375,222.5781 112.75,223.6563 Q112.0625,224.7188 112.0625,226.8125 Q112.0625,228.9063 112.75,229.9844 Q113.4375,231.0469 114.7813,231.0469 Q115.4063,231.0469 116,230.7813 Q116.5938,230.5 117.2188,229.9219 L117.2188,232.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="93"
+                  x="134.75" y="231.1543">RecordAndPlay
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="33.5" x2="296.5" y1="243" y2="243"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="33.5" x2="296.5" y1="251" y2="251"/>
+            <ellipse cx="43.5" cy="262" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="140" x="52.5" y="265.2104">recordedMovesSize(): int
+            </text>
+            <ellipse cx="43.5" cy="274.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="122" x="52.5" y="278.0151">saveRecording(): void
+            </text>
+            <ellipse cx="43.5" cy="287.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="169" x="52.5" y="290.8198">isRecordingPaused(): boolean
+            </text>
+            <ellipse cx="43.5" cy="300.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="145" x="52.5" y="303.6245">loadRecording(Main): void
+            </text>
+            <ellipse cx="43.5" cy="313.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="193" x="52.5" y="316.4292">addMove(RecordedMove): boolean
+            </text>
+            <ellipse cx="43.5" cy="326.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="127" x="52.5" y="329.2339">isRecording(): boolean
+            </text>
+            <ellipse cx="43.5" cy="338.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="130" x="52.5" y="342.0386">pauseRecording(): void
+            </text>
+            <ellipse cx="43.5" cy="351.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="139" x="52.5" y="354.8433">resumeRecording(): void
+            </text>
+            <ellipse cx="43.5" cy="364.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="175" x="52.5" y="367.6479">getPlayingRecording(): boolean
+            </text>
+            <ellipse cx="43.5" cy="377.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="156" x="52.5" y="380.4526">endPlayingRecording(): void
+            </text>
+            <ellipse cx="43.5" cy="390.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="148" x="52.5" y="393.2573">recordLevelChange(): void
+            </text>
+            <ellipse cx="43.5" cy="402.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="148" x="52.5" y="406.062">startRecording(Main): void
+            </text>
+            <ellipse cx="43.5" cy="415.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="110" x="52.5" y="418.8667">stepForward(): void
+            </text>
+            <ellipse cx="43.5" cy="428.4609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="119" x="52.5" y="431.6714">stepBackward(): void
+            </text>
+            <ellipse cx="43.5" cy="441.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="144" x="52.5" y="444.4761">playRecording(Main): void
+            </text>
+            <ellipse cx="43.5" cy="454.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="239" x="52.5" y="457.2808">setRecordingMode(ReplayModes, int):
+                void
+            </text>
+        </a><!--MD5=[c13749207e1e160b2790bec8d09e837f]
+class javax.swing.JDialog-->
+        <rect codeLine="41" fill="#FEFECE" filter="url(#fp2e3b4volhm3)" height="86.4141" id="javax.swing.JDialog"
+              style="stroke: #A80036; stroke-width: 1.5;" width="240" x="398" y="41"/>
+        <ellipse cx="492.75" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M495.7188,62.6406 Q495.1406,62.9375 494.5,63.0781 Q493.8594,63.2344 493.1563,63.2344 Q490.6563,63.2344 489.3281,61.5938 Q488.0156,59.9375 488.0156,56.8125 Q488.0156,53.6875 489.3281,52.0313 Q490.6563,50.375 493.1563,50.375 Q493.8594,50.375 494.5,50.5313 Q495.1563,50.6875 495.7188,50.9844 L495.7188,53.7031 Q495.0938,53.125 494.5,52.8594 Q493.9063,52.5781 493.2813,52.5781 Q491.9375,52.5781 491.25,53.6563 Q490.5625,54.7188 490.5625,56.8125 Q490.5625,58.9063 491.25,59.9844 Q491.9375,61.0469 493.2813,61.0469 Q493.9063,61.0469 494.5,60.7813 Q495.0938,60.5 495.7188,59.9219 L495.7188,62.6406 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="42"
+              x="513.25" y="61.1543">JDialog
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="399" x2="637" y1="73" y2="73"/>
+        <polygon fill="none" points="409,79,413,83,409,87,405,83" style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="115"
+              x="418" y="87.2104">rootPane: JRootPane
+        </text>
+        <polygon fill="none" points="409,91.8047,413,95.8047,409,99.8047,405,95.8047"
+                 style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="200"
+              x="418" y="100.0151">rootPaneCheckingEnabled: boolean
+        </text>
+        <polygon fill="none" points="409,104.6094,413,108.6094,409,112.6094,405,108.6094"
+                 style="stroke: #B38D22; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="214"
+              x="418" y="112.8198">accessibleContext: AccessibleContext
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="399" x2="637" y1="119.4141" y2="119.4141"/><!--MD5=[008d82c49f85b4d489e041917c99c847]
+class java.lang.Comparable-->
+        <rect codeLine="49" fill="#FEFECE" filter="url(#fp2e3b4volhm3)" height="60.8047" id="java.lang.Comparable"
+              style="stroke: #A80036; stroke-width: 1.5;" width="127" x="791.5" y="53.5"/>
+        <ellipse cx="810.55" cy="69.5" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M806.4719,65.2656 L806.4719,63.1094 L813.8625,63.1094 L813.8625,65.2656 L811.3938,65.2656 L811.3938,73.3438 L813.8625,73.3438 L813.8625,75.5 L806.4719,75.5 L806.4719,73.3438 L808.9406,73.3438 L808.9406,65.2656 L806.4719,65.2656 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs"
+              textLength="75" x="825.45" y="73.6543">Comparable
+        </text>
+        <rect fill="#FFFFFF" height="15.9688" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;"
+              width="9" x="912.5" y="50.5"/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs"
+              textLength="7" x="913.5" y="62.6387">T
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="792.5" x2="917.5" y1="85.5" y2="85.5"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="792.5" x2="917.5" y1="93.5" y2="93.5"/>
+        <ellipse cx="802.5" cy="104.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs"
+              textLength="101" x="811.5" y="107.7104">compareTo(T): int
+        </text><!--MD5=[f214c584f9b91d79b84a857dfadab297]
+reverse link javax.swing.JDialog to nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog-->
+        <path codeLine="35" d="M518,147.27 C518,198.15 518,267.84 518,306.88 " fill="none"
+              id="javax.swing.JDialog-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="511,147.1,518,127.1,525,147.1,511,147.1"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[92214170aeb1d05e034779fcc6a9c15a]
+reverse link java.lang.Comparable to nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove-->
+        <path codeLine="36" d="M855,135 C855,175.18 855,231.8 855,274.8 " fill="none"
+              id="java.lang.Comparable-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove"
+              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="none" points="848,134.84,855,114.84,862,134.84,848,134.84"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[9ac900385d7e06459a1dbffe8c8ea7d5]
+link nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove to nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove-->
+        <path codeLine="37"
+              d="M971.18,306.15 C991.7,310.27 1006,320.73 1006,337.5 C1006,352.83 994.05,362.88 976.32,367.65 "
+              fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove-to-nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="971.18,368.85,980.8506,370.7155,976.051,367.7215,979.045,362.922,971.18,368.85"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="46"
+              x="1012" y="342.0669">inverse
+        </text>
+        <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
+              x="437.5" y="495.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16
+        </text><!--MD5=[83fbcbbdfa5bf33789ac8bc73d4aa085]
+@startuml
+    namespace nz.ac.vuw.ecs.swen225.gp20.recnplay {
+
+        class ReplayOptionDialog [[ReplayOptionDialog.html]] {
+            +ReplayOptionDialog(Main, String, ArrayList<JButton>, JSlider)
+        }
+
+        class RecordedMove [[RecordedMove.html]] {
+            +RecordedMove(Direction, int, int, int)
+            +getDirection(): Direction
+            +getTimeLeft(): int
+            +getMoveIndex(): int
+            +compareTo(RecordedMove): int
+            +getLevel(): int
+        }
+
+        class RecordAndPlay [[RecordAndPlay.html]] {
+            {static} +recordedMovesSize(): int
+            {static} +saveRecording(): void
+            {static} +isRecordingPaused(): boolean
+            {static} +loadRecording(Main): void
+            {static} +addMove(RecordedMove): boolean
+            {static} +isRecording(): boolean
+            {static} +pauseRecording(): void
+            {static} +resumeRecording(): void
+            {static} +getPlayingRecording(): boolean
+            {static} +endPlayingRecording(): void
+            {static} +recordLevelChange(): void
+            {static} +startRecording(Main): void
+            {static} +stepForward(): void
+            {static} +stepBackward(): void
+            {static} +playRecording(Main): void
+            {static} +setRecordingMode(ReplayModes, int): void
+        }
+
+        javax.swing.JDialog <|- - ReplayOptionDialog
+        java.lang.Comparable <|.. RecordedMove
+        RecordedMove - -> RecordedMove: inverse
+    }
+
+    namespace javax.swing {
+        class JDialog {
+            #rootPane: JRootPane
+            #rootPaneCheckingEnabled: boolean
+            #accessibleContext: AccessibleContext
+        }
+    }
+
+    namespace java.lang {
+        interface Comparable<T> {
+            {abstract} +compareTo(T): int
+        }
+    }
+
+    center footer UMLDoclet 2.0.12, PlantUML 1.2020.16
+@enduml
+
+PlantUML version 1.2020.16(Mon Aug 24 08:20:43 NZST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: NZ
+-->
+    </g>
+</svg>

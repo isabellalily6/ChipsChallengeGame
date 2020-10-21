@@ -1,0 +1,24 @@
+<project name="gp20">
+    <property name="source.dir" location="src"/>
+    <property name="doc.dir" location="docs"/>
+    <property name="lib.dir" value="lib"/>
+
+    <path id="umlDoclet.classpath">
+        <pathelement location="lib/umldoclet-2.0.12.jar"/>
+    </path>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+    </path>
+
+
+    <target name="doc">
+        <mkdir dir="${doc.dir}"/>
+        <mkdir dir="${source.dir}"/>
+        <javadoc destdir="${doc.dir}" sourcepath="${source.dir}" classpathref="classpath">
+            <doclet name="nl.talsmasoftware.umldoclet.UMLDoclet" pathref="umlDoclet.classpath">
+            </doclet>
+        </javadoc>
+    </target>
+
+</project>
