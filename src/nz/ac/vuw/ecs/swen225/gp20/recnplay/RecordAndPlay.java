@@ -101,13 +101,6 @@ public class RecordAndPlay {
     }
 
     /**
-     * @return See if a recording is paused
-     */
-    public static boolean isRecordingPaused() {
-        return playRecordingThread.isRecordingPaused();
-    }
-
-    /**
      * Loads a recording from the file
      *
      * @param m is the main class, this is used to access the player, and the gui which is the parent to the filechooser
@@ -169,24 +162,6 @@ public class RecordAndPlay {
     }
 
     /**
-     * Pause the playing recording
-     */
-    public static void pauseRecording() {
-        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
-            playRecordingThread.pauseRecording();
-        }
-    }
-
-    /**
-     * Resume the playing recording
-     */
-    public static void resumeRecording() {
-        if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
-            playRecordingThread.resumeRecording();
-        }
-    }
-
-    /**
      * Returns if a recording is currently playing
      *
      * @return boolean that states if a recording is playing
@@ -204,11 +179,10 @@ public class RecordAndPlay {
 
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
+            playRecordingThread.getMain().playGame();
+            playRecordingThread.getMain().startGame(1);
+            lock = new ReentrantLock();
         }
-
-        lock = new ReentrantLock();
-        playRecordingThread.getMain().playGame();
-        playRecordingThread.getMain().startGame(1);
     }
 
     /**

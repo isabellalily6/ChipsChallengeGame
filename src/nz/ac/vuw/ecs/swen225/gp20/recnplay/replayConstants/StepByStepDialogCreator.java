@@ -20,7 +20,7 @@ public class StepByStepDialogCreator implements ReplayDialogCreator {
         styleButton(stepForward);
         stepForward.addActionListener(e -> RecordAndPlay.stepForward());
 
-        var stepBackwards = new JButton("Step backwards");
+        var stepBackwards = new JButton("Step backwards (EXPERIMENTAL)");
         styleButton(stepBackwards);
         stepBackwards.addActionListener(e -> RecordAndPlay.stepBackward());
 
