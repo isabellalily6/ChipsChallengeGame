@@ -1,8 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Exit;
-import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
 
 import java.util.ArrayList;
@@ -228,14 +226,16 @@ class PlayerThread extends Thread {
                                 RecordAndPlay.lock.unlock();
                             }
                             System.out.println("Exception thrown");
-                            RecordAndPlay.endPlayingRecording();
+                            main.playGame();
+                            main.startGame(1);
                             return;
                         }
 
                         if (main.isLevelWon() && levelChange) {
                             incrementLevelToPlay();
                         } else if (main.isLevelWon()) {
-                            RecordAndPlay.endPlayingRecording();
+                            main.playGame();
+                            main.startGame(1);
                             return;
                         }
 
@@ -257,7 +257,8 @@ class PlayerThread extends Thread {
                             RecordAndPlay.lock.unlock();
                         }
                         System.out.println("Exception thrown");
-                        RecordAndPlay.endPlayingRecording();
+                        main.playGame();
+                        main.startGame(1);
                         return;
                     }
                 }
@@ -309,7 +310,8 @@ class PlayerThread extends Thread {
             return;
         }
         System.out.println("Recording is over, no moves left");
-        RecordAndPlay.endPlayingRecording();
+        main.playGame();
+        main.startGame(1);
     }
 
     private void incrementLevelToPlay() {
@@ -331,24 +333,6 @@ class PlayerThread extends Thread {
         }
         //Thread safe repainting
         main.getGui().updateGui(true);
-    }
-
-    /**
-     * Sees if the chap is on the exit tile.
-     *
-     * @return true if the chap is on the exit tile
-     */
-    public boolean isChapOnExit() {
-        Exit exit = new Exit(-1, -1);
-        for (Tile[] tiles : main.getMaze().getTiles()) {
-            for (Tile tile : tiles) {
-                if (tile instanceof Exit) {
-                    exit = (Exit) tile;
-                }
-            }
-        }
-
-        return main.getMaze().getChap().getLocation().equals(exit);
     }
 
     private void updatePausedRecording() {
