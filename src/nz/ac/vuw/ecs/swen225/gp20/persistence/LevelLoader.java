@@ -310,9 +310,9 @@ public class LevelLoader {
         //Reset the cobras' locations
         List<Cobra> mazeCobras = maze.getCobras();
         if(mazeCobras != null) {
-        	for(Cobra c : cobras) {
-	        	c.getLocation().onExit();
-	        	c.setLocation(c.getLocation());
+        	for(int i = 0; i < mazeCobras.size(); i++) {
+	        	mazeCobras.get(i).getLocation().onExit();
+	        	mazeCobras.get(i).setLocation(cobras.get(i).getLocation());
         	}
         }
         
