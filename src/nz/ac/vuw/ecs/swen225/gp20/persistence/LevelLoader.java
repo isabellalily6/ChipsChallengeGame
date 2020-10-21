@@ -11,6 +11,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * LevelLoader contains static methods for loading a level, saving a game, and loading a saved game.
+ *
+ * @author Matt Rowling 300487163
+ */
 public class LevelLoader {
 	
 	/**
