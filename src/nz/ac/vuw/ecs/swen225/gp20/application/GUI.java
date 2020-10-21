@@ -128,7 +128,7 @@ public class GUI extends JFrame implements KeyListener {
     canvas.setFocusable(false);
     canvas.setBackground(Color.LIGHT_GRAY);
 
-    // Create a panel to place the canvas on to keep the correct size of the canva
+    // Create a panel to place the canvas on to keep the correct size of the canvas
     JPanel canvasPanel = new JPanel();
     Border borderGray = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
     canvas.setBorder(borderGray);
@@ -283,18 +283,22 @@ public class GUI extends JFrame implements KeyListener {
     }
     else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
       // Move the chap up
+      canvas.movePlayer(Direction.UP);
       sound = maze.moveChap(Direction.UP);
       RecordAndPlay.addMove(new RecordedMove(Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
       // Move Chap down
+      canvas.movePlayer(Direction.DOWN);
       sound = maze.moveChap(Direction.DOWN);
       RecordAndPlay.addMove(new RecordedMove(Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
       // Move chap right
+      canvas.movePlayer(Direction.RIGHT);
       sound = maze.moveChap(Direction.RIGHT);
       RecordAndPlay.addMove(new RecordedMove(Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
       // Move chap left
+      canvas.movePlayer(Direction.LEFT);
       sound = maze.moveChap(Direction.LEFT);
       RecordAndPlay.addMove(new RecordedMove(Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
