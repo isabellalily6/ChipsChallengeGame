@@ -20,13 +20,15 @@ import java.util.stream.Collectors;
  *
  * @author Seth Patel
  **/
-public class Canvas extends JPanel {
+public class Canvas extends JLayeredPane {
 
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 50;
     private Maze maze;
     private final JLabel[][] components;
+    private final JPanel boardPanel;
+    private final JPanel transitionPanel;
 
     /**
      * New canvas to render the game.
@@ -34,20 +36,34 @@ public class Canvas extends JPanel {
      * @param maze the maze to be rendered
      **/
     public Canvas(Maze maze) {
-        this.maze = maze;
-        components = new JLabel[VIEW_SIZE][VIEW_SIZE];
         setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
+        boardPanel = new JPanel();
+        transitionPanel = new JPanel();
+        this.maze = maze;
+        components = new JLabel[VIEW_SIZE][VIEW_SIZE];
+        boardPanel.setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        boardPanel.setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        boardPanel.setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        transitionPanel.setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        transitionPanel.setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        transitionPanel.setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        boardPanel.setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
+        boardPanel.setBounds(0, 0, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
+        transitionPanel.setBounds(0, 0, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
+        transitionPanel.setLayout(null);
+        transitionPanel.setOpaque(false);
         createComponents();
+        add(boardPanel, JLayeredPane.DEFAULT_LAYER);
+        add(transitionPanel, JLayeredPane.PALETTE_LAYER);
     }
 
     /**
      * Create the components for the canvas.
      **/
     private void createComponents() {
-        removeAll();
+        boardPanel.removeAll();
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
@@ -56,7 +72,7 @@ public class Canvas extends JPanel {
                 } else {
                     components[x][y] = new JLabel(makeImageIcon(maze.getTiles()[col][row].getImageURl()));
                 }
-                add(components[x][y]);
+                boardPanel.add(components[x][y]);
             }
         }
         components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
@@ -95,8 +111,56 @@ public class Canvas extends JPanel {
                 }
             }
         }
-        if (maze != null) {
+        if (maze != null && !maze.getState().equals(Maze.LevelState.DIED)) {
             components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
+        }
+    }
+
+    public void movePlayer(Direction direction) {
+        Point origin = components[VIEW_SIDE][VIEW_SIDE].getLocation();
+        int x = (int) origin.getX();
+        int y = (int) origin.getY();
+        ImageIcon image = getImage(direction);
+        int i = 0;
+        while (i < 25) {
+            Graphics g = transitionPanel.getGraphics().create(transitionPanel.getX(), transitionPanel.getY(), transitionPanel.getWidth(), transitionPanel.getHeight());
+            g.drawImage(image.getImage(), x, y, null);
+            switch (direction) {
+                case UP:
+                    y -= 2;
+                    break;
+                case DOWN:
+                    y += 2;
+                    break;
+                case LEFT:
+                    x -= 2;
+                    break;
+                case RIGHT:
+                    x += 2;
+                    break;
+            }
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            transitionPanel.repaint();
+            i++;
+        }
+    }
+
+    private ImageIcon getImage(Direction direction) {
+        switch (direction) {
+            case UP:
+                return makeImageIcon("data/playerUp2.png");
+            case DOWN:
+                return makeImageIcon("data/playerDown2.png");
+            case LEFT:
+                return makeImageIcon("data/playerLeft2.png");
+            case RIGHT:
+                return makeImageIcon("data/playerRight2.png");
+            default:
+                throw new IllegalArgumentException();
         }
     }
 
