@@ -59,9 +59,6 @@ public class Canvas extends JLayeredPane {
         add(transitionPanel, JLayeredPane.PALETTE_LAYER);
     }
 
-    /**
-     * Create the components for the canvas.
-     **/
     private void createComponents() {
         boardPanel.removeAll();
         Tile centre = maze.getChap().getLocation();
@@ -153,11 +150,6 @@ public class Canvas extends JLayeredPane {
         }
     }
 
-    /**
-     * Retrieve the image to use for animation of the player.
-     *
-     * @param direction the direction of the player
-     * @return image of player **/
     private ImageIcon getImage(Direction direction) {
         switch (direction) {
             case UP:
@@ -173,12 +165,6 @@ public class Canvas extends JLayeredPane {
         }
     }
 
-    /**
-     * Scale an image to the required size.
-     *
-     * @param baseImage the image to scale
-     * @return the scaled image
-     **/
     private static ImageIcon scaleImage(ImageIcon baseImage) {
         return new ImageIcon(baseImage.getImage().getScaledInstance(TILE_SIZE, TILE_SIZE, Image.SCALE_SMOOTH));
     }
