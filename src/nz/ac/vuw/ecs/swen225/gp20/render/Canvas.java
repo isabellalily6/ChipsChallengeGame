@@ -116,6 +116,10 @@ public class Canvas extends JLayeredPane {
         }
     }
 
+    /** Draws the player between moving tiles for smoother feel.
+     *
+     * @param direction the direction to move
+     * **/
     public void movePlayer(Direction direction) {
         Point origin = components[VIEW_SIDE][VIEW_SIDE].getLocation();
         int x = (int) origin.getX();
@@ -149,6 +153,11 @@ public class Canvas extends JLayeredPane {
         }
     }
 
+    /**
+     * Retrieve the image to use for animation of the player.
+     *
+     * @param direction the direction of the player
+     * @return image of player **/
     private ImageIcon getImage(Direction direction) {
         switch (direction) {
             case UP:
