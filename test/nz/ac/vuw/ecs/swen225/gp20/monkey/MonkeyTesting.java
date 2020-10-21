@@ -33,7 +33,7 @@ public class MonkeyTesting {
         directions.add(Direction.RIGHT);
 
         // get game elements
-        Main main = new Main(false); // start test game
+        Main main = new Main(false, 1); // start test game
         Maze maze = main.getMaze();
 
         int steps = 0;
@@ -64,7 +64,7 @@ public class MonkeyTesting {
         Random random = new Random(); // initialise random number generator
 
         // initialise game elements
-        Main main = new Main(true);
+        Main main = new Main(true, 1);
         Maze maze = main.getMaze();
         GUI gui = main.getGui();
 
@@ -149,7 +149,8 @@ public class MonkeyTesting {
                 && maze.getChap().backpackContains(((LockedDoor) tile).getLockColour()))) {
             return 1; // tile is valuable
         } else if (tile.isAccessible() && !(tile instanceof InfoField)) return 0; // tile is not valuable
-        return -1; // tile is not accessible
+        if (tile instanceof InfoField) return -1;
+        return -2;
     }
 
     /**
@@ -168,7 +169,7 @@ public class MonkeyTesting {
         directions.add(Direction.RIGHT);
 
         // get game elements
-        Main main = new Main(false); // start test game
+        Main main = new Main(false, 1); // start test game
         Maze maze = main.getMaze();
 
         int steps = 0;
@@ -193,10 +194,10 @@ public class MonkeyTesting {
 
                 // check for value of the tiles
                 int tileValue;
-                if ((tileValue = getValue(up, maze)) != -1) candidates.put(up, tileValue);
-                if ((tileValue = getValue(down, maze)) != -1) candidates.put(down, tileValue);
-                if ((tileValue = getValue(left, maze)) != -1) candidates.put(left, tileValue);
-                if ((tileValue = getValue(right, maze)) != -1) candidates.put(right, tileValue);
+                if ((tileValue = getValue(up, maze)) >= 0) candidates.put(up, tileValue);
+                if ((tileValue = getValue(down, maze)) >= 0) candidates.put(down, tileValue);
+                if ((tileValue = getValue(left, maze)) >= 0) candidates.put(left, tileValue);
+                if ((tileValue = getValue(right, maze)) >= 0) candidates.put(right, tileValue);
                 // wall tile is never added into the map as it is never a valuable move
 
 
@@ -240,7 +241,7 @@ public class MonkeyTesting {
         Random random = new Random(); // initialise random number generator
 
         // initialise game elements
-        Main main = new Main(true); // start test game
+        Main main = new Main(true, 1); // start test game
         Maze maze = main.getMaze(); // get the game maze
         GUI gui = main.getGui(); // get the game gui
 
@@ -281,10 +282,10 @@ public class MonkeyTesting {
 
                 // check for value of the tiles
                 int tileValue;
-                if ((tileValue = getValue(up, maze)) != -1) candidates.put(up, tileValue);
-                if ((tileValue = getValue(down, maze)) != -1) candidates.put(down, tileValue);
-                if ((tileValue = getValue(left, maze)) != -1) candidates.put(left, tileValue);
-                if ((tileValue = getValue(right, maze)) != -1) candidates.put(right, tileValue);
+                if ((tileValue = getValue(up, maze)) >= 0) candidates.put(up, tileValue);
+                if ((tileValue = getValue(down, maze)) >= 0) candidates.put(down, tileValue);
+                if ((tileValue = getValue(left, maze)) >= 0) candidates.put(left, tileValue);
+                if ((tileValue = getValue(right, maze)) >= 0) candidates.put(right, tileValue);
 
                 // move valuable candidates to an ArrayList
                 Tile candidate; // initialise final candidate
