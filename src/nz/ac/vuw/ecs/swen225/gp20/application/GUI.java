@@ -273,26 +273,8 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-  }
-
-  @Override
-  public void keyReleased(KeyEvent keyEvent) {
-    Direction direction = null;
-    Sound sound = null;
     if(!RecordAndPlay.getPlayingRecording()) {
-    if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-        // Move the chap up
-        direction = Direction.UP;
-      } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-        // Move Chap down
-        direction = Direction.DOWN;
-      } else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-        // Move chap right
-        direction = Direction.RIGHT;
-      } else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-        // Move chap left
-        direction = Direction.LEFT;
-      } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X) {
+      if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X) {
         //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
         // it will resume from the last unfinished level
         main.saveFile(true, false);
@@ -319,6 +301,29 @@ public class GUI extends JFrame implements KeyListener {
         //ESC - close the “game is paused” dialog and resume the game
         System.out.println("Close dialogue and Resume");
         main.playGame();
+      }
+    }
+
+    updateGui(false);
+  }
+
+  @Override
+  public void keyReleased(KeyEvent keyEvent) {
+    Direction direction = null;
+    Sound sound = null;
+    if(!RecordAndPlay.getPlayingRecording()) {
+    if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
+        // Move the chap up
+        direction = Direction.UP;
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
+        // Move Chap down
+        direction = Direction.DOWN;
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
+        // Move chap right
+        direction = Direction.RIGHT;
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
+        // Move chap left
+        direction = Direction.LEFT;
       }
     }
     if(direction!=null){
