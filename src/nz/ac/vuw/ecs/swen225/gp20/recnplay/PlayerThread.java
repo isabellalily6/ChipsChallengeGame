@@ -89,7 +89,6 @@ class PlayerThread extends Thread {
                 updateTime(timeAtPause.get());
                 timeLeft.set(timeAtPause.get());
                 System.out.println("Resuming at move: " + moveIndexAtPause + " at time: " + timeAtPause);
-                main.playGame();
             } finally {
                 lock.unlock();
             }
