@@ -134,50 +134,40 @@ class PlayerThread extends Thread {
                         .collect(Collectors.toList());
 
                 for (var move : copiedList) {
-                    if (lock.tryLock()) {
-                        try {
-                            System.out.println("Processing: " + move.toString());
+                    System.out.println("Processing: " + move.toString());
 
-                            playMove(move);
+                    playMove(move);
 
-                            movesToPlay.remove(move);
+                    movesToPlay.remove(move);
 
-                            prevMoveIndex.set(moveIndex.get());
-                            moveIndex.set(move.getMoveIndex() + 1);
+                    prevMoveIndex.set(moveIndex.get());
+                    moveIndex.set(move.getMoveIndex() + 1);
 
-                            //used in case the pause has happened while processing this move
-                            lastMoveTime.set(move.getTimeLeft());
-                        } finally {
-                            lock.unlock();
-                        }
+                    //used in case the pause has happened while processing this move
+                    lastMoveTime.set(move.getTimeLeft());
 
-                        try {
+                    try {
                         /*
                           This is not busy waiting, even though this is in a loop
                           This is what is simulating the timer, so that the moves happen in real time, not all at once
                          */
-                            Thread.sleep(sleepTime / copiedList.size());
-                        } catch (InterruptedException e) {
-                            if (Thread.holdsLock(RecordAndPlay.lock)) {
-                                RecordAndPlay.lock.unlock();
-                            }
-                            System.out.println("Exception thrown");
-                            main.playGame();
-                            main.startGame(1);
-                            return;
+                        Thread.sleep(sleepTime / copiedList.size());
+                    } catch (InterruptedException e) {
+                        if (Thread.holdsLock(RecordAndPlay.lock)) {
+                            RecordAndPlay.lock.unlock();
                         }
-
-                        if (main.isLevelWon() && levelChange) {
-                            incrementLevelToPlay();
-                        } else if (main.isLevelWon()) {
-                            main.playGame();
-                            main.startGame(1);
-                            return;
-                        }
-
-                    } else {
-                        break;
+                        return;
                     }
+
+                    if (main.isLevelWon() && levelChange) {
+                        incrementLevelToPlay();
+                    } else if (main.isLevelWon()) {
+                        main.playGame();
+                        main.startGame(1);
+                        main.setLevel(1);
+                        return;
+                    }
+
                 }
 
                 if (copiedList.isEmpty()) {
@@ -192,9 +182,6 @@ class PlayerThread extends Thread {
                         if (Thread.holdsLock(RecordAndPlay.lock)) {
                             RecordAndPlay.lock.unlock();
                         }
-                        System.out.println("Exception thrown");
-                        main.playGame();
-                        main.startGame(1);
                         return;
                     }
                 }
@@ -207,33 +194,33 @@ class PlayerThread extends Thread {
             moveIndex.set(-1);
 
             main.pauseGame(false);
+            updateTime(movesToPlay.get(0).getTimeLeft());
+            main.getGui().updateGui(true);
             while (RecordAndPlay.playingRecording.get()) {
                 if (prevMoveIndex.get() != moveIndex.get()) {
-                    if (lock.tryLock()) {
-                        try {
-                            //Moved forwards
-                            if (prevMoveIndex.get() < moveIndex.get()) {
-                                var move = movesToPlay.get(moveIndex.get());
-                                playMove(move);
-                                prevMoveIndex.set(moveIndex.get());
-                                updateTime(move.getTimeLeft());
-                                if (main.isLevelWon() && levelChange) {
-                                    incrementLevelToPlay();
-                                }
-                            } else {
-                                var move = movesToPlay.get(moveIndex.get() + 1);
-                                var inverseMove = move.getInverse();
-                                playMove(inverseMove);
+                    //Moved forwards
+                    if (prevMoveIndex.get() < moveIndex.get()) {
+                        var move = movesToPlay.get(moveIndex.get());
 
-                                //make sure chap is facing the right direction
-                                main.getMaze().getChap().setDir(move.getDirection());
-                                main.getGui().getCanvas().refreshComponents();
-                                prevMoveIndex.set(moveIndex.get());
-                                updateTime(move.getTimeLeft());
-                            }
-                        } finally {
-                            lock.unlock();
+                        playMove(move);
+                        prevMoveIndex.set(moveIndex.get());
+
+                        updateTime(move.getTimeLeft());
+
+                        if (main.isLevelWon() && levelChange) {
+                            incrementLevelToPlay();
                         }
+                    } else {
+                        var move = movesToPlay.get(moveIndex.get() + 1);
+
+                        var inverseMove = move.getInverse();
+                        playMove(inverseMove);
+
+                        //make sure chap is facing the right direction
+                        main.getGui().setChapDirection(move.getDirection());
+                        main.getGui().updateGui(true);
+                        prevMoveIndex.set(moveIndex.get());
+                        updateTime(move.getTimeLeft());
                     }
                 }
             }
@@ -244,8 +231,6 @@ class PlayerThread extends Thread {
             return;
         }
         System.out.println("Recording is over, no moves left");
-        main.playGame();
-        main.startGame(1);
     }
 
     private void incrementLevelToPlay() {

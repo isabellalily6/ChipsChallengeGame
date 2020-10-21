@@ -55,7 +55,10 @@ public class ReplayOptionDialog extends JDialog {
     closeButton.setFont(new Font("Verdana", Font.PLAIN, 20));
     closeButton.addActionListener(method -> {
       RecordAndPlay.endPlayingRecording();
+      main.getTimer().cancel();
+      main.getTimer().purge();
       main.startGame(1);
+      main.setLevel(1);
       main.playGame();
       dispose();
     });

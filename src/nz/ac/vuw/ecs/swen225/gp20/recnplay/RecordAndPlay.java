@@ -179,11 +179,10 @@ public class RecordAndPlay {
 
         if (playRecordingThread.isRealThread()) {
             playRecordingThread.interrupt();
+            playRecordingThread.getMain().playGame();
+            playRecordingThread.getMain().startGame(1);
+            lock = new ReentrantLock();
         }
-
-        lock = new ReentrantLock();
-        playRecordingThread.getMain().playGame();
-        playRecordingThread.getMain().startGame(1);
     }
 
     /**
