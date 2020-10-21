@@ -348,6 +348,7 @@ public class LevelLoader {
         	Queue<Direction> moves = new LinkedList<Direction>();
         	for(JsonValue mValue : cobraObject.getJsonArray("moves")) {
         		JsonObject moveObject = mValue.asJsonObject();
+        		
         		String direction = moveObject.getString("direction");
         		moves.add(Direction.valueOf(direction));
         	}
