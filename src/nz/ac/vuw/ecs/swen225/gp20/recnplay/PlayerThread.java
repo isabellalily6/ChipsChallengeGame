@@ -10,6 +10,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 
+/**
+ * A Thread which plays back a recorded game
+ *
+ * @author Callum McKay 300496765
+ */
 class PlayerThread extends Thread {
     private final Main main;
     private final Lock lock = new ReentrantLock();
@@ -84,7 +89,8 @@ class PlayerThread extends Thread {
     }
 
     /**
-     *
+     * This runs the PlayerThread. This will run through the moves, and play them on the maze.
+     * This runs in either auto play or step by step mode
      */
     @Override
     public void run() {

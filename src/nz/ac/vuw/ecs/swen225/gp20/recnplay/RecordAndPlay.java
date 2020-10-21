@@ -30,7 +30,7 @@ import static nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser.saveToFile;
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
  * It can also start the playback of a recording, assuming there is one saved to play
  *
- * @author callum mckay
+ * @author Callum McKay 300496765
  */
 public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();

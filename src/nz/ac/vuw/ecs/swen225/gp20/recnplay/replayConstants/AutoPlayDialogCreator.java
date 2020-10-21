@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Options for auto play, this version only has an exit button
+ *
+ * @author Callum McKay 300496765
  */
 public class AutoPlayDialogCreator implements ReplayDialogCreator {
 

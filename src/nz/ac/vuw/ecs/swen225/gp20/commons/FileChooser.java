@@ -14,7 +14,7 @@ import java.nio.file.Paths;
  * This is a common file chooser for the choosing of JSON files
  * This can be used to choose files for either recording, or to play a saved game
  *
- * @author callum mckay 300496765
+ * @author Callum McKay 300496765
  */
 public class FileChooser {
 
@@ -31,16 +31,25 @@ public class FileChooser {
         if (result == JFileChooser.APPROVE_OPTION) {
             var writer = new StringWriter();
             Json.createWriter(writer).write(jsonArray);
+            BufferedWriter bufferedWriter = null;
             try {
                 var fileName = fileChooser.getSelectedFile().getName();
                 if (!fileName.endsWith(".json")) {
                     fileName += ".json";
                 }
-                var bw = new BufferedWriter(new FileWriter(pathString + File.separator + fileName, StandardCharsets.UTF_8));
-                bw.write(writer.toString());
-                bw.close();
+                bufferedWriter = new BufferedWriter(new FileWriter(pathString + File.separator + fileName, StandardCharsets.UTF_8));
+                bufferedWriter.write(writer.toString());
             } catch (IOException e) {
                 throw new Error("Game was not able to be saved due to an exception");
+            } finally {
+                if (bufferedWriter != null) {
+                    try {
+                        bufferedWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
             }
         }
     }

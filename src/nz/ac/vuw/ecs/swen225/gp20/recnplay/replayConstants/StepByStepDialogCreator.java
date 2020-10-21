@@ -11,8 +11,11 @@ import static nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker.st
 
 /**
  * Creates the step by step dialog for step by step playback
+ *
+ * @author Callum McKay 300496765
  */
 public class StepByStepDialogCreator implements ReplayDialogCreator {
+
     @Override
     public ReplayOptionDialog createDialog(Main m) {
         var buttons = new ArrayList<JButton>();
