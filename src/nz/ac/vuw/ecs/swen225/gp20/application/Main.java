@@ -68,8 +68,9 @@ public class Main {
    * Create a new instance of the game which doesnt start a timer
    * or create the GUI for testing purposes
    **/
-  public Main(Boolean monkeyTest) {
+  public Main(Boolean monkeyTest, int level) {
     // create the maze and the gui for the game
+    this.level = level;
     maze = new Maze(level);
     if (monkeyTest) {
       gui = new GUI(this, maze);
