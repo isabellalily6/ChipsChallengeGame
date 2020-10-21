@@ -110,8 +110,12 @@ public class Main {
         gui.setTimer(timeLeft);
         if(maze.isLevelOver()){
           if(maze.getState().equals(Maze.LevelState.WON)) {
+            if(level==2){
+              RecordAndPlay.saveRecording();
+            }
             gui.getGameWon().setVisible(true);
           }else{
+            RecordAndPlay.saveRecording();
             gui.getGameLost().setVisible(true);
           }
           timeLeft = maxTime;

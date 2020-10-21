@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
+
 import javax.swing.*;
 
 /**
@@ -36,7 +38,10 @@ public class MenuBar extends JMenuBar {
 
     // create and add the quit button
     JMenuItem quit = new JMenuItem("Quit");
-    quit.addActionListener(method -> System.exit(0));
+    quit.addActionListener(method -> {
+      RecordAndPlay.saveRecording();
+      System.exit(0);
+    });
     file.add(quit);
 
     // Create the game menu
