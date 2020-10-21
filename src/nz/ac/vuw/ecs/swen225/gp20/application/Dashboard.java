@@ -71,7 +71,7 @@ public class Dashboard extends JPanel {
     level.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // create the level number label
-    levelNum = new JLabel("1", SwingConstants.CENTER);
+    levelNum = new JLabel(maze.getLevel() + "", SwingConstants.CENTER);
     levelNum.setFont(new Font("Verdana", Font.PLAIN, 18));
     levelNum.setBorder(border);
     levelNum.setBackground(Color.lightGray);
