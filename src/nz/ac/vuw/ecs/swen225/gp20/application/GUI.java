@@ -277,63 +277,62 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent keyEvent) {
+    Direction direction = null;
     Sound sound = null;
-    if(RecordAndPlay.getPlayingRecording()){
+    if(!RecordAndPlay.getPlayingRecording()) {
+    if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
+        // Move the chap up
+        direction = Direction.UP;
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
+        // Move Chap down
+        direction = Direction.DOWN;
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
+        // Move chap right
+        direction = Direction.RIGHT;
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
+        // Move chap left
+        direction = Direction.LEFT;
+      } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X) {
+        //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
+        // it will resume from the last unfinished level
+        main.saveFile(true, false);
+        main.exitGame();
+      } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S) {
+        //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
+        main.saveFile(false, false);
+        main.exitGame();
+      } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R) {
+        //CTRL-R  - resume a saved game
+        main.loadFile(false);
+      } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_P) {
+        //CTRL-P  - start a new game at the last unfinished level
+        main.startGame(main.getLevel());
+      } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1) {
+        //CTRL-1 - start a new game at level 1
+        main.startGame(1);
+        System.out.println("Start new game a level 1");
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE) {
+        //SPACE - pause the game and display a “game is paused” dialog
+        System.out.println("Pause and display");
+        main.pauseGame(true);
+      } else if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        //ESC - close the “game is paused” dialog and resume the game
+        System.out.println("Close dialogue and Resume");
+        main.playGame();
+      }
+    }
+    if(direction!=null){
+      sound = maze.moveChap(direction);
+      RecordAndPlay.addMove(new RecordedMove(direction, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(),
+              maze.getLevel()));
+    }
+    if (sound != null) {
+      canvas.movePlayer(direction);
+      SoundEffect.play(sound);
+    };
 
-    }
-    else if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-      // Move the chap up
-      canvas.movePlayer(Direction.UP);
-      sound = maze.moveChap(Direction.UP);
-      RecordAndPlay.addMove(new RecordedMove(Direction.UP, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
-    } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-      // Move Chap down
-      canvas.movePlayer(Direction.DOWN);
-      sound = maze.moveChap(Direction.DOWN);
-      RecordAndPlay.addMove(new RecordedMove(Direction.DOWN, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
-    }else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-      // Move chap right
-      canvas.movePlayer(Direction.RIGHT);
-      sound = maze.moveChap(Direction.RIGHT);
-      RecordAndPlay.addMove(new RecordedMove(Direction.RIGHT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
-    }else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-      // Move chap left
-      canvas.movePlayer(Direction.LEFT);
-      sound = maze.moveChap(Direction.LEFT);
-      RecordAndPlay.addMove(new RecordedMove(Direction.LEFT, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(), maze.getLevel()));
-    }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X){
-      //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
-      // it will resume from the last unfinished level
-      main.saveFile(true, false);
-      main.exitGame();
-    }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S){
-      //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
-      main.saveFile(false, false);
-      main.exitGame();
-    }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R){
-      //CTRL-R  - resume a saved game
-      main.loadFile(false);
-    }else if(keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_P){
-      //CTRL-P  - start a new game at the last unfinished level
-      main.startGame(main.getLevel());
-    }else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1) {
-      //CTRL-1 - start a new game at level 1
-      main.startGame(1);
-      System.out.println("Start new game a level 1");
-    } else if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE) {
-      //SPACE - pause the game and display a “game is paused” dialog
-      System.out.println("Pause and display");
-      main.pauseGame(true);
-    } else if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
-      //ESC - close the “game is paused” dialog and resume the game
-      System.out.println("Close dialogue and Resume");
-      main.playGame();
-    }
-    if (sound != null) SoundEffect.play(sound);
-    dashboard.updateDashboard();
-    canvas.refreshComponents();
-    canvas.repaint();
-    mainPanel.repaint();
+    updateGui(false);
+
     if(maze.getChap().getLocation() instanceof InfoField){
       InfoField location = (InfoField) maze.getChap().getLocation();
       String info = location.getInfo();
