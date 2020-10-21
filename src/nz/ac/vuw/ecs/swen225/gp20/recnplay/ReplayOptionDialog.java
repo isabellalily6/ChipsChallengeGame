@@ -21,11 +21,17 @@ public class ReplayOptionDialog extends JDialog {
    * @param slider     slider for choosing speed, null if you dont want this option
    */
   public ReplayOptionDialog(Main main, String sliderText, ArrayList<JButton> buttons, JSlider slider) {
-    // initialize the settings for the dialogue
+    //dialog settings
     this.setModal(true);
     this.setFocusable(true);
     this.setLocationRelativeTo(this);
-    this.setSize(500, 300);
+
+    if (buttons.isEmpty()) {
+      this.setSize(500, 150);
+    } else {
+      this.setSize(500, 300);
+    }
+
     this.setLayout(new GridLayout(5, 1));
     this.setBackground(Color.lightGray);
 

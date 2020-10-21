@@ -198,29 +198,34 @@ class PlayerThread extends Thread {
             main.getGui().updateGui(true);
             while (RecordAndPlay.playingRecording.get()) {
                 if (prevMoveIndex.get() != moveIndex.get()) {
-                    //Moved forwards
-                    if (prevMoveIndex.get() < moveIndex.get()) {
-                        var move = movesToPlay.get(moveIndex.get());
+                    lock.lock();
+                    try {
+                        //Moved forwards
+                        if (prevMoveIndex.get() < moveIndex.get()) {
+                            var move = movesToPlay.get(moveIndex.get());
 
-                        playMove(move);
-                        prevMoveIndex.set(moveIndex.get());
+                            playMove(move);
+                            prevMoveIndex.set(moveIndex.get());
 
-                        updateTime(move.getTimeLeft());
+                            updateTime(move.getTimeLeft());
 
-                        if (main.isLevelWon() && levelChange) {
-                            incrementLevelToPlay();
+                            if (main.isLevelWon() && levelChange) {
+                                incrementLevelToPlay();
+                            }
+                        } else {
+                            var move = movesToPlay.get(moveIndex.get() + 1);
+
+                            var inverseMove = move.getInverse();
+                            playMove(inverseMove);
+
+                            //make sure chap is facing the right direction
+                            main.getGui().setChapDirection(move.getDirection());
+                            main.getGui().updateGui(true);
+                            prevMoveIndex.set(moveIndex.get());
+                            updateTime(move.getTimeLeft());
                         }
-                    } else {
-                        var move = movesToPlay.get(moveIndex.get() + 1);
-
-                        var inverseMove = move.getInverse();
-                        playMove(inverseMove);
-
-                        //make sure chap is facing the right direction
-                        main.getGui().setChapDirection(move.getDirection());
-                        main.getGui().updateGui(true);
-                        prevMoveIndex.set(moveIndex.get());
-                        updateTime(move.getTimeLeft());
+                    } finally {
+                        lock.unlock();
                     }
                 }
             }
