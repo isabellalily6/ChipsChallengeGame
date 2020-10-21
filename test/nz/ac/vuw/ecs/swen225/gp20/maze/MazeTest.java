@@ -611,6 +611,16 @@ public class MazeTest {
         assertThrows(IllegalArgumentException.class, () -> maze.moveChap(Direction.LEFT));
     }
 
+    @Test
+    public void level1LoadsFromFileWithoutException() {
+        new Maze(1);
+    }
+
+    @Test
+    public void level2LoadsFromFileWithoutException() {
+        new Maze(2);
+    }
+
 
     static class Location {
         private final int x;
