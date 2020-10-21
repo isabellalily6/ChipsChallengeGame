@@ -47,6 +47,7 @@ public class Maze {
         this.totalTreasures = treasuresLeft = totalTreasures;
         chap = new Player(tiles[tiles.length / 2][tiles[0].length / 2]);
         this.state = LevelState.RUNNING;
+        this.level = 1;
     }
 
     /**
@@ -67,13 +68,9 @@ public class Maze {
             this.cobras = cobras;
             setCobras();
         }
+        if (cobras != null && blocks != null) this.level = 2;
     }
 
-    /**
-     * @param chap           the protagonist
-     * @param tiles          the tiles that make up the maze
-     * @param totalTreasures the total treasures that are in this level
-     */
     private Maze(Tile[][] tiles, int totalTreasures, Player chap) {
         checkArgument(tiles[0].length > 0, "Tiles cannot be empty");
         this.tiles = new Tiles(tiles);
