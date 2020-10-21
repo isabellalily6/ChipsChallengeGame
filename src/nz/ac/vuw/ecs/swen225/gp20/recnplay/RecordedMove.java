@@ -3,9 +3,9 @@ package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 
 /**
- * A internal class which can represent a move, simply maps an Actor to a Direction
+ * A representation a move for recording/playback purposes, maps the index of this move with various things.
  *
- * @author callum mckay
+ * @author Callum McKay 300496765
  */
 public class RecordedMove implements Comparable<RecordedMove> {
     private final Direction direction;
@@ -18,7 +18,6 @@ public class RecordedMove implements Comparable<RecordedMove> {
      * @param timeLeft  time left as this move was made
      * @param moveIndex index this move was made on
      * @param level     the level this move was made on
-     * @author callum mckay
      */
     public RecordedMove(Direction direction, int timeLeft, int moveIndex, int level) {
         this.direction = direction;
@@ -37,21 +36,6 @@ public class RecordedMove implements Comparable<RecordedMove> {
         return new RecordedMove(newDir, timeLeft, moveIndex, level);
     }
 
-    private Direction getOppositeDirection(Direction direction) {
-        switch (direction) {
-            case UP:
-                return Direction.DOWN;
-            case DOWN:
-                return Direction.UP;
-            case LEFT:
-                return Direction.RIGHT;
-            case RIGHT:
-                return Direction.LEFT;
-            default:
-                throw new IllegalStateException("Unexpected value: " + direction);
-        }
-    }
-
     @Override
     public String toString() {
         return "RecordedMove{" +
@@ -63,7 +47,6 @@ public class RecordedMove implements Comparable<RecordedMove> {
 
     /**
      * @return the direction of this recorded move
-     * @author callum mckay
      */
     public Direction getDirection() {
         return direction;
@@ -117,5 +100,20 @@ public class RecordedMove implements Comparable<RecordedMove> {
      */
     public int getLevel() {
         return level;
+    }
+
+    private Direction getOppositeDirection(Direction direction) {
+        switch (direction) {
+            case UP:
+                return Direction.DOWN;
+            case DOWN:
+                return Direction.UP;
+            case LEFT:
+                return Direction.RIGHT;
+            case RIGHT:
+                return Direction.LEFT;
+            default:
+                throw new IllegalStateException("Unexpected value: " + direction);
+        }
     }
 }

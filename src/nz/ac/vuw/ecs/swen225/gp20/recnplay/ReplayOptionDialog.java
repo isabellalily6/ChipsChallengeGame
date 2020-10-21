@@ -9,7 +9,9 @@ import java.util.ArrayList;
 
 /**
  * Create a Dialogue which displays text and then two buttons
- **/
+ *
+ * @author Callum McKay 300496765
+ */
 public class ReplayOptionDialog extends JDialog {
 
   /**

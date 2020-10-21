@@ -8,6 +8,8 @@ import java.awt.*;
 
 /**
  * Gives a button proper formatting
+ *
+ * @author Callum McKay 300496765
  */
 public class ButtonMaker {
 

@@ -11,6 +11,8 @@ import static nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker.st
 
 /**
  * Button options for replaying a game, ie: auto play, speed options, and step by step
+ *
+ * @author Callum McKay 300496765
  */
 public class ReplayOptionsCreator implements ReplayDialogCreator {
 

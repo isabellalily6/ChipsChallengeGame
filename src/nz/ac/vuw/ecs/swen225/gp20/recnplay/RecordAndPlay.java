@@ -28,19 +28,22 @@ import static nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser.saveToFile;
 
 /**
  * This is a class with static methods for starting a recording, and loading/saving a recording to a file in JSON format
+ * It can also start the playback of a recording, assuming there is one saved to play
  *
- * @author callum mckay
+ * @author Callum McKay 300496765
  */
 public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
     private static GUI parentComponent;
+    private static PlayerThread playRecordingThread = new PlayerThread(null, null, 0, false);
+    private static boolean levelChange = false;
+    private static ReplayOptionDialog dialog;
+
     /**
      * Stores how many level changes have happened in this loaded recording
      */
     static boolean loadedLevelChange = false;
-    private static PlayerThread playRecordingThread = new PlayerThread(null, null, 0, false);
-    private static boolean levelChange = false;
 
     /**
      * Moves which have been loaded in
@@ -71,7 +74,6 @@ public class RecordAndPlay {
      * What mode are we going to replay in? Auto or step by step etc
      */
     static ReplayModes replayMode;
-    private static ReplayOptionDialog dialog;
 
     /**
      * @return the size of the recorded moves list
@@ -82,8 +84,6 @@ public class RecordAndPlay {
 
     /**
      * saves a recorded game in Json format to a file for replaying later
-     *
-     * @author callum mckay
      */
     public static void saveRecording() {
         if (!isRecording) {
@@ -104,7 +104,6 @@ public class RecordAndPlay {
      * Loads a recording from the file
      *
      * @param m is the main class, this is used to access the player, and the gui which is the parent to the filechooser
-     * @author callum mckay
      */
     public static void loadRecording(Main m) {
         File jsonFile = getJsonFileToLoad(m.getGui(), "recordings");
@@ -137,7 +136,6 @@ public class RecordAndPlay {
     /**
      * @param move the move to record
      * @return true if the move was recorded, false if not
-     * @author callum mckay
      */
     public static boolean addMove(RecordedMove move) {
         try {
@@ -196,7 +194,6 @@ public class RecordAndPlay {
      * Starts recording this game
      *
      * @param m current maze that we are recording
-     * @author callum mckay
      */
     public static void startRecording(Main m) {
         isRecording = true;
@@ -215,6 +212,9 @@ public class RecordAndPlay {
 
     /**
      * Steps the recording backwards by 1 step
+     * NOTE: this method may lead to unwanted results when playing a recording
+     * Example: If you move forward, picking up a key, when you step backwards, the key is not put back on the board.
+     * This goes for lava, blocks, locked doors, cobras, etc.
      */
     public static void stepBackward() {
         if (playRecordingThread != null && playRecordingThread.isAlive() && !playRecordingThread.isInterrupted()) {
@@ -224,7 +224,6 @@ public class RecordAndPlay {
 
     /**
      * @param m is the main which will be playing this recording
-     * @author callum mckay
      */
     public static void playRecording(Main m) {
         if (m == null) {
