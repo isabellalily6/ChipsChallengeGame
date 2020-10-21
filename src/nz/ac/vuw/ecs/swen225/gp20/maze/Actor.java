@@ -26,7 +26,7 @@ public abstract class Actor {
         //precondition- actor has a name
         checkArgument(name.length() > 0);
         this.location = location;
-        location.onEntry(this);
+        location.onEntry();
         this.dir = Direction.UP;
         this.name = name;
     }
@@ -44,7 +44,7 @@ public abstract class Actor {
      */
     public void setLocation(Tile location) {
         this.location = location;
-        location.onEntry(this);
+        location.onEntry();
     }
 
     /**
@@ -66,12 +66,5 @@ public abstract class Actor {
      */
     public String getImageURl() {
         return "data/" + name + dir.getName() + ".png";
-    }
-
-    /**
-     * @return name of this actor (i.e. "Player","Cobra")
-     */
-    public String getName() {
-        return name;
     }
 }

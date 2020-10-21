@@ -4,7 +4,6 @@ import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.locks.ReentrantLock;
@@ -26,9 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Benjamin Doornbos
  */
 public class Maze {
-    private final int cols;
-    private final int rows;
-    private final Tile[][] tiles;
+    private final Tiles tiles;
     private final int totalTreasures;
     private final Player chap;
     private List<Cobra> cobras;
@@ -39,23 +36,22 @@ public class Maze {
     private static final ReentrantLock moveLock = new ReentrantLock();
 
     /**
-     * ------TEST CONSTRUCTOR---------
+     * Creates a maze from specified tile array
      *
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
      */
     public Maze(Tile[][] tiles, int totalTreasures) {
-        this.cols = tiles.length;
-        this.rows = tiles[0].length;
-        this.tiles = copy2dTileArray(tiles);
+        this.tiles = new Tiles(tiles);
         checkArgument(totalTreasures >= 0, "amount of treasures must not be negative");
         this.totalTreasures = treasuresLeft = totalTreasures;
-        chap = new Player(tiles[cols / 2][rows / 2]);
+        chap = new Player(tiles[tiles.length / 2][tiles[0].length / 2]);
         this.state = LevelState.RUNNING;
+        this.level = 1;
     }
 
     /**
-     * ------TEST CONSTRUCTOR---------
+     * (For level 2) Creates a maze from tiles, blocks and cobras provided
      *
      * @param tiles          the tiles that make up the maze
      * @param totalTreasures the total treasures that are in this level
@@ -72,22 +68,20 @@ public class Maze {
             this.cobras = cobras;
             setCobras();
         }
+        if (cobras != null && blocks != null) this.level = 2;
     }
 
-    /**
-     * @param chap           the protagonist
-     * @param tiles          the tiles that make up the maze
-     * @param totalTreasures the total treasures that are in this level
-     */
-    public Maze(Tile[][] tiles, int totalTreasures, Player chap) {
-        this.cols = tiles.length;
-        this.rows = tiles[0].length;
-        this.tiles = copy2dTileArray(tiles);
+    private Maze(Tile[][] tiles, int totalTreasures, Player chap) {
+        checkArgument(tiles[0].length > 0, "Tiles cannot be empty");
+        this.tiles = new Tiles(tiles);
         checkArgument(totalTreasures >= 0, "amount of treasures must not be negative");
         this.totalTreasures = treasuresLeft = totalTreasures;
         this.chap = chap;
         // this is so getLocation will point to the right object
-        this.chap.setLocation(this.tiles[chap.getLocation().getCol()][chap.getLocation().getRow()]);
+        checkArgument(chap.getLocation().getCol() > 0 && chap.getLocation().getRow() > 0 &&
+                        chap.getLocation().getRow() < tiles[0].length && chap.getLocation().getCol() < tiles.length,
+                "Chap's location is not valid!");
+        this.chap.setLocation(this.tiles.tileArray[chap.getLocation().getCol()][chap.getLocation().getRow()]);
         this.state = LevelState.RUNNING;
     }
 
@@ -99,6 +93,7 @@ public class Maze {
      */
     public Maze(int level) {
         this(LevelLoader.load(level).getMap(), LevelLoader.load(level).getTreasures(), LevelLoader.load(level).getChap());
+        checkArgument(level == 1 || level == 2, "Level has to be 1 or 2");
         this.level = level;
         if (level == 2) {
             this.blocks = LevelLoader.load(level).getBlocks();
@@ -110,14 +105,14 @@ public class Maze {
 
     private void setBlocks() {
         for (Block b : blocks) {
-            b.setLocation(tiles[b.getCol()][b.getRow()]);
+            b.setLocation(tiles.tileArray[b.getCol()][b.getRow()]);
             b.getLocation().setHasBlock(true);
         }
     }
 
     private void setCobras() {
         for (Cobra c : cobras) {
-            c.setLocation(tiles[c.getLocation().getCol()][c.getLocation().getRow()]);
+            c.setLocation(tiles.tileArray[c.getLocation().getCol()][c.getLocation().getRow()]);
         }
     }
 
@@ -147,32 +142,6 @@ public class Maze {
         }
     }
 
-    private Tile getTileInDirection(Direction dir, Tile loc) {
-        Tile newLoc = null;
-        switch (dir) {
-            case UP:
-                checkArgument(loc.getRow() > 0, "Cannot move any higher!");
-                newLoc = tiles[loc.getCol()][loc.getRow() - 1];
-                break;
-            case DOWN:
-                checkArgument(loc.getRow() < rows - 1, "Cannot move any lower!");
-
-                newLoc = tiles[loc.getCol()][loc.getRow() + 1];
-                break;
-            case LEFT:
-                checkArgument(loc.getCol() > 0, "Cannot move any further left!");
-
-                newLoc = tiles[loc.getCol() - 1][loc.getRow()];
-                break;
-            case RIGHT:
-                checkArgument(loc.getCol() < cols - 1, "Cannot move any further right!");
-
-                newLoc = tiles[loc.getCol() + 1][loc.getRow()];
-                break;
-        }
-        return newLoc;
-    }
-
     /**
      * Moves the given actor one square in the given direction
      *
@@ -182,7 +151,7 @@ public class Maze {
      */
     public Sound moveActor(Actor a, Direction dir) {
         checkNotNull(a);
-        Tile newLoc = getTileInDirection(dir, a.getLocation());
+        Tile newLoc = tiles.getTileInDirection(dir, a.getLocation());
         checkNotNull(newLoc);
 
         a.setDir(dir);
@@ -206,7 +175,7 @@ public class Maze {
                 sound = interactWithTile(newLoc);
                 if (sound == null) return null;
                 // this tile may have been updated in the 2d array so we need to reset the newLoc pointer
-                newLoc = tiles[newLoc.getCol()][newLoc.getRow()];
+                newLoc = tiles.tileArray[newLoc.getCol()][newLoc.getRow()];
             }
         } else {
             if (!newLoc.isAccessible()) return null;
@@ -218,18 +187,22 @@ public class Maze {
 
         //if a sound has already been determined, play it. Else, determine the sound
         if (sound != null) return sound;
-        return playSound(newLoc);
+        sound = playSound(newLoc);
+        checkNotNull(sound);
+        return sound;
     }
 
     private Sound interactWithTile(Tile loc) {
+        checkNotNull(loc);
         if (loc instanceof Treasure) {
             chap.incrementTreasures();
             treasuresLeft--;
-            if (treasuresLeft == 0) flipExitLock();
+            if (treasuresLeft == 0) tiles.flipExitLock();
             assert (treasuresLeft + chap.getTreasuresCollected() == totalTreasures);
         } else if (loc instanceof Key) {
             var k = (Key) loc;
             chap.addToBackPack(k.getColour());
+            assert (chap.getBackpack().size() < 4);
         } else if (loc instanceof LockedDoor) {
             var ld = (LockedDoor) loc;
             if (!chap.backpackContains(ld.getLockColour())) return null;
@@ -237,9 +210,10 @@ public class Maze {
             state = LevelState.DIED;
             return Sound.HIT_BY_MOB;
         }
+
         if (loc.isFreeOnEntry()) {
             Sound sound = playSound(loc);
-            setFree(loc);
+            tiles.setFree(loc);
             return sound;
         }
         return playSound(loc);
@@ -253,25 +227,12 @@ public class Maze {
         else return Sound.STEP;
     }
 
-
-    private void setFree(Tile loc) {
-        tiles[loc.getCol()][loc.getRow()] = new Free(loc.getCol(), loc.getRow());
-    }
-
-    private void flipExitLock() {
-        for (int x = 0; x < cols; x++) {
-            for (int y = 0; y < rows; y++) {
-                if (tiles[x][y] instanceof ExitLock) setFree(tiles[x][y]);
-            }
-        }
-    }
-
     private boolean moveBlock(Tile loc, Direction dir) {
         Optional<Block> opt = blocks.stream().filter(b -> b.getLocation().equals(loc)).findFirst();
         if (opt.isEmpty()) throw new IllegalArgumentException("No block at this location");
         Block b = opt.get();
 
-        Tile newLoc = getTileInDirection(dir, loc);
+        Tile newLoc = tiles.getTileInDirection(dir, loc);
 
         checkNotNull(newLoc);
 
@@ -279,21 +240,13 @@ public class Maze {
             b.getLocation().setHasBlock(false);
             if (newLoc instanceof Lava) {
                 blocks.remove(b);
-                setFree(newLoc);
+                tiles.setFree(newLoc);
             } else {
                 b.setLocation(newLoc);
                 b.getLocation().setHasBlock(true);
             }
         } else return false;
         return true;
-    }
-
-    private Tile[][] copy2dTileArray(Tile[][] toCopy) {
-        var toRet = new Tile[toCopy.length][];
-        for (int i = 0; i < toCopy.length; i++) {
-            toRet[i] = Arrays.copyOf(toCopy[i], toCopy[i].length);
-        }
-        return toRet;
     }
 
     /**
@@ -314,7 +267,7 @@ public class Maze {
      * @return Shallow copy of 2d array of Tiles that represents the maze
      */
     public Tile[][] getTiles() {
-        return copy2dTileArray(tiles);
+        return tiles.getTileArray();
     }
 
     /**
