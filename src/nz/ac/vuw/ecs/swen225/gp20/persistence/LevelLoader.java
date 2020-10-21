@@ -14,10 +14,9 @@ import java.util.Queue;
 public class LevelLoader {
 	
 	/**
-	 * Reads a JSON file describing the level and creates a new Level object
-	 * TODO: Don't hard code height and width
+	 * Reads a JSON file describing the level map and creates a new Level object
 	 * 
-	 * @param levelNumber
+	 * @param levelNumber, which level it is
 	 * @return Level
 	 */
 	public static Level load(int levelNumber) {
@@ -39,7 +38,6 @@ public class LevelLoader {
 		Player chap = null;
 		ArrayList<Block> blocks = new ArrayList<Block>();
 		ArrayList<Cobra> cobras = new ArrayList<Cobra>();
-		ArrayList<Queue<Direction>> cobraMoves = new ArrayList<>();
 
 		try {
 
@@ -74,7 +72,54 @@ public class LevelLoader {
 					}
 				}
 				
+				if(tileType.equals("Cobra")) {
+					Tile cobraTile = new Free(col, row);
+					
+					Queue<Direction> moves = new LinkedList<Direction>();
+					JsonArray jsonMoves = jsonTileObj.getJsonArray("moves");
+					
+					for(int j = 0; j < jsonMoves.size(); j++) {
+						JsonObject directionObj = (JsonObject) jsonMoves.get(j);
+						String direction = directionObj.getString("direction");
+						
+						if(direction.contentEquals("Up")) {
+							moves.add(Direction.UP);
+						} else if(direction.contentEquals("Down")) {
+							moves.add(Direction.DOWN);
+						} else if(direction.contentEquals("Left")) {
+							moves.add(Direction.LEFT);
+						} else if(direction.contentEquals("Right")) {
+							moves.add(Direction.RIGHT);
+						} 
+					}
+					
+					cobras.add(new Cobra(cobraTile, moves));
+					map[col][row] = cobraTile;
+					
+				} else if(tileType.equals("Block")) {
+					blocks.add(new Block(col, row));
+					map[col][row] = new Free(col, row);
+					
+				} else  if(tileType.equals("Player")) {
+					Tile playerTile = new Free(col, row);
+					chap = new Player(playerTile);
+					map[col][row] = playerTile;
+					
+				} else  if(tileType.equals("Treasure")) {
+					treasures++;
+					map[col][row] = new Treasure(col, row);
+					
+				} else if(tileType.equals("LockedDoor")) {
+					map[col][row] = new LockedDoor(col, row, tileColor);
+					
+				} else if(tileType.equals("Key")) {
+					map[col][row] = new Key(col, row, tileColor);
+					
+				} else {
+					map[col][row] = makeTileFromName(jsonTileObj, col, row);
+				}
 				
+				/***
 				//Put a new tile object into the map
 				if(tileType.equals("Wall")) {
 					map[col][row] = new Wall(col, row);
@@ -137,7 +182,7 @@ public class LevelLoader {
 					cobras.add(new Cobra(playerTile, moves));
 					map[col][row] = playerTile;
 					
-				}
+				}**/
 				
 			}
 			
@@ -156,7 +201,7 @@ public class LevelLoader {
 	
 	/**
 	 * Gets the current game state as a JsonObjectBuilder
-	 * @param game
+	 * @param application, a Main object from the application package to get the game from
 	 * @return JsonObjectBuilder
 	 */
 	public static JsonObjectBuilder getGameState(Main application) {
@@ -226,12 +271,13 @@ public class LevelLoader {
 				for(Direction d : c.getListOfMoves()) {
 					JsonObjectBuilder directionObjectBuilder = Json.createObjectBuilder();
 					gameState += "{\"direction\": \"" + d.getName() + "\"},";
-					directionObjectBuilder.add("direction", d.getName());
+					directionObjectBuilder.add("direction", d.toString());
 					cobraDirectionBuilder.add(directionObjectBuilder);
 				}
 				if(!c.getListOfMoves().isEmpty()) {
 					gameState = gameState.substring(0, gameState.length() - 1);
 				}
+				cobraObjectBuilder.add("moves", cobraDirectionBuilder);
 				gameState += "]},";
 				cobrasArrayBuilder.add(cobraObjectBuilder);
 			}
@@ -283,8 +329,9 @@ public class LevelLoader {
 	}
 	
 	/**
-	 * Saves the game state to file
-	 * @param toSave 
+	 * Saves the game state from a JsonObjectBuilder to a file passed in as a parameter
+	 * @param toSave
+	 * @param file 
 	 */
 	public static void saveGameState(JsonObjectBuilder toSave, File file) {
 		try {
@@ -299,6 +346,11 @@ public class LevelLoader {
 		}
 	}
 	
+	/**
+	 * Loads an old game from a game state file and edits a main object
+	 * @param main, main object to edit
+	 * @param file, file to load from
+	 */
 	public static void loadOldGame(Main main, File file) {
 		JsonReader reader;
 		try {
@@ -315,6 +367,11 @@ public class LevelLoader {
 		}
 	}
 	
+	/**
+	 * Loads a maze from a game state JsonObject
+	 * @param gameStateJson, game state as a JsonObject
+	 * @return Maze
+	 */
 	public static Maze loadGameState(JsonObject gameStateJson) {
         Maze maze;
         
@@ -339,7 +396,7 @@ public class LevelLoader {
         }
         
         List<Cobra> cobras = new ArrayList<Cobra>();
-        for(JsonValue cValue : gameStateJson.getJsonArray("blocks")) {
+        for(JsonValue cValue : gameStateJson.getJsonArray("cobras")) {
         	JsonObject cobraObject = cValue.asJsonObject();
         	
         	int col = cobraObject.getInt("cobraCol");
@@ -365,6 +422,8 @@ public class LevelLoader {
         JsonNumber chapRow = gameStateJson.getJsonNumber("chapRow");
         maze.getChap().getLocation().onExit();
         maze.getChap().setLocation(tiles[chapCol.intValue()][chapRow.intValue()]);
+        maze.getCobras().get(0).getLocation().onExit();
+        maze.getCobras().get(0).setLocation(cobras.get(0).getLocation());
         
         for(JsonValue cValue : gameStateJson.getJsonArray("keysCollected")) {
         	String color = cValue.asJsonObject().getString("color");
@@ -375,6 +434,13 @@ public class LevelLoader {
         return maze;
     }
 	
+	/**
+	 * Helper method that takes a JsonObject and a location and returns a new tile
+	 * @param tile, JsonObject
+	 * @param col
+	 * @param row
+	 * @return Tile
+	 */
 	private static Tile makeTileFromName(JsonObject tile, int col, int row) {
         String name = tile.getString("type");
         switch (name) {
