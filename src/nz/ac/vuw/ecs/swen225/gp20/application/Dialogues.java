@@ -33,7 +33,7 @@ public class Dialogues extends JDialog implements KeyListener {
     this.setModal(true);
     this.addKeyListener(this);
     this.setFocusable(true);
-    this.setLocationRelativeTo(this);
+    this.setLocationRelativeTo(main.getGui());
     this.setSize(500, 300);
     this.setLayout(new GridLayout(3, 1));
     this.setBackground(Color.lightGray);
@@ -43,14 +43,14 @@ public class Dialogues extends JDialog implements KeyListener {
     // create the field for the text label
     text.setText(labelText);
     text.setEditable(false);
-
+    JScrollPane scrollText = new JScrollPane(text);
     // center the text on the JTextPane
     StyledDocument doc = text.getStyledDocument();
     SimpleAttributeSet centerAlign = new SimpleAttributeSet();
     StyleConstants.setAlignment(centerAlign, StyleConstants.ALIGN_CENTER);
     doc.setParagraphAttributes(0, doc.getLength(), centerAlign, false);
 
-    text.setFont(new Font("Verdana", Font.PLAIN, 25));
+    text.setFont(new Font("Verdana", Font.PLAIN, 15));
 
     // create the button based on what the user passes in as a parameter
     button = new JButton(buttonText);
@@ -67,7 +67,7 @@ public class Dialogues extends JDialog implements KeyListener {
     closeButton.addActionListener(method -> {dispose(); main.exitGame();});
 
     // add the components to the dialogue
-    this.add(text);
+    this.add(scrollText);
     this.add(button);
     this.add(closeButton);
     this.toFront();
