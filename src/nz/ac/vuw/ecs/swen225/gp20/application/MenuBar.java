@@ -1,13 +1,16 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
-import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
-
 import javax.swing.*;
 
 /**
  * Create a MenuBar to be added to the main GUI
  **/
 public class MenuBar extends JMenuBar {
+
+  private String instructions = "Use the arrow keys to move Chap around to collect all the keys and treasures " +
+          "before the time runs out!" +
+          "Useful items such as keys and shields must be picked up and added to Chip's inventory. " +
+          "To pick up items, move Chip over the item.";
 
   /**
    * Create a new menu bar and set the default values for the menu bar
@@ -43,6 +46,15 @@ public class MenuBar extends JMenuBar {
     JMenuItem pause = new JMenuItem("Pause");
     pause.addActionListener(method -> main.pauseGame(true));
     game.add(pause);
+
+    // create and add a help button
+    JMenuItem help = new JMenuItem("Help");
+    help.addActionListener(method ->
+    {Dialogues helpDialogue = new Dialogues(main, instructions, "Close");
+    helpDialogue.setActionListener(close -> helpDialogue.dispose());
+    helpDialogue.setVisible(true);
+    });
+    game.add(help);
 
     // Create the recording menu
     JMenu recording = new JMenu("Recording");
