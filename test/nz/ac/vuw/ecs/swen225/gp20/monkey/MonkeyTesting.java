@@ -14,7 +14,9 @@ import java.util.Random;
 
 /**
  * class made to test application of game
- * built of specific and random testing
+ * built of intelligent and random testing
+ *
+ * @author Jack Maclennan 300502078
  */
 public class MonkeyTesting {
 
