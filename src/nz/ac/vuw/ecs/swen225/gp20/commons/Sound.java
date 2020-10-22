@@ -33,7 +33,11 @@ public enum Sound {
     /**
      * Cobra sound.
      **/
-    COBRA("data/cobra.wav");
+    COBRA("data/cobra.wav"),
+    /**
+     * Sound for block movement.
+     **/
+    MOVE_BLOCK("data/move_block.wav");
 
     private final String filename;
 
