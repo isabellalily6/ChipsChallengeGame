@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -390,6 +391,23 @@ public class MonkeyTesting {
                 // get right tile
                 Tile right = tiles[maze.getChap().getLocation().getCol() + 1][maze.getChap().getLocation().getRow()];
 
+                Cobra cobra = maze.getCobras().get(0);
+                Direction cobraNextMove = cobra.getMoves().peek();
+                Tile cobraNextTile;
+
+                switch (Objects.requireNonNull(cobraNextMove)) {
+                    case UP: cobraNextTile = tiles[cobra.getLocation().getCol()][cobra.getLocation().getRow() - 1];
+                        break;
+                    case DOWN: cobraNextTile = tiles[cobra.getLocation().getCol()][cobra.getLocation().getRow() + 1];
+                        break;
+                    case LEFT: cobraNextTile = tiles[cobra.getLocation().getCol() - 1][cobra.getLocation().getRow()];
+                        break;
+                    case RIGHT: cobraNextTile = tiles[cobra.getLocation().getCol() + 1][cobra.getLocation().getRow()];
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + Objects.requireNonNull(cobraNextMove));
+                }
+
                 // check for value of the tiles
                 int tileValue;
                 if ((tileValue = getValue(up, maze)) >= 0) {
@@ -407,7 +425,8 @@ public class MonkeyTesting {
                     if ((left.hasBlock() && (block != null && left.getCol() == block.getCol()
                             && left.getRow() == block.getRow()))|| !left.hasBlock()) {
                         candidates.put(left, tileValue);
-                        if (block != null && left.hasBlock() && left.getCol() == block.getCol() && left.getRow() == block.getRow()) {
+                        if (block != null && left.hasBlock() && left.getCol() == block.getCol() &&
+                                left.getRow() == block.getRow()) {
                             block = tiles[maze.getChap().getLocation().getCol() - 2]
                                     [maze.getChap().getLocation().getRow()];
                         }
@@ -419,11 +438,16 @@ public class MonkeyTesting {
                 // move valuable candidates to an ArrayList
                 Tile candidate; // initialise final candidate
                 ArrayList<Tile> updatedCandidates = new ArrayList<>(candidates.keySet());
-                if (candidates.containsValue(1)) { // 1 or more tiles are valuable
-                    candidates.forEach((key, value) -> {
-                        if (value == 0) updatedCandidates.remove(key); // remove invaluable tiles
-                    });
-                }
+                Tile finalCobraNextTile = cobraNextTile;
+                candidates.forEach((key, value) -> {
+                    // remove invaluable tiles
+                    if ((value == 0 && candidates.containsValue(1)) || key.getCol() == finalCobraNextTile.getCol()
+                            && key.getRow() == finalCobraNextTile.getRow()
+                            || key.getCol() == cobra.getLocation().getCol()
+                            && key.getRow() == cobra.getLocation().getRow()) {
+                        updatedCandidates.remove(key);
+                    }
+                });
                 // get random move from remaining candidates
                 candidate = updatedCandidates.get(random.nextInt(updatedCandidates.size()));
 
@@ -586,6 +610,23 @@ public class MonkeyTesting {
 
                 // get right tile
                 Tile right = tiles[maze.getChap().getLocation().getCol() + 1][maze.getChap().getLocation().getRow()];
+                
+                Cobra cobra = maze.getCobras().get(0);
+                Direction cobraNextMove = cobra.getMoves().peek();
+                Tile cobraNextTile;
+                
+                switch (Objects.requireNonNull(cobraNextMove)) {
+                    case UP: cobraNextTile = tiles[cobra.getLocation().getCol()][cobra.getLocation().getRow() - 1];
+                        break;
+                    case DOWN: cobraNextTile = tiles[cobra.getLocation().getCol()][cobra.getLocation().getRow() + 1];
+                        break;
+                    case LEFT: cobraNextTile = tiles[cobra.getLocation().getCol() - 1][cobra.getLocation().getRow()];
+                        break;
+                    case RIGHT: cobraNextTile = tiles[cobra.getLocation().getCol() + 1][cobra.getLocation().getRow()];
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + Objects.requireNonNull(cobraNextMove));
+                }
 
                 // check for value of the tiles
                 int tileValue;
@@ -604,7 +645,8 @@ public class MonkeyTesting {
                     if ((left.hasBlock() && (block != null && left.getCol() == block.getCol()
                             && left.getRow() == block.getRow()))|| !left.hasBlock()) {
                         candidates.put(left, tileValue);
-                        if (block != null && left.hasBlock() && left.getCol() == block.getCol() && left.getRow() == block.getRow()) {
+                        if (block != null && left.hasBlock() && left.getCol() == block.getCol() &&
+                                left.getRow() == block.getRow()) {
                             block = tiles[maze.getChap().getLocation().getCol() - 2]
                                     [maze.getChap().getLocation().getRow()];
                         }
@@ -616,11 +658,16 @@ public class MonkeyTesting {
                 // move valuable candidates to an ArrayList
                 Tile candidate; // initialise final candidate
                 ArrayList<Tile> updatedCandidates = new ArrayList<>(candidates.keySet());
-                if (candidates.containsValue(1)) { // 1 or more tiles are valuable
-                    candidates.forEach((key, value) -> {
-                        if (value == 0) updatedCandidates.remove(key); // remove invaluable tiles
-                    });
-                }
+                Tile finalCobraNextTile = cobraNextTile;
+                candidates.forEach((key, value) -> {
+                    // remove invaluable tiles
+                    if ((value == 0 && candidates.containsValue(1)) || key.getCol() == finalCobraNextTile.getCol()
+                            && key.getRow() == finalCobraNextTile.getRow()
+                            || key.getCol() == cobra.getLocation().getCol()
+                            && key.getRow() == cobra.getLocation().getRow()) {
+                        updatedCandidates.remove(key);
+                    }
+                });
                 // get random move from remaining candidates
                 candidate = updatedCandidates.get(random.nextInt(updatedCandidates.size()));
 
