@@ -141,16 +141,26 @@ public class Dashboard extends JPanel {
    **/
   public void updateDashboard() {
     // get the keys which the player has collected
-    Set<Key.Colour> playersBackback = maze.getChap().getBackpack();
+    Set<Key.Colour> playersBackpack = maze.getChap().getBackpack();
     int i = 0;
     // draw the keys which the player has collected on the dashboard
-    for (Key.Colour colour : playersBackback) {
+    for (Key.Colour colour : playersBackpack) {
       JLabel label = treasuresCollected.get(i);
       label.setIcon(Canvas.makeImageIcon(getFile(colour)));
       i++;
     }
     // set the treasures left text
     chipsNum.setText(maze.getTreasuresLeft() + "");
+    levelNum.setText(maze.getLevel() + "");
+  }
+
+  /**
+   * Reset the dashboard
+   **/
+  public void resetDashboard(){
+    for (JLabel label : treasuresCollected) {
+      label.setIcon(null);
+    }
   }
 
   /**

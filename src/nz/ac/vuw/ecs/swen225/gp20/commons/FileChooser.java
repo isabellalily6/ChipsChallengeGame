@@ -89,7 +89,6 @@ public class FileChooser {
             if (!fileName.endsWith(".json")) {
                 fileName += ".json";
             }
-            System.out.println(pathString);
             return new File(pathString + File.separator + fileName);
         }
 
