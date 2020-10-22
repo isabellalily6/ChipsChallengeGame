@@ -1,33 +1,40 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.border.Border;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
- * Create a Dialogue which displays text and then two buttons
+ * Create a Dialogue which displays text and then two buttons.
  **/
 public class Dialogues extends JDialog implements KeyListener {
   // Components of the JDialogue
   private JTextPane text = new JTextPane();
+  private JScrollPane scrollText;
   private JButton button;
   private JButton closeButton;
   private Main main;
 
   /**
-   * Create a new instance of Dialogue
+   * Create a new instance of Dialogue.
    *
-   * @param main
-   * @param labelText
-   * @param buttonText
+   * @param main - the main game
+   * @param labelText - the text which will be placed on he dialogue label
+   * @param buttonText - the text which will be placed on the first button
    **/
-  public Dialogues(Main main, String labelText, String buttonText){
+  public Dialogues(Main main, String labelText, String buttonText) {
     this.main = main;
     // initialize the settings for the dialogue
     this.setModal(true);
@@ -40,16 +47,16 @@ public class Dialogues extends JDialog implements KeyListener {
 
     // create the components for the dialogue
 
-    // create the field for the text label
+    // create the field for the text label and set its default values
     text.setText(labelText);
     text.setEditable(false);
-    JScrollPane scrollText = new JScrollPane(text);
+    // create a scroll text for the text panel
+    scrollText = new JScrollPane(text);
     // center the text on the JTextPane
     StyledDocument doc = text.getStyledDocument();
     SimpleAttributeSet centerAlign = new SimpleAttributeSet();
     StyleConstants.setAlignment(centerAlign, StyleConstants.ALIGN_CENTER);
     doc.setParagraphAttributes(0, doc.getLength(), centerAlign, false);
-
     text.setFont(new Font("Verdana", Font.PLAIN, 15));
 
     // create the button based on what the user passes in as a parameter
@@ -64,7 +71,10 @@ public class Dialogues extends JDialog implements KeyListener {
     closeButton.setBorder(border);
     closeButton.setBackground(Color.lightGray);
     closeButton.setFont(new Font("Verdana", Font.PLAIN, 20));
-    closeButton.addActionListener(method -> {dispose(); main.exitGame();});
+    closeButton.addActionListener(method -> {
+      dispose();
+      main.exitGame();
+    });
 
     // add the components to the dialogue
     this.add(scrollText);
@@ -75,11 +85,11 @@ public class Dialogues extends JDialog implements KeyListener {
   }
 
   /**
-   * Set the action listener for the first button in the dialogue
+   * Set the action listener for the first button in the dialogue.
    *
-   * @param actionListener
+   * @param actionListener - the listener to add to the button
    **/
-  public void setActionListener(ActionListener actionListener){
+  public void setActionListener(ActionListener actionListener) {
     button.addActionListener(actionListener);
   }
 
@@ -95,9 +105,8 @@ public class Dialogues extends JDialog implements KeyListener {
 
   @Override
   public void keyReleased(KeyEvent keyEvent) {
-    if(keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE){
+    if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
       //ESC - close the “game is paused” dialog and resume the game
-      System.out.println("CLose dialogue and Resume");
       main.playGame();
     }
   }

@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.commons;
 
-import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
+import nz.ac.vuw.ecs.swen225.gp20.application.Gui;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -23,7 +23,7 @@ public class FileChooser {
      * @param jsonArray The json array to save to the file
      * @param directory The directory to save
      */
-    public static void saveToFile(GUI g, JsonArray jsonArray, String directory) {
+    public static void saveToFile(Gui g, JsonArray jsonArray, String directory) {
         var pathString = Paths.get(".", directory).toAbsolutePath().normalize().toString();
         var fileChooser = new JFileChooser(pathString);
         var result = fileChooser.showOpenDialog(g);
@@ -59,7 +59,7 @@ public class FileChooser {
      * @param directory the directory to open with this file chooser
      * @return the json file that is found
      */
-    public static File getJsonFileToLoad(GUI g, String directory) {
+    public static File getJsonFileToLoad(Gui g, String directory) {
         var fileChooser = new JFileChooser(Paths.get(".", directory).toAbsolutePath().normalize().toString());
         fileChooser.setFileFilter(new FileNameExtensionFilter("json files only", "json"));
         var result = fileChooser.showOpenDialog(g);
@@ -79,7 +79,7 @@ public class FileChooser {
      * @param directory the directory to open with this file chooser
      * @return the json file that is found
      */
-    public static File getFileToSave(GUI g, String directory) {
+    public static File getFileToSave(Gui g, String directory) {
         var pathString = Paths.get(".", directory).toAbsolutePath().normalize().toString();
         var fileChooser = new JFileChooser(pathString);
         var result = fileChooser.showOpenDialog(g);
@@ -90,8 +90,7 @@ public class FileChooser {
                 fileName += ".json";
             }
             System.out.println(pathString);
-            File jsonFile = new File(pathString + File.separator + fileName);
-            return jsonFile;
+            return new File(pathString + File.separator + fileName);
         }
 
         return null;

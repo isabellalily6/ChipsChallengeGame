@@ -1,13 +1,20 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.Set;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Key;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * Creates a dashboard on the GUI which includes:
@@ -18,8 +25,8 @@ import java.util.Set;
  **/
 public class Dashboard extends JPanel {
   // initialise the size of the dashboard
-  private int WIDTH = 200;
-  private int HEIGHT = 400;
+  private int width = 200;
+  private int height = 400;
 
   // initialise the components to be put on the Dashboard
   private JLabel level;
@@ -35,13 +42,15 @@ public class Dashboard extends JPanel {
   private JPanel topPanel = new JPanel(new GridLayout(7, 1));
   private JPanel bottomPanel = new JPanel(new GridLayout(2, 4));
 
-  Maze maze;
-  Canvas canvas;
+  // create the maze variable to store the maze
+  private Maze maze;
 
   /**
-   * Create a new instance of dashboard and set the default values
+   * Create a new instance of dashboard and set the default values.
+   *
+   * @param maze - the current maze
    **/
-  public Dashboard(Maze maze, Canvas canvas){
+  public Dashboard(Maze maze) {
     this.maze = maze;
     // Set up the components of the dashboard
     setLayout(new BorderLayout());
@@ -49,7 +58,7 @@ public class Dashboard extends JPanel {
     setFocusable(false);
     createComponents();
     addComponents();
-    setPreferredSize(new Dimension(WIDTH, HEIGHT));
+    setPreferredSize(new Dimension(width, height));
     Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 3);
     setBorder(border);
     // set the colour of the two panels
@@ -58,17 +67,18 @@ public class Dashboard extends JPanel {
   }
 
   /**
-   * Create the dashboard components
+   * Create the dashboard components.
    **/
-  public void createComponents(){
-    // Set the boarder of some of the JLabels
-    Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 5);
+  public void createComponents() {
 
     // Create the top panel which contains the level, time and chips left
 
     // create the level label
     level = new JLabel("LEVEL", SwingConstants.CENTER);
     level.setFont(new Font("Verdana", Font.PLAIN, 18));
+
+    // Set the boarder of some of the JLabels
+    Border border = BorderFactory.createLineBorder(Color.DARK_GRAY, 5);
 
     // create the level number label
     levelNum = new JLabel(maze.getLevel() + "", SwingConstants.CENTER);
@@ -99,21 +109,21 @@ public class Dashboard extends JPanel {
     chipsCollected.setFont(new Font("Verdana", Font.PLAIN, 18));
 
     // Create the bottom panel which contains the Chaps Items
-    for(int i = 0; i < 8; i++){
+    for (int i = 0; i < 8; i++) {
       JLabel label = new JLabel();
       treasuresCollected.add(label);
       // Set the boarder of the items
       border = BorderFactory.createLineBorder(Color.DARK_GRAY, 2);
       label.setBorder(border);
-      label.setPreferredSize(new Dimension(WIDTH/4, WIDTH/4));
+      label.setPreferredSize(new Dimension(width / 4, width / 4));
       bottomPanel.add(label);
     }
   }
 
   /**
-   * Add the components to the dashboard
+   * Add the components to the dashboard.
    **/
-  public void addComponents(){
+  public void addComponents() {
     topPanel.add(level);
     topPanel.add(levelNum);
     topPanel.add(time);
@@ -127,59 +137,54 @@ public class Dashboard extends JPanel {
   }
 
   /**
-   * Update the dashboard
+   * Update the dashboard.
    **/
-  public void updateDashboard(){
+  public void updateDashboard() {
+    // get the keys which the player has collected
     Set<Key.Colour> playersBackback = maze.getChap().getBackpack();
     int i = 0;
-    for(Key.Colour colour: playersBackback){
+    // draw the keys which the player has collected on the dashboard
+    for (Key.Colour colour : playersBackback) {
       JLabel label = treasuresCollected.get(i);
-      label.setIcon(canvas.makeImageIcon(getFile(colour)));
+      label.setIcon(Canvas.makeImageIcon(getFile(colour)));
       i++;
     }
+    // set the treasures left text
     chipsNum.setText(maze.getTreasuresLeft() + "");
   }
 
   /**
-   * Reset the dashboard
+   * Get the file for the key, based on the colour.
+   *
+   * @return the file which corresponds to the colour
    **/
-  public void resetDashboard(){
-    for(JLabel label: treasuresCollected){
-      label.setIcon(null);
-    }
-    chipsNum.setText(maze.getTreasuresLeft() + "");
-  }
-
-  public String getFile(Key.Colour colour){
+  public String getFile(Key.Colour colour) {
     String file = "data/";
-    if(colour == Key.Colour.RED){
+    if (colour == Key.Colour.RED) {
       file += "redKey.png";
-    }
-    else if(colour == Key.Colour.BLUE){
+    } else if (colour == Key.Colour.BLUE) {
       file += "blueKey.png";
-    }
-    else if(colour == Key.Colour.GREEN){
+    } else if (colour == Key.Colour.GREEN) {
       file += "greenKey.png";
     }
     return file;
   }
 
   /**
-   * Update the maze in the dashboard to the new maze
+   * Update the maze in the dashboard to the new maze.
    *
-   * @param maze
+   * @param maze - the new maze which the maze will be updated to
    **/
-  public void setMaze(Maze maze){
+  public void setMaze(Maze maze) {
     this.maze = maze;
-    this.resetDashboard();
   }
 
   /**
-   * Set the time left text in the label to the new time left
+   * Set the time left text in the label to the new time left.
    *
-   * @param time
+   * @param time - the time to be displayed on the dashboard
    **/
-  public void setTimer(String time){
+  public void setTimer(String time) {
     timeNum.setText(time);
   }
 }

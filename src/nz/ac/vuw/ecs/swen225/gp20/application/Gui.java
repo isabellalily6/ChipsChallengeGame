@@ -1,45 +1,44 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.lang.reflect.InvocationTargetException;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Sound;
-import nz.ac.vuw.ecs.swen225.gp20.maze.*;
+import nz.ac.vuw.ecs.swen225.gp20.maze.InfoField;
+import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove;
 import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
 import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.lang.reflect.InvocationTargetException;
-
 /**
- * Create a GUI which displays the game on the screen
+ * Create a Gui which displays the game on the screen.
  **/
-public class GUI extends JFrame implements KeyListener {
-  // initialize screen sizes
-  private final int screenWidth = 900;
-  private final int screenHeight = 650;
+public class Gui extends JFrame implements KeyListener {
+  // initialize the screen sizes
+  private int screenwidth = 900;
+  private int screenHeight = 650;
 
   // initialize GUI fields
   private final JPanel mainPanel = new JPanel();
-  private Dashboard dashboard = null;
-  private Canvas canvas = null;
-  private Dialogues pausedDialogue = null;
-  private Dialogues gameWon = null;
-  private Dialogues gameLost = null;
+  private Dashboard dashboard;
+  private Canvas canvas;
+  private Dialogues pausedDialogue;
+  private Dialogues gameWon;
+  private Dialogues gameLost;
 
   // initialize application
-  private Main main = null;
+  private Main main;
   private Maze maze;
-
-  public GUI(){
-  }
 
   /**
    * Create the JFrame for the game and sets all the default values.
@@ -47,15 +46,16 @@ public class GUI extends JFrame implements KeyListener {
    * @param main main
    * @param maze maze
    **/
-  public GUI(Main main, Maze maze){
+  public Gui(Main main, Maze maze) {
+    // initialise variables
     this.main = main;
     this.maze = maze;
     this.canvas = new Canvas(maze);
-    this.dashboard = new Dashboard(maze, canvas);
+    this.dashboard = new Dashboard(maze);
 
     // set the frame requirements
     addKeyListener(this);
-    setSize(screenWidth, screenHeight);
+    setSize(screenwidth, screenHeight);
     setResizable(true);
     setVisible(true);
     setLocationRelativeTo(null);
@@ -64,45 +64,44 @@ public class GUI extends JFrame implements KeyListener {
     setFocusTraversalKeysEnabled(false);
     setResizable(false);
 
-    // create dialogues
+    // create the dialogues
     pausedDialogue = new Dialogues(main, "GAME IS PAUSED", "RESUME");
     gameWon = new Dialogues(main, "You have won the level!!!", "NEXT GAME");
     gameLost = new Dialogues(main, "You have lost the game", "RETRY");
+    // set the actions for the dialogues
     setButtonActionListeners();
   }
 
   /**
-   * Set the action listeners for the buttons on the JDialogues
+   * Set the action listeners for the buttons on the default JDialogues.
    **/
-  public void setButtonActionListeners(){
-    // add action listeners to the buttons in the possible dialogues
+  public void setButtonActionListeners() {
+    // add action listeners to the button in the paused dialogue
     pausedDialogue.setActionListener(method -> main.playGame());
-    gameWon.setActionListener(
-
-            new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent actionEvent) {
-        if(maze.getState().equals(Maze.LevelState.WON) && main.getLevel()!=2){
-          main.setLevel(main.getLevel()+1);
-          main.startGame(main.getLevel());
-          RecordAndPlay.recordLevelChange();
-        }else {
-          main.startGame(1);
-        }
-        gameWon.dispose();
-      }
-    });
-    gameLost.setActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent actionEvent) {
+    // add action listeners to the button in the game won dialogue
+    gameWon.setActionListener(method -> {
+      // if the player has won the game and they aren't on the last level of the game
+      if (maze.getState().equals(Maze.LevelState.WON) && main.getLevel() != main.getLastLevel()) {
+        // increase the level by one and start a new game at the new level
+        main.setLevel(main.getLevel() + 1);
         main.startGame(main.getLevel());
-        gameLost.dispose();
+        RecordAndPlay.recordLevelChange();
+      } else {
+        // otherwise start a new game at level 1
+        main.startGame(1);
       }
+      gameWon.dispose();
+    });
+    // add action listeners to the button in the game lost dialogue
+    gameLost.setActionListener(method -> {
+      // start a new game at the current level
+      main.startGame(main.getLevel());
+      gameLost.dispose();
     });
   }
 
   /**
-   * Get Canvas
+   * Get the Canvas.
    *
    * @return the canvas
    **/
@@ -113,7 +112,7 @@ public class GUI extends JFrame implements KeyListener {
   /**
    * Create the components for the gui and adds them to the screen in the correct locations.
    **/
-  public void setUpGui(){
+  public void setUpGui() {
     // set the menu bar
     setJMenuBar(new MenuBar(main));
 
@@ -138,25 +137,26 @@ public class GUI extends JFrame implements KeyListener {
     mainPanel.add(canvasPanel, BorderLayout.CENTER);
     mainPanel.add(dashboard, BorderLayout.EAST);
 
+    // add the components to the screen and redraw the screen
     add(mainPanel);
     validate();
     repaint();
   }
 
   /**
-   * Call the method in the dashboard, to change the time displayed to the new time left
+   * Call the method in the dashboard, to change the time displayed to the new time left..
    *
    * @param timeLeft time left
    **/
-  public void setTimer(int timeLeft){
+  public void setTimer(int timeLeft) {
     String time = Integer.toString(timeLeft);
     dashboard.setTimer(time);
   }
 
   /**
-   * Set the maze
+   * Set the maze for each component in the gui.
    *
-   * @param maze maze
+   * @param maze - the maze to update the current maze to
    **/
   public void setMaze(Maze maze) {
     this.maze = maze;
@@ -167,19 +167,19 @@ public class GUI extends JFrame implements KeyListener {
   /**
    * Displays the paused dialogue on the screen.
    **/
-  public void displayPausedDialogue(){
+  public void displayPausedDialogue() {
     pausedDialogue.setVisible(true);
   }
 
   /**
    * Hides the paused dialogue.
    **/
-  public void hidePausedDialogue(){
+  public void hidePausedDialogue() {
     pausedDialogue.setVisible(false);
   }
 
   /**
-   * Get the game won dialogues
+   * Get the game won dialogue.
    *
    * @return the game won dialogue
    **/
@@ -188,7 +188,7 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
-   * Get the game lost dialogues
+   * Get the game lost dialogue.
    *
    * @return the game lost dialogue
    **/
@@ -197,7 +197,7 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
-   * Get the Maze
+   * Get the Maze.
    *
    * @return the maze
    **/
@@ -206,7 +206,7 @@ public class GUI extends JFrame implements KeyListener {
   }
 
   /**
-   * Get the dashboard
+   * Get the dashboard.
    *
    * @return the dashboard
    **/
@@ -217,37 +217,37 @@ public class GUI extends JFrame implements KeyListener {
   /**
    * Set the direction of the chap.
    *
-   * @param direction
+   * @param direction - the direction to set the chap to
    **/
-  public void setChapDirection(Direction direction){
+  public void setChapDirection(Direction direction) {
     maze.getChap().setDir(direction);
   }
 
   /**
    * Move the chap.
    *
-   * @param direction
+   * @param direction - the direction to move the chap in
    **/
-  public void moveChap(Direction direction){
+  public void moveChap(Direction direction) {
     maze.moveChap(direction);
   }
 
   /**
    * Play the sound passed in as a parameter.
    *
-   * @param sound
+   * @param sound - the sound to play
    **/
-  public void playSound(Sound sound){
+  public void playSound(Sound sound) {
     SoundEffect.play(sound);
   }
 
   /**
-   * Update the GUI
+   * Update the GUI.
    *
-   * @param useThread
+   * @param useThread - true if a thread is being used otherwise false
    **/
-  public void updateGui(Boolean useThread){
-    if(useThread) {
+  public void updateGui(Boolean useThread) {
+    if (useThread) {
       try {
         // thread safe repainting
         SwingUtilities.invokeAndWait((canvas::refreshComponents));
@@ -259,7 +259,7 @@ public class GUI extends JFrame implements KeyListener {
         canvas.repaint();
         repaint();
       }
-    }else{
+    } else {
       canvas.refreshComponents();
       canvas.repaint();
       repaint();
@@ -273,15 +273,17 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
-    if(!RecordAndPlay.getPlayingRecording()) {
+    // if the record and play isn't currently player
+    if (!RecordAndPlay.getPlayingRecording()) {
       if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X) {
-        //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,
-        // it will resume from the last unfinished level
-        main.saveFile(true, false);
+        //CTRL-X  - exit the game, the current game state will be lost, the next time the
+        // game is started, it will resume from the last unfinished level
+        main.saveFile(true, true);
         main.exitGame();
       } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_S) {
-        //CTRL-S  - exit the game, saves the game state, game will resume next time the application will be started
-        main.saveFile(false, false);
+        //CTRL-S  - exit the game, saves the game state, game will resume next time the
+        // application will be started
+        main.saveFile(false, true);
         main.exitGame();
       } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_R) {
         //CTRL-R  - resume a saved game
@@ -303,7 +305,6 @@ public class GUI extends JFrame implements KeyListener {
         main.playGame();
       }
     }
-
     updateGui(false);
   }
 
@@ -311,40 +312,44 @@ public class GUI extends JFrame implements KeyListener {
   public void keyReleased(KeyEvent keyEvent) {
     Direction direction = null;
     Sound sound = null;
-    if(!RecordAndPlay.getPlayingRecording()) {
-    if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
-        // Move the chap up
+    if (!RecordAndPlay.getPlayingRecording()) {
+      if (keyEvent.getKeyCode() == KeyEvent.VK_UP) {
+        // Set the direction to up
         direction = Direction.UP;
       } else if (keyEvent.getKeyCode() == KeyEvent.VK_DOWN) {
-        // Move Chap down
+        // Set the direction to down
         direction = Direction.DOWN;
       } else if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-        // Move chap right
+        // Set the direction to right
         direction = Direction.RIGHT;
       } else if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-        // Move chap left
+        // Set the direction to left
         direction = Direction.LEFT;
       }
     }
-    if(direction!=null){
+    if (direction != null) {
+      // move the chap in the correct direction and get the sound to play
       sound = maze.moveChap(direction);
-      RecordAndPlay.addMove(new RecordedMove(direction, main.getTimeLeft(), RecordAndPlay.recordedMovesSize(),
-              maze.getLevel()));
+      RecordAndPlay.addMove(new RecordedMove(direction, main.getTimeLeft(),
+              RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }
     if (sound != null) {
+      // animate the movement of the player
       canvas.movePlayer(direction);
+      // play the sound
       SoundEffect.play(sound);
-    };
+    }
 
     updateGui(false);
 
-    if(maze.getChap().getLocation() instanceof InfoField){
+    // if the chap is on an info field, create a dialogue to display the info field information.
+    if (maze.getChap().getLocation() instanceof InfoField) {
       InfoField location = (InfoField) maze.getChap().getLocation();
       String info = location.getInfo();
-        Dialogues infoPanel = new Dialogues(main, info, "Close");
-        infoPanel.setActionListener(method -> infoPanel.dispose());
-        infoPanel.setVisible(true);
+      Dialogues infoPanel = new Dialogues(main, info, "Close");
+      // Close the dialogue once the close button is pressed
+      infoPanel.setActionListener(method -> infoPanel.dispose());
+      infoPanel.setVisible(true);
     }
-
   }
 }
