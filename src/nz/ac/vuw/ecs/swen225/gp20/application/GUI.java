@@ -273,6 +273,7 @@ public class GUI extends JFrame implements KeyListener {
 
   @Override
   public void keyPressed(KeyEvent keyEvent) {
+
     if(!RecordAndPlay.getPlayingRecording()) {
       if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_X) {
         //CTRL-X  - exit the game, the current game state will be lost, the next time the game is started,

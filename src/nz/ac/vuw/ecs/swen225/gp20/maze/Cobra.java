@@ -63,6 +63,13 @@ public class Cobra extends Actor {
     }
 
     /**
+     * @return a copy of the move queue
+     */
+    public Queue<Direction> getMoves() {
+        return new ArrayDeque<>(moves);
+    }
+
+    /**
      * @return if the moves of this cobra contains null, then it is a test cobra that needs no thread
      */
     public boolean inTestMode() {
