@@ -157,6 +157,9 @@ public class Canvas extends JLayeredPane {
         Point chapPos = new Point(maze.getChap().getLocation().getCol(), maze.getChap().getLocation().getRow());
         var label = components[VIEW_SIDE][VIEW_SIDE];
         ImageIcon icon = makeImageIcon(maze.getTiles()[chapPos.x][chapPos.y].getImageURl());
+        if(maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/exit.png")) {
+            icon = makeImageIcon("data/free.png");
+        }
         g.drawImage(icon.getImage(), label.getX(), label.getY(), null);
         switch (direction) {
             case UP:
