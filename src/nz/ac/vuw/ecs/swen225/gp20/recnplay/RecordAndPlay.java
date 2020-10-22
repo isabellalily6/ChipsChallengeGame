@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay;
 
-import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
+import nz.ac.vuw.ecs.swen225.gp20.application.Gui;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
@@ -35,7 +35,7 @@ import static nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser.saveToFile;
 public class RecordAndPlay {
     private static final List<RecordedMove> recordedMoves = new ArrayList<>();
     private static JsonObjectBuilder gameState;
-    private static GUI parentComponent;
+    private static Gui parentComponent;
     private static PlayerThread playRecordingThread = new PlayerThread(null, null, 0, false);
     private static boolean levelChange = false;
     private static ReplayOptionDialog dialog;

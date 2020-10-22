@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.monkey;
 
-import nz.ac.vuw.ecs.swen225.gp20.application.GUI;
+import nz.ac.vuw.ecs.swen225.gp20.application.Gui;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.maze.*;
@@ -124,7 +124,7 @@ public class MonkeyTesting {
         // initialise game elements
         Main main = new Main(true, 1);
         Maze maze = main.getMaze();
-        GUI gui = main.getGui();
+        Gui gui = main.getGui();
 
         // initialise KeyEvent's
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
@@ -488,7 +488,7 @@ public class MonkeyTesting {
         // initialise game elements
         Main main = new Main(true, 1); // start test game
         Maze maze = main.getMaze(); // get the game maze
-        GUI gui = main.getGui(); // get the game gui
+        Gui gui = main.getGui(); // get the game gui
 
         // initialise KeyEvent's
         ArrayList<KeyEvent> keyEvents = new ArrayList<>();
