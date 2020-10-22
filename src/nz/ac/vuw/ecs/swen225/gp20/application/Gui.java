@@ -334,8 +334,10 @@ public class Gui extends JFrame implements KeyListener {
               RecordAndPlay.recordedMovesSize(), maze.getLevel()));
     }
     if (sound != null) {
-      // animate the movement of the player
-      canvas.movePlayer(direction);
+      if (sound != Sound.MOVE_BLOCK && sound != Sound.UNLOCK_DOOR) {
+        // animate the movement of the player
+        canvas.movePlayer(direction);
+      }
       // play the sound
       SoundEffect.play(sound);
     }
