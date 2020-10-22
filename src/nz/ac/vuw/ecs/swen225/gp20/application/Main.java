@@ -222,6 +222,7 @@ public class Main {
     }
     // create a new maze and set this in the gui
     setMaze(new Maze(level));
+    gui.getDashboard().resetDashboard();
     gui.updateGui(false);
     startTimer(false);
   }
