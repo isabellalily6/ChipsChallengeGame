@@ -26,6 +26,8 @@ public class Canvas extends JLayeredPane {
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 50;
+    private static final int SIZE_OFFSET = 6;
+    private static final int BOUNDS_OFFSET = 3;
     private Maze maze;
     private final JLabel[][] components;
     private final JPanel boardPanel;
@@ -38,9 +40,9 @@ public class Canvas extends JLayeredPane {
      * @param maze the maze to be rendered
      **/
     public Canvas(Maze maze) {
-        setPreferredSize(new Dimension((VIEW_SIZE * TILE_SIZE)+6, (VIEW_SIZE * TILE_SIZE)+6));
-        setMaximumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+6, (VIEW_SIZE * TILE_SIZE)+6));
-        setMinimumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+6, (VIEW_SIZE * TILE_SIZE)+6));
+        setPreferredSize(new Dimension((VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET, (VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET));
+        setMaximumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET, (VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET));
+        setMinimumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET, (VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET));
         boardPanel = new JPanel();
         transitionPanel = new JPanel();
         this.maze = maze;
@@ -52,8 +54,8 @@ public class Canvas extends JLayeredPane {
         transitionPanel.setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         transitionPanel.setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         boardPanel.setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
-        boardPanel.setBounds(3, 3, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
-        transitionPanel.setBounds(3, 3, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
+        boardPanel.setBounds(BOUNDS_OFFSET, BOUNDS_OFFSET, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
+        transitionPanel.setBounds(BOUNDS_OFFSET, BOUNDS_OFFSET, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
         transitionPanel.setLayout(null);
         transitionPanel.setOpaque(false);
         createComponents();
@@ -131,7 +133,7 @@ public class Canvas extends JLayeredPane {
             while (i < 25) {
                 Graphics g = transitionPanel.getGraphics().create(transitionPanel.getX(), transitionPanel.getY(), transitionPanel.getWidth(), transitionPanel.getHeight());
                 drawUnderlyingTiles(g, direction);
-                g.drawImage(image.getImage(), x, y, null);
+                g.drawImage(image.getImage(), x-BOUNDS_OFFSET, y-BOUNDS_OFFSET, null);
                 switch (direction) {
                     case UP:
                         y -= 2;
@@ -158,10 +160,10 @@ public class Canvas extends JLayeredPane {
         Point chapPos = new Point(maze.getChap().getLocation().getCol(), maze.getChap().getLocation().getRow());
         var label = components[VIEW_SIDE][VIEW_SIDE];
         ImageIcon icon = makeImageIcon(maze.getTiles()[chapPos.x][chapPos.y].getImageURl());
-        if (maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/exit.png")) {
+        if (maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/exit.png") || maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/lava.png")) {
             icon = makeImageIcon("data/free.png");
         }
-        g.drawImage(icon.getImage(), label.getX(), label.getY(), null);
+        g.drawImage(icon.getImage(), label.getX()-BOUNDS_OFFSET, label.getY()-BOUNDS_OFFSET, null);
         switch (direction) {
             case UP:
                 label = components[VIEW_SIDE][VIEW_SIDE - 1];
@@ -176,7 +178,7 @@ public class Canvas extends JLayeredPane {
                 label = components[VIEW_SIDE + 1][VIEW_SIDE];
                 break;
         }
-        g.drawImage(((ImageIcon) label.getIcon()).getImage(), label.getX(), label.getY(), null);
+        g.drawImage(((ImageIcon) label.getIcon()).getImage(), label.getX()-BOUNDS_OFFSET, label.getY()-BOUNDS_OFFSET, null);
     }
 
     private ImageIcon getImage(Direction direction) {
