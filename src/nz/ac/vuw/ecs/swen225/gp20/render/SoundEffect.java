@@ -22,6 +22,7 @@ public class SoundEffect {
     private static Clip infoFieldClip;
     private static Clip stepClip;
     private static Clip cobraClip;
+    private static Clip blockClip;
 
     static {
         try {
@@ -39,6 +40,8 @@ public class SoundEffect {
             stepClip.open(AudioSystem.getAudioInputStream(new File(Sound.STEP.getFilename())));
             cobraClip = AudioSystem.getClip();
             cobraClip.open(AudioSystem.getAudioInputStream(new File(Sound.COBRA.getFilename())));
+            blockClip = AudioSystem.getClip();
+            blockClip.open(AudioSystem.getAudioInputStream(new File(Sound.MOVE_BLOCK.getFilename())));
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
