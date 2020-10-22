@@ -167,7 +167,7 @@ public class Maze {
             if (newLoc instanceof Exit) {
                 state = LevelState.WON;
             } else if (newLoc.hasBlock()) {
-                if (moveBlock(newLoc, dir)) return null; //TODO: return block sound
+                if (moveBlock(newLoc, dir)) return Sound.MOVE_BLOCK;
                 else return null;
             } else if (newLoc.isOccupied()) {
                 state = LevelState.DIED;
