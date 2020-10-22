@@ -89,6 +89,7 @@ public class SoundEffect {
                 case COBRA:
                     playSoundClip(cobraClip);
                     break;
+                default: throw new IllegalArgumentException();
             }
         }).start();
     }
