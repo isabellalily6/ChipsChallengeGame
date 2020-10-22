@@ -6,6 +6,7 @@ import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Tile;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +38,9 @@ public class Canvas extends JLayeredPane {
      * @param maze the maze to be rendered
      **/
     public Canvas(Maze maze) {
-        setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        setPreferredSize(new Dimension((VIEW_SIZE * TILE_SIZE)+6, (VIEW_SIZE * TILE_SIZE)+6));
+        setMaximumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+6, (VIEW_SIZE * TILE_SIZE)+6));
+        setMinimumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+6, (VIEW_SIZE * TILE_SIZE)+6));
         boardPanel = new JPanel();
         transitionPanel = new JPanel();
         this.maze = maze;
@@ -51,8 +52,8 @@ public class Canvas extends JLayeredPane {
         transitionPanel.setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         transitionPanel.setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         boardPanel.setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
-        boardPanel.setBounds(0, 0, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
-        transitionPanel.setBounds(0, 0, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
+        boardPanel.setBounds(3, 3, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
+        transitionPanel.setBounds(3, 3, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
         transitionPanel.setLayout(null);
         transitionPanel.setOpaque(false);
         createComponents();
@@ -157,22 +158,22 @@ public class Canvas extends JLayeredPane {
         Point chapPos = new Point(maze.getChap().getLocation().getCol(), maze.getChap().getLocation().getRow());
         var label = components[VIEW_SIDE][VIEW_SIDE];
         ImageIcon icon = makeImageIcon(maze.getTiles()[chapPos.x][chapPos.y].getImageURl());
-        if(maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/exit.png")) {
+        if (maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/exit.png")) {
             icon = makeImageIcon("data/free.png");
         }
         g.drawImage(icon.getImage(), label.getX(), label.getY(), null);
         switch (direction) {
             case UP:
-                label = components[VIEW_SIDE][VIEW_SIDE-1];
+                label = components[VIEW_SIDE][VIEW_SIDE - 1];
                 break;
             case DOWN:
-                label = components[VIEW_SIDE][VIEW_SIDE+1];
+                label = components[VIEW_SIDE][VIEW_SIDE + 1];
                 break;
             case LEFT:
-                label = components[VIEW_SIDE-1][VIEW_SIDE];
+                label = components[VIEW_SIDE - 1][VIEW_SIDE];
                 break;
             case RIGHT:
-                label = components[VIEW_SIDE+1][VIEW_SIDE];
+                label = components[VIEW_SIDE + 1][VIEW_SIDE];
                 break;
         }
         g.drawImage(((ImageIcon) label.getIcon()).getImage(), label.getX(), label.getY(), null);
