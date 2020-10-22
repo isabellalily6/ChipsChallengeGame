@@ -125,8 +125,9 @@ public class Maze {
     public Sound moveChap(Direction dir) {
         moveLock.lock();
         try {
+            Sound sound = moveActor(chap, dir);
             moveCobras();
-            return moveActor(chap, dir);
+            return sound;
         } finally {
             moveLock.unlock();
         }
@@ -166,7 +167,8 @@ public class Maze {
             if (newLoc instanceof Exit) {
                 state = LevelState.WON;
             } else if (newLoc.hasBlock()) {
-                if (!moveBlock(newLoc, dir)) return null;
+                if (moveBlock(newLoc, dir)) return null; //TODO: return block sound
+                else return null;
             } else if (newLoc.isOccupied()) {
                 state = LevelState.DIED;
                 return Sound.HIT_BY_MOB;
