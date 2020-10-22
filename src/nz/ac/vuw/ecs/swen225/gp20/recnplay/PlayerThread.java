@@ -138,8 +138,6 @@ class PlayerThread extends Thread {
                         .collect(Collectors.toList());
 
                 for (var move : copiedList) {
-                    System.out.println("Processing: " + move.toString());
-
                     playMove(move);
 
                     movesToPlay.remove(move);
@@ -176,7 +174,6 @@ class PlayerThread extends Thread {
 
                 if (copiedList.isEmpty()) {
                     try {
-                        System.out.println("No moves found for: " + prevMoveIndex + " at time: " + timeLeft);
                     /*
                         This is not busy waiting, even though this is in a loop
                         This is what is simulating the timer, so that the moves happen in real time, not all at once
@@ -239,7 +236,6 @@ class PlayerThread extends Thread {
             //invalid state
             return;
         }
-        System.out.println("Recording is over, no moves left");
     }
 
     private void incrementLevelToPlay() {

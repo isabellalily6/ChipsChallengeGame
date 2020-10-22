@@ -1,13 +1,14 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
-import java.io.File;
-import java.util.Timer;
-import java.util.TimerTask;
 import nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
+
+import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * From Handout:
@@ -27,9 +28,9 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private int lastLevel = 2;
+  private final int lastLevel = 2;
   private int level = 1;
-  private int maxTime = 100;
+  private final int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -40,7 +41,7 @@ public class Main {
   private boolean gamePaused = false;
 
   // name of the file to save current game state and load game state from
-  private File file = new File("levels/GameState.json");
+  private final File file = new File("levels/GameState.json");
 
   /**
    * Create a new instance of the game application.
@@ -355,7 +356,6 @@ public class Main {
    * @param args - the arguments
    **/
   public static void main(String[] args) {
-    System.out.println("Welcome to Chaps Challenge!");
     new Main();
   }
 }
