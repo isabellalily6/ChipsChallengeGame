@@ -33,7 +33,6 @@ public class Canvas extends JLayeredPane {
     private final JPanel boardPanel;
     private final JPanel transitionPanel;
     private static final ReentrantLock lock = new ReentrantLock();
-    private boolean isAnimating  = false;
 
     /**
      * New canvas to render the game.
@@ -131,22 +130,22 @@ public class Canvas extends JLayeredPane {
             int y = (int) origin.getY();
             ImageIcon image = getImage(direction);
             int i = 0;
-            while (i < 10) {
+            while (i < 25) {
                 Graphics g = transitionPanel.getGraphics().create(transitionPanel.getX(), transitionPanel.getY(), transitionPanel.getWidth(), transitionPanel.getHeight());
                 drawUnderlyingTiles(g, direction);
                 g.drawImage(image.getImage(), x-BOUNDS_OFFSET, y-BOUNDS_OFFSET, null);
                 switch (direction) {
                     case UP:
-                        y -= 5;
+                        y -= 2;
                         break;
                     case DOWN:
-                        y += 5;
+                        y += 2;
                         break;
                     case LEFT:
-                        x -= 5;
+                        x -= 2;
                         break;
                     case RIGHT:
-                        x += 5;
+                        x += 2;
                         break;
                 }
                 transitionPanel.repaint();
