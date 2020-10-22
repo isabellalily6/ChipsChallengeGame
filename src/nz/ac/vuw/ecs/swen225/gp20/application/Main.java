@@ -172,7 +172,7 @@ public class Main {
       LevelLoader.loadOldGame(this, file);
     } else {
       // otherwise the user chooses a file to load and load from that file
-      File chosenFile = FileChooser.getJsonFileToLoad(gui, "/levels");
+      File chosenFile = FileChooser.getJsonFileToLoad(gui, "saves");
       if (chosenFile != null) {
         LevelLoader.loadOldGame(this, chosenFile);
       }
@@ -199,7 +199,7 @@ public class Main {
       // otherwise if the user wants to choose where to save the file, let the user chose a file
       // and save the game state to the chosen file
       LevelLoader.saveGameState(LevelLoader.getGameState(this),
-              FileChooser.getFileToSave(gui, "levels"));
+              FileChooser.getFileToSave(gui, "saves"));
     }
   }
 
