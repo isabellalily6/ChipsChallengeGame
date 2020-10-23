@@ -23,8 +23,8 @@ import javax.swing.text.StyledDocument;
  **/
 public class Dialogues extends JDialog implements KeyListener {
   // initialise the size of the dialogues
-  private static final int width = 500;
-  private static final int height = 300;
+  private static final int width = 400;
+  private static final int height = 250;
 
   // Components of the JDialogue
   private JTextPane text = new JTextPane();
@@ -55,6 +55,7 @@ public class Dialogues extends JDialog implements KeyListener {
 
     // create the field for the text label and set its default values
     text.setText(labelText);
+    text.setCaretPosition(0);
     text.setEditable(false);
     // create a scroll text for the text panel
     scrollText = new JScrollPane(text);
