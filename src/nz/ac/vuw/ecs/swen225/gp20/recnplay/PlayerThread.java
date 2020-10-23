@@ -29,6 +29,8 @@ class PlayerThread extends Thread {
 
 
     /**
+     * Creates a thread for playing back a recording
+     *
      * @param main        main class which is running the replay
      *                    Passing in null allows this to be used as a fake, where the methods do nothing
      * @param mode        the mode of replay, ie: autoplay, step by step
@@ -44,6 +46,8 @@ class PlayerThread extends Thread {
     }
 
     /**
+     * Check if this is a real thread, or a proxy thread
+     *
      * @return If this is a real thread or a fake
      */
     public boolean isRealThread() {
@@ -51,6 +55,8 @@ class PlayerThread extends Thread {
     }
 
     /**
+     * Steps through the recording
+     *
      * @param forward, true if we are stepping forward, false if backward
      */
     public void stepThroughRecording(boolean forward) {
@@ -82,6 +88,8 @@ class PlayerThread extends Thread {
     }
 
     /**
+     * Gets the main class associated with this thread
+     *
      * @return the main class associated with this thread
      */
     public Main getMain() {

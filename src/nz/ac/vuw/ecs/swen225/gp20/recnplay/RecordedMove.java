@@ -46,6 +46,8 @@ public class RecordedMove implements Comparable<RecordedMove> {
     }
 
     /**
+     * Gets the direction of this move
+     *
      * @return the direction of this recorded move
      */
     public Direction getDirection() {
@@ -54,6 +56,8 @@ public class RecordedMove implements Comparable<RecordedMove> {
 
 
     /**
+     * Gets the time left
+     *
      * @return the time left as this move was made
      */
     public int getTimeLeft() {
@@ -61,6 +65,8 @@ public class RecordedMove implements Comparable<RecordedMove> {
     }
 
     /**
+     * Gets the move index
+     *
      * @return gets the move index
      */
     public int getMoveIndex() {
