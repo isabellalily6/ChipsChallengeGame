@@ -51,6 +51,8 @@ public abstract class Tile {
     }
 
     /**
+     * Gets whether this tile is occupied
+     *
      * @return Whether this tile is occupied
      */
     public boolean isOccupied() {
@@ -67,6 +69,8 @@ public abstract class Tile {
     }
 
     /**
+     * Gets whether this tile needs to be changed to a free tile when a player enters it
+     *
      * @return Whether this tile needs to be changed to a free tile when a player enters it
      */
     public boolean isFreeOnEntry() {
@@ -74,6 +78,8 @@ public abstract class Tile {
     }
 
     /**
+     * Returns whether an actor can step on this tile
+     *
      * @return whether an actor can step on this tile
      */
     public boolean isAccessible() {
@@ -81,6 +87,8 @@ public abstract class Tile {
     }
 
     /**
+     * Gets the string that is the URL of the image representation for this object
+     *
      * @return the string that is the URL of the image representation for this object
      */
     public String getImageURl() {
@@ -88,6 +96,8 @@ public abstract class Tile {
     }
 
     /**
+     * Gets which col in the maze this tile is in
+     *
      * @return col in the maze this tile is in
      */
     public int getCol() {
@@ -95,6 +105,8 @@ public abstract class Tile {
     }
 
     /**
+     * Gets which row in the maze this tile is in
+     *
      * @return row in the maze this tile is in
      */
     public int getRow() {
@@ -102,6 +114,8 @@ public abstract class Tile {
     }
 
     /**
+     * Gets whether there is a block on this tile
+     *
      * @return whether there is a block on this tile
      */
     public boolean hasBlock() {
@@ -109,6 +123,8 @@ public abstract class Tile {
     }
 
     /**
+     * Sets whether there is now a block on this tile
+     *
      * @param hasBlock whether there is now a block on this tile
      */
     public void setHasBlock(boolean hasBlock) {
@@ -116,6 +132,8 @@ public abstract class Tile {
     }
 
     /**
+     * Creates and gets the json object for saving to file
+     *
      * @return json object for saving to file
      */
     public JsonObjectBuilder getJson() {

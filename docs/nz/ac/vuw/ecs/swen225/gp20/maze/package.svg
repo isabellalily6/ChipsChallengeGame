@@ -1,747 +1,48 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-     contentScriptType="application/ecmascript" contentStyleType="text/css" height="1067px" preserveAspectRatio="none"
-     style="width:1628px;height:1067px;" version="1.1" viewBox="0 0 1628 1067" width="1628px" zoomAndPan="magnify">
-    <defs>
-        <filter height="300%" id="fqk6eyph3wezj" width="300%" x="-1" y="-1">
-            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
-            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
-                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
-            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
-            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
-        </filter>
-    </defs>
-    <g><!--MD5=[832757d115beb7bc045eef4d6b42e302]
-cluster nz.ac.vuw.ecs.swen225.gp20.maze-->
-        <polygon fill="#FFFFFF" filter="url(#fqk6eyph3wezj)"
-                 points="16,6,305,6,312,28.2969,1528,28.2969,1528,1039,16,1039,16,6"
-                 style="stroke: #000000; stroke-width: 1.5;"/>
-        <line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="312" y1="28.2969" y2="28.2969"/>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
-              textLength="283" x="20" y="20.9951">nz.ac.vuw.ecs.swen225.gp20.maze
-        </text><!--MD5=[d4fa7740169997c9d89c81c5a1cac5f6]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Actor-->
-        <a href="Actor.html" target="_top" title="Actor.html" xlink:actuate="onRequest" xlink:href="Actor.html"
-           xlink:show="new" xlink:title="Actor.html" xlink:type="simple">
-            <rect codeLine="3" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="99.2188"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor" style="stroke: #A80036; stroke-width: 1.5;" width="149"
-                  x="1202.5" y="66.5"/>
-            <ellipse cx="1256.25" cy="82.5" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M1256.3594,77.8438 L1255.2031,82.9219 L1257.5313,82.9219 L1256.3594,77.8438 Z M1254.875,75.6094 L1257.8594,75.6094 L1261.2188,88 L1258.7656,88 L1258,84.9375 L1254.7188,84.9375 L1253.9688,88 L1251.5313,88 L1254.875,75.6094 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
-                  lengthAdjust="spacingAndGlyphs" textLength="33" x="1276.75" y="86.6543">Actor
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1203.5" x2="1350.5" y1="98.5" y2="98.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1203.5" x2="1350.5" y1="106.5" y2="106.5"/>
-            <ellipse cx="1213.5" cy="117.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="99"
-                  x="1222.5" y="120.7104">Actor(Tile, String)
-            </text>
-            <ellipse cx="1213.5" cy="130.3047" fill="#84BE84" rx="3" ry="3"
-                     style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="100" x="1222.5" y="133.5151">getDir(): Direction
-            </text>
-            <ellipse cx="1213.5" cy="143.1094" fill="#84BE84" rx="3" ry="3"
-                     style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="123" x="1222.5" y="146.3198">setDir(Direction): void
-            </text>
-            <ellipse cx="1213.5" cy="155.9141" fill="#84BE84" rx="3" ry="3"
-                     style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="121" x="1222.5" y="159.1245">getImageURl(): String
-            </text>
-        </a><!--MD5=[54fde58f7326cc2c612cca37468e25d5]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Block-->
-        <a href="Block.html" target="_top" title="Block.html" xlink:actuate="onRequest" xlink:href="Block.html"
-           xlink:show="new" xlink:title="Block.html" xlink:type="simple">
-            <rect codeLine="10" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="99.2188"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Block" style="stroke: #A80036; stroke-width: 1.5;" width="150"
-                  x="461" y="281"/>
-            <ellipse cx="515.25" cy="297" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M518.2188,302.6406 Q517.6406,302.9375 517,303.0781 Q516.3594,303.2344 515.6563,303.2344 Q513.1563,303.2344 511.8281,301.5938 Q510.5156,299.9375 510.5156,296.8125 Q510.5156,293.6875 511.8281,292.0313 Q513.1563,290.375 515.6563,290.375 Q516.3594,290.375 517,290.5313 Q517.6563,290.6875 518.2188,290.9844 L518.2188,293.7031 Q517.5938,293.125 517,292.8594 Q516.4063,292.5781 515.7813,292.5781 Q514.4375,292.5781 513.75,293.6563 Q513.0625,294.7188 513.0625,296.8125 Q513.0625,298.9063 513.75,299.9844 Q514.4375,301.0469 515.7813,301.0469 Q516.4063,301.0469 517,300.7813 Q517.5938,300.5 518.2188,299.9219 L518.2188,302.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="33"
-                  x="535.75" y="301.1543">Block
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="462" x2="610" y1="313" y2="313"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="462" x2="610" y1="321" y2="321"/>
-            <ellipse cx="472" cy="332" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74"
-                  x="481" y="335.2104">Block(int, int)
-            </text>
-            <ellipse cx="472" cy="344.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66"
-                  x="481" y="348.0151">getCol(): int
-            </text>
-            <ellipse cx="472" cy="357.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71"
-                  x="481" y="360.8198">getRow(): int
-            </text>
-            <ellipse cx="472" cy="370.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="124" x="481" y="373.6245">getImageURL(): String
-            </text>
-        </a><!--MD5=[3e3665cc1ffb44cac881a87139464485]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Cobra-->
-        <a href="Cobra.html" target="_top" title="Cobra.html" xlink:actuate="onRequest" xlink:href="Cobra.html"
-           xlink:show="new" xlink:title="Cobra.html" xlink:type="simple">
-            <rect codeLine="17" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="124.8281"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Cobra" style="stroke: #A80036; stroke-width: 1.5;" width="217"
-                  x="911.5" y="268"/>
-            <ellipse cx="997.25" cy="284" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M1000.2188,289.6406 Q999.6406,289.9375 999,290.0781 Q998.3594,290.2344 997.6563,290.2344 Q995.1563,290.2344 993.8281,288.5938 Q992.5156,286.9375 992.5156,283.8125 Q992.5156,280.6875 993.8281,279.0313 Q995.1563,277.375 997.6563,277.375 Q998.3594,277.375 999,277.5313 Q999.6563,277.6875 1000.2188,277.9844 L1000.2188,280.7031 Q999.5938,280.125 999,279.8594 Q998.4063,279.5781 997.7813,279.5781 Q996.4375,279.5781 995.75,280.6563 Q995.0625,281.7188 995.0625,283.8125 Q995.0625,285.9063 995.75,286.9844 Q996.4375,288.0469 997.7813,288.0469 Q998.4063,288.0469 999,287.7813 Q999.5938,287.5 1000.2188,286.9219 L1000.2188,289.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37"
-                  x="1017.75" y="288.1543">Cobra
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="912.5" x2="1127.5" y1="300" y2="300"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="912.5" x2="1127.5" y1="308" y2="308"/>
-            <ellipse cx="922.5" cy="319" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="175" x="931.5" y="322.2104">Cobra(Tile, Queue&lt;Direction&gt;)
-            </text>
-            <ellipse cx="922.5" cy="331.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="115" x="931.5" y="335.0151">Cobra(Tile, boolean)
-            </text>
-            <ellipse cx="922.5" cy="344.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="119" x="931.5" y="347.8198">nextMove(): Direction
-            </text>
-            <ellipse cx="922.5" cy="357.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="191" x="931.5" y="360.6245">getListOfMoves(): List&lt;Direction&gt;
-            </text>
-            <ellipse cx="922.5" cy="370.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="175" x="931.5" y="373.4292">getMoves(): Queue&lt;Direction&gt;
-            </text>
-            <ellipse cx="922.5" cy="383.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="126" x="931.5" y="386.2339">inTestMode(): boolean
-            </text>
-        </a><!--MD5=[9f99bbfac2b4e17e05d3acadb753a5ed]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Exit-->
-        <a href="Exit.html" target="_top" title="Exit.html" xlink:actuate="onRequest" xlink:href="Exit.html"
-           xlink:show="new" xlink:title="Exit.html" xlink:type="simple">
-            <rect codeLine="26" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Exit" style="stroke: #A80036; stroke-width: 1.5;" width="90"
-                  x="885" y="773.5"/>
-            <ellipse cx="916.2" cy="789.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M919.1688,795.1406 Q918.5906,795.4375 917.95,795.5781 Q917.3094,795.7344 916.6063,795.7344 Q914.1063,795.7344 912.7781,794.0938 Q911.4656,792.4375 911.4656,789.3125 Q911.4656,786.1875 912.7781,784.5313 Q914.1063,782.875 916.6063,782.875 Q917.3094,782.875 917.95,783.0313 Q918.6063,783.1875 919.1688,783.4844 L919.1688,786.2031 Q918.5438,785.625 917.95,785.3594 Q917.3563,785.0781 916.7313,785.0781 Q915.3875,785.0781 914.7,786.1563 Q914.0125,787.2188 914.0125,789.3125 Q914.0125,791.4063 914.7,792.4844 Q915.3875,793.5469 916.7313,793.5469 Q917.3563,793.5469 917.95,793.2813 Q918.5438,793 919.1688,792.4219 L919.1688,795.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="22"
-                  x="933.8" y="793.6543">Exit
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="886" x2="974" y1="805.5" y2="805.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="886" x2="974" y1="813.5" y2="813.5"/>
-            <ellipse cx="896" cy="824.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="64"
-                  x="905" y="827.7104">Exit(int, int)
-            </text>
-        </a><!--MD5=[19562d724fdf8d0f6405f80d81fba2d2]
-class nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock-->
-        <a href="ExitLock.html" target="_top" title="ExitLock.html" xlink:actuate="onRequest" xlink:href="ExitLock.html"
-           xlink:show="new" xlink:title="ExitLock.html" xlink:type="simple">
-            <rect codeLine="30" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock" style="stroke: #A80036; stroke-width: 1.5;" width="115"
-                  x="1010.5" y="773.5"/>
-            <ellipse cx="1040.35" cy="789.5" fill="#ADD1B2" rx="11" ry="11"
-                     style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M1043.3188,795.1406 Q1042.7406,795.4375 1042.1,795.5781 Q1041.4594,795.7344 1040.7563,795.7344 Q1038.2563,795.7344 1036.9281,794.0938 Q1035.6156,792.4375 1035.6156,789.3125 Q1035.6156,786.1875 1036.9281,784.5313 Q1038.2563,782.875 1040.7563,782.875 Q1041.4594,782.875 1042.1,783.0313 Q1042.7563,783.1875 1043.3188,783.4844 L1043.3188,786.2031 Q1042.6938,785.625 1042.1,785.3594 Q1041.5063,785.0781 1040.8813,785.0781 Q1039.5375,785.0781 1038.85,786.1563 Q1038.1625,787.2188 1038.1625,789.3125 Q1038.1625,791.4063 1038.85,792.4844 Q1039.5375,793.5469 1040.8813,793.5469 Q1041.5063,793.5469 1042.1,793.2813 Q1042.6938,793 1043.3188,792.4219 L1043.3188,795.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="50"
-                  x="1057.65" y="793.6543">ExitLock
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1011.5" x2="1124.5" y1="805.5" y2="805.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1011.5" x2="1124.5" y1="813.5" y2="813.5"/>
-            <ellipse cx="1021.5" cy="824.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89"
-                  x="1030.5" y="827.7104">ExitLock(int, int)
-            </text>
-        </a><!--MD5=[fafcc6fd3183200345fc6613b6a00cbb]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Free-->
-        <a href="Free.html" target="_top" title="Free.html" xlink:actuate="onRequest" xlink:href="Free.html"
-           xlink:show="new" xlink:title="Free.html" xlink:type="simple">
-            <rect codeLine="34" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Free" style="stroke: #A80036; stroke-width: 1.5;" width="95"
-                  x="1160.5" y="773.5"/>
-            <ellipse cx="1191.25" cy="789.5" fill="#ADD1B2" rx="11" ry="11"
-                     style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M1194.2188,795.1406 Q1193.6406,795.4375 1193,795.5781 Q1192.3594,795.7344 1191.6563,795.7344 Q1189.1563,795.7344 1187.8281,794.0938 Q1186.5156,792.4375 1186.5156,789.3125 Q1186.5156,786.1875 1187.8281,784.5313 Q1189.1563,782.875 1191.6563,782.875 Q1192.3594,782.875 1193,783.0313 Q1193.6563,783.1875 1194.2188,783.4844 L1194.2188,786.2031 Q1193.5938,785.625 1193,785.3594 Q1192.4063,785.0781 1191.7813,785.0781 Q1190.4375,785.0781 1189.75,786.1563 Q1189.0625,787.2188 1189.0625,789.3125 Q1189.0625,791.4063 1189.75,792.4844 Q1190.4375,793.5469 1191.7813,793.5469 Q1192.4063,793.5469 1193,793.2813 Q1193.5938,793 1194.2188,792.4219 L1194.2188,795.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28"
-                  x="1208.75" y="793.6543">Free
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1161.5" x2="1254.5" y1="805.5" y2="805.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1161.5" x2="1254.5" y1="813.5" y2="813.5"/>
-            <ellipse cx="1171.5" cy="824.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="69"
-                  x="1180.5" y="827.7104">Free(int, int)
-            </text>
-        </a><!--MD5=[ebdaee7fa58e62f08d6c7bba919cec24]
-class nz.ac.vuw.ecs.swen225.gp20.maze.InfoField-->
-        <a href="InfoField.html" target="_top" title="InfoField.html" xlink:actuate="onRequest"
-           xlink:href="InfoField.html" xlink:show="new" xlink:title="InfoField.html" xlink:type="simple">
-            <rect codeLine="38" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="86.4141"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.InfoField" style="stroke: #A80036; stroke-width: 1.5;" width="184"
-                  x="1291" y="761"/>
-            <ellipse cx="1352.75" cy="777" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M1355.7188,782.6406 Q1355.1406,782.9375 1354.5,783.0781 Q1353.8594,783.2344 1353.1563,783.2344 Q1350.6563,783.2344 1349.3281,781.5938 Q1348.0156,779.9375 1348.0156,776.8125 Q1348.0156,773.6875 1349.3281,772.0313 Q1350.6563,770.375 1353.1563,770.375 Q1353.8594,770.375 1354.5,770.5313 Q1355.1563,770.6875 1355.7188,770.9844 L1355.7188,773.7031 Q1355.0938,773.125 1354.5,772.8594 Q1353.9063,772.5781 1353.2813,772.5781 Q1351.9375,772.5781 1351.25,773.6563 Q1350.5625,774.7188 1350.5625,776.8125 Q1350.5625,778.9063 1351.25,779.9844 Q1351.9375,781.0469 1353.2813,781.0469 Q1353.9063,781.0469 1354.5,780.7813 Q1355.0938,780.5 1355.7188,779.9219 L1355.7188,782.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="52"
-                  x="1373.25" y="781.1543">InfoField
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1292" x2="1474" y1="793" y2="793"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1292" x2="1474" y1="801" y2="801"/>
-            <ellipse cx="1302" cy="812" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="133" x="1311" y="815.2104">InfoField(int, int, String)
-            </text>
-            <ellipse cx="1302" cy="824.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89"
-                  x="1311" y="828.0151">getInfo(): String
-            </text>
-            <ellipse cx="1302" cy="837.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="158" x="1311" y="840.8198">getJson(): JsonObjectBuilder
-            </text>
-        </a><!--MD5=[378be45096ed9409c119dd69d9943dea]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Key-->
-        <a href="Key.html" target="_top" title="Key.html" xlink:actuate="onRequest" xlink:href="Key.html"
-           xlink:show="new" xlink:title="Key.html" xlink:type="simple">
-            <rect codeLine="44" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="73.6094"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Key" style="stroke: #A80036; stroke-width: 1.5;" width="184"
-                  x="32" y="767"/>
-            <ellipse cx="109.25" cy="783" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M112.2188,788.6406 Q111.6406,788.9375 111,789.0781 Q110.3594,789.2344 109.6563,789.2344 Q107.1563,789.2344 105.8281,787.5938 Q104.5156,785.9375 104.5156,782.8125 Q104.5156,779.6875 105.8281,778.0313 Q107.1563,776.375 109.6563,776.375 Q110.3594,776.375 111,776.5313 Q111.6563,776.6875 112.2188,776.9844 L112.2188,779.7031 Q111.5938,779.125 111,778.8594 Q110.4063,778.5781 109.7813,778.5781 Q108.4375,778.5781 107.75,779.6563 Q107.0625,780.7188 107.0625,782.8125 Q107.0625,784.9063 107.75,785.9844 Q108.4375,787.0469 109.7813,787.0469 Q110.4063,787.0469 111,786.7813 Q111.5938,786.5 112.2188,785.9219 L112.2188,788.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="21"
-                  x="129.75" y="787.1543">Key
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="215" y1="799" y2="799"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="215" y1="807" y2="807"/>
-            <ellipse cx="43" cy="818" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="109" x="52" y="821.2104">Key(int, int, Colour)
-            </text>
-            <ellipse cx="43" cy="830.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="158" x="52" y="834.0151">getJson(): JsonObjectBuilder
-            </text>
-        </a><!--MD5=[c6460d12b68ebf9e00cc19d6b4702b70]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
-        <a href="Key.Colour.html" target="_top" title="Key.Colour.html" xlink:actuate="onRequest"
-           xlink:href="Key.Colour.html" xlink:show="new" xlink:title="Key.Colour.html" xlink:type="simple">
-            <rect codeLine="49" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="99.2188"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="127" x="318.5" y="924"/>
-            <ellipse cx="347" cy="940" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M351.1094,946 L343.3906,946 L343.3906,933.6094 L351.1094,933.6094 L351.1094,935.7656 L345.8438,935.7656 L345.8438,938.4375 L350.6094,938.4375 L350.6094,940.5938 L345.8438,940.5938 L345.8438,943.8438 L351.1094,943.8438 L351.1094,946 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65"
-                  x="364" y="944.1543">Key.Colour
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="319.5" x2="444.5" y1="956" y2="956"/>
-            <ellipse cx="329.5" cy="967" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="22" x="338.5" y="970.2104">RED
-            </text>
-            <ellipse cx="329.5" cy="979.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="38" x="338.5" y="983.0151">GREEN
-            </text>
-            <ellipse cx="329.5" cy="992.6094" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="29" x="338.5" y="995.8198">BLUE
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="319.5" x2="444.5" y1="1002.4141" y2="1002.4141"/>
-            <ellipse cx="329.5" cy="1013.4141" fill="#84BE84" rx="3" ry="3"
-                     style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="101" x="338.5" y="1016.6245">getName(): String
-            </text>
-        </a><!--MD5=[52f0a52808e0233a7588b041290cc25d]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Lava-->
-        <a href="Lava.html" target="_top" title="Lava.html" xlink:actuate="onRequest" xlink:href="Lava.html"
-           xlink:show="new" xlink:title="Lava.html" xlink:type="simple">
-            <rect codeLine="56" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Lava" style="stroke: #A80036; stroke-width: 1.5;" width="96"
-                  x="251" y="773.5"/>
-            <ellipse cx="282.2" cy="789.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M285.1688,795.1406 Q284.5906,795.4375 283.95,795.5781 Q283.3094,795.7344 282.6063,795.7344 Q280.1063,795.7344 278.7781,794.0938 Q277.4656,792.4375 277.4656,789.3125 Q277.4656,786.1875 278.7781,784.5313 Q280.1063,782.875 282.6063,782.875 Q283.3094,782.875 283.95,783.0313 Q284.6063,783.1875 285.1688,783.4844 L285.1688,786.2031 Q284.5438,785.625 283.95,785.3594 Q283.3563,785.0781 282.7313,785.0781 Q281.3875,785.0781 280.7,786.1563 Q280.0125,787.2188 280.0125,789.3125 Q280.0125,791.4063 280.7,792.4844 Q281.3875,793.5469 282.7313,793.5469 Q283.3563,793.5469 283.95,793.2813 Q284.5438,793 285.1688,792.4219 L285.1688,795.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28"
-                  x="299.8" y="793.6543">Lava
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="252" x2="346" y1="805.5" y2="805.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="252" x2="346" y1="813.5" y2="813.5"/>
-            <ellipse cx="262" cy="824.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70"
-                  x="271" y="827.7104">Lava(int, int)
-            </text>
-        </a><!--MD5=[db3315daaa2942e97c7d13b0e35d8aed]
-class nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-->
-        <a href="LockedDoor.html" target="_top" title="LockedDoor.html" xlink:actuate="onRequest"
-           xlink:href="LockedDoor.html" xlink:show="new" xlink:title="LockedDoor.html" xlink:type="simple">
-            <rect codeLine="60" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="73.6094"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="184" x="382" y="767"/>
-            <ellipse cx="432.75" cy="783" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M435.7188,788.6406 Q435.1406,788.9375 434.5,789.0781 Q433.8594,789.2344 433.1563,789.2344 Q430.6563,789.2344 429.3281,787.5938 Q428.0156,785.9375 428.0156,782.8125 Q428.0156,779.6875 429.3281,778.0313 Q430.6563,776.375 433.1563,776.375 Q433.8594,776.375 434.5,776.5313 Q435.1563,776.6875 435.7188,776.9844 L435.7188,779.7031 Q435.0938,779.125 434.5,778.8594 Q433.9063,778.5781 433.2813,778.5781 Q431.9375,778.5781 431.25,779.6563 Q430.5625,780.7188 430.5625,782.8125 Q430.5625,784.9063 431.25,785.9844 Q431.9375,787.0469 433.2813,787.0469 Q433.9063,787.0469 434.5,786.7813 Q435.0938,786.5 435.7188,785.9219 L435.7188,788.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="74"
-                  x="453.25" y="787.1543">LockedDoor
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="383" x2="565" y1="799" y2="799"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="383" x2="565" y1="807" y2="807"/>
-            <ellipse cx="393" cy="818" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="155" x="402" y="821.2104">LockedDoor(int, int, Colour)
-            </text>
-            <ellipse cx="393" cy="830.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="158" x="402" y="834.0151">getJson(): JsonObjectBuilder
-            </text>
-        </a><!--MD5=[9a7d1fe5e7e205b9dd3fbf94307f920e]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Maze-->
-        <a href="Maze.html" target="_top" title="Maze.html" xlink:actuate="onRequest" xlink:href="Maze.html"
-           xlink:show="new" xlink:title="Maze.html" xlink:type="simple">
-            <rect codeLine="65" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="150.4375"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze" style="stroke: #A80036; stroke-width: 1.5;" width="268"
-                  x="676" y="41"/>
-            <ellipse cx="790.25" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M793.2188,62.6406 Q792.6406,62.9375 792,63.0781 Q791.3594,63.2344 790.6563,63.2344 Q788.1563,63.2344 786.8281,61.5938 Q785.5156,59.9375 785.5156,56.8125 Q785.5156,53.6875 786.8281,52.0313 Q788.1563,50.375 790.6563,50.375 Q791.3594,50.375 792,50.5313 Q792.6563,50.6875 793.2188,50.9844 L793.2188,53.7031 Q792.5938,53.125 792,52.8594 Q791.4063,52.5781 790.7813,52.5781 Q789.4375,52.5781 788.75,53.6563 Q788.0625,54.7188 788.0625,56.8125 Q788.0625,58.9063 788.75,59.9844 Q789.4375,61.0469 790.7813,61.0469 Q791.4063,61.0469 792,60.7813 Q792.5938,60.5 793.2188,59.9219 L793.2188,62.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="31"
-                  x="810.75" y="61.1543">Maze
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="677" x2="943" y1="73" y2="73"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="677" x2="943" y1="81" y2="81"/>
-            <ellipse cx="687" cy="92" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="86"
-                  x="696" y="95.2104">Maze(Tile[], int)
-            </text>
-            <ellipse cx="687" cy="104.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="242" x="696" y="108.0151">Maze(Tile[], int, List&lt;Block&gt;, List&lt;Cobra&gt;)
-            </text>
-            <ellipse cx="687" cy="117.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50"
-                  x="696" y="120.8198">Maze(int)
-            </text>
-            <ellipse cx="687" cy="130.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="162" x="696" y="133.6245">moveChap(Direction): Sound
-            </text>
-            <ellipse cx="687" cy="143.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="199" x="696" y="146.4292">moveActor(Actor, Direction): Sound
-            </text>
-            <ellipse cx="687" cy="156.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="127" x="696" y="159.2339">isLevelOver(): boolean
-            </text>
-            <ellipse cx="687" cy="168.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="128" x="696" y="172.0386">getTreasuresLeft(): int
-            </text>
-            <ellipse cx="687" cy="181.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
-                  x="696" y="184.8433">getLevel(): int
-            </text>
-        </a><!--MD5=[faf426d5a98c1d7f10ac5c53406938e5]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
-        <a href="Maze.LevelState.html" target="_top" title="Maze.LevelState.html" xlink:actuate="onRequest"
-           xlink:href="Maze.LevelState.html" xlink:show="new" xlink:title="Maze.LevelState.html" xlink:type="simple">
-            <rect codeLine="76" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="86.4141"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="132" x="744" y="287.5"/>
-            <ellipse cx="759" cy="303.5" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M763.1094,309.5 L755.3906,309.5 L755.3906,297.1094 L763.1094,297.1094 L763.1094,299.2656 L757.8438,299.2656 L757.8438,301.9375 L762.6094,301.9375 L762.6094,304.0938 L757.8438,304.0938 L757.8438,307.3438 L763.1094,307.3438 L763.1094,309.5 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
-                  textLength="100" x="773" y="307.6543">Maze.LevelState
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="745" x2="875" y1="319.5" y2="319.5"/>
-            <ellipse cx="755" cy="330.5" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="51" x="764" y="333.7104">RUNNING
-            </text>
-            <ellipse cx="755" cy="343.3047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="26" x="764" y="346.5151">WON
-            </text>
-            <ellipse cx="755" cy="356.1094" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="26" x="764" y="359.3198">DIED
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="745" x2="875" y1="365.9141" y2="365.9141"/>
-        </a><!--MD5=[50dd2a0a7e341e12af3ebb5a9554cce9]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Player-->
-        <a href="Player.html" target="_top" title="Player.html" xlink:actuate="onRequest" xlink:href="Player.html"
-           xlink:show="new" xlink:title="Player.html" xlink:type="simple">
-            <rect codeLine="82" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="112.0234"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Player" style="stroke: #A80036; stroke-width: 1.5;" width="226"
-                  x="1164" y="274.5"/>
-            <ellipse cx="1253.75" cy="290.5" fill="#ADD1B2" rx="11" ry="11"
-                     style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M1256.7188,296.1406 Q1256.1406,296.4375 1255.5,296.5781 Q1254.8594,296.7344 1254.1563,296.7344 Q1251.6563,296.7344 1250.3281,295.0938 Q1249.0156,293.4375 1249.0156,290.3125 Q1249.0156,287.1875 1250.3281,285.5313 Q1251.6563,283.875 1254.1563,283.875 Q1254.8594,283.875 1255.5,284.0313 Q1256.1563,284.1875 1256.7188,284.4844 L1256.7188,287.2031 Q1256.0938,286.625 1255.5,286.3594 Q1254.9063,286.0781 1254.2813,286.0781 Q1252.9375,286.0781 1252.25,287.1563 Q1251.5625,288.2188 1251.5625,290.3125 Q1251.5625,292.4063 1252.25,293.4844 Q1252.9375,294.5469 1254.2813,294.5469 Q1254.9063,294.5469 1255.5,294.2813 Q1256.0938,294 1256.7188,293.4219 L1256.7188,296.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38"
-                  x="1274.25" y="294.6543">Player
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1165" x2="1389" y1="306.5" y2="306.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="1165" x2="1389" y1="314.5" y2="314.5"/>
-            <ellipse cx="1175" cy="325.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63"
-                  x="1184" y="328.7104">Player(Tile)
-            </text>
-            <ellipse cx="1175" cy="338.3047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="155" x="1184" y="341.5151">incrementTreasures(): void
-            </text>
-            <ellipse cx="1175" cy="351.1094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="159" x="1184" y="354.3198">getTreasuresCollected(): int
-            </text>
-            <ellipse cx="1175" cy="363.9141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="164" x="1184" y="367.1245">addToBackPack(Colour): void
-            </text>
-            <ellipse cx="1175" cy="376.7188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="200" x="1184" y="379.9292">backpackContains(Colour): boolean
-            </text>
-        </a><!--MD5=[76c7e6ed5bb0aaabc8404e6911d01ede]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
-        <a href="Tile.html" target="_top" title="Tile.html" xlink:actuate="onRequest" xlink:href="Tile.html"
-           xlink:show="new" xlink:title="Tile.html" xlink:type="simple">
-            <rect codeLine="90" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="214.4609"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.5;" width="238"
-                  x="562" y="470"/>
-            <ellipse cx="666.25" cy="486" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M666.3594,481.3438 L665.2031,486.4219 L667.5313,486.4219 L666.3594,481.3438 Z M664.875,479.1094 L667.8594,479.1094 L671.2188,491.5 L668.7656,491.5 L668,488.4375 L664.7188,488.4375 L663.9688,491.5 L661.5313,491.5 L664.875,479.1094 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
-                  lengthAdjust="spacingAndGlyphs" textLength="21" x="686.75" y="490.1543">Tile
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="563" x2="799" y1="502" y2="502"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="563" x2="799" y1="510" y2="510"/>
-            <ellipse cx="573" cy="521" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="212" x="582" y="524.2104">Tile(String, int, int, boolean, boolean)
-            </text>
-            <ellipse cx="573" cy="533.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="82"
-                  x="582" y="537.0151">onEntry(): void
-            </text>
-            <ellipse cx="573" cy="546.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73"
-                  x="582" y="549.8198">onExit(): void
-            </text>
-            <ellipse cx="573" cy="559.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="123" x="582" y="562.6245">isOccupied(): boolean
-            </text>
-            <ellipse cx="573" cy="572.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="154" x="582" y="575.4292">setOccupied(boolean): void
-            </text>
-            <ellipse cx="573" cy="585.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="141" x="582" y="588.2339">isFreeOnEntry(): boolean
-            </text>
-            <ellipse cx="573" cy="597.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="131" x="582" y="601.0386">isAccessible(): boolean
-            </text>
-            <ellipse cx="573" cy="610.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="121" x="582" y="613.8433">getImageURl(): String
-            </text>
-            <ellipse cx="573" cy="623.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66"
-                  x="582" y="626.6479">getCol(): int
-            </text>
-            <ellipse cx="573" cy="636.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71"
-                  x="582" y="639.4526">getRow(): int
-            </text>
-            <ellipse cx="573" cy="649.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="112" x="582" y="652.2573">hasBlock(): boolean
-            </text>
-            <ellipse cx="573" cy="661.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="154" x="582" y="665.062">setHasBlock(boolean): void
-            </text>
-            <ellipse cx="573" cy="674.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="158" x="582" y="677.8667">getJson(): JsonObjectBuilder
-            </text>
-        </a><!--MD5=[35253307ccbb806488115b08bb7fb43e]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Tiles-->
-        <a href="Tiles.html" target="_top" title="Tiles.html" xlink:actuate="onRequest" xlink:href="Tiles.html"
-           xlink:show="new" xlink:title="Tiles.html" xlink:type="simple">
-            <rect codeLine="106" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Tiles" style="stroke: #A80036; stroke-width: 1.5;" width="89"
-                  x="336.5" y="300"/>
-            <ellipse cx="364.55" cy="316" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M367.5188,321.6406 Q366.9406,321.9375 366.3,322.0781 Q365.6594,322.2344 364.9563,322.2344 Q362.4563,322.2344 361.1281,320.5938 Q359.8156,318.9375 359.8156,315.8125 Q359.8156,312.6875 361.1281,311.0313 Q362.4563,309.375 364.9563,309.375 Q365.6594,309.375 366.3,309.5313 Q366.9563,309.6875 367.5188,309.9844 L367.5188,312.7031 Q366.8938,312.125 366.3,311.8594 Q365.7063,311.5781 365.0813,311.5781 Q363.7375,311.5781 363.05,312.6563 Q362.3625,313.7188 362.3625,315.8125 Q362.3625,317.9063 363.05,318.9844 Q363.7375,320.0469 365.0813,320.0469 Q365.7063,320.0469 366.3,319.7813 Q366.8938,319.5 367.5188,318.9219 L367.5188,321.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28"
-                  x="381.45" y="320.1543">Tiles
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="337.5" x2="424.5" y1="332" y2="332"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="337.5" x2="424.5" y1="340" y2="340"/>
-            <ellipse cx="347.5" cy="351" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63"
-                  x="356.5" y="354.2104">Tiles(Tile[])
-            </text>
-        </a><!--MD5=[2b1393bff161ef46f7d27967c31afb05]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Treasure-->
-        <a href="Treasure.html" target="_top" title="Treasure.html" xlink:actuate="onRequest" xlink:href="Treasure.html"
-           xlink:show="new" xlink:title="Treasure.html" xlink:type="simple">
-            <rect codeLine="110" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Treasure" style="stroke: #A80036; stroke-width: 1.5;" width="122"
-                  x="601" y="773.5"/>
-            <ellipse cx="631.3" cy="789.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M634.2688,795.1406 Q633.6906,795.4375 633.05,795.5781 Q632.4094,795.7344 631.7063,795.7344 Q629.2063,795.7344 627.8781,794.0938 Q626.5656,792.4375 626.5656,789.3125 Q626.5656,786.1875 627.8781,784.5313 Q629.2063,782.875 631.7063,782.875 Q632.4094,782.875 633.05,783.0313 Q633.7063,783.1875 634.2688,783.4844 L634.2688,786.2031 Q633.6438,785.625 633.05,785.3594 Q632.4563,785.0781 631.8313,785.0781 Q630.4875,785.0781 629.8,786.1563 Q629.1125,787.2188 629.1125,789.3125 Q629.1125,791.4063 629.8,792.4844 Q630.4875,793.5469 631.8313,793.5469 Q632.4563,793.5469 633.05,793.2813 Q633.6438,793 634.2688,792.4219 L634.2688,795.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="56"
-                  x="648.7" y="793.6543">Treasure
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="602" x2="722" y1="805.5" y2="805.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="602" x2="722" y1="813.5" y2="813.5"/>
-            <ellipse cx="612" cy="824.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="96"
-                  x="621" y="827.7104">Treasure(int, int)
-            </text>
-        </a><!--MD5=[5be3bcbc4bdfe863e1cae2799ec0a5bc]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Wall-->
-        <a href="Wall.html" target="_top" title="Wall.html" xlink:actuate="onRequest" xlink:href="Wall.html"
-           xlink:show="new" xlink:title="Wall.html" xlink:type="simple">
-            <rect codeLine="114" fill="#FEFECE" filter="url(#fqk6eyph3wezj)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Wall" style="stroke: #A80036; stroke-width: 1.5;" width="92"
-                  x="758" y="773.5"/>
-            <ellipse cx="788.75" cy="789.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M791.7188,795.1406 Q791.1406,795.4375 790.5,795.5781 Q789.8594,795.7344 789.1563,795.7344 Q786.6563,795.7344 785.3281,794.0938 Q784.0156,792.4375 784.0156,789.3125 Q784.0156,786.1875 785.3281,784.5313 Q786.6563,782.875 789.1563,782.875 Q789.8594,782.875 790.5,783.0313 Q791.1563,783.1875 791.7188,783.4844 L791.7188,786.2031 Q791.0938,785.625 790.5,785.3594 Q789.9063,785.0781 789.2813,785.0781 Q787.9375,785.0781 787.25,786.1563 Q786.5625,787.2188 786.5625,789.3125 Q786.5625,791.4063 787.25,792.4844 Q787.9375,793.5469 789.2813,793.5469 Q789.9063,793.5469 790.5,793.2813 Q791.0938,793 791.7188,792.4219 L791.7188,795.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="25"
-                  x="806.25" y="793.6543">Wall
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="759" x2="849" y1="805.5" y2="805.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="759" x2="849" y1="813.5" y2="813.5"/>
-            <ellipse cx="769" cy="824.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66"
-                  x="778" y="827.7104">Wall(int, int)
-            </text>
-        </a><!--MD5=[a4209d1d6cce0398bb0d403ad571d384]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
-        <path codeLine="118"
-              d="M1330.44,165.7 C1387.7,223.8 1463.35,321.99 1408,393 C1334.62,487.14 993.23,540.32 805.52,562.91 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="800.29,563.54,809.7044,566.4328,805.254,562.9409,808.7459,558.4904,800.29,563.54"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50"
-              x="1428" y="335.0669">location
-        </text><!--MD5=[e200314dd42774524740759839b58ce6]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Block to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
-        <path codeLine="119" d="M564.82,380.1 C579.38,404.65 597.7,435.53 615.45,465.46 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Block-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="618.06,469.87,616.9219,460.0871,615.5149,465.5662,610.0358,464.1593,618.06,469.87"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50"
-              x="600" y="436.0669">location
-        </text><!--MD5=[130996cf979dd08dfcc11741955a1549]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Cobra-->
-        <path codeLine="120" d="M1202.47,178.63 C1168.63,206.6 1128.69,239.63 1094.82,267.63 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Cobra"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="1198.16,173.1,1218.04,165.75,1207.09,183.89,1198.16,173.1"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[9db3a5ded47292c095093eaea19e1946]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Exit-->
-        <path codeLine="121" d="M813.83,698.03 C844.87,726.07 875.21,753.49 897.1,773.27 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Exit"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="808.72,702.84,798.57,684.24,818.11,692.46,808.72,702.84"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b996d1f71f2a1ea9cb5bf3b19590347d]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock-->
-        <path codeLine="122" d="M817.34,657.27 C886.51,697.48 966.38,743.92 1017.02,773.36 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="813.78,663.29,800.01,647.19,820.82,651.19,813.78,663.29"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[929cdba72941f6e862670b174d49e690]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Free-->
-        <path codeLine="123"
-              d="M818.96,624.58 C912.46,658.09 1037.69,706.79 1143,761 C1150.17,764.69 1157.55,768.96 1164.64,773.33 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Free"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="816.6,631.18,800.1,617.88,821.29,617.99,816.6,631.18"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[d24b1fc37fea0aa2333f86ceda4715e3]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.InfoField-->
-        <path codeLine="124"
-              d="M819.43,618.02 C939.93,653.52 1118.95,707.84 1273,761 C1278.8,763 1284.75,765.11 1290.73,767.27 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.InfoField"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="817.45,624.74,800.23,612.38,821.4,611.3,817.45,624.74"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[46d2c15a8e9dc6cf171109ce90730fa1]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Key-->
-        <path codeLine="125" d="M543.04,633.73 C440,675.35 302.2,731.02 213.25,766.95 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Key"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="540.69,627.13,561.85,626.13,545.93,640.11,540.69,627.13"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[cb6e4f24162dba301f717462b36201a8]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Key to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
-        <path codeLine="126" d="M179.66,841.14 C219.05,866.71 272.09,901.14 313.98,928.34 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Key-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="318.26,931.12,312.9049,922.8543,314.0714,928.3895,308.5361,929.5561,318.26,931.12"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="39"
-              x="261" y="890.0669">colour
-        </text><!--MD5=[bfc3e10d2a57bb7e7fcb07ecb82a8cff]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Key to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
-        <path codeLine="127"
-              d="M230.2,845.67 C270.38,861.18 307.04,875.53 309,877 C325.85,889.67 340.76,907.2 352.65,923.8 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Key-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <ellipse cx="223.654" cy="843.149" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="231.118" x2="216.19" y1="846.028" y2="840.27"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="220.775" x2="226.533" y1="850.613" y2="835.685"/><!--MD5=[390f79909ac3b931bb0cec2f90726eb3]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Lava-->
-        <path codeLine="128"
-              d="M544.34,655.48 C488.43,687.61 423.31,725.58 365,761 C358.5,764.95 351.68,769.18 345,773.38 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Lava"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="540.93,649.37,561.76,645.49,547.9,661.51,540.93,649.37"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6b0b4bb532b3358470f848047d59811f]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-->
-        <path codeLine="129" d="M569.48,699.22 C546.78,723.89 524.59,748.01 507.33,766.77 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="564.57,694.22,583.26,684.24,574.87,703.7,564.57,694.22"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[3e9ee57e5ccc9ccee4d457b927ea040f]
-link nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
-        <path codeLine="130" d="M454.04,841.35 C441.55,864.08 425.25,893.77 411.31,919.14 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="408.73,923.83,416.5826,917.8855,411.1473,919.4532,409.5796,914.0179,408.73,923.83"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="66"
-              x="434" y="890.0669">lockColour
-        </text><!--MD5=[06a91cefc5865c61be5948ec6b116abe]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
-        <path codeLine="131" d="M810,191.02 C810,221.23 810,255.28 810,282.05 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="810,287.3,814.0257,278.3115,810.0143,282.3,806.0257,278.2886,810,287.3"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="33"
-              x="811" y="234.0669">state
-        </text><!--MD5=[5d1011535aa03f29bfbc3e59911c37fc]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
-        <path codeLine="136"
-              d="M801.88,206.22 C801.57,216.93 801.55,227.71 802,238 C802.7,254.09 804.1,271.73 805.53,287.18 "
-              fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <ellipse cx="802.1847" cy="199.193" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="801.8495" x2="802.52" y1="207.1859" y2="191.2"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="794.1918" x2="810.1777" y1="198.8577" y2="199.5282"/><!--MD5=[a09edf45f7411f1238fa0cbd3e943896]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
-        <path codeLine="132"
-              d="M742.46,191.16 C725.23,214.21 708.82,240.76 699,268 C676.46,330.49 671.54,404.71 672.45,464.64 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="672.54,469.66,676.3851,460.5928,672.4543,464.6607,668.3863,460.7299,672.54,469.66"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="26"
-              x="700" y="335.0669">tiles
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
-              x="664.7364" y="459.0001">*
-        </text><!--MD5=[abc169298ad62b1f95973d1231d26643]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Player-->
-        <path codeLine="133"
-              d="M944.3,176.74 C1005.87,204.29 1079.75,237.56 1146,268 C1150.28,269.96 1154.63,271.97 1159.02,274 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Player"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="1163.8,276.21,1157.3179,268.795,1159.264,274.1065,1153.9524,276.0526,1163.8,276.21"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="31"
-              x="1073" y="234.0669">chap
-        </text><!--MD5=[02de3a96a0c071fe13931d9fd6efc86f]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Cobra-->
-        <path codeLine="134" d="M883.15,191.02 C906.64,214.79 932.47,240.92 955.3,264.03 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Cobra"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="958.94,267.71,955.4602,258.4964,955.426,264.1531,949.7692,264.1188,958.94,267.71"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="43"
-              x="928" y="234.0669">cobras
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
-              x="944.8788" y="257.1056">*
-        </text><!--MD5=[be0757a0c0ade79cfb01a52dfb60e7a9]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Block-->
-        <path codeLine="135"
-              d="M675.89,187.71 C659.87,198.1 644.19,209.28 630,221 C610.35,237.23 591.4,257.81 575.72,276.67 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Block"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="572.22,280.92,581.0257,276.5086,575.3955,277.0579,574.8462,271.4277,572.22,280.92"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="40"
-              x="631" y="234.0669">blocks
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
-              x="569.8213" y="269.954">*
-        </text><!--MD5=[4a5cb7536213d0e1e4b81247d88128b1]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Player-->
-        <path codeLine="137" d="M1277,186.15 C1277,214.69 1277,247.32 1277,274.23 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Player"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="1270,185.75,1277,165.75,1284,185.75,1270,185.75"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[83767f93c295af198402246bd327fa76]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Player to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour-->
-        <path codeLine="138"
-              d="M1334.8,386.79 C1434.52,488.71 1616.8,708.42 1493,847 C1423.28,925.04 682.59,960.66 450.88,969.95 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Player-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="445.83,970.15,454.9827,973.7871,450.826,969.9502,454.6629,965.7935,445.83,970.15"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="60"
-              x="1535" y="727.0669">backpack
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
-              x="453.615" y="965.9574">*
-        </text><!--MD5=[c0d74b452ae5274e332754e67bec71f3]
-link nz.ac.vuw.ecs.swen225.gp20.maze.Tiles to nz.ac.vuw.ecs.swen225.gp20.maze.Tile-->
-        <path codeLine="139"
-              d="M409.82,361.01 C420.33,371.4 432.46,382.97 444,393 C479.97,424.26 520.56,456.59 557.86,485.22 "
-              fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tiles-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="561.92,488.34,557.2237,479.6829,557.9563,485.2921,552.3471,486.0248,561.92,488.34"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="53"
-              x="495" y="436.0669">tileArray
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7"
-              x="547.0672" y="479.2361">*
-        </text><!--MD5=[a1911b10b75f55b1bdaddac856c7f366]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Treasure-->
-        <path codeLine="140" d="M670.32,704.45 C668.16,730.11 666.07,754.79 664.53,773.03 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Treasure"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="663.37,703.58,672.03,684.24,677.32,704.76,663.37,703.58"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b3904b93be8fd53266ed918884e9c18a]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Wall-->
-        <path codeLine="141" d="M748.88,702.17 C763.35,728.64 777.35,754.25 787.62,773.03 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Wall"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="742.53,705.15,739.08,684.24,754.81,698.43,742.53,705.15"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
-              x="709.4" y="1054.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[d33c5ea5a1485f5399b5ee0acca28732]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1592px" preserveAspectRatio="none" style="width:1628px;height:1592px;" version="1.1" viewBox="0 0 1628 1592" width="1628px" zoomAndPan="magnify"><defs><filter height="300%" id="f1k6j28kee4kgu" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[832757d115beb7bc045eef4d6b42e302]
+cluster nz.ac.vuw.ecs.swen225.gp20.maze--><polygon fill="#FFFFFF" filter="url(#f1k6j28kee4kgu)" points="16,6,305,6,312,28.2969,1528,28.2969,1528,1564,16,1564,16,6" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="312" y1="28.2969" y2="28.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="283" x="20" y="20.9951">nz.ac.vuw.ecs.swen225.gp20.maze</text><!--MD5=[d4fa7740169997c9d89c81c5a1cac5f6]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Actor--><a href="Actor.html" target="_top" title="Actor.html" xlink:actuate="onRequest" xlink:href="Actor.html" xlink:show="new" xlink:title="Actor.html" xlink:type="simple"><rect codeLine="3" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="99.2188" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor" style="stroke: #A80036; stroke-width: 1.5;" width="149" x="1202.5" y="329"/><ellipse cx="1256.25" cy="345" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1256.3594,340.3438 L1255.2031,345.4219 L1257.5313,345.4219 L1256.3594,340.3438 Z M1254.875,338.1094 L1257.8594,338.1094 L1261.2188,350.5 L1258.7656,350.5 L1258,347.4375 L1254.7188,347.4375 L1253.9688,350.5 L1251.5313,350.5 L1254.875,338.1094 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="33" x="1276.75" y="349.1543">Actor</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="1203.5" x2="1350.5" y1="361" y2="361"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="1203.5" x2="1350.5" y1="369" y2="369"/><ellipse cx="1213.5" cy="380" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="99" x="1222.5" y="383.2104">Actor(Tile, String)</text><ellipse cx="1213.5" cy="392.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="100" x="1222.5" y="396.0151">getDir(): Direction</text><ellipse cx="1213.5" cy="405.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="1222.5" y="408.8198">setDir(Direction): void</text><ellipse cx="1213.5" cy="418.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="121" x="1222.5" y="421.6245">getImageURl(): String</text></a><!--MD5=[54fde58f7326cc2c612cca37468e25d5]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Block--><a href="Block.html" target="_top" title="Block.html" xlink:actuate="onRequest" xlink:href="Block.html" xlink:show="new" xlink:title="Block.html" xlink:type="simple"><rect codeLine="10" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="99.2188" id="nz.ac.vuw.ecs.swen225.gp20.maze.Block" style="stroke: #A80036; stroke-width: 1.5;" width="150" x="461" y="806"/><ellipse cx="515.25" cy="822" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M518.2188,827.6406 Q517.6406,827.9375 517,828.0781 Q516.3594,828.2344 515.6563,828.2344 Q513.1563,828.2344 511.8281,826.5938 Q510.5156,824.9375 510.5156,821.8125 Q510.5156,818.6875 511.8281,817.0313 Q513.1563,815.375 515.6563,815.375 Q516.3594,815.375 517,815.5313 Q517.6563,815.6875 518.2188,815.9844 L518.2188,818.7031 Q517.5938,818.125 517,817.8594 Q516.4063,817.5781 515.7813,817.5781 Q514.4375,817.5781 513.75,818.6563 Q513.0625,819.7188 513.0625,821.8125 Q513.0625,823.9063 513.75,824.9844 Q514.4375,826.0469 515.7813,826.0469 Q516.4063,826.0469 517,825.7813 Q517.5938,825.5 518.2188,824.9219 L518.2188,827.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="33" x="535.75" y="826.1543">Block</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="462" x2="610" y1="838" y2="838"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="462" x2="610" y1="846" y2="846"/><ellipse cx="472" cy="857" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74" x="481" y="860.2104">Block(int, int)</text><ellipse cx="472" cy="869.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66" x="481" y="873.0151">getCol(): int</text><ellipse cx="472" cy="882.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="481" y="885.8198">getRow(): int</text><ellipse cx="472" cy="895.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="124" x="481" y="898.6245">getImageURL(): String</text></a><!--MD5=[3e3665cc1ffb44cac881a87139464485]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Cobra--><a href="Cobra.html" target="_top" title="Cobra.html" xlink:actuate="onRequest" xlink:href="Cobra.html" xlink:show="new" xlink:title="Cobra.html" xlink:type="simple"><rect codeLine="17" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="124.8281" id="nz.ac.vuw.ecs.swen225.gp20.maze.Cobra" style="stroke: #A80036; stroke-width: 1.5;" width="217" x="911.5" y="793"/><ellipse cx="997.25" cy="809" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1000.2188,814.6406 Q999.6406,814.9375 999,815.0781 Q998.3594,815.2344 997.6563,815.2344 Q995.1563,815.2344 993.8281,813.5938 Q992.5156,811.9375 992.5156,808.8125 Q992.5156,805.6875 993.8281,804.0313 Q995.1563,802.375 997.6563,802.375 Q998.3594,802.375 999,802.5313 Q999.6563,802.6875 1000.2188,802.9844 L1000.2188,805.7031 Q999.5938,805.125 999,804.8594 Q998.4063,804.5781 997.7813,804.5781 Q996.4375,804.5781 995.75,805.6563 Q995.0625,806.7188 995.0625,808.8125 Q995.0625,810.9063 995.75,811.9844 Q996.4375,813.0469 997.7813,813.0469 Q998.4063,813.0469 999,812.7813 Q999.5938,812.5 1000.2188,811.9219 L1000.2188,814.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="1017.75" y="813.1543">Cobra</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="912.5" x2="1127.5" y1="825" y2="825"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="912.5" x2="1127.5" y1="833" y2="833"/><ellipse cx="922.5" cy="844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="175" x="931.5" y="847.2104">Cobra(Tile, Queue&lt;Direction&gt;)</text><ellipse cx="922.5" cy="856.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="115" x="931.5" y="860.0151">Cobra(Tile, boolean)</text><ellipse cx="922.5" cy="869.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="119" x="931.5" y="872.8198">nextMove(): Direction</text><ellipse cx="922.5" cy="882.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="931.5" y="885.6245">getListOfMoves(): List&lt;Direction&gt;</text><ellipse cx="922.5" cy="895.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="175" x="931.5" y="898.4292">getMoves(): Queue&lt;Direction&gt;</text><ellipse cx="922.5" cy="908.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="126" x="931.5" y="911.2339">inTestMode(): boolean</text></a><!--MD5=[9f99bbfac2b4e17e05d3acadb753a5ed]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Exit--><a href="Exit.html" target="_top" title="Exit.html" xlink:actuate="onRequest" xlink:href="Exit.html" xlink:show="new" xlink:title="Exit.html" xlink:type="simple"><rect codeLine="26" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.Exit" style="stroke: #A80036; stroke-width: 1.5;" width="90" x="885" y="1298.5"/><ellipse cx="916.2" cy="1314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M919.1688,1320.1406 Q918.5906,1320.4375 917.95,1320.5781 Q917.3094,1320.7344 916.6063,1320.7344 Q914.1063,1320.7344 912.7781,1319.0938 Q911.4656,1317.4375 911.4656,1314.3125 Q911.4656,1311.1875 912.7781,1309.5313 Q914.1063,1307.875 916.6063,1307.875 Q917.3094,1307.875 917.95,1308.0313 Q918.6063,1308.1875 919.1688,1308.4844 L919.1688,1311.2031 Q918.5438,1310.625 917.95,1310.3594 Q917.3563,1310.0781 916.7313,1310.0781 Q915.3875,1310.0781 914.7,1311.1563 Q914.0125,1312.2188 914.0125,1314.3125 Q914.0125,1316.4063 914.7,1317.4844 Q915.3875,1318.5469 916.7313,1318.5469 Q917.3563,1318.5469 917.95,1318.2813 Q918.5438,1318 919.1688,1317.4219 L919.1688,1320.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="22" x="933.8" y="1318.6543">Exit</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="886" x2="974" y1="1330.5" y2="1330.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="886" x2="974" y1="1338.5" y2="1338.5"/><ellipse cx="896" cy="1349.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="64" x="905" y="1352.7104">Exit(int, int)</text></a><!--MD5=[19562d724fdf8d0f6405f80d81fba2d2]
+class nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock--><a href="ExitLock.html" target="_top" title="ExitLock.html" xlink:actuate="onRequest" xlink:href="ExitLock.html" xlink:show="new" xlink:title="ExitLock.html" xlink:type="simple"><rect codeLine="30" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock" style="stroke: #A80036; stroke-width: 1.5;" width="115" x="1010.5" y="1298.5"/><ellipse cx="1040.35" cy="1314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1043.3188,1320.1406 Q1042.7406,1320.4375 1042.1,1320.5781 Q1041.4594,1320.7344 1040.7563,1320.7344 Q1038.2563,1320.7344 1036.9281,1319.0938 Q1035.6156,1317.4375 1035.6156,1314.3125 Q1035.6156,1311.1875 1036.9281,1309.5313 Q1038.2563,1307.875 1040.7563,1307.875 Q1041.4594,1307.875 1042.1,1308.0313 Q1042.7563,1308.1875 1043.3188,1308.4844 L1043.3188,1311.2031 Q1042.6938,1310.625 1042.1,1310.3594 Q1041.5063,1310.0781 1040.8813,1310.0781 Q1039.5375,1310.0781 1038.85,1311.1563 Q1038.1625,1312.2188 1038.1625,1314.3125 Q1038.1625,1316.4063 1038.85,1317.4844 Q1039.5375,1318.5469 1040.8813,1318.5469 Q1041.5063,1318.5469 1042.1,1318.2813 Q1042.6938,1318 1043.3188,1317.4219 L1043.3188,1320.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="50" x="1057.65" y="1318.6543">ExitLock</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="1011.5" x2="1124.5" y1="1330.5" y2="1330.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="1011.5" x2="1124.5" y1="1338.5" y2="1338.5"/><ellipse cx="1021.5" cy="1349.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="1030.5" y="1352.7104">ExitLock(int, int)</text></a><!--MD5=[fafcc6fd3183200345fc6613b6a00cbb]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Free--><a href="Free.html" target="_top" title="Free.html" xlink:actuate="onRequest" xlink:href="Free.html" xlink:show="new" xlink:title="Free.html" xlink:type="simple"><rect codeLine="34" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.Free" style="stroke: #A80036; stroke-width: 1.5;" width="95" x="1160.5" y="1298.5"/><ellipse cx="1191.25" cy="1314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1194.2188,1320.1406 Q1193.6406,1320.4375 1193,1320.5781 Q1192.3594,1320.7344 1191.6563,1320.7344 Q1189.1563,1320.7344 1187.8281,1319.0938 Q1186.5156,1317.4375 1186.5156,1314.3125 Q1186.5156,1311.1875 1187.8281,1309.5313 Q1189.1563,1307.875 1191.6563,1307.875 Q1192.3594,1307.875 1193,1308.0313 Q1193.6563,1308.1875 1194.2188,1308.4844 L1194.2188,1311.2031 Q1193.5938,1310.625 1193,1310.3594 Q1192.4063,1310.0781 1191.7813,1310.0781 Q1190.4375,1310.0781 1189.75,1311.1563 Q1189.0625,1312.2188 1189.0625,1314.3125 Q1189.0625,1316.4063 1189.75,1317.4844 Q1190.4375,1318.5469 1191.7813,1318.5469 Q1192.4063,1318.5469 1193,1318.2813 Q1193.5938,1318 1194.2188,1317.4219 L1194.2188,1320.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28" x="1208.75" y="1318.6543">Free</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="1161.5" x2="1254.5" y1="1330.5" y2="1330.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="1161.5" x2="1254.5" y1="1338.5" y2="1338.5"/><ellipse cx="1171.5" cy="1349.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="69" x="1180.5" y="1352.7104">Free(int, int)</text></a><!--MD5=[ebdaee7fa58e62f08d6c7bba919cec24]
+class nz.ac.vuw.ecs.swen225.gp20.maze.InfoField--><a href="InfoField.html" target="_top" title="InfoField.html" xlink:actuate="onRequest" xlink:href="InfoField.html" xlink:show="new" xlink:title="InfoField.html" xlink:type="simple"><rect codeLine="38" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="86.4141" id="nz.ac.vuw.ecs.swen225.gp20.maze.InfoField" style="stroke: #A80036; stroke-width: 1.5;" width="184" x="1291" y="1286"/><ellipse cx="1352.75" cy="1302" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1355.7188,1307.6406 Q1355.1406,1307.9375 1354.5,1308.0781 Q1353.8594,1308.2344 1353.1563,1308.2344 Q1350.6563,1308.2344 1349.3281,1306.5938 Q1348.0156,1304.9375 1348.0156,1301.8125 Q1348.0156,1298.6875 1349.3281,1297.0313 Q1350.6563,1295.375 1353.1563,1295.375 Q1353.8594,1295.375 1354.5,1295.5313 Q1355.1563,1295.6875 1355.7188,1295.9844 L1355.7188,1298.7031 Q1355.0938,1298.125 1354.5,1297.8594 Q1353.9063,1297.5781 1353.2813,1297.5781 Q1351.9375,1297.5781 1351.25,1298.6563 Q1350.5625,1299.7188 1350.5625,1301.8125 Q1350.5625,1303.9063 1351.25,1304.9844 Q1351.9375,1306.0469 1353.2813,1306.0469 Q1353.9063,1306.0469 1354.5,1305.7813 Q1355.0938,1305.5 1355.7188,1304.9219 L1355.7188,1307.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="52" x="1373.25" y="1306.1543">InfoField</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="1292" x2="1474" y1="1318" y2="1318"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="1292" x2="1474" y1="1326" y2="1326"/><ellipse cx="1302" cy="1337" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="133" x="1311" y="1340.2104">InfoField(int, int, String)</text><ellipse cx="1302" cy="1349.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="1311" y="1353.0151">getInfo(): String</text><ellipse cx="1302" cy="1362.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="1311" y="1365.8198">getJson(): JsonObjectBuilder</text></a><!--MD5=[378be45096ed9409c119dd69d9943dea]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Key--><a href="Key.html" target="_top" title="Key.html" xlink:actuate="onRequest" xlink:href="Key.html" xlink:show="new" xlink:title="Key.html" xlink:type="simple"><rect codeLine="44" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="73.6094" id="nz.ac.vuw.ecs.swen225.gp20.maze.Key" style="stroke: #A80036; stroke-width: 1.5;" width="184" x="32" y="1292"/><ellipse cx="109.25" cy="1308" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M112.2188,1313.6406 Q111.6406,1313.9375 111,1314.0781 Q110.3594,1314.2344 109.6563,1314.2344 Q107.1563,1314.2344 105.8281,1312.5938 Q104.5156,1310.9375 104.5156,1307.8125 Q104.5156,1304.6875 105.8281,1303.0313 Q107.1563,1301.375 109.6563,1301.375 Q110.3594,1301.375 111,1301.5313 Q111.6563,1301.6875 112.2188,1301.9844 L112.2188,1304.7031 Q111.5938,1304.125 111,1303.8594 Q110.4063,1303.5781 109.7813,1303.5781 Q108.4375,1303.5781 107.75,1304.6563 Q107.0625,1305.7188 107.0625,1307.8125 Q107.0625,1309.9063 107.75,1310.9844 Q108.4375,1312.0469 109.7813,1312.0469 Q110.4063,1312.0469 111,1311.7813 Q111.5938,1311.5 112.2188,1310.9219 L112.2188,1313.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="21" x="129.75" y="1312.1543">Key</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="215" y1="1324" y2="1324"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="215" y1="1332" y2="1332"/><ellipse cx="43" cy="1343" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="109" x="52" y="1346.2104">Key(int, int, Colour)</text><ellipse cx="43" cy="1355.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="52" y="1359.0151">getJson(): JsonObjectBuilder</text></a><!--MD5=[c6460d12b68ebf9e00cc19d6b4702b70]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour--><a href="Key.Colour.html" target="_top" title="Key.Colour.html" xlink:actuate="onRequest" xlink:href="Key.Colour.html" xlink:show="new" xlink:title="Key.Colour.html" xlink:type="simple"><rect codeLine="49" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="99.2188" id="nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.5;" width="127" x="318.5" y="1449"/><ellipse cx="347" cy="1465" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M351.1094,1471 L343.3906,1471 L343.3906,1458.6094 L351.1094,1458.6094 L351.1094,1460.7656 L345.8438,1460.7656 L345.8438,1463.4375 L350.6094,1463.4375 L350.6094,1465.5938 L345.8438,1465.5938 L345.8438,1468.8438 L351.1094,1468.8438 L351.1094,1471 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65" x="364" y="1469.1543">Key.Colour</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="319.5" x2="444.5" y1="1481" y2="1481"/><ellipse cx="329.5" cy="1492" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="22" x="338.5" y="1495.2104">RED</text><ellipse cx="329.5" cy="1504.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="38" x="338.5" y="1508.0151">GREEN</text><ellipse cx="329.5" cy="1517.6094" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="29" x="338.5" y="1520.8198">BLUE</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="319.5" x2="444.5" y1="1527.4141" y2="1527.4141"/><ellipse cx="329.5" cy="1538.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="338.5" y="1541.6245">getName(): String</text></a><!--MD5=[52f0a52808e0233a7588b041290cc25d]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Lava--><a href="Lava.html" target="_top" title="Lava.html" xlink:actuate="onRequest" xlink:href="Lava.html" xlink:show="new" xlink:title="Lava.html" xlink:type="simple"><rect codeLine="56" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.Lava" style="stroke: #A80036; stroke-width: 1.5;" width="96" x="251" y="1298.5"/><ellipse cx="282.2" cy="1314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M285.1688,1320.1406 Q284.5906,1320.4375 283.95,1320.5781 Q283.3094,1320.7344 282.6063,1320.7344 Q280.1063,1320.7344 278.7781,1319.0938 Q277.4656,1317.4375 277.4656,1314.3125 Q277.4656,1311.1875 278.7781,1309.5313 Q280.1063,1307.875 282.6063,1307.875 Q283.3094,1307.875 283.95,1308.0313 Q284.6063,1308.1875 285.1688,1308.4844 L285.1688,1311.2031 Q284.5438,1310.625 283.95,1310.3594 Q283.3563,1310.0781 282.7313,1310.0781 Q281.3875,1310.0781 280.7,1311.1563 Q280.0125,1312.2188 280.0125,1314.3125 Q280.0125,1316.4063 280.7,1317.4844 Q281.3875,1318.5469 282.7313,1318.5469 Q283.3563,1318.5469 283.95,1318.2813 Q284.5438,1318 285.1688,1317.4219 L285.1688,1320.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28" x="299.8" y="1318.6543">Lava</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="252" x2="346" y1="1330.5" y2="1330.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="252" x2="346" y1="1338.5" y2="1338.5"/><ellipse cx="262" cy="1349.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="271" y="1352.7104">Lava(int, int)</text></a><!--MD5=[db3315daaa2942e97c7d13b0e35d8aed]
+class nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor--><a href="LockedDoor.html" target="_top" title="LockedDoor.html" xlink:actuate="onRequest" xlink:href="LockedDoor.html" xlink:show="new" xlink:title="LockedDoor.html" xlink:type="simple"><rect codeLine="60" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="73.6094" id="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor" style="stroke: #A80036; stroke-width: 1.5;" width="184" x="382" y="1292"/><ellipse cx="432.75" cy="1308" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M435.7188,1313.6406 Q435.1406,1313.9375 434.5,1314.0781 Q433.8594,1314.2344 433.1563,1314.2344 Q430.6563,1314.2344 429.3281,1312.5938 Q428.0156,1310.9375 428.0156,1307.8125 Q428.0156,1304.6875 429.3281,1303.0313 Q430.6563,1301.375 433.1563,1301.375 Q433.8594,1301.375 434.5,1301.5313 Q435.1563,1301.6875 435.7188,1301.9844 L435.7188,1304.7031 Q435.0938,1304.125 434.5,1303.8594 Q433.9063,1303.5781 433.2813,1303.5781 Q431.9375,1303.5781 431.25,1304.6563 Q430.5625,1305.7188 430.5625,1307.8125 Q430.5625,1309.9063 431.25,1310.9844 Q431.9375,1312.0469 433.2813,1312.0469 Q433.9063,1312.0469 434.5,1311.7813 Q435.0938,1311.5 435.7188,1310.9219 L435.7188,1313.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="74" x="453.25" y="1312.1543">LockedDoor</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="383" x2="565" y1="1324" y2="1324"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="383" x2="565" y1="1332" y2="1332"/><ellipse cx="393" cy="1343" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="155" x="402" y="1346.2104">LockedDoor(int, int, Colour)</text><ellipse cx="393" cy="1355.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="402" y="1359.0151">getJson(): JsonObjectBuilder</text></a><!--MD5=[9a7d1fe5e7e205b9dd3fbf94307f920e]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Maze--><a href="Maze.html" target="_top" title="Maze.html" xlink:actuate="onRequest" xlink:href="Maze.html" xlink:show="new" xlink:title="Maze.html" xlink:type="simple"><rect codeLine="65" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="150.4375" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze" style="stroke: #A80036; stroke-width: 1.5;" width="268" x="676" y="303.5"/><ellipse cx="790.25" cy="319.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M793.2188,325.1406 Q792.6406,325.4375 792,325.5781 Q791.3594,325.7344 790.6563,325.7344 Q788.1563,325.7344 786.8281,324.0938 Q785.5156,322.4375 785.5156,319.3125 Q785.5156,316.1875 786.8281,314.5313 Q788.1563,312.875 790.6563,312.875 Q791.3594,312.875 792,313.0313 Q792.6563,313.1875 793.2188,313.4844 L793.2188,316.2031 Q792.5938,315.625 792,315.3594 Q791.4063,315.0781 790.7813,315.0781 Q789.4375,315.0781 788.75,316.1563 Q788.0625,317.2188 788.0625,319.3125 Q788.0625,321.4063 788.75,322.4844 Q789.4375,323.5469 790.7813,323.5469 Q791.4063,323.5469 792,323.2813 Q792.5938,323 793.2188,322.4219 L793.2188,325.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="31" x="810.75" y="323.6543">Maze</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="677" x2="943" y1="335.5" y2="335.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="677" x2="943" y1="343.5" y2="343.5"/><ellipse cx="687" cy="354.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="86" x="696" y="357.7104">Maze(Tile[], int)</text><ellipse cx="687" cy="367.3047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="242" x="696" y="370.5151">Maze(Tile[], int, List&lt;Block&gt;, List&lt;Cobra&gt;)</text><ellipse cx="687" cy="380.1094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="696" y="383.3198">Maze(int)</text><ellipse cx="687" cy="392.9141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="162" x="696" y="396.1245">moveChap(Direction): Sound</text><ellipse cx="687" cy="405.7188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="199" x="696" y="408.9292">moveActor(Actor, Direction): Sound</text><ellipse cx="687" cy="418.5234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="127" x="696" y="421.7339">isLevelOver(): boolean</text><ellipse cx="687" cy="431.3281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="128" x="696" y="434.5386">getTreasuresLeft(): int</text><ellipse cx="687" cy="444.1328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77" x="696" y="447.3433">getLevel(): int</text></a><!--MD5=[faf426d5a98c1d7f10ac5c53406938e5]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState--><a href="Maze.LevelState.html" target="_top" title="Maze.LevelState.html" xlink:actuate="onRequest" xlink:href="Maze.LevelState.html" xlink:show="new" xlink:title="Maze.LevelState.html" xlink:type="simple"><rect codeLine="76" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="86.4141" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.5;" width="132" x="744" y="812.5"/><ellipse cx="759" cy="828.5" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M763.1094,834.5 L755.3906,834.5 L755.3906,822.1094 L763.1094,822.1094 L763.1094,824.2656 L757.8438,824.2656 L757.8438,826.9375 L762.6094,826.9375 L762.6094,829.0938 L757.8438,829.0938 L757.8438,832.3438 L763.1094,832.3438 L763.1094,834.5 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="100" x="773" y="832.6543">Maze.LevelState</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="745" x2="875" y1="844.5" y2="844.5"/><ellipse cx="755" cy="855.5" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="51" x="764" y="858.7104">RUNNING</text><ellipse cx="755" cy="868.3047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="26" x="764" y="871.5151">WON</text><ellipse cx="755" cy="881.1094" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="26" x="764" y="884.3198">DIED</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="745" x2="875" y1="890.9141" y2="890.9141"/></a><!--MD5=[50dd2a0a7e341e12af3ebb5a9554cce9]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Player--><a href="Player.html" target="_top" title="Player.html" xlink:actuate="onRequest" xlink:href="Player.html" xlink:show="new" xlink:title="Player.html" xlink:type="simple"><rect codeLine="82" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="112.0234" id="nz.ac.vuw.ecs.swen225.gp20.maze.Player" style="stroke: #A80036; stroke-width: 1.5;" width="226" x="1164" y="799.5"/><ellipse cx="1253.75" cy="815.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M1256.7188,821.1406 Q1256.1406,821.4375 1255.5,821.5781 Q1254.8594,821.7344 1254.1563,821.7344 Q1251.6563,821.7344 1250.3281,820.0938 Q1249.0156,818.4375 1249.0156,815.3125 Q1249.0156,812.1875 1250.3281,810.5313 Q1251.6563,808.875 1254.1563,808.875 Q1254.8594,808.875 1255.5,809.0313 Q1256.1563,809.1875 1256.7188,809.4844 L1256.7188,812.2031 Q1256.0938,811.625 1255.5,811.3594 Q1254.9063,811.0781 1254.2813,811.0781 Q1252.9375,811.0781 1252.25,812.1563 Q1251.5625,813.2188 1251.5625,815.3125 Q1251.5625,817.4063 1252.25,818.4844 Q1252.9375,819.5469 1254.2813,819.5469 Q1254.9063,819.5469 1255.5,819.2813 Q1256.0938,819 1256.7188,818.4219 L1256.7188,821.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="38" x="1274.25" y="819.6543">Player</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="1165" x2="1389" y1="831.5" y2="831.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="1165" x2="1389" y1="839.5" y2="839.5"/><ellipse cx="1175" cy="850.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63" x="1184" y="853.7104">Player(Tile)</text><ellipse cx="1175" cy="863.3047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="155" x="1184" y="866.5151">incrementTreasures(): void</text><ellipse cx="1175" cy="876.1094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="159" x="1184" y="879.3198">getTreasuresCollected(): int</text><ellipse cx="1175" cy="888.9141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="164" x="1184" y="892.1245">addToBackPack(Colour): void</text><ellipse cx="1175" cy="901.7188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="200" x="1184" y="904.9292">backpackContains(Colour): boolean</text></a><!--MD5=[76c7e6ed5bb0aaabc8404e6911d01ede]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Tile--><a href="Tile.html" target="_top" title="Tile.html" xlink:actuate="onRequest" xlink:href="Tile.html" xlink:show="new" xlink:title="Tile.html" xlink:type="simple"><rect codeLine="90" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="214.4609" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.5;" width="238" x="562" y="995"/><ellipse cx="666.25" cy="1011" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M666.3594,1006.3438 L665.2031,1011.4219 L667.5313,1011.4219 L666.3594,1006.3438 Z M664.875,1004.1094 L667.8594,1004.1094 L671.2188,1016.5 L668.7656,1016.5 L668,1013.4375 L664.7188,1013.4375 L663.9688,1016.5 L661.5313,1016.5 L664.875,1004.1094 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="21" x="686.75" y="1015.1543">Tile</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="563" x2="799" y1="1027" y2="1027"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="563" x2="799" y1="1035" y2="1035"/><ellipse cx="573" cy="1046" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="212" x="582" y="1049.2104">Tile(String, int, int, boolean, boolean)</text><ellipse cx="573" cy="1058.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="82" x="582" y="1062.0151">onEntry(): void</text><ellipse cx="573" cy="1071.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="582" y="1074.8198">onExit(): void</text><ellipse cx="573" cy="1084.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="582" y="1087.6245">isOccupied(): boolean</text><ellipse cx="573" cy="1097.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="154" x="582" y="1100.4292">setOccupied(boolean): void</text><ellipse cx="573" cy="1110.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="141" x="582" y="1113.2339">isFreeOnEntry(): boolean</text><ellipse cx="573" cy="1122.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="131" x="582" y="1126.0386">isAccessible(): boolean</text><ellipse cx="573" cy="1135.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="121" x="582" y="1138.8433">getImageURl(): String</text><ellipse cx="573" cy="1148.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66" x="582" y="1151.6479">getCol(): int</text><ellipse cx="573" cy="1161.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="582" y="1164.4526">getRow(): int</text><ellipse cx="573" cy="1174.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="112" x="582" y="1177.2573">hasBlock(): boolean</text><ellipse cx="573" cy="1186.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="154" x="582" y="1190.062">setHasBlock(boolean): void</text><ellipse cx="573" cy="1199.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="582" y="1202.8667">getJson(): JsonObjectBuilder</text></a><!--MD5=[35253307ccbb806488115b08bb7fb43e]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Tiles--><a href="Tiles.html" target="_top" title="Tiles.html" xlink:actuate="onRequest" xlink:href="Tiles.html" xlink:show="new" xlink:title="Tiles.html" xlink:type="simple"><rect codeLine="106" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tiles" style="stroke: #A80036; stroke-width: 1.5;" width="89" x="336.5" y="825"/><ellipse cx="364.55" cy="841" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M367.5188,846.6406 Q366.9406,846.9375 366.3,847.0781 Q365.6594,847.2344 364.9563,847.2344 Q362.4563,847.2344 361.1281,845.5938 Q359.8156,843.9375 359.8156,840.8125 Q359.8156,837.6875 361.1281,836.0313 Q362.4563,834.375 364.9563,834.375 Q365.6594,834.375 366.3,834.5313 Q366.9563,834.6875 367.5188,834.9844 L367.5188,837.7031 Q366.8938,837.125 366.3,836.8594 Q365.7063,836.5781 365.0813,836.5781 Q363.7375,836.5781 363.05,837.6563 Q362.3625,838.7188 362.3625,840.8125 Q362.3625,842.9063 363.05,843.9844 Q363.7375,845.0469 365.0813,845.0469 Q365.7063,845.0469 366.3,844.7813 Q366.8938,844.5 367.5188,843.9219 L367.5188,846.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="28" x="381.45" y="845.1543">Tiles</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="337.5" x2="424.5" y1="857" y2="857"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="337.5" x2="424.5" y1="865" y2="865"/><ellipse cx="347.5" cy="876" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="63" x="356.5" y="879.2104">Tiles(Tile[])</text></a><!--MD5=[2b1393bff161ef46f7d27967c31afb05]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Treasure--><a href="Treasure.html" target="_top" title="Treasure.html" xlink:actuate="onRequest" xlink:href="Treasure.html" xlink:show="new" xlink:title="Treasure.html" xlink:type="simple"><rect codeLine="110" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.Treasure" style="stroke: #A80036; stroke-width: 1.5;" width="122" x="601" y="1298.5"/><ellipse cx="631.3" cy="1314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M634.2688,1320.1406 Q633.6906,1320.4375 633.05,1320.5781 Q632.4094,1320.7344 631.7063,1320.7344 Q629.2063,1320.7344 627.8781,1319.0938 Q626.5656,1317.4375 626.5656,1314.3125 Q626.5656,1311.1875 627.8781,1309.5313 Q629.2063,1307.875 631.7063,1307.875 Q632.4094,1307.875 633.05,1308.0313 Q633.7063,1308.1875 634.2688,1308.4844 L634.2688,1311.2031 Q633.6438,1310.625 633.05,1310.3594 Q632.4563,1310.0781 631.8313,1310.0781 Q630.4875,1310.0781 629.8,1311.1563 Q629.1125,1312.2188 629.1125,1314.3125 Q629.1125,1316.4063 629.8,1317.4844 Q630.4875,1318.5469 631.8313,1318.5469 Q632.4563,1318.5469 633.05,1318.2813 Q633.6438,1318 634.2688,1317.4219 L634.2688,1320.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="56" x="648.7" y="1318.6543">Treasure</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="602" x2="722" y1="1330.5" y2="1330.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="602" x2="722" y1="1338.5" y2="1338.5"/><ellipse cx="612" cy="1349.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="96" x="621" y="1352.7104">Treasure(int, int)</text></a><!--MD5=[5be3bcbc4bdfe863e1cae2799ec0a5bc]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Wall--><a href="Wall.html" target="_top" title="Wall.html" xlink:actuate="onRequest" xlink:href="Wall.html" xlink:show="new" xlink:title="Wall.html" xlink:type="simple"><rect codeLine="114" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="60.8047" id="nz.ac.vuw.ecs.swen225.gp20.maze.Wall" style="stroke: #A80036; stroke-width: 1.5;" width="92" x="758" y="1298.5"/><ellipse cx="788.75" cy="1314.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M791.7188,1320.1406 Q791.1406,1320.4375 790.5,1320.5781 Q789.8594,1320.7344 789.1563,1320.7344 Q786.6563,1320.7344 785.3281,1319.0938 Q784.0156,1317.4375 784.0156,1314.3125 Q784.0156,1311.1875 785.3281,1309.5313 Q786.6563,1307.875 789.1563,1307.875 Q789.8594,1307.875 790.5,1308.0313 Q791.1563,1308.1875 791.7188,1308.4844 L791.7188,1311.2031 Q791.0938,1310.625 790.5,1310.3594 Q789.9063,1310.0781 789.2813,1310.0781 Q787.9375,1310.0781 787.25,1311.1563 Q786.5625,1312.2188 786.5625,1314.3125 Q786.5625,1316.4063 787.25,1317.4844 Q787.9375,1318.5469 789.2813,1318.5469 Q789.9063,1318.5469 790.5,1318.2813 Q791.0938,1318 791.7188,1317.4219 L791.7188,1320.1406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="25" x="806.25" y="1318.6543">Wall</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="759" x2="849" y1="1330.5" y2="1330.5"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="759" x2="849" y1="1338.5" y2="1338.5"/><ellipse cx="769" cy="1349.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66" x="778" y="1352.7104">Wall(int, int)</text></a><!--MD5=[a6b18caf40e1dd90b363784c28d14bf9]
+class nz.ac.vuw.ecs.swen225.gp20.maze.MazeTest--><a href="MazeTest.html" target="_top" title="MazeTest.html" xlink:actuate="onRequest" xlink:href="MazeTest.html" xlink:show="new" xlink:title="MazeTest.html" xlink:type="simple"><rect codeLine="118" fill="#FEFECE" filter="url(#f1k6j28kee4kgu)" height="675.4297" id="nz.ac.vuw.ecs.swen225.gp20.maze.MazeTest" style="stroke: #A80036; stroke-width: 1.5;" width="302" x="186" y="41"/><ellipse cx="303.75" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M306.7188,62.6406 Q306.1406,62.9375 305.5,63.0781 Q304.8594,63.2344 304.1563,63.2344 Q301.6563,63.2344 300.3281,61.5938 Q299.0156,59.9375 299.0156,56.8125 Q299.0156,53.6875 300.3281,52.0313 Q301.6563,50.375 304.1563,50.375 Q304.8594,50.375 305.5,50.5313 Q306.1563,50.6875 306.7188,50.9844 L306.7188,53.7031 Q306.0938,53.125 305.5,52.8594 Q304.9063,52.5781 304.2813,52.5781 Q302.9375,52.5781 302.25,53.6563 Q301.5625,54.7188 301.5625,56.8125 Q301.5625,58.9063 302.25,59.9844 Q302.9375,61.0469 304.2813,61.0469 Q304.9063,61.0469 305.5,60.7813 Q306.0938,60.5 306.7188,59.9219 L306.7188,62.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="58" x="324.25" y="61.1543">MazeTest</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="187" x2="487" y1="73" y2="73"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="187" x2="487" y1="81" y2="81"/><ellipse cx="197" cy="92" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="206" y="95.2104">test2dArrayShallowClone(): void</text><ellipse cx="197" cy="104.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="241" x="206" y="108.0151">test2dArrayCloneShallowImmutable(): void</text><ellipse cx="197" cy="117.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="85" x="206" y="120.8198">moveUp(): void</text><ellipse cx="197" cy="130.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="206" y="133.6245">moveDown(): void</text><ellipse cx="197" cy="143.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="91" x="206" y="146.4292">moveLeft(): void</text><ellipse cx="197" cy="156.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="98" x="206" y="159.2339">moveRight(): void</text><ellipse cx="197" cy="168.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="127" x="206" y="172.0386">moveUpIntoNull(): void</text><ellipse cx="197" cy="181.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="143" x="206" y="184.8433">moveDownIntoNull(): void</text><ellipse cx="197" cy="194.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="133" x="206" y="197.6479">moveLeftIntoNull(): void</text><ellipse cx="197" cy="207.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="140" x="206" y="210.4526">moveRightIntoNull(): void</text><ellipse cx="197" cy="220.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="212" x="206" y="223.2573">ensureTreasureCellAccessible(): void</text><ellipse cx="197" cy="232.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="216" x="206" y="236.062">grabTreasureCellBecomesFree(): void</text><ellipse cx="197" cy="245.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="265" x="206" y="248.8667">grabOneTreasureCellExitLockDoesntFlip(): void</text><ellipse cx="197" cy="258.4609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="276" x="206" y="261.6714">grabTreasureChapsTreasuresIncrements(): void</text><ellipse cx="197" cy="271.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="113" x="206" y="274.4761">moveIntoWall(): void</text><ellipse cx="197" cy="284.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="192" x="206" y="287.2808">moveIntoLockedDoorNoKey(): void</text><ellipse cx="197" cy="296.875" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="136" x="206" y="300.0854">moveIntoExitLock(): void</text><ellipse cx="197" cy="309.6797" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="201" x="206" y="312.8901">getBlueKeyCellBecomesFree(): void</text><ellipse cx="197" cy="322.4844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="206" x="206" y="325.6948">getBlueKeyGoesIntoBackpack(): void</text><ellipse cx="197" cy="335.2891" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="191" x="206" y="338.4995">getBlueKeyBlueDoorOpens(): void</text><ellipse cx="197" cy="348.0938" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="220" x="206" y="351.3042">getRedKeyBlueDoorDoesntOpen(): void</text><ellipse cx="197" cy="360.8984" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="202" x="206" y="364.1089">getRedKeyGoesIntoBackpack(): void</text><ellipse cx="197" cy="373.7031" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="218" x="206" y="376.9136">collectAllTreasuresExitLockFlips(): void</text><ellipse cx="197" cy="386.5078" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="143" x="206" y="389.7183">goToExitLevelOver(): void</text><ellipse cx="197" cy="399.3125" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="155" x="206" y="402.5229">infoFieldDisplaysInfo(): void</text><ellipse cx="197" cy="412.1172" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="233" x="206" y="415.3276">invalidActorNameThrowsException(): void</text><ellipse cx="197" cy="424.9219" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="270" x="206" y="428.1323">negativeTotalTreasuresThrowsException(): void</text><ellipse cx="197" cy="437.7266" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="121" x="206" y="440.937">moveBlockLeft(): void</text><ellipse cx="197" cy="450.5313" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="128" x="206" y="453.7417">moveBlockRight(): void</text><ellipse cx="197" cy="463.3359" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="115" x="206" y="466.5464">moveBlockUp(): void</text><ellipse cx="197" cy="476.1406" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="131" x="206" y="479.3511">moveBlockDown(): void</text><ellipse cx="197" cy="488.9453" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="164" x="206" y="492.1558">moveBlockLeftIntoWall(): void</text><ellipse cx="197" cy="501.75" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="171" x="206" y="504.9604">moveBlockRightIntoWall(): void</text><ellipse cx="197" cy="514.5547" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="206" y="517.7651">moveBlockUpIntoWall(): void</text><ellipse cx="197" cy="527.3594" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="174" x="206" y="530.5698">moveBlockDownIntoWall(): void</text><ellipse cx="197" cy="540.1641" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="127" x="206" y="543.3745">chapDiesInLava(): void</text><ellipse cx="197" cy="552.9688" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="181" x="206" y="556.1792">moveBlockIntoLavaWorks(): void</text><ellipse cx="197" cy="565.7734" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="196" x="206" y="568.9839">moveBlockIntoLavaWalkable(): void</text><ellipse cx="197" cy="578.5781" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="107" x="206" y="581.7886">cobraMoves(): void</text><ellipse cx="197" cy="591.3828" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="105" x="206" y="594.5933">cobraLoops(): void</text><ellipse cx="197" cy="604.1875" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="169" x="206" y="607.3979">cobraCantMoveIntoWall(): void</text><ellipse cx="197" cy="616.9922" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="213" x="206" y="620.2026">cobraCantMoveIntoLockedDoor(): void</text><ellipse cx="197" cy="629.7969" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="202" x="206" y="633.0073">cobraMoveIntoChapKillsChap(): void</text><ellipse cx="197" cy="642.6016" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="220" x="206" y="645.812">cobraMoveIntoChapCobraMoves(): void</text><ellipse cx="197" cy="655.4063" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="211" x="206" y="658.6167">chapMovesIntoCobraChapDies(): void</text><ellipse cx="197" cy="668.2109" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="255" x="206" y="671.4214">chapMovesIntoCobraChapDoesntMove(): void</text><ellipse cx="197" cy="681.0156" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="226" x="206" y="684.2261">cantMoveBlockOnTileWithNoBlock(): void</text><ellipse cx="197" cy="693.8203" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="249" x="206" y="697.0308">level1LoadsFromFileWithoutException(): void</text><ellipse cx="197" cy="706.625" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="249" x="206" y="709.8354">level2LoadsFromFileWithoutException(): void</text></a><!--MD5=[a4209d1d6cce0398bb0d403ad571d384]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Tile--><path codeLine="170" d="M1313.24,428.3 C1384.14,530.2 1524.53,768.5 1408,918 C1334.62,1012.14 993.23,1065.32 805.52,1087.91 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="800.29,1088.54,809.7044,1091.4328,805.254,1087.9409,808.7459,1083.4904,800.29,1088.54" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50" x="1453" y="860.0669">location</text><!--MD5=[e200314dd42774524740759839b58ce6]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Block to nz.ac.vuw.ecs.swen225.gp20.maze.Tile--><path codeLine="171" d="M564.82,905.1 C579.38,929.65 597.7,960.53 615.45,990.46 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Block-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="618.06,994.87,616.9219,985.0871,615.5149,990.5662,610.0358,989.1593,618.06,994.87" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50" x="600" y="961.0669">location</text><!--MD5=[130996cf979dd08dfcc11741955a1549]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Cobra--><path codeLine="172" d="M1245.51,446.82 C1208.56,524.4 1144.27,655.07 1081,763 C1075.3,772.72 1068.99,782.82 1062.65,792.6 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Cobra" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="1239.41,443.36,1254.3,428.29,1252.06,449.36,1239.41,443.36" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[9db3a5ded47292c095093eaea19e1946]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Exit--><path codeLine="173" d="M813.83,1223.03 C844.87,1251.07 875.21,1278.49 897.1,1298.27 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Exit" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="808.72,1227.84,798.57,1209.24,818.11,1217.46,808.72,1227.84" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b996d1f71f2a1ea9cb5bf3b19590347d]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock--><path codeLine="174" d="M817.34,1182.27 C886.51,1222.48 966.38,1268.92 1017.02,1298.36 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.ExitLock" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="813.78,1188.29,800.01,1172.19,820.82,1176.19,813.78,1188.29" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[929cdba72941f6e862670b174d49e690]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Free--><path codeLine="175" d="M818.96,1149.58 C912.46,1183.09 1037.69,1231.79 1143,1286 C1150.17,1289.69 1157.55,1293.96 1164.64,1298.33 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Free" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="816.6,1156.18,800.1,1142.88,821.29,1142.99,816.6,1156.18" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[d24b1fc37fea0aa2333f86ceda4715e3]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.InfoField--><path codeLine="176" d="M819.43,1143.02 C939.93,1178.52 1118.95,1232.84 1273,1286 C1278.8,1288 1284.75,1290.11 1290.73,1292.27 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.InfoField" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="817.45,1149.74,800.23,1137.38,821.4,1136.3,817.45,1149.74" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[46d2c15a8e9dc6cf171109ce90730fa1]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Key--><path codeLine="177" d="M543.04,1158.73 C440,1200.35 302.2,1256.02 213.25,1291.95 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Key" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="540.69,1152.13,561.85,1151.13,545.93,1165.11,540.69,1152.13" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[cb6e4f24162dba301f717462b36201a8]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Key to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour--><path codeLine="178" d="M179.66,1366.14 C219.05,1391.71 272.09,1426.14 313.98,1453.34 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Key-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="318.26,1456.12,312.9049,1447.8543,314.0714,1453.3895,308.5361,1454.5561,318.26,1456.12" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="39" x="261" y="1415.0669">colour</text><!--MD5=[bfc3e10d2a57bb7e7fcb07ecb82a8cff]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Key to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour--><path codeLine="179" d="M230.2,1370.67 C270.38,1386.18 307.04,1400.53 309,1402 C325.85,1414.67 340.76,1432.2 352.65,1448.8 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Key-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.0;"/><ellipse cx="223.654" cy="1368.149" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="231.118" x2="216.19" y1="1371.028" y2="1365.27"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="220.775" x2="226.533" y1="1375.613" y2="1360.685"/><!--MD5=[390f79909ac3b931bb0cec2f90726eb3]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Lava--><path codeLine="180" d="M544.34,1180.48 C488.43,1212.61 423.31,1250.58 365,1286 C358.5,1289.95 351.68,1294.18 345,1298.38 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Lava" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="540.93,1174.37,561.76,1170.49,547.9,1186.51,540.93,1174.37" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[6b0b4bb532b3358470f848047d59811f]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor--><path codeLine="181" d="M569.48,1224.22 C546.78,1248.89 524.59,1273.01 507.33,1291.77 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="564.57,1219.22,583.26,1209.24,574.87,1228.7,564.57,1219.22" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[3e9ee57e5ccc9ccee4d457b927ea040f]
+link nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour--><path codeLine="182" d="M454.04,1366.35 C441.55,1389.08 425.25,1418.77 411.31,1444.14 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.LockedDoor-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="408.73,1448.83,416.5826,1442.8855,411.1473,1444.4532,409.5796,1439.0179,408.73,1448.83" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="66" x="434" y="1415.0669">lockColour</text><!--MD5=[06a91cefc5865c61be5948ec6b116abe]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState--><path codeLine="183" d="M810,453.72 C810,552.4 810,723.97 810,806.91 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="810,812.24,814,803.24,810,807.24,806,803.24,810,812.24" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="33" x="811" y="759.0669">state</text><!--MD5=[5d1011535aa03f29bfbc3e59911c37fc]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState--><path codeLine="188" d="M807.51,468.85 C805.56,543.05 803.03,651.38 802,746 C801.92,753.56 801.67,755.45 802,763 C802.7,779.09 804.1,796.73 805.53,812.18 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.0;"/><ellipse cx="807.6967" cy="461.5472" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="807.4835" x2="807.91" y1="469.5443" y2="453.55"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="799.6996" x2="815.6939" y1="461.3339" y2="461.7604"/><!--MD5=[a09edf45f7411f1238fa0cbd3e943896]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Tile--><path codeLine="184" d="M785.2,453.58 C758.91,535.56 718.55,672.11 699,793 C688.54,857.67 683.97,930.85 682.04,989.65 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="681.88,994.93,686.1615,986.0605,682.0375,989.9325,678.1655,985.8085,681.88,994.93" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="26" x="700" y="860.0669">tiles</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7" x="674.6958" y="983.9297">*</text><!--MD5=[abc169298ad62b1f95973d1231d26643]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Player--><path codeLine="185" d="M882.97,453.72 C975.74,548.08 1134.03,709.08 1219,795.51 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Player" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="1222.74,799.31,1219.2787,790.0894,1219.2331,795.7461,1213.5764,795.7005,1222.74,799.31" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="31" x="1177" y="759.0669">chap</text><!--MD5=[02de3a96a0c071fe13931d9fd6efc86f]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Cobra--><path codeLine="186" d="M832.17,453.57 C857.19,532.57 901.57,660.22 956,763 C960.44,771.38 965.52,779.91 970.84,788.21 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Cobra" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="973.81,792.79,972.2845,783.06,971.0961,788.5906,965.5655,787.4022,973.81,792.79" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="43" x="957" y="759.0669">cobras</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7" x="961.0646" y="781.7565">*</text><!--MD5=[be0757a0c0ade79cfb01a52dfb60e7a9]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Block--><path codeLine="187" d="M767.19,453.72 C711.52,550.23 615.62,716.46 566.68,801.31 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-to-nz.ac.vuw.ecs.swen225.gp20.maze.Block" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="564.1,805.79,572.065,799.997,566.6007,801.4603,565.1374,795.9959,564.1,805.79" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="40" x="596" y="759.0669">blocks</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7" x="560.5594" y="794.8057">*</text><!--MD5=[4a5cb7536213d0e1e4b81247d88128b1]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Actor to nz.ac.vuw.ecs.swen225.gp20.maze.Player--><path codeLine="189" d="M1277,448.29 C1277,543.19 1277,712.38 1277,799.42 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Actor-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Player" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="1270,448.1,1277,428.1,1284,448.1,1270,448.1" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[83767f93c295af198402246bd327fa76]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Player to nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour--><path codeLine="190" d="M1334.8,911.79 C1434.52,1013.71 1616.8,1233.42 1493,1372 C1423.28,1450.04 682.59,1485.66 450.88,1494.95 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Player-to-nz.ac.vuw.ecs.swen225.gp20.maze.Key.Colour" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="445.83,1495.15,454.9827,1498.7871,450.826,1494.9502,454.6629,1490.7935,445.83,1495.15" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="60" x="1535" y="1252.0669">backpack</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7" x="453.615" y="1490.9574">*</text><!--MD5=[c0d74b452ae5274e332754e67bec71f3]
+link nz.ac.vuw.ecs.swen225.gp20.maze.Tiles to nz.ac.vuw.ecs.swen225.gp20.maze.Tile--><path codeLine="191" d="M409.82,886.01 C420.33,896.4 432.46,907.97 444,918 C479.97,949.26 520.56,981.59 557.86,1010.22 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tiles-to-nz.ac.vuw.ecs.swen225.gp20.maze.Tile" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="561.92,1013.34,557.2237,1004.6829,557.9563,1010.2921,552.3471,1011.0248,561.92,1013.34" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="53" x="495" y="961.0669">tileArray</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7" x="547.0672" y="1004.2361">*</text><!--MD5=[a1911b10b75f55b1bdaddac856c7f366]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Treasure--><path codeLine="192" d="M670.32,1229.45 C668.16,1255.11 666.07,1279.79 664.53,1298.03 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Treasure" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="663.37,1228.58,672.03,1209.24,677.32,1229.76,663.37,1228.58" style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b3904b93be8fd53266ed918884e9c18a]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.maze.Wall--><path codeLine="193" d="M748.88,1227.17 C763.35,1253.64 777.35,1279.25 787.62,1298.03 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Tile-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Wall" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="742.53,1230.15,739.08,1209.24,754.81,1223.43,742.53,1230.15" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192" x="709.4" y="1579.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16</text><!--MD5=[e915e325488e52f6e95c1e036bf5ec37]
 @startuml
     namespace nz.ac.vuw.ecs.swen225.gp20.maze {
 
@@ -860,6 +161,58 @@ reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Tile to nz.ac.vuw.ecs.swen225.gp20.
             +Wall(int, int)
         }
 
+        class MazeTest [[MazeTest.html]] {
+            +test2dArrayShallowClone(): void
+            +test2dArrayCloneShallowImmutable(): void
+            +moveUp(): void
+            +moveDown(): void
+            +moveLeft(): void
+            +moveRight(): void
+            +moveUpIntoNull(): void
+            +moveDownIntoNull(): void
+            +moveLeftIntoNull(): void
+            +moveRightIntoNull(): void
+            +ensureTreasureCellAccessible(): void
+            +grabTreasureCellBecomesFree(): void
+            +grabOneTreasureCellExitLockDoesntFlip(): void
+            +grabTreasureChapsTreasuresIncrements(): void
+            +moveIntoWall(): void
+            +moveIntoLockedDoorNoKey(): void
+            +moveIntoExitLock(): void
+            +getBlueKeyCellBecomesFree(): void
+            +getBlueKeyGoesIntoBackpack(): void
+            +getBlueKeyBlueDoorOpens(): void
+            +getRedKeyBlueDoorDoesntOpen(): void
+            +getRedKeyGoesIntoBackpack(): void
+            +collectAllTreasuresExitLockFlips(): void
+            +goToExitLevelOver(): void
+            +infoFieldDisplaysInfo(): void
+            +invalidActorNameThrowsException(): void
+            +negativeTotalTreasuresThrowsException(): void
+            +moveBlockLeft(): void
+            +moveBlockRight(): void
+            +moveBlockUp(): void
+            +moveBlockDown(): void
+            +moveBlockLeftIntoWall(): void
+            +moveBlockRightIntoWall(): void
+            +moveBlockUpIntoWall(): void
+            +moveBlockDownIntoWall(): void
+            +chapDiesInLava(): void
+            +moveBlockIntoLavaWorks(): void
+            +moveBlockIntoLavaWalkable(): void
+            +cobraMoves(): void
+            +cobraLoops(): void
+            +cobraCantMoveIntoWall(): void
+            +cobraCantMoveIntoLockedDoor(): void
+            +cobraMoveIntoChapKillsChap(): void
+            +cobraMoveIntoChapCobraMoves(): void
+            +chapMovesIntoCobraChapDies(): void
+            +chapMovesIntoCobraChapDoesntMove(): void
+            +cantMoveBlockOnTileWithNoBlock(): void
+            +level1LoadsFromFileWithoutException(): void
+            +level2LoadsFromFileWithoutException(): void
+        }
+
         Actor - -> Tile: location
         Block - -> Tile: location
         Actor <|- - Cobra
@@ -896,6 +249,4 @@ JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
 Country: null
--->
-    </g>
-</svg>
+--></g></svg>

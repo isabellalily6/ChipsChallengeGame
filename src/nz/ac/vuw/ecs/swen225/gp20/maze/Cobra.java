@@ -56,6 +56,8 @@ public class Cobra extends Actor {
     }
 
     /**
+     * Gets a list equivalent to the queue of cobra moves
+     *
      * @return a list equivalent to the queue of cobra moves
      */
     public List<Direction> getListOfMoves() {
@@ -63,6 +65,8 @@ public class Cobra extends Actor {
     }
 
     /**
+     * Gets a copy of the move queue
+     *
      * @return a copy of the move queue
      */
     public Queue<Direction> getMoves() {
@@ -70,6 +74,8 @@ public class Cobra extends Actor {
     }
 
     /**
+     * Whether or not this cobra is in test mode
+     *
      * @return if the moves of this cobra contains null, then it is a test cobra that needs no thread
      */
     public boolean inTestMode() {

@@ -2,6 +2,26 @@
     <property name="source.dir" location="src"/>
     <property name="doc.dir" location="docs"/>
     <property name="lib.dir" value="lib"/>
+    <property name="maven.dir" value="/mnt/c/Users/Ben/.m2/repository"/>
+
+    <path id="junit.classpath">
+        <!--<pathelement location="${maven.dir}/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar" />
+        <pathelement location="${maven.dir}/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar" />
+        <pathelement location="${maven.dir}/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar" />
+        <pathelement location="${maven.dir}/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar" />
+        <pathelement location="${maven.dir}/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar" />
+        <pathelement location="${maven.dir}/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar" />
+        <pathelement location="${maven.dir}/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar" />
+        <pathelement location="${maven.dir}/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar" />-->
+        <fileset dir="${maven.dir}/org/junit" includes="**/**/**/*.jar"/>
+        <fileset dir="${maven.dir}/org/apiguardian" includes="**/**/*.jar"/>
+        <fileset dir="${maven.dir}/org/opentest4j" includes="**/**/*.jar"/>
+    </path>
+
+    <path id="test.classpath">
+        <path refid="junit.classpath"/>
+        <path refid="classpath"/>
+    </path>
 
     <path id="umlDoclet.classpath">
         <pathelement location="lib/umldoclet-2.0.12.jar"/>
@@ -16,6 +36,15 @@
         <mkdir dir="${doc.dir}"/>
         <mkdir dir="${source.dir}"/>
         <javadoc destdir="${doc.dir}" sourcepath="${source.dir}" classpathref="classpath" author="true">
+            <doclet name="nl.talsmasoftware.umldoclet.UMLDoclet" pathref="umlDoclet.classpath">
+            </doclet>
+        </javadoc>
+    </target>
+
+    <target name="docTests">
+        <mkdir dir="${doc.dir}"/>
+        <mkdir dir="${source.dir}"/>
+        <javadoc destdir="${doc.dir}" sourcepath="${source.dir}:test" classpathref="test.classpath" author="true">
             <doclet name="nl.talsmasoftware.umldoclet.UMLDoclet" pathref="umlDoclet.classpath">
             </doclet>
         </javadoc>

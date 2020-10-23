@@ -26,6 +26,8 @@ public class Key extends Tile {
 
 
     /**
+     * Gets the colour of this key
+     *
      * @return The colour of this key
      */
     public Colour getColour() {
@@ -59,6 +61,8 @@ public class Key extends Tile {
         }
 
         /**
+         * Get the properly formatted name of this key
+         *
          * @return properly formatted name of this key
          */
         public String getName() {

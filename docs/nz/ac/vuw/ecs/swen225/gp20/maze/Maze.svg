@@ -1,111 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-     contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none"
-     style="width:294px;height:352px;" version="1.1" viewBox="0 0 294 352" width="294px" zoomAndPan="magnify">
-    <defs>
-        <filter height="300%" id="f1k550cotcmpqv" width="300%" x="-1" y="-1">
-            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
-            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
-                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
-            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
-            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
-        </filter>
-    </defs>
-    <g><!--MD5=[9a7d1fe5e7e205b9dd3fbf94307f920e]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Maze-->
-        <a href="Maze.html" target="_top" title="Maze.html" xlink:actuate="onRequest" xlink:href="Maze.html"
-           xlink:show="new" xlink:title="Maze.html" xlink:type="simple">
-            <rect codeLine="5" fill="#FEFECE" filter="url(#f1k550cotcmpqv)" height="212.3984"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze" style="stroke: #A80036; stroke-width: 1.5;" width="268"
-                  x="7" y="7"/>
-            <ellipse cx="51.75" cy="25.9688" fill="#ADD1B2" rx="11" ry="11"
-                     style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M54.7188,31.6094 Q54.1406,31.9063 53.5,32.0469 Q52.8594,32.2031 52.1563,32.2031 Q49.6563,32.2031 48.3281,30.5625 Q47.0156,28.9063 47.0156,25.7813 Q47.0156,22.6563 48.3281,21 Q49.6563,19.3438 52.1563,19.3438 Q52.8594,19.3438 53.5,19.5 Q54.1563,19.6563 54.7188,19.9531 L54.7188,22.6719 Q54.0938,22.0938 53.5,21.8281 Q52.9063,21.5469 52.2813,21.5469 Q50.9375,21.5469 50.25,22.625 Q49.5625,23.6875 49.5625,25.7813 Q49.5625,27.875 50.25,28.9531 Q50.9375,30.0156 52.2813,30.0156 Q52.9063,30.0156 53.5,29.75 Q54.0938,29.4688 54.7188,28.8906 L54.7188,31.6094 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="37"
-                  x="138.75" y="24.9951">Maze
-            </text>
-            <text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs"
-                  textLength="170" x="72.25" y="37.5791">nz.ac.vuw.ecs.swen225.gp20.maze
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="274" y1="44.9375" y2="44.9375"/>
-            <ellipse cx="18" cy="55.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="86"
-                  x="27" y="59.1479">Maze(Tile[], int)
-            </text>
-            <ellipse cx="18" cy="68.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="242" x="27" y="71.9526">Maze(Tile[], int, List&lt;Block&gt;, List&lt;Cobra&gt;)
-            </text>
-            <ellipse cx="18" cy="81.5469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50"
-                  x="27" y="84.7573">Maze(int)
-            </text>
-            <ellipse cx="18" cy="94.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="162" x="27" y="97.562">moveChap(Direction): Sound
-            </text>
-            <ellipse cx="18" cy="107.1563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="199" x="27" y="110.3667">moveActor(Actor, Direction): Sound
-            </text>
-            <ellipse cx="18" cy="119.9609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="127" x="27" y="123.1714">isLevelOver(): boolean
-            </text>
-            <ellipse cx="18" cy="132.7656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="123" x="27" y="135.9761">getState(): LevelState
-            </text>
-            <ellipse cx="18" cy="145.5703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89"
-                  x="27" y="148.7808">getTiles(): Tile[]
-            </text>
-            <ellipse cx="18" cy="158.375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="128" x="27" y="161.5854">getTreasuresLeft(): int
-            </text>
-            <ellipse cx="18" cy="171.1797" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="98"
-                  x="27" y="174.3901">getChap(): Player
-            </text>
-            <ellipse cx="18" cy="183.9844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
-                  x="27" y="187.1948">getLevel(): int
-            </text>
-            <ellipse cx="18" cy="196.7891" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="147" x="27" y="199.9995">getCobras(): List&lt;Cobra&gt;
-            </text>
-            <ellipse cx="18" cy="209.5938" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="139" x="27" y="212.8042">getBlocks(): List&lt;Block&gt;
-            </text>
-        </a><!--MD5=[faf426d5a98c1d7f10ac5c53406938e5]
-class nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
-        <a href="Maze.LevelState.html" target="_top" title="Maze.LevelState.html" xlink:actuate="onRequest"
-           xlink:href="Maze.LevelState.html" xlink:show="new" xlink:title="Maze.LevelState.html" xlink:type="simple">
-            <rect codeLine="20" fill="#FEFECE" filter="url(#f1k550cotcmpqv)" height="37.9375"
-                  id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="202" x="40" y="279"/>
-            <ellipse cx="55" cy="297.9688" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M59.1094,303.9688 L51.3906,303.9688 L51.3906,291.5781 L59.1094,291.5781 L59.1094,293.7344 L53.8438,293.7344 L53.8438,296.4063 L58.6094,296.4063 L58.6094,298.5625 L53.8438,298.5625 L53.8438,301.8125 L59.1094,301.8125 L59.1094,303.9688 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs"
-                  textLength="112" x="98" y="296.9951">Maze.LevelState
-            </text>
-            <text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs"
-                  textLength="170" x="69" y="309.5791">nz.ac.vuw.ecs.swen225.gp20.maze
-            </text>
-        </a><!--MD5=[5d1011535aa03f29bfbc3e59911c37fc]
-reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState-->
-        <path codeLine="22" d="M141,234.31 C141,251.63 141,267.41 141,278.8 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <ellipse cx="141" cy="227.13" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="141" x2="141" y1="235.13" y2="219.13"/>
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="133" x2="149" y1="227.13" y2="227.13"/>
-        <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
-              x="42" y="339.2197">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[07147373476e13e7e4c71ff5f23f60b9]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="352px" preserveAspectRatio="none" style="width:294px;height:352px;" version="1.1" viewBox="0 0 294 352" width="294px" zoomAndPan="magnify"><defs><filter height="300%" id="f1k550cotcmpqv" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[9a7d1fe5e7e205b9dd3fbf94307f920e]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Maze--><a href="Maze.html" target="_top" title="Maze.html" xlink:actuate="onRequest" xlink:href="Maze.html" xlink:show="new" xlink:title="Maze.html" xlink:type="simple"><rect codeLine="5" fill="#FEFECE" filter="url(#f1k550cotcmpqv)" height="212.3984" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze" style="stroke: #A80036; stroke-width: 1.5;" width="268" x="7" y="7"/><ellipse cx="51.75" cy="25.9688" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M54.7188,31.6094 Q54.1406,31.9063 53.5,32.0469 Q52.8594,32.2031 52.1563,32.2031 Q49.6563,32.2031 48.3281,30.5625 Q47.0156,28.9063 47.0156,25.7813 Q47.0156,22.6563 48.3281,21 Q49.6563,19.3438 52.1563,19.3438 Q52.8594,19.3438 53.5,19.5 Q54.1563,19.6563 54.7188,19.9531 L54.7188,22.6719 Q54.0938,22.0938 53.5,21.8281 Q52.9063,21.5469 52.2813,21.5469 Q50.9375,21.5469 50.25,22.625 Q49.5625,23.6875 49.5625,25.7813 Q49.5625,27.875 50.25,28.9531 Q50.9375,30.0156 52.2813,30.0156 Q52.9063,30.0156 53.5,29.75 Q54.0938,29.4688 54.7188,28.8906 L54.7188,31.6094 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="37" x="138.75" y="24.9951">Maze</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="170" x="72.25" y="37.5791">nz.ac.vuw.ecs.swen225.gp20.maze</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="274" y1="44.9375" y2="44.9375"/><ellipse cx="18" cy="55.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="86" x="27" y="59.1479">Maze(Tile[], int)</text><ellipse cx="18" cy="68.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="242" x="27" y="71.9526">Maze(Tile[], int, List&lt;Block&gt;, List&lt;Cobra&gt;)</text><ellipse cx="18" cy="81.5469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="50" x="27" y="84.7573">Maze(int)</text><ellipse cx="18" cy="94.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="162" x="27" y="97.562">moveChap(Direction): Sound</text><ellipse cx="18" cy="107.1563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="199" x="27" y="110.3667">moveActor(Actor, Direction): Sound</text><ellipse cx="18" cy="119.9609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="127" x="27" y="123.1714">isLevelOver(): boolean</text><ellipse cx="18" cy="132.7656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="27" y="135.9761">getState(): LevelState</text><ellipse cx="18" cy="145.5703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89" x="27" y="148.7808">getTiles(): Tile[]</text><ellipse cx="18" cy="158.375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="128" x="27" y="161.5854">getTreasuresLeft(): int</text><ellipse cx="18" cy="171.1797" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="98" x="27" y="174.3901">getChap(): Player</text><ellipse cx="18" cy="183.9844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77" x="27" y="187.1948">getLevel(): int</text><ellipse cx="18" cy="196.7891" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="147" x="27" y="199.9995">getCobras(): List&lt;Cobra&gt;</text><ellipse cx="18" cy="209.5938" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="139" x="27" y="212.8042">getBlocks(): List&lt;Block&gt;</text></a><!--MD5=[faf426d5a98c1d7f10ac5c53406938e5]
+class nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState--><a href="Maze.LevelState.html" target="_top" title="Maze.LevelState.html" xlink:actuate="onRequest" xlink:href="Maze.LevelState.html" xlink:show="new" xlink:title="Maze.LevelState.html" xlink:type="simple"><rect codeLine="20" fill="#FEFECE" filter="url(#f1k550cotcmpqv)" height="37.9375" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.5;" width="202" x="40" y="279"/><ellipse cx="55" cy="297.9688" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M59.1094,303.9688 L51.3906,303.9688 L51.3906,291.5781 L59.1094,291.5781 L59.1094,293.7344 L53.8438,293.7344 L53.8438,296.4063 L58.6094,296.4063 L58.6094,298.5625 L53.8438,298.5625 L53.8438,301.8125 L59.1094,301.8125 L59.1094,303.9688 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="98" y="296.9951">Maze.LevelState</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="170" x="69" y="309.5791">nz.ac.vuw.ecs.swen225.gp20.maze</text></a><!--MD5=[5d1011535aa03f29bfbc3e59911c37fc]
+reverse link nz.ac.vuw.ecs.swen225.gp20.maze.Maze to nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState--><path codeLine="22" d="M141,234.31 C141,251.63 141,267.41 141,278.8 " fill="none" id="nz.ac.vuw.ecs.swen225.gp20.maze.Maze-backto-nz.ac.vuw.ecs.swen225.gp20.maze.Maze.LevelState" style="stroke: #A80036; stroke-width: 1.0;"/><ellipse cx="141" cy="227.13" fill="#FFFFFF" rx="8" ry="8" style="stroke: #A80036; stroke-width: 1.0;"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="141" x2="141" y1="235.13" y2="219.13"/><line style="stroke: #A80036; stroke-width: 1.0;" x1="133" x2="149" y1="227.13" y2="227.13"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192" x="42" y="339.2197">UMLDoclet 2.0.12, PlantUML 1.2020.16</text><!--MD5=[07147373476e13e7e4c71ff5f23f60b9]
 @startuml
     set namespaceSeparator none
     hide empty fields
@@ -140,6 +36,4 @@ JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
 Country: null
--->
-    </g>
-</svg>
+--></g></svg>

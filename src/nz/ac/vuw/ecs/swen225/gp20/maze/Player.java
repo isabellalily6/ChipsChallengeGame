@@ -36,6 +36,8 @@ public class Player extends Actor {
     }
 
     /**
+     * Gets how many treasures chap has collected
+     *
      * @return how many treasures chap has collected
      */
     public int getTreasuresCollected() {

@@ -252,6 +252,8 @@ public class Maze {
     }
 
     /**
+     * Whether the level is over (chap died or reached exit)
+     *
      * @return Whether the level is over (chap died or reached exit)
      */
     public boolean isLevelOver() {
@@ -259,6 +261,8 @@ public class Maze {
     }
 
     /**
+     * Which state this level is in
+     *
      * @return Which state this level is in
      */
     public LevelState getState() {
@@ -266,6 +270,8 @@ public class Maze {
     }
 
     /**
+     * Gets a shallow copy of 2d array of Tiles that represents the maze
+     *
      * @return Shallow copy of 2d array of Tiles that represents the maze
      */
     public Tile[][] getTiles() {
@@ -273,6 +279,8 @@ public class Maze {
     }
 
     /**
+     * Gets the amount of uncollected treasures in this level
+     *
      * @return the amount of uncollected treasures in this level
      */
     public int getTreasuresLeft() {
@@ -280,6 +288,8 @@ public class Maze {
     }
 
     /**
+     * Gets the Player object that represents Chap
+     *
      * @return the Player object that represents Chap
      */
     public Player getChap() {
@@ -287,6 +297,8 @@ public class Maze {
     }
 
     /**
+     * Gets the level that is currently being played
+     *
      * @return the level that is currently being played
      */
     public int getLevel() {
@@ -294,6 +306,8 @@ public class Maze {
     }
 
     /**
+     * Gets a list of all the cobras in this game
+     *
      * @return a list of all the cobras in this game
      */
     public List<Cobra> getCobras() {
@@ -301,6 +315,8 @@ public class Maze {
     }
 
     /**
+     * Gets a list of all the blocks in the game
+     *
      * @return a list of all the blocks in the game
      */
     public List<Block> getBlocks() {

@@ -30,6 +30,8 @@ public enum Direction {
     }
 
     /**
+     * Gets the properly formatted name of this direction
+     *
      * @return Properly formatted name of this direction
      */
     public String getName() {

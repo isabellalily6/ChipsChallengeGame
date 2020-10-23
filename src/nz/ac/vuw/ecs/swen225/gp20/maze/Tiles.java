@@ -77,6 +77,8 @@ public class Tiles {
     }
 
     /**
+     * Gets the underlying 2D tile array for this class
+     *
      * @return the underlying 2D tile array for this class
      */
     public Tile[][] getTileArray() {

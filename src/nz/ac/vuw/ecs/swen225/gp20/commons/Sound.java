@@ -51,6 +51,8 @@ public enum Sound {
     }
 
     /**
+     * Gets the filename for this sound
+     *
      * @return the filename for this sound
      */
     public String getFilename() {

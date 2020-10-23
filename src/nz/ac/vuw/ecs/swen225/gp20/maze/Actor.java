@@ -33,6 +33,8 @@ public abstract class Actor {
 
 
     /**
+     * Gets the location this actor is standing
+     *
      * @return the tile this actor is standing on
      */
     public Tile getLocation() {
@@ -40,6 +42,8 @@ public abstract class Actor {
     }
 
     /**
+     * Gets the location this actor is standing
+     *
      * @param location new location for the actor to occupy
      */
     public void setLocation(Tile location) {
@@ -48,6 +52,8 @@ public abstract class Actor {
     }
 
     /**
+     * Gets the direction this actor is facing
+     *
      * @return the direction this actor is facing
      */
     public Direction getDir() {
@@ -55,6 +61,8 @@ public abstract class Actor {
     }
 
     /**
+     * Sets the direction this actor is facing
+     *
      * @param dir direction this actor is now facing
      */
     public void setDir(Direction dir) {
@@ -62,6 +70,8 @@ public abstract class Actor {
     }
 
     /**
+     * Gets the URL of the image corresponding to this actor
+     *
      * @return the URL of the image corresponding to this actor
      */
     public String getImageURl() {
