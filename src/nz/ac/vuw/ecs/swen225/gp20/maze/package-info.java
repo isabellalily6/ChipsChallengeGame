@@ -4,8 +4,8 @@
  * such as what type of objects are on the maze, where these objects are,
  * and which actions are allowed to change the state of those objects.
  *
- * @author
- * @version
- * @since
+ * @author Benjamin Doornbos 300487256
+ * @version 1.0
+ * @since 2020/09/14
  */
 package nz.ac.vuw.ecs.swen225.gp20.maze;

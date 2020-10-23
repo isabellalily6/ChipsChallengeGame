@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="197px" preserveAspectRatio="none" style="width:310px;height:197px;" version="1.1" viewBox="0 0 310 197" width="310px" zoomAndPan="magnify"><defs><filter height="300%" id="f1wivr9iuj67om" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[40390befd01e0370a6c0213ccecabdd1]
+class nz.ac.vuw.ecs.swen225.gp20.monkey.MonkeyTesting--><a href="MonkeyTesting.html" target="_top" title="MonkeyTesting.html" xlink:actuate="onRequest" xlink:href="MonkeyTesting.html" xlink:show="new" xlink:title="MonkeyTesting.html" xlink:type="simple"><rect codeLine="5" fill="#FEFECE" filter="url(#f1wivr9iuj67om)" height="161.1797" id="nz.ac.vuw.ecs.swen225.gp20.monkey.MonkeyTesting" style="stroke: #A80036; stroke-width: 1.5;" width="284" x="7" y="7"/><ellipse cx="53.75" cy="25.9688" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M56.7188,31.6094 Q56.1406,31.9063 55.5,32.0469 Q54.8594,32.2031 54.1563,32.2031 Q51.6563,32.2031 50.3281,30.5625 Q49.0156,28.9063 49.0156,25.7813 Q49.0156,22.6563 50.3281,21 Q51.6563,19.3438 54.1563,19.3438 Q54.8594,19.3438 55.5,19.5 Q56.1563,19.6563 56.7188,19.9531 L56.7188,22.6719 Q56.0938,22.0938 55.5,21.8281 Q54.9063,21.5469 54.2813,21.5469 Q52.9375,21.5469 52.25,22.625 Q51.5625,23.6875 51.5625,25.7813 Q51.5625,27.875 52.25,28.9531 Q52.9375,30.0156 54.2813,30.0156 Q54.9063,30.0156 55.5,29.75 Q56.0938,29.4688 56.7188,28.8906 L56.7188,31.6094 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="106" x="112.25" y="24.9951">MonkeyTesting</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="74.25" y="37.5791">nz.ac.vuw.ecs.swen225.gp20.monkey</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="290" y1="44.9375" y2="44.9375"/><ellipse cx="18" cy="55.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="247" x="27" y="59.1479">randomMonkeyTestWithoutGUILevel1(): void</text><ellipse cx="18" cy="68.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="247" x="27" y="71.9526">randomMonkeyTestWithoutGUILevel2(): void</text><ellipse cx="18" cy="81.5469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="135" x="27" y="84.7573">getValue(Tile, Maze): int</text><ellipse cx="18" cy="94.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="229" x="27" y="97.562">randomMonkeyTestWithGUILevel1(): void</text><ellipse cx="18" cy="107.1563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="229" x="27" y="110.3667">randomMonkeyTestWithGUILevel2(): void</text><ellipse cx="18" cy="119.9609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="258" x="27" y="123.1714">intelligentMonkeyTestWithoutGUILevel1(): void</text><ellipse cx="18" cy="132.7656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="258" x="27" y="135.9761">intelligentMonkeyTestWithoutGUILevel2(): void</text><ellipse cx="18" cy="145.5703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="240" x="27" y="148.7808">intelligentMonkeyTestWithGUILevel1(): void</text><ellipse cx="18" cy="158.375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="240" x="27" y="161.5854">intelligentMonkeyTestWithGUILevel2(): void</text></a><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192" x="53" y="184.4619">UMLDoclet 2.0.12, PlantUML 1.2020.16</text><!--MD5=[0014d33c7a592cd603bcf020f90f55dc]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>MonkeyTesting\n<size:10>nz.ac.vuw.ecs.swen225.gp20.monkey" as nz.ac.vuw.ecs.swen225.gp20.monkey.MonkeyTesting [[MonkeyTesting.html]] {
+        +randomMonkeyTestWithoutGUILevel1(): void
+        +randomMonkeyTestWithoutGUILevel2(): void
+        +getValue(Tile, Maze): int
+        +randomMonkeyTestWithGUILevel1(): void
+        +randomMonkeyTestWithGUILevel2(): void
+        +intelligentMonkeyTestWithoutGUILevel1(): void
+        +intelligentMonkeyTestWithoutGUILevel2(): void
+        +intelligentMonkeyTestWithGUILevel1(): void
+        +intelligentMonkeyTestWithGUILevel2(): void
+    }
+
+    center footer UMLDoclet 2.0.12, PlantUML 1.2020.16
+@enduml
+
+PlantUML version 1.2020.16(Mon Aug 24 08:20:43 NZST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

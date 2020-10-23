@@ -20,7 +20,7 @@ public class LockedDoor extends Tile {
      * @param lockColour the colour of key that unlocks this door
      */
     public LockedDoor(int col, int row, Key.Colour lockColour) {
-        super("data/"+lockColour.getName()+"Door.png", col, row, false, true);
+        super("data/" + lockColour.getName() + "Door.png", col, row, false, true);
         this.lockColour = lockColour;
     }
 

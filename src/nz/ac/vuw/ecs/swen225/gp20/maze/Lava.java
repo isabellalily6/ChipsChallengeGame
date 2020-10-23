@@ -15,6 +15,4 @@ public class Lava extends Tile {
     public Lava(int col, int row) {
         super("data/lava.png", col, row, true, false);
     }
-
-
 }

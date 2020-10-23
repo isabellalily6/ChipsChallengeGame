@@ -1,92 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-     contentScriptType="application/ecmascript" contentStyleType="text/css" height="300px" preserveAspectRatio="none"
-     style="width:258px;height:300px;" version="1.1" viewBox="0 0 258 300" width="258px" zoomAndPan="magnify">
-    <defs>
-        <filter height="300%" id="f69x0q8e8j6sm" width="300%" x="-1" y="-1">
-            <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
-            <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
-                           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
-            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/>
-            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/>
-        </filter>
-    </defs>
-    <g><!--MD5=[95456585febf57da48f20dfb18bb04f7]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove-->
-        <a href="RecordedMove.html" target="_top" title="RecordedMove.html" xlink:actuate="onRequest"
-           xlink:href="RecordedMove.html" xlink:show="new" xlink:title="RecordedMove.html" xlink:type="simple">
-            <rect codeLine="5" fill="#FEFECE" filter="url(#f69x0q8e8j6sm)" height="135.5703"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="232" x="7" y="129"/>
-            <ellipse cx="29.2" cy="147.9688" fill="#ADD1B2" rx="11" ry="11"
-                     style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M32.1688,153.6094 Q31.5906,153.9063 30.95,154.0469 Q30.3094,154.2031 29.6063,154.2031 Q27.1063,154.2031 25.7781,152.5625 Q24.4656,150.9063 24.4656,147.7813 Q24.4656,144.6563 25.7781,143 Q27.1063,141.3438 29.6063,141.3438 Q30.3094,141.3438 30.95,141.5 Q31.6063,141.6563 32.1688,141.9531 L32.1688,144.6719 Q31.5438,144.0938 30.95,143.8281 Q30.3563,143.5469 29.7313,143.5469 Q28.3875,143.5469 27.7,144.625 Q27.0125,145.6875 27.0125,147.7813 Q27.0125,149.875 27.7,150.9531 Q28.3875,152.0156 29.7313,152.0156 Q30.3563,152.0156 30.95,151.75 Q31.5438,151.4688 32.1688,150.8906 L32.1688,153.6094 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs"
-                  textLength="105" x="84.3" y="146.9951">RecordedMove
-            </text>
-            <text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs"
-                  textLength="184" x="44.8" y="159.5791">nz.ac.vuw.ecs.swen225.gp20.recnplay
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="238" y1="166.9375" y2="166.9375"/>
-            <ellipse cx="18" cy="177.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="206" x="27" y="181.1479">RecordedMove(Direction, int, int, int)
-            </text>
-            <ellipse cx="18" cy="190.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="158" x="27" y="193.9526">getInverse(): RecordedMove
-            </text>
-            <ellipse cx="18" cy="203.5469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="134" x="27" y="206.7573">getDirection(): Direction
-            </text>
-            <ellipse cx="18" cy="216.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97"
-                  x="27" y="219.562">getTimeLeft(): int
-            </text>
-            <ellipse cx="18" cy="229.1563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="107" x="27" y="232.3667">getMoveIndex(): int
-            </text>
-            <ellipse cx="18" cy="241.9609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="176" x="27" y="245.1714">compareTo(RecordedMove): int
-            </text>
-            <ellipse cx="18" cy="254.7656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
-                  x="27" y="257.9761">getLevel(): int
-            </text>
-        </a><!--MD5=[008d82c49f85b4d489e041917c99c847]
-class java.lang.Comparable-->
-        <rect codeLine="15" fill="#FEFECE" filter="url(#f69x0q8e8j6sm)" height="58.7422" id="java.lang.Comparable"
-              style="stroke: #A80036; stroke-width: 1.5;" width="211" x="17.5" y="10"/>
-        <ellipse cx="32.5" cy="28.9688" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M28.4219,24.7344 L28.4219,22.5781 L35.8125,22.5781 L35.8125,24.7344 L33.3438,24.7344 L33.3438,32.8125 L35.8125,32.8125 L35.8125,34.9688 L28.4219,34.9688 L28.4219,32.8125 L30.8906,32.8125 L30.8906,24.7344 L28.4219,24.7344 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="83" x="46.5" y="27.9951">Comparable
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="43" x="66.5" y="40.5791">java.lang
-        </text>
-        <rect fill="#FFFFFF" height="15.9688" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;"
-              width="94" x="137.5" y="7"/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="92" x="138.5" y="19.1387">RecordedMove
-        </text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="18.5" x2="227.5" y1="47.9375" y2="47.9375"/>
-        <ellipse cx="28.5" cy="58.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="176" x="37.5" y="62.1479">compareTo(RecordedMove): int
-        </text><!--MD5=[92214170aeb1d05e034779fcc6a9c15a]
-reverse link java.lang.Comparable to nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove-->
-        <path codeLine="19" d="M123,89.37 C123,101.92 123,115.63 123,128.93 " fill="none"
-              id="java.lang.Comparable-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove"
-              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
-        <polygon fill="none" points="116,89.02,123,69.02,130,89.02,116,89.02"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
-              x="24" y="286.8525">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[2e46124840880c100e5baa0ab3e02391]
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" contentScriptType="application/ecmascript" contentStyleType="text/css" height="300px" preserveAspectRatio="none" style="width:258px;height:300px;" version="1.1" viewBox="0 0 258 300" width="258px" zoomAndPan="magnify"><defs><filter height="300%" id="f69x0q8e8j6sm" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[95456585febf57da48f20dfb18bb04f7]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove--><a href="RecordedMove.html" target="_top" title="RecordedMove.html" xlink:actuate="onRequest" xlink:href="RecordedMove.html" xlink:show="new" xlink:title="RecordedMove.html" xlink:type="simple"><rect codeLine="5" fill="#FEFECE" filter="url(#f69x0q8e8j6sm)" height="135.5703" id="nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove" style="stroke: #A80036; stroke-width: 1.5;" width="232" x="7" y="129"/><ellipse cx="29.2" cy="147.9688" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M32.1688,153.6094 Q31.5906,153.9063 30.95,154.0469 Q30.3094,154.2031 29.6063,154.2031 Q27.1063,154.2031 25.7781,152.5625 Q24.4656,150.9063 24.4656,147.7813 Q24.4656,144.6563 25.7781,143 Q27.1063,141.3438 29.6063,141.3438 Q30.3094,141.3438 30.95,141.5 Q31.6063,141.6563 32.1688,141.9531 L32.1688,144.6719 Q31.5438,144.0938 30.95,143.8281 Q30.3563,143.5469 29.7313,143.5469 Q28.3875,143.5469 27.7,144.625 Q27.0125,145.6875 27.0125,147.7813 Q27.0125,149.875 27.7,150.9531 Q28.3875,152.0156 29.7313,152.0156 Q30.3563,152.0156 30.95,151.75 Q31.5438,151.4688 32.1688,150.8906 L32.1688,153.6094 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="105" x="84.3" y="146.9951">RecordedMove</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="184" x="44.8" y="159.5791">nz.ac.vuw.ecs.swen225.gp20.recnplay</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="238" y1="166.9375" y2="166.9375"/><ellipse cx="18" cy="177.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="206" x="27" y="181.1479">RecordedMove(Direction, int, int, int)</text><ellipse cx="18" cy="190.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="158" x="27" y="193.9526">getInverse(): RecordedMove</text><ellipse cx="18" cy="203.5469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="134" x="27" y="206.7573">getDirection(): Direction</text><ellipse cx="18" cy="216.3516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97" x="27" y="219.562">getTimeLeft(): int</text><ellipse cx="18" cy="229.1563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="107" x="27" y="232.3667">getMoveIndex(): int</text><ellipse cx="18" cy="241.9609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="176" x="27" y="245.1714">compareTo(RecordedMove): int</text><ellipse cx="18" cy="254.7656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77" x="27" y="257.9761">getLevel(): int</text></a><!--MD5=[008d82c49f85b4d489e041917c99c847]
+class java.lang.Comparable--><rect codeLine="15" fill="#FEFECE" filter="url(#f69x0q8e8j6sm)" height="58.7422" id="java.lang.Comparable" style="stroke: #A80036; stroke-width: 1.5;" width="211" x="17.5" y="10"/><ellipse cx="32.5" cy="28.9688" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M28.4219,24.7344 L28.4219,22.5781 L35.8125,22.5781 L35.8125,24.7344 L33.3438,24.7344 L33.3438,32.8125 L35.8125,32.8125 L35.8125,34.9688 L28.4219,34.9688 L28.4219,32.8125 L30.8906,32.8125 L30.8906,24.7344 L28.4219,24.7344 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="46.5" y="27.9951">Comparable</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="43" x="66.5" y="40.5791">java.lang</text><rect fill="#FFFFFF" height="15.9688" style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" width="94" x="137.5" y="7"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="92" x="138.5" y="19.1387">RecordedMove</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="18.5" x2="227.5" y1="47.9375" y2="47.9375"/><ellipse cx="28.5" cy="58.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="176" x="37.5" y="62.1479">compareTo(RecordedMove): int</text><!--MD5=[92214170aeb1d05e034779fcc6a9c15a]
+reverse link java.lang.Comparable to nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove--><path codeLine="19" d="M123,89.37 C123,101.92 123,115.63 123,128.93 " fill="none" id="java.lang.Comparable-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordedMove" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="116,89.02,123,69.02,130,89.02,116,89.02" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192" x="24" y="286.8525">UMLDoclet 2.0.12, PlantUML 1.2020.16</text><!--MD5=[78192f4111be56b4ebfd45113595f07b]
 @startuml
     set namespaceSeparator none
     hide empty fields
@@ -117,7 +32,5 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
--->
-    </g>
-</svg>
+Country: null
+--></g></svg>

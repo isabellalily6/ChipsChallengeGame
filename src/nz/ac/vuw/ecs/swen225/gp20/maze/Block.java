@@ -22,6 +22,8 @@ public class Block {
     }
 
     /**
+     * Gets the column this block is in
+     *
      * @return column this block is in
      */
     public int getCol() {
@@ -29,6 +31,8 @@ public class Block {
     }
 
     /**
+     * Gets row this block is in
+     *
      * @return row this block is in
      */
     public int getRow() {
@@ -36,6 +40,8 @@ public class Block {
     }
 
     /**
+     * Gets the location of this block
+     *
      * @return location of this block
      */
     public Tile getLocation() {
@@ -43,6 +49,8 @@ public class Block {
     }
 
     /**
+     * Sets the location, row and col fields
+     *
      * @param loc new location for the block to reside
      */
     public void setLocation(Tile loc) {
@@ -52,6 +60,8 @@ public class Block {
     }
 
     /**
+     * Gets the string name of the image file for this class
+     *
      * @return the string name of the image file for this class
      */
     public String getImageURL() {
