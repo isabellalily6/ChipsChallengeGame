@@ -41,10 +41,7 @@ public class MenuBar extends JMenuBar {
 
     // create and add the quit button
     JMenuItem quit = new JMenuItem("Quit");
-    quit.addActionListener(method -> {
-      RecordAndPlay.saveRecording();
-      System.exit(0);
-    });
+    quit.addActionListener(method -> main.exitGame());
     file.add(quit);
 
     // Create the game menu

@@ -129,6 +129,7 @@ public class Main {
           timer.cancel();
         } else if (timeLeft == 0) {
           // if the timer has reached 0, cancel the timer and show the game lost dialogue
+          RecordAndPlay.saveRecording();
           gui.getGameLost().setVisible(true);
           timer.cancel();
         } else if (!gamePaused) {
@@ -206,6 +207,7 @@ public class Main {
    * Exit the game.
    **/
   public void exitGame() {
+    RecordAndPlay.saveRecording();
     System.exit(0);
   }
 
