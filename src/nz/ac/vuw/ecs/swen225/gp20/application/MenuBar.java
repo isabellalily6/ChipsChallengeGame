@@ -7,6 +7,8 @@ import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 
 /**
  * Create a MenuBar to be added to the main GUI.
+ *
+ *  @author Isabella Tomaz-Ketley 300494939
  **/
 public class MenuBar extends JMenuBar {
 

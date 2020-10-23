@@ -22,6 +22,8 @@ import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
 
 /**
  * Create a Gui which displays the game on the screen.
+ *
+ * @author Isabella Tomaz-Ketley 300494939
  **/
 public class Gui extends JFrame implements KeyListener {
   // initialize the screen sizes

@@ -18,6 +18,8 @@ import javax.swing.text.StyledDocument;
 
 /**
  * Create a Dialogue which displays text and then two buttons.
+ *
+ *  @author Isabella Tomaz-Ketley 300494939
  **/
 public class Dialogues extends JDialog implements KeyListener {
   // Components of the JDialogue
