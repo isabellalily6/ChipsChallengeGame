@@ -9,6 +9,23 @@ Arrow keys to move
 
 Collect all the treasures to unlock the exit
 
+****Keyboard shortcuts****
+
+Ctrl-x: Exits the game
+
+Ctrl-s: Saves the game to be resumed later
+
+Ctrl-r: Loads a game to be resumed
+
+Ctrl-p: Starts a new game from the current level
+
+Ctrl-1: Starts a new game from level 1
+
+Space: Pauses the game
+
+Escape: Exits the paused dialog and resumes the game
+
+
 **Level 1**
 
 To complete level one, you must collect the coloured keys to unlock the doors.
