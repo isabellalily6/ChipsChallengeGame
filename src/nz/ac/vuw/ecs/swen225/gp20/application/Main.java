@@ -1,14 +1,13 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 import nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
-
-import java.io.File;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * From Handout:
@@ -51,8 +50,8 @@ public class Main {
     if (file.exists()) {
       // if the file exists load from this file and then delete it
       loadFile(true);
-      if(!file.delete()){
-        if(file.renameTo(new File("levels/oldGameState.json"))){
+      if (!file.delete()) {
+        if (file.renameTo(new File("levels/oldGameState.json"))) {
           file.deleteOnExit();
         }
       }

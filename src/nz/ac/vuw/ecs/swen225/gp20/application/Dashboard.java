@@ -157,9 +157,9 @@ public class Dashboard extends JPanel {
   }
 
   /**
-   * Reset the dashboard
+   * Reset the dashboard.
    **/
-  public void resetDashboard(){
+  public void resetDashboard() {
     for (JLabel label : treasuresCollected) {
       label.setIcon(null);
     }
