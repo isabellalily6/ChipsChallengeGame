@@ -153,7 +153,6 @@ public class RecordAndPlay {
 
     /**
      * @return if the game is being recorded
-     * @author callum mckay
      */
     public static boolean isRecording() {
         return isRecording;
