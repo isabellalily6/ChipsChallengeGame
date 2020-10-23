@@ -28,9 +28,9 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private final int lastLevel = 2;
+  private int lastLevel = 2;
   private int level = 1;
-  private final int maxTime = 100;
+  private int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -51,7 +51,11 @@ public class Main {
     if (file.exists()) {
       // if the file exists load from this file and then delete it
       loadFile(true);
-      boolean deleted = file.delete();
+      if(!file.delete()){
+        if(file.renameTo(new File("levels/oldGameState.json"))){
+          file.deleteOnExit();
+        }
+      }
     } else {
       // otherwise create the maze for the game
       maze = new Maze(level);
