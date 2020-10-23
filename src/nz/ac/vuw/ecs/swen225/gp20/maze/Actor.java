@@ -10,8 +10,8 @@ import static com.google.common.base.Preconditions.checkArgument;
  * @author Benjamin Doornbos
  */
 public abstract class Actor {
-    private Tile location;
     private final String name;
+    private Tile location;
     private Direction dir;
 
     /**

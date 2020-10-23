@@ -25,6 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author Benjamin Doornbos
  */
 public class Maze {
+    private static final ReentrantLock moveLock = new ReentrantLock();
     private final Tiles tiles;
     private final int totalTreasures;
     private final Player chap;
@@ -33,7 +34,6 @@ public class Maze {
     private int treasuresLeft;
     private int level;
     private LevelState state;
-    private static final ReentrantLock moveLock = new ReentrantLock();
 
     /**
      * Creates a maze from specified tile array

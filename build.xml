@@ -15,7 +15,7 @@
     <target name="doc">
         <mkdir dir="${doc.dir}"/>
         <mkdir dir="${source.dir}"/>
-        <javadoc destdir="${doc.dir}" sourcepath="${source.dir}" classpathref="classpath">
+        <javadoc destdir="${doc.dir}" sourcepath="${source.dir}" classpathref="classpath" author="true">
             <doclet name="nl.talsmasoftware.umldoclet.UMLDoclet" pathref="umlDoclet.classpath">
             </doclet>
         </javadoc>
