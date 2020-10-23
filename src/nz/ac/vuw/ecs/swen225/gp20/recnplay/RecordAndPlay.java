@@ -4,10 +4,7 @@ import nz.ac.vuw.ecs.swen225.gp20.application.Gui;
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
 import nz.ac.vuw.ecs.swen225.gp20.commons.Direction;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
-import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator;
-import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes;
-import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator;
-import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator;
+import nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.*;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -134,6 +131,8 @@ public class RecordAndPlay {
     }
 
     /**
+     * If the game is being recorded, a move will be added to the recording to be saved
+     *
      * @param move the move to record
      * @return true if the move was recorded, false if not
      */
@@ -152,6 +151,8 @@ public class RecordAndPlay {
     }
 
     /**
+     * Check if the game is being recorded
+     *
      * @return if the game is being recorded
      */
     public static boolean isRecording() {
@@ -222,6 +223,8 @@ public class RecordAndPlay {
     }
 
     /**
+     * Plays a recording
+     *
      * @param m is the main which will be playing this recording
      */
     public static void playRecording(Main m) {
@@ -248,6 +251,8 @@ public class RecordAndPlay {
     }
 
     /**
+     * Sets the recording mode and speed
+     *
      * @param mode  sets the replay mode
      * @param speed speed to play recording at
      */

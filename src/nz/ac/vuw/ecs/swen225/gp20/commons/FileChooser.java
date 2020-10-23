@@ -19,6 +19,8 @@ import java.nio.file.Paths;
 public class FileChooser {
 
     /**
+     * Saves a json array to a file
+     *
      * @param g         The gui (parent component)
      * @param jsonArray The json array to save to the file
      * @param directory The directory to save
@@ -55,6 +57,8 @@ public class FileChooser {
     }
 
     /**
+     * Loads a File from a file chooser
+     *
      * @param g         The gui to add this file chooser to
      * @param directory the directory to open with this file chooser
      * @return the json file that is found

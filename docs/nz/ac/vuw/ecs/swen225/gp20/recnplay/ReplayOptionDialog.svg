@@ -12,12 +12,12 @@
         </filter>
     </defs>
     <g><!--MD5=[eb078421526276a38cf020610a62fb10]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog-->
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionDialog-->
         <a href="ReplayOptionDialog.html" target="_top" title="ReplayOptionDialog.html" xlink:actuate="onRequest"
            xlink:href="ReplayOptionDialog.html" xlink:show="new" xlink:title="ReplayOptionDialog.html"
            xlink:type="simple">
             <rect codeLine="5" fill="#FEFECE" filter="url(#f1oifazyu5ohbm)" height="58.7422"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionDialog"
                   style="stroke: #A80036; stroke-width: 1.5;" width="371" x="7" y="105"/>
             <ellipse cx="96.25" cy="123.9688" fill="#ADD1B2" rx="11" ry="11"
                      style="stroke: #A80036; stroke-width: 1.0;"/>
@@ -46,9 +46,9 @@ class javax.swing.JDialog-->
         <text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="56"
               x="177.5" y="37.5791">javax.swing
         </text><!--MD5=[f214c584f9b91d79b84a857dfadab297]
-reverse link javax.swing.JDialog to nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog-->
+reverse link javax.swing.JDialog to nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionDialog-->
         <path codeLine="11" d="M192.5,65.22 C192.5,78.3 192.5,92.7 192.5,104.89 " fill="none"
-              id="javax.swing.JDialog-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog"
+              id="javax.swing.JDialog-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionDialog"
               style="stroke: #A80036; stroke-width: 1.0;"/>
         <polygon fill="none" points="185.5,65.07,192.5,45.07,199.5,65.07,185.5,65.07"
                  style="stroke: #A80036; stroke-width: 1.0;"/>
@@ -60,13 +60,13 @@ reverse link javax.swing.JDialog to nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOp
     hide empty fields
     hide empty methods
 
-    class "<size:14>ReplayOptionDialog\n<size:10>nz.ac.vuw.ecs.swen225.gp20.recnplay" as nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog [[ReplayOptionDialog.html]] {
+    class "<size:14>ReplayOptionDialog\n<size:10>nz.ac.vuw.ecs.swen225.gp20.recnplay" as nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionDialog [[ReplayOptionDialog.html]] {
         +ReplayOptionDialog(Main, String, ArrayList<JButton>, JSlider)
     }
 
     class "<size:14>JDialog\n<size:10>javax.swing" as javax.swing.JDialog
 
-    javax.swing.JDialog <|- - nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog
+    javax.swing.JDialog <|- - nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionDialog
 
     center footer UMLDoclet 2.0.12, PlantUML 1.2020.16
 @enduml
