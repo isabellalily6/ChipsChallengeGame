@@ -213,8 +213,8 @@ public class LevelLoader {
 	
 	/**
 	 * Saves the game state from a JsonObjectBuilder to a file passed in as a parameter
-	 * @param toSave
-	 * @param file 
+	 * @param toSave, the JSON object builder to write the file from
+	 * @param file,the file to write to
 	 */
 	public static void saveGameState(JsonObjectBuilder toSave, File file) {
 		try {
@@ -333,8 +333,8 @@ public class LevelLoader {
 	/**
 	 * Helper method that takes a JsonObject and a location and returns a new tile
 	 * @param tile, JsonObject
-	 * @param col
-	 * @param row
+	 * @param col, column location of the tile
+	 * @param row, row location of the tile
 	 * @return Tile
 	 */
 	private static Tile makeTileFromName(JsonObject tile, int col, int row) {
