@@ -20,7 +20,7 @@ import java.util.TimerTask;
  * it (such as 1 min), and the once the countdown reaches zero, the game terminates
  * with a group dialog informing the user, and resetting the game to replay the level.
  *
- * @author Isabella Tomaz-Ketley
+ * @author Isabella Tomaz-Ketley 300494939
  */
 public class Main {
   // initialize the game variables

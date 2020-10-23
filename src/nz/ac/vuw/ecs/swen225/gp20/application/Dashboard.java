@@ -22,6 +22,8 @@ import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
  * Time Left.
  * Number of treasure collected.
  * Images of the treasures collected.
+ *
+ *@author Isabella Tomaz-Ketley 300494939
  **/
 public class Dashboard extends JPanel {
   // initialise the size of the dashboard
