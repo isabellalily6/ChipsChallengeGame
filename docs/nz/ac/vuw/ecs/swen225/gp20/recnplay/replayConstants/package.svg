@@ -3,7 +3,7 @@
      contentScriptType="application/ecmascript" contentStyleType="text/css" height="280px" preserveAspectRatio="none"
      style="width:884px;height:280px;" version="1.1" viewBox="0 0 884 280" width="884px" zoomAndPan="magnify">
     <defs>
-        <filter height="300%" id="f11ok2iwzvtlfx" width="300%" x="-1" y="-1">
+        <filter height="300%" id="f1mc7sjwjita1l" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
             <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
@@ -13,24 +13,24 @@
     </defs>
     <g><!--MD5=[62006315c510ee9bee86a6a9d57d739d]
 cluster nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants-->
-        <polygon fill="#FFFFFF" filter="url(#f11ok2iwzvtlfx)"
+        <polygon fill="#FFFFFF" filter="url(#f1mc7sjwjita1l)"
                  points="16,6,465,6,472,28.2969,862,28.2969,862,252,16,252,16,6"
                  style="stroke: #000000; stroke-width: 1.5;"/>
         <line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="472" y1="28.2969" y2="28.2969"/>
         <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
               textLength="443" x="20" y="20.9951">nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants
-        </text><!--MD5=[06c53518d6b597fa57fa773413e238c1]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator-->
-        <a href="StepByStepDialogCreator.html" target="_top" title="StepByStepDialogCreator.html"
-           xlink:actuate="onRequest" xlink:href="StepByStepDialogCreator.html" xlink:show="new"
-           xlink:title="StepByStepDialogCreator.html" xlink:type="simple">
-            <rect codeLine="3" fill="#FEFECE" filter="url(#f11ok2iwzvtlfx)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator"
+        </text><!--MD5=[60db7a864844908761b6cf059f481e52]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator-->
+        <a href="AutoPlayDialogCreator.html" target="_top" title="AutoPlayDialogCreator.html" xlink:actuate="onRequest"
+           xlink:href="AutoPlayDialogCreator.html" xlink:show="new" xlink:title="AutoPlayDialogCreator.html"
+           xlink:type="simple">
+            <rect codeLine="3" fill="#FEFECE" filter="url(#f1mc7sjwjita1l)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator"
                   style="stroke: #A80036; stroke-width: 1.5;" width="248" x="32" y="175"/>
-            <ellipse cx="73.1" cy="191" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M76.0688,196.6406 Q75.4906,196.9375 74.85,197.0781 Q74.2094,197.2344 73.5063,197.2344 Q71.0063,197.2344 69.6781,195.5938 Q68.3656,193.9375 68.3656,190.8125 Q68.3656,187.6875 69.6781,186.0313 Q71.0063,184.375 73.5063,184.375 Q74.2094,184.375 74.85,184.5313 Q75.5063,184.6875 76.0688,184.9844 L76.0688,187.7031 Q75.4438,187.125 74.85,186.8594 Q74.2563,186.5781 73.6313,186.5781 Q72.2875,186.5781 71.6,187.6563 Q70.9125,188.7188 70.9125,190.8125 Q70.9125,192.9063 71.6,193.9844 Q72.2875,195.0469 73.6313,195.0469 Q74.2563,195.0469 74.85,194.7813 Q75.4438,194.5 76.0688,193.9219 L76.0688,196.6406 Z "/>
+            <ellipse cx="81.75" cy="191" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M84.7188,196.6406 Q84.1406,196.9375 83.5,197.0781 Q82.8594,197.2344 82.1563,197.2344 Q79.6563,197.2344 78.3281,195.5938 Q77.0156,193.9375 77.0156,190.8125 Q77.0156,187.6875 78.3281,186.0313 Q79.6563,184.375 82.1563,184.375 Q82.8594,184.375 83.5,184.5313 Q84.1563,184.6875 84.7188,184.9844 L84.7188,187.7031 Q84.0938,187.125 83.5,186.8594 Q82.9063,186.5781 82.2813,186.5781 Q80.9375,186.5781 80.25,187.6563 Q79.5625,188.7188 79.5625,190.8125 Q79.5625,192.9063 80.25,193.9844 Q80.9375,195.0469 82.2813,195.0469 Q82.9063,195.0469 83.5,194.7813 Q84.0938,194.5 84.7188,193.9219 L84.7188,196.6406 Z "/>
             <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
-                  textLength="158" x="92.9" y="195.1543">StepByStepDialogCreator
+                  textLength="140" x="102.25" y="195.1543">AutoPlayDialogCreator
             </text>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="279" y1="207" y2="207"/>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="279" y1="215" y2="215"/>
@@ -38,40 +38,83 @@ class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreato
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
                   textLength="222" x="52" y="229.2104">createDialog(Main): ReplayOptionDialog
             </text>
+        </a><!--MD5=[d2ee39748e58745aede56f7822f1c775]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker-->
+        <a href="ButtonMaker.html" target="_top" title="ButtonMaker.html" xlink:actuate="onRequest"
+           xlink:href="ButtonMaker.html" xlink:show="new" xlink:title="ButtonMaker.html" xlink:type="simple">
+            <rect codeLine="7" fill="#FEFECE" filter="url(#f1mc7sjwjita1l)" height="73.6094"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker"
+                  style="stroke: #A80036; stroke-width: 1.5;" width="338" x="508" y="41"/>
+            <ellipse cx="632.75" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M635.7188,62.6406 Q635.1406,62.9375 634.5,63.0781 Q633.8594,63.2344 633.1563,63.2344 Q630.6563,63.2344 629.3281,61.5938 Q628.0156,59.9375 628.0156,56.8125 Q628.0156,53.6875 629.3281,52.0313 Q630.6563,50.375 633.1563,50.375 Q633.8594,50.375 634.5,50.5313 Q635.1563,50.6875 635.7188,50.9844 L635.7188,53.7031 Q635.0938,53.125 634.5,52.8594 Q633.9063,52.5781 633.2813,52.5781 Q631.9375,52.5781 631.25,53.6563 Q630.5625,54.7188 630.5625,56.8125 Q630.5625,58.9063 631.25,59.9844 Q631.9375,61.0469 633.2813,61.0469 Q633.9063,61.0469 634.5,60.7813 Q635.0938,60.5 635.7188,59.9219 L635.7188,62.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="80"
+                  x="653.25" y="61.1543">ButtonMaker
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="509" x2="845" y1="73" y2="73"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="509" x2="845" y1="81" y2="81"/>
+            <ellipse cx="519" cy="92" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="143" x="528" y="95.2104">styleButton(JButton): void
+            </text>
+            <ellipse cx="519" cy="104.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="312" x="528" y="108.0151">styleButton(JButton, Main,
+                ReplayModes, boolean): void
+            </text>
+        </a><!--MD5=[ea83031757fb049844d3cb7b9ec9bbfc]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator-->
+        <a href="ReplayDialogCreator.html" target="_top" title="ReplayDialogCreator.html" xlink:actuate="onRequest"
+           xlink:href="ReplayDialogCreator.html" xlink:show="new" xlink:title="ReplayDialogCreator.html"
+           xlink:type="simple">
+            <rect codeLine="12" fill="#FEFECE" filter="url(#f1mc7sjwjita1l)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator"
+                  style="stroke: #A80036; stroke-width: 1.5;" width="248" x="225" y="47.5"/>
+            <ellipse cx="281.25" cy="63.5" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M277.1719,59.2656 L277.1719,57.1094 L284.5625,57.1094 L284.5625,59.2656 L282.0938,59.2656 L282.0938,67.3438 L284.5625,67.3438 L284.5625,69.5 L277.1719,69.5 L277.1719,67.3438 L279.6406,67.3438 L279.6406,59.2656 L277.1719,59.2656 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
+                  lengthAdjust="spacingAndGlyphs" textLength="127" x="301.75" y="67.6543">ReplayDialogCreator
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="226" x2="472" y1="79.5" y2="79.5"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="226" x2="472" y1="87.5" y2="87.5"/>
+            <ellipse cx="236" cy="98.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic"
+                  lengthAdjust="spacingAndGlyphs" textLength="222" x="245" y="101.7104">createDialog(Main):
+                ReplayOptionDialog
+            </text>
         </a><!--MD5=[b62496e2b3c19aaf8ec418a635520d73]
 class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes-->
         <a href="ReplayModes.html" target="_top" title="ReplayModes.html" xlink:actuate="onRequest"
            xlink:href="ReplayModes.html" xlink:show="new" xlink:title="ReplayModes.html" xlink:type="simple">
-            <rect codeLine="7" fill="#FEFECE" filter="url(#f11ok2iwzvtlfx)" height="73.6094"
+            <rect codeLine="16" fill="#FEFECE" filter="url(#f1mc7sjwjita1l)" height="73.6094"
                   id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayModes"
-                  style="stroke: #A80036; stroke-width: 1.5;" width="114" x="710" y="41"/>
-            <ellipse cx="725" cy="57" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M729.1094,63 L721.3906,63 L721.3906,50.6094 L729.1094,50.6094 L729.1094,52.7656 L723.8438,52.7656 L723.8438,55.4375 L728.6094,55.4375 L728.6094,57.5938 L723.8438,57.5938 L723.8438,60.8438 L729.1094,60.8438 L729.1094,63 Z "/>
+                  style="stroke: #A80036; stroke-width: 1.5;" width="114" x="54" y="41"/>
+            <ellipse cx="69" cy="57" fill="#EB937F" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M73.1094,63 L65.3906,63 L65.3906,50.6094 L73.1094,50.6094 L73.1094,52.7656 L67.8438,52.7656 L67.8438,55.4375 L72.6094,55.4375 L72.6094,57.5938 L67.8438,57.5938 L67.8438,60.8438 L73.1094,60.8438 L73.1094,63 Z "/>
             <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="82"
-                  x="739" y="61.1543">ReplayModes
+                  x="83" y="61.1543">ReplayModes
             </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="711" x2="823" y1="73" y2="73"/>
-            <ellipse cx="721" cy="84" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="55" x2="167" y1="73" y2="73"/>
+            <ellipse cx="65" cy="84" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="64" x="730" y="87.2104">AUTO_PLAY
+                  text-decoration="underline" textLength="64" x="74" y="87.2104">AUTO_PLAY
             </text>
-            <ellipse cx="721" cy="96.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="65" cy="96.8047" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="85" x="730" y="100.0151">STEP_BY_STEP
+                  text-decoration="underline" textLength="85" x="74" y="100.0151">STEP_BY_STEP
             </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="711" x2="823" y1="106.6094" y2="106.6094"/>
-        </a><!--MD5=[60db7a864844908761b6cf059f481e52]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator-->
-        <a href="AutoPlayDialogCreator.html" target="_top" title="AutoPlayDialogCreator.html" xlink:actuate="onRequest"
-           xlink:href="AutoPlayDialogCreator.html" xlink:show="new" xlink:title="AutoPlayDialogCreator.html"
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="55" x2="167" y1="106.6094" y2="106.6094"/>
+        </a><!--MD5=[1d04f61f722ecfacc081ef2da34d5ee5]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator-->
+        <a href="ReplayOptionsCreator.html" target="_top" title="ReplayOptionsCreator.html" xlink:actuate="onRequest"
+           xlink:href="ReplayOptionsCreator.html" xlink:show="new" xlink:title="ReplayOptionsCreator.html"
            xlink:type="simple">
-            <rect codeLine="12" fill="#FEFECE" filter="url(#f11ok2iwzvtlfx)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator"
+            <rect codeLine="21" fill="#FEFECE" filter="url(#f1mc7sjwjita1l)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator"
                   style="stroke: #A80036; stroke-width: 1.5;" width="248" x="315" y="175"/>
-            <ellipse cx="364.75" cy="191" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M367.7188,196.6406 Q367.1406,196.9375 366.5,197.0781 Q365.8594,197.2344 365.1563,197.2344 Q362.6563,197.2344 361.3281,195.5938 Q360.0156,193.9375 360.0156,190.8125 Q360.0156,187.6875 361.3281,186.0313 Q362.6563,184.375 365.1563,184.375 Q365.8594,184.375 366.5,184.5313 Q367.1563,184.6875 367.7188,184.9844 L367.7188,187.7031 Q367.0938,187.125 366.5,186.8594 Q365.9063,186.5781 365.2813,186.5781 Q363.9375,186.5781 363.25,187.6563 Q362.5625,188.7188 362.5625,190.8125 Q362.5625,192.9063 363.25,193.9844 Q363.9375,195.0469 365.2813,195.0469 Q365.9063,195.0469 366.5,194.7813 Q367.0938,194.5 367.7188,193.9219 L367.7188,196.6406 Z "/>
+            <ellipse cx="366.75" cy="191" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M369.7188,196.6406 Q369.1406,196.9375 368.5,197.0781 Q367.8594,197.2344 367.1563,197.2344 Q364.6563,197.2344 363.3281,195.5938 Q362.0156,193.9375 362.0156,190.8125 Q362.0156,187.6875 363.3281,186.0313 Q364.6563,184.375 367.1563,184.375 Q367.8594,184.375 368.5,184.5313 Q369.1563,184.6875 369.7188,184.9844 L369.7188,187.7031 Q369.0938,187.125 368.5,186.8594 Q367.9063,186.5781 367.2813,186.5781 Q365.9375,186.5781 365.25,187.6563 Q364.5625,188.7188 364.5625,190.8125 Q364.5625,192.9063 365.25,193.9844 Q365.9375,195.0469 367.2813,195.0469 Q367.9063,195.0469 368.5,194.7813 Q369.0938,194.5 369.7188,193.9219 L369.7188,196.6406 Z "/>
             <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
-                  textLength="140" x="385.25" y="195.1543">AutoPlayDialogCreator
+                  textLength="136" x="387.25" y="195.1543">ReplayOptionsCreator
             </text>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="316" x2="562" y1="207" y2="207"/>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="316" x2="562" y1="215" y2="215"/>
@@ -79,18 +122,18 @@ class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator-
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
                   textLength="222" x="335" y="229.2104">createDialog(Main): ReplayOptionDialog
             </text>
-        </a><!--MD5=[1d04f61f722ecfacc081ef2da34d5ee5]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator-->
-        <a href="ReplayOptionsCreator.html" target="_top" title="ReplayOptionsCreator.html" xlink:actuate="onRequest"
-           xlink:href="ReplayOptionsCreator.html" xlink:show="new" xlink:title="ReplayOptionsCreator.html"
-           xlink:type="simple">
-            <rect codeLine="16" fill="#FEFECE" filter="url(#f11ok2iwzvtlfx)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator"
+        </a><!--MD5=[06c53518d6b597fa57fa773413e238c1]
+class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator-->
+        <a href="StepByStepDialogCreator.html" target="_top" title="StepByStepDialogCreator.html"
+           xlink:actuate="onRequest" xlink:href="StepByStepDialogCreator.html" xlink:show="new"
+           xlink:title="StepByStepDialogCreator.html" xlink:type="simple">
+            <rect codeLine="25" fill="#FEFECE" filter="url(#f1mc7sjwjita1l)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator"
                   style="stroke: #A80036; stroke-width: 1.5;" width="248" x="598" y="175"/>
-            <ellipse cx="649.75" cy="191" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M652.7188,196.6406 Q652.1406,196.9375 651.5,197.0781 Q650.8594,197.2344 650.1563,197.2344 Q647.6563,197.2344 646.3281,195.5938 Q645.0156,193.9375 645.0156,190.8125 Q645.0156,187.6875 646.3281,186.0313 Q647.6563,184.375 650.1563,184.375 Q650.8594,184.375 651.5,184.5313 Q652.1563,184.6875 652.7188,184.9844 L652.7188,187.7031 Q652.0938,187.125 651.5,186.8594 Q650.9063,186.5781 650.2813,186.5781 Q648.9375,186.5781 648.25,187.6563 Q647.5625,188.7188 647.5625,190.8125 Q647.5625,192.9063 648.25,193.9844 Q648.9375,195.0469 650.2813,195.0469 Q650.9063,195.0469 651.5,194.7813 Q652.0938,194.5 652.7188,193.9219 L652.7188,196.6406 Z "/>
+            <ellipse cx="639.1" cy="191" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M642.0688,196.6406 Q641.4906,196.9375 640.85,197.0781 Q640.2094,197.2344 639.5063,197.2344 Q637.0063,197.2344 635.6781,195.5938 Q634.3656,193.9375 634.3656,190.8125 Q634.3656,187.6875 635.6781,186.0313 Q637.0063,184.375 639.5063,184.375 Q640.2094,184.375 640.85,184.5313 Q641.5063,184.6875 642.0688,184.9844 L642.0688,187.7031 Q641.4438,187.125 640.85,186.8594 Q640.2563,186.5781 639.6313,186.5781 Q638.2875,186.5781 637.6,187.6563 Q636.9125,188.7188 636.9125,190.8125 Q636.9125,192.9063 637.6,193.9844 Q638.2875,195.0469 639.6313,195.0469 Q640.2563,195.0469 640.85,194.7813 Q641.4438,194.5 642.0688,193.9219 L642.0688,196.6406 Z "/>
             <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs"
-                  textLength="136" x="670.25" y="195.1543">ReplayOptionsCreator
+                  textLength="158" x="658.9" y="195.1543">StepByStepDialogCreator
             </text>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="599" x2="845" y1="207" y2="207"/>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="599" x2="845" y1="215" y2="215"/>
@@ -98,93 +141,33 @@ class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator--
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
                   textLength="222" x="618" y="229.2104">createDialog(Main): ReplayOptionDialog
             </text>
-        </a><!--MD5=[ea83031757fb049844d3cb7b9ec9bbfc]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator-->
-        <a href="ReplayDialogCreator.html" target="_top" title="ReplayDialogCreator.html" xlink:actuate="onRequest"
-           xlink:href="ReplayDialogCreator.html" xlink:show="new" xlink:title="ReplayDialogCreator.html"
-           xlink:type="simple">
-            <rect codeLine="20" fill="#FEFECE" filter="url(#f11ok2iwzvtlfx)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator"
-                  style="stroke: #A80036; stroke-width: 1.5;" width="248" x="405" y="47.5"/>
-            <ellipse cx="461.25" cy="63.5" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M457.1719,59.2656 L457.1719,57.1094 L464.5625,57.1094 L464.5625,59.2656 L462.0938,59.2656 L462.0938,67.3438 L464.5625,67.3438 L464.5625,69.5 L457.1719,69.5 L457.1719,67.3438 L459.6406,67.3438 L459.6406,59.2656 L457.1719,59.2656 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic"
-                  lengthAdjust="spacingAndGlyphs" textLength="127" x="481.75" y="67.6543">ReplayDialogCreator
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="406" x2="652" y1="79.5" y2="79.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="406" x2="652" y1="87.5" y2="87.5"/>
-            <ellipse cx="416" cy="98.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic"
-                  lengthAdjust="spacingAndGlyphs" textLength="222" x="425" y="101.7104">createDialog(Main):
-                ReplayOptionDialog
-            </text>
-        </a><!--MD5=[d2ee39748e58745aede56f7822f1c775]
-class nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker-->
-        <a href="ButtonMaker.html" target="_top" title="ButtonMaker.html" xlink:actuate="onRequest"
-           xlink:href="ButtonMaker.html" xlink:show="new" xlink:title="ButtonMaker.html" xlink:type="simple">
-            <rect codeLine="24" fill="#FEFECE" filter="url(#f11ok2iwzvtlfx)" height="73.6094"
-                  id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker"
-                  style="stroke: #A80036; stroke-width: 1.5;" width="338" x="32" y="41"/>
-            <ellipse cx="156.75" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M159.7188,62.6406 Q159.1406,62.9375 158.5,63.0781 Q157.8594,63.2344 157.1563,63.2344 Q154.6563,63.2344 153.3281,61.5938 Q152.0156,59.9375 152.0156,56.8125 Q152.0156,53.6875 153.3281,52.0313 Q154.6563,50.375 157.1563,50.375 Q157.8594,50.375 158.5,50.5313 Q159.1563,50.6875 159.7188,50.9844 L159.7188,53.7031 Q159.0938,53.125 158.5,52.8594 Q157.9063,52.5781 157.2813,52.5781 Q155.9375,52.5781 155.25,53.6563 Q154.5625,54.7188 154.5625,56.8125 Q154.5625,58.9063 155.25,59.9844 Q155.9375,61.0469 157.2813,61.0469 Q157.9063,61.0469 158.5,60.7813 Q159.0938,60.5 159.7188,59.9219 L159.7188,62.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="80"
-                  x="177.25" y="61.1543">ButtonMaker
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="369" y1="73" y2="73"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="369" y1="81" y2="81"/>
-            <ellipse cx="43" cy="92" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="143" x="52" y="95.2104">styleButton(JButton): void
-            </text>
-            <ellipse cx="43" cy="104.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="312" x="52" y="108.0151">styleButton(JButton, Main,
-                ReplayModes, boolean): void
-            </text>
-        </a><!--MD5=[97a3da2edf92ead3924b08a0aad7e4d4]
-reverse link nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator to nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator-->
-        <path codeLine="29" d="M422.05,114.98 C365.64,133.96 297.28,156.96 243.98,174.9 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator"
-              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
-        <polygon fill="none" points="419.89,108.33,441.08,108.58,424.35,121.6,419.89,108.33"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[b4f99491ec35082b6b05fe4f326e5f46]
+        </a><!--MD5=[b4f99491ec35082b6b05fe4f326e5f46]
 reverse link nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator to nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator-->
-        <path codeLine="30" d="M495.83,125.25 C483.91,141.87 470.8,160.16 460.18,174.97 " fill="none"
+        <path codeLine="29" d="M286.25,119.8 C258.6,137.79 226.71,158.52 201.41,174.97 " fill="none"
               id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.AutoPlayDialogCreator"
               style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
-        <polygon fill="none" points="490.33,120.92,507.67,108.74,501.7,129.07,490.33,120.92"
+        <polygon fill="none" points="282.68,113.78,303.26,108.74,290.31,125.51,282.68,113.78"
                  style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[4471cb24ad4cfd691c1ed21e6d19d136]
 reverse link nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator to nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator-->
-        <path codeLine="31" d="M591.75,119.8 C619.4,137.79 651.29,158.52 676.59,174.97 " fill="none"
+        <path codeLine="30" d="M382.17,125.25 C394.09,141.87 407.2,160.16 417.82,174.97 " fill="none"
               id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayOptionsCreator"
               style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
-        <polygon fill="none" points="587.69,125.51,574.74,108.74,595.32,113.78,587.69,125.51"
+        <polygon fill="none" points="376.3,129.07,370.33,108.74,387.67,120.92,376.3,129.07"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[97a3da2edf92ead3924b08a0aad7e4d4]
+reverse link nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator to nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator-->
+        <path codeLine="31" d="M455.95,114.98 C512.36,133.96 580.72,156.96 634.02,174.9 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCreator-backto-nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.StepByStepDialogCreator"
+              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="none" points="453.65,121.6,436.92,108.58,458.11,108.33,453.65,121.6"
                  style="stroke: #A80036; stroke-width: 1.0;"/>
         <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
               x="337" y="267.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[e5707261608245bba7d1559f462f3602]
+        </text><!--MD5=[6c756ac5facb0fb758d00cb6920cb8c3]
 @startuml
     namespace nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants {
 
-        class StepByStepDialogCreator [[StepByStepDialogCreator.html]] {
-            +createDialog(Main): ReplayOptionDialog
-        }
-
-        enum ReplayModes [[ReplayModes.html]] {
-            {static} +AUTO_PLAY
-            {static} +STEP_BY_STEP
-        }
-
         class AutoPlayDialogCreator [[AutoPlayDialogCreator.html]] {
             +createDialog(Main): ReplayOptionDialog
-        }
-
-        class ReplayOptionsCreator [[ReplayOptionsCreator.html]] {
-            +createDialog(Main): ReplayOptionDialog
-        }
-
-        interface ReplayDialogCreator [[ReplayDialogCreator.html]] {
-            {abstract} +createDialog(Main): ReplayOptionDialog
         }
 
         class ButtonMaker [[ButtonMaker.html]] {
@@ -192,9 +175,26 @@ reverse link nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ReplayDialogCre
             {static} +styleButton(JButton, Main, ReplayModes, boolean): void
         }
 
-        ReplayDialogCreator <|.. StepByStepDialogCreator
+        interface ReplayDialogCreator [[ReplayDialogCreator.html]] {
+            {abstract} +createDialog(Main): ReplayOptionDialog
+        }
+
+        enum ReplayModes [[ReplayModes.html]] {
+            {static} +AUTO_PLAY
+            {static} +STEP_BY_STEP
+        }
+
+        class ReplayOptionsCreator [[ReplayOptionsCreator.html]] {
+            +createDialog(Main): ReplayOptionDialog
+        }
+
+        class StepByStepDialogCreator [[StepByStepDialogCreator.html]] {
+            +createDialog(Main): ReplayOptionDialog
+        }
+
         ReplayDialogCreator <|.. AutoPlayDialogCreator
         ReplayDialogCreator <|.. ReplayOptionsCreator
+        ReplayDialogCreator <|.. StepByStepDialogCreator
     }
 
     center footer UMLDoclet 2.0.12, PlantUML 1.2020.16
@@ -206,7 +206,7 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
+Country: null
 -->
     </g>
 </svg>

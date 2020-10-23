@@ -34,7 +34,7 @@ class nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect-->
         </a>
         <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
               x="14.5" y="82.0244">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[afd27231a92b21158343f5d3d7767805]
+        </text><!--MD5=[e59cb925cdedf48660376e3793c7f4db]
 @startuml
     set namespaceSeparator none
     hide empty fields
@@ -53,7 +53,7 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
+Country: null
 -->
     </g>
 </svg>

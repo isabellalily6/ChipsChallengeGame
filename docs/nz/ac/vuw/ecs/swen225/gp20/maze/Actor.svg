@@ -54,7 +54,7 @@ class nz.ac.vuw.ecs.swen225.gp20.maze.Actor-->
         </a>
         <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
               x="12" y="146.0479">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[fe042737adcbfface0b88617cd4e3eec]
+        </text><!--MD5=[8392ab17c7380d1c691292e7d23c2a9a]
 @startuml
     set namespaceSeparator none
     hide empty fields
@@ -78,7 +78,7 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
+Country: null
 -->
     </g>
 </svg>

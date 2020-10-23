@@ -3,7 +3,7 @@
      contentScriptType="application/ecmascript" contentStyleType="text/css" height="289px" preserveAspectRatio="none"
      style="width:252px;height:289px;" version="1.1" viewBox="0 0 252 289" width="252px" zoomAndPan="magnify">
     <defs>
-        <filter height="300%" id="f1nhc6j11es5yc" width="300%" x="-1" y="-1">
+        <filter height="300%" id="fk5g5ifkxpjug" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
             <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
@@ -15,7 +15,7 @@
 class nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
         <a href="Dashboard.html" target="_top" title="Dashboard.html" xlink:actuate="onRequest"
            xlink:href="Dashboard.html" xlink:show="new" xlink:title="Dashboard.html" xlink:type="simple">
-            <rect codeLine="5" fill="#FEFECE" filter="url(#f1nhc6j11es5yc)" height="148.375"
+            <rect codeLine="5" fill="#FEFECE" filter="url(#fk5g5ifkxpjug)" height="148.375"
                   id="nz.ac.vuw.ecs.swen225.gp20.application.Dashboard" style="stroke: #A80036; stroke-width: 1.5;"
                   width="226" x="7" y="105"/>
             <ellipse cx="22" cy="123.9688" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
@@ -28,8 +28,8 @@ class nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
             </text>
             <line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="232" y1="142.9375" y2="142.9375"/>
             <ellipse cx="18" cy="153.9375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="148" x="27" y="157.1479">Dashboard(Maze, Canvas)
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="98"
+                  x="27" y="157.1479">Dashboard(Maze)
             </text>
             <ellipse cx="18" cy="166.7422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
@@ -61,7 +61,7 @@ class nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
             </text>
         </a><!--MD5=[56a185cb33bdc7c23303e5865f20a19b]
 class javax.swing.JPanel-->
-        <rect codeLine="16" fill="#FEFECE" filter="url(#f1nhc6j11es5yc)" height="37.9375" id="javax.swing.JPanel"
+        <rect codeLine="16" fill="#FEFECE" filter="url(#fk5g5ifkxpjug)" height="37.9375" id="javax.swing.JPanel"
               style="stroke: #A80036; stroke-width: 1.5;" width="88" x="76" y="7"/>
         <ellipse cx="91" cy="25.9688" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M93.9688,31.6094 Q93.3906,31.9063 92.75,32.0469 Q92.1094,32.2031 91.4063,32.2031 Q88.9063,32.2031 87.5781,30.5625 Q86.2656,28.9063 86.2656,25.7813 Q86.2656,22.6563 87.5781,21 Q88.9063,19.3438 91.4063,19.3438 Q92.1094,19.3438 92.75,19.5 Q93.4063,19.6563 93.9688,19.9531 L93.9688,22.6719 Q93.3438,22.0938 92.75,21.8281 Q92.1563,21.5469 91.5313,21.5469 Q90.1875,21.5469 89.5,22.625 Q88.8125,23.6875 88.8125,25.7813 Q88.8125,27.875 89.5,28.9531 Q90.1875,30.0156 91.5313,30.0156 Q92.1563,30.0156 92.75,29.75 Q93.3438,29.4688 93.9688,28.8906 L93.9688,31.6094 Z "/>
@@ -79,14 +79,14 @@ reverse link javax.swing.JPanel to nz.ac.vuw.ecs.swen225.gp20.application.Dashbo
                  style="stroke: #A80036; stroke-width: 1.0;"/>
         <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
               x="21" y="275.6572">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[acc916f07af0451417816488ebff00bb]
+        </text><!--MD5=[b45cdb22d5544c97014b986ebeac9ea4]
 @startuml
     set namespaceSeparator none
     hide empty fields
     hide empty methods
 
     class "<size:14>Dashboard\n<size:10>nz.ac.vuw.ecs.swen225.gp20.application" as nz.ac.vuw.ecs.swen225.gp20.application.Dashboard [[Dashboard.html]] {
-        +Dashboard(Maze, Canvas)
+        +Dashboard(Maze)
         +createComponents(): void
         +addComponents(): void
         +updateDashboard(): void
@@ -109,7 +109,7 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
+Country: null
 -->
     </g>
 </svg>

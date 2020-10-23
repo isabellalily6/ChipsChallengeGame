@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-     contentScriptType="application/ecmascript" contentStyleType="text/css" height="1208px" preserveAspectRatio="none"
-     style="width:1012px;height:1208px;" version="1.1" viewBox="0 0 1012 1208" width="1012px" zoomAndPan="magnify">
+     contentScriptType="application/ecmascript" contentStyleType="text/css" height="1182px" preserveAspectRatio="none"
+     style="width:966px;height:1182px;" version="1.1" viewBox="0 0 966 1182" width="966px" zoomAndPan="magnify">
     <defs>
-        <filter height="300%" id="f6d92vh4433e4" width="300%" x="-1" y="-1">
+        <filter height="300%" id="f1dc1hps0562pb" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0"/>
             <feColorMatrix in="blurOut" result="blurOut2" type="matrix"
                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/>
@@ -13,15 +13,15 @@
     </defs>
     <g><!--MD5=[6a4c4b98b387dd0cbcc4ee9dbc28d3b2]
 cluster nz.ac.vuw.ecs.swen225.gp20.application-->
-        <polygon fill="#FFFFFF" filter="url(#f6d92vh4433e4)"
-                 points="168,176,500,176,507,198.2969,653,198.2969,653,1180,168,1180,168,176"
+        <polygon fill="#FFFFFF" filter="url(#f1dc1hps0562pb)"
+                 points="209,176,541,176,548,198.2969,693,198.2969,693,1154,209,1154,209,176"
                  style="stroke: #000000; stroke-width: 1.5;"/>
-        <line style="stroke: #000000; stroke-width: 1.5;" x1="168" x2="507" y1="198.2969" y2="198.2969"/>
+        <line style="stroke: #000000; stroke-width: 1.5;" x1="209" x2="548" y1="198.2969" y2="198.2969"/>
         <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
-              textLength="326" x="172" y="190.9951">nz.ac.vuw.ecs.swen225.gp20.application
+              textLength="326" x="213" y="190.9951">nz.ac.vuw.ecs.swen225.gp20.application
         </text><!--MD5=[535aab4de90d4dfa371a9b40d5438fc3]
 cluster javax.swing-->
-        <polygon fill="#FFFFFF" filter="url(#f6d92vh4433e4)"
+        <polygon fill="#FFFFFF" filter="url(#f1dc1hps0562pb)"
                  points="16,6,114,6,121,28.2969,793,28.2969,793,143,16,143,16,6"
                  style="stroke: #000000; stroke-width: 1.5;"/>
         <line style="stroke: #000000; stroke-width: 1.5;" x1="16" x2="121" y1="28.2969" y2="28.2969"/>
@@ -29,313 +29,312 @@ cluster javax.swing-->
               textLength="92" x="20" y="20.9951">javax.swing
         </text><!--MD5=[d63c23c2d4b14118d71bd46d55a646bd]
 cluster java.awt.event-->
-        <polygon fill="#FFFFFF" filter="url(#f6d92vh4433e4)"
-                 points="677,317,798,317,805,339.2969,895,339.2969,895,454,677,454,677,317"
+        <polygon fill="#FFFFFF" filter="url(#f1dc1hps0562pb)"
+                 points="726,310.5,847,310.5,854,332.7969,944,332.7969,944,447.5,726,447.5,726,310.5"
                  style="stroke: #000000; stroke-width: 1.5;"/>
-        <line style="stroke: #000000; stroke-width: 1.5;" x1="677" x2="805" y1="339.2969" y2="339.2969"/>
+        <line style="stroke: #000000; stroke-width: 1.5;" x1="726" x2="854" y1="332.7969" y2="332.7969"/>
         <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs"
-              textLength="115" x="681" y="331.9951">java.awt.event
-        </text><!--MD5=[1cd415b87c4eb40780b5759a7e2af137]
-class nz.ac.vuw.ecs.swen225.gp20.application.Main-->
-        <a href="Main.html" target="_top" title="Main.html" xlink:actuate="onRequest" xlink:href="Main.html"
-           xlink:show="new" xlink:title="Main.html" xlink:type="simple">
-            <rect codeLine="3" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="368.1172"
-                  id="nz.ac.vuw.ecs.swen225.gp20.application.Main" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="211" x="425.5" y="211"/>
-            <ellipse cx="512.25" cy="227" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M515.2188,232.6406 Q514.6406,232.9375 514,233.0781 Q513.3594,233.2344 512.6563,233.2344 Q510.1563,233.2344 508.8281,231.5938 Q507.5156,229.9375 507.5156,226.8125 Q507.5156,223.6875 508.8281,222.0313 Q510.1563,220.375 512.6563,220.375 Q513.3594,220.375 514,220.5313 Q514.6563,220.6875 515.2188,220.9844 L515.2188,223.7031 Q514.5938,223.125 514,222.8594 Q513.4063,222.5781 512.7813,222.5781 Q511.4375,222.5781 510.75,223.6563 Q510.0625,224.7188 510.0625,226.8125 Q510.0625,228.9063 510.75,229.9844 Q511.4375,231.0469 512.7813,231.0469 Q513.4063,231.0469 514,230.7813 Q514.5938,230.5 515.2188,229.9219 L515.2188,232.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="29"
-                  x="532.75" y="231.1543">Main
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="426.5" x2="635.5" y1="243" y2="243"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="426.5" x2="635.5" y1="251" y2="251"/>
-            <ellipse cx="436.5" cy="262" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="34"
-                  x="445.5" y="265.2104">Main()
-            </text>
-            <ellipse cx="436.5" cy="274.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="80"
-                  x="445.5" y="278.0151">Main(Boolean)
-            </text>
-            <ellipse cx="436.5" cy="287.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="145" x="445.5" y="290.8198">startTimer(Boolean): void
-            </text>
-            <ellipse cx="436.5" cy="300.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="113" x="445.5" y="303.6245">startTimer(int): void
-            </text>
-            <ellipse cx="436.5" cy="313.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="135" x="445.5" y="316.4292">createTimerTask(): void
-            </text>
-            <ellipse cx="436.5" cy="326.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="122" x="445.5" y="329.2339">startRecording(): void
-            </text>
-            <ellipse cx="436.5" cy="338.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="122" x="445.5" y="342.0386">saveRecording(): void
-            </text>
-            <ellipse cx="436.5" cy="351.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="119" x="445.5" y="354.8433">loadRecording(): void
-            </text>
-            <ellipse cx="436.5" cy="364.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="130" x="445.5" y="367.6479">replayRecording(): void
-            </text>
-            <ellipse cx="436.5" cy="377.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="128" x="445.5" y="380.4526">loadFile(Boolean): void
-            </text>
-            <ellipse cx="436.5" cy="390.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="185" x="445.5" y="393.2573">saveFile(Boolean, Boolean): void
-            </text>
-            <ellipse cx="436.5" cy="402.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93"
-                  x="445.5" y="406.062">exitGame(): void
-            </text>
-            <ellipse cx="436.5" cy="415.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="114" x="445.5" y="418.8667">startGame(int): void
-            </text>
-            <ellipse cx="436.5" cy="428.4609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="153" x="445.5" y="431.6714">pauseGame(boolean): void
-            </text>
-            <ellipse cx="436.5" cy="441.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="96"
-                  x="445.5" y="444.4761">playGame(): void
-            </text>
-            <ellipse cx="436.5" cy="454.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90"
-                  x="445.5" y="457.2808">getMaze(): Maze
-            </text>
-            <ellipse cx="436.5" cy="466.875" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
-                  x="445.5" y="470.0854">getLevel(): int
-            </text>
-            <ellipse cx="436.5" cy="479.6797" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="100" x="445.5" y="482.8901">setLevel(int): void
-            </text>
-            <ellipse cx="436.5" cy="492.4844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97"
-                  x="445.5" y="495.6948">getTimeLeft(): int
-            </text>
-            <ellipse cx="436.5" cy="505.2891" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="113" x="445.5" y="508.4995">setMaze(Maze): void
-            </text>
-            <ellipse cx="436.5" cy="518.0938" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="104" x="445.5" y="521.3042">setGui(Maze): void
-            </text>
-            <ellipse cx="436.5" cy="530.8984" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="100" x="445.5" y="534.1089">getTimer(): Timer
-            </text>
-            <ellipse cx="436.5" cy="543.7031" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="120" x="445.5" y="546.9136">setTimeLeft(int): void
-            </text>
-            <ellipse cx="436.5" cy="556.5078" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="123" x="445.5" y="559.7183">isLevelWon(): boolean
-            </text>
-            <ellipse cx="436.5" cy="569.3125" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  text-decoration="underline" textLength="109" x="445.5" y="572.5229">main(String[]): void
-            </text>
-        </a><!--MD5=[a0b0cf73325721b4f5c2e9a00037d854]
+              textLength="115" x="730" y="325.4951">java.awt.event
+        </text><!--MD5=[a0b0cf73325721b4f5c2e9a00037d854]
 class nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
         <a href="Dashboard.html" target="_top" title="Dashboard.html" xlink:actuate="onRequest"
            xlink:href="Dashboard.html" xlink:show="new" xlink:title="Dashboard.html" xlink:type="simple">
-            <rect codeLine="31" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="150.4375"
+            <rect codeLine="3" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="150.4375"
                   id="nz.ac.vuw.ecs.swen225.gp20.application.Dashboard" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="174" x="184" y="1014"/>
-            <ellipse cx="232.25" cy="1030" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M235.2188,1035.6406 Q234.6406,1035.9375 234,1036.0781 Q233.3594,1036.2344 232.6563,1036.2344 Q230.1563,1036.2344 228.8281,1034.5938 Q227.5156,1032.9375 227.5156,1029.8125 Q227.5156,1026.6875 228.8281,1025.0313 Q230.1563,1023.375 232.6563,1023.375 Q233.3594,1023.375 234,1023.5313 Q234.6563,1023.6875 235.2188,1023.9844 L235.2188,1026.7031 Q234.5938,1026.125 234,1025.8594 Q233.4063,1025.5781 232.7813,1025.5781 Q231.4375,1025.5781 230.75,1026.6563 Q230.0625,1027.7188 230.0625,1029.8125 Q230.0625,1031.9063 230.75,1032.9844 Q231.4375,1034.0469 232.7813,1034.0469 Q233.4063,1034.0469 234,1033.7813 Q234.5938,1033.5 235.2188,1032.9219 L235.2188,1035.6406 Z "/>
+                  width="173" x="225.5" y="988"/>
+            <ellipse cx="273.25" cy="1004" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M276.2188,1009.6406 Q275.6406,1009.9375 275,1010.0781 Q274.3594,1010.2344 273.6563,1010.2344 Q271.1563,1010.2344 269.8281,1008.5938 Q268.5156,1006.9375 268.5156,1003.8125 Q268.5156,1000.6875 269.8281,999.0313 Q271.1563,997.375 273.6563,997.375 Q274.3594,997.375 275,997.5313 Q275.6563,997.6875 276.2188,997.9844 L276.2188,1000.7031 Q275.5938,1000.125 275,999.8594 Q274.4063,999.5781 273.7813,999.5781 Q272.4375,999.5781 271.75,1000.6563 Q271.0625,1001.7188 271.0625,1003.8125 Q271.0625,1005.9063 271.75,1006.9844 Q272.4375,1008.0469 273.7813,1008.0469 Q274.4063,1008.0469 275,1007.7813 Q275.5938,1007.5 276.2188,1006.9219 L276.2188,1009.6406 Z "/>
             <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="69"
-                  x="252.75" y="1034.1543">Dashboard
+                  x="293.75" y="1008.1543">Dashboard
             </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="185" x2="357" y1="1046" y2="1046"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="185" x2="357" y1="1054" y2="1054"/>
-            <ellipse cx="195" cy="1065" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="226.5" x2="397.5" y1="1020" y2="1020"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="226.5" x2="397.5" y1="1028" y2="1028"/>
+            <ellipse cx="236.5" cy="1039" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="98"
+                  x="245.5" y="1042.2104">Dashboard(Maze)
+            </text>
+            <ellipse cx="236.5" cy="1051.8047" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="148" x="204" y="1068.2104">Dashboard(Maze, Canvas)
+                  textLength="147" x="245.5" y="1055.0151">createComponents(): void
             </text>
-            <ellipse cx="195" cy="1077.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="236.5" cy="1064.6094" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="147" x="204" y="1081.0151">createComponents(): void
+                  textLength="132" x="245.5" y="1067.8198">addComponents(): void
             </text>
-            <ellipse cx="195" cy="1090.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="236.5" cy="1077.4141" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="132" x="204" y="1093.8198">addComponents(): void
+                  textLength="140" x="245.5" y="1080.6245">updateDashboard(): void
             </text>
-            <ellipse cx="195" cy="1103.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="236.5" cy="1090.2188" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="140" x="204" y="1106.6245">updateDashboard(): void
+                  textLength="131" x="245.5" y="1093.4292">resetDashboard(): void
             </text>
-            <ellipse cx="195" cy="1116.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="236.5" cy="1103.0234" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="131" x="204" y="1119.4292">resetDashboard(): void
+                  textLength="124" x="245.5" y="1106.2339">getFile(Colour): String
             </text>
-            <ellipse cx="195" cy="1129.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="236.5" cy="1115.8281" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="124" x="204" y="1132.2339">getFile(Colour): String
+                  textLength="113" x="245.5" y="1119.0386">setMaze(Maze): void
             </text>
-            <ellipse cx="195" cy="1141.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <ellipse cx="236.5" cy="1128.6328" fill="#84BE84" rx="3" ry="3"
+                     style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="113" x="204" y="1145.0386">setMaze(Maze): void
-            </text>
-            <ellipse cx="195" cy="1154.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="124" x="204" y="1157.8433">setTimer(String): void
-            </text>
-        </a><!--MD5=[43e2ba9142b179c3e85a142a22d0adec]
-class nz.ac.vuw.ecs.swen225.gp20.application.MenuBar-->
-        <a href="MenuBar.html" target="_top" title="MenuBar.html" xlink:actuate="onRequest" xlink:href="MenuBar.html"
-           xlink:show="new" xlink:title="MenuBar.html" xlink:type="simple">
-            <rect codeLine="42" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="60.8047"
-                  id="nz.ac.vuw.ecs.swen225.gp20.application.MenuBar" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="110" x="280" y="364.5"/>
-            <ellipse cx="305.35" cy="380.5" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M308.3188,386.1406 Q307.7406,386.4375 307.1,386.5781 Q306.4594,386.7344 305.7563,386.7344 Q303.2563,386.7344 301.9281,385.0938 Q300.6156,383.4375 300.6156,380.3125 Q300.6156,377.1875 301.9281,375.5313 Q303.2563,373.875 305.7563,373.875 Q306.4594,373.875 307.1,374.0313 Q307.7563,374.1875 308.3188,374.4844 L308.3188,377.2031 Q307.6938,376.625 307.1,376.3594 Q306.5063,376.0781 305.8813,376.0781 Q304.5375,376.0781 303.85,377.1563 Q303.1625,378.2188 303.1625,380.3125 Q303.1625,382.4063 303.85,383.4844 Q304.5375,384.5469 305.8813,384.5469 Q306.5063,384.5469 307.1,384.2813 Q307.6938,384 308.3188,383.4219 L308.3188,386.1406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55"
-                  x="321.65" y="384.6543">MenuBar
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="281" x2="389" y1="396.5" y2="396.5"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="281" x2="389" y1="404.5" y2="404.5"/>
-            <ellipse cx="291" cy="415.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84"
-                  x="300" y="418.7104">MenuBar(Main)
-            </text>
-        </a><!--MD5=[f1f873bc69cea6fe32b98027a6ba0e3d]
-class nz.ac.vuw.ecs.swen225.gp20.application.GUI-->
-        <a href="GUI.html" target="_top" title="GUI.html" xlink:actuate="onRequest" xlink:href="GUI.html"
-           xlink:show="new" xlink:title="GUI.html" xlink:type="simple">
-            <rect codeLine="46" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="265.6797"
-                  id="nz.ac.vuw.ecs.swen225.gp20.application.GUI" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="212" x="409" y="656"/>
-            <ellipse cx="500.25" cy="672" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M503.2188,677.6406 Q502.6406,677.9375 502,678.0781 Q501.3594,678.2344 500.6563,678.2344 Q498.1563,678.2344 496.8281,676.5938 Q495.5156,674.9375 495.5156,671.8125 Q495.5156,668.6875 496.8281,667.0313 Q498.1563,665.375 500.6563,665.375 Q501.3594,665.375 502,665.5313 Q502.6563,665.6875 503.2188,665.9844 L503.2188,668.7031 Q502.5938,668.125 502,667.8594 Q501.4063,667.5781 500.7813,667.5781 Q499.4375,667.5781 498.75,668.6563 Q498.0625,669.7188 498.0625,671.8125 Q498.0625,673.9063 498.75,674.9844 Q499.4375,676.0469 500.7813,676.0469 Q501.4063,676.0469 502,675.7813 Q502.5938,675.5 503.2188,674.9219 L503.2188,677.6406 Z "/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="21"
-                  x="520.75" y="676.1543">GUI
-            </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="410" x2="620" y1="688" y2="688"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="410" x2="620" y1="696" y2="696"/>
-            <ellipse cx="420" cy="707" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="28"
-                  x="429" y="710.2104">GUI()
-            </text>
-            <ellipse cx="420" cy="719.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90"
-                  x="429" y="723.0151">GUI(Main, Maze)
-            </text>
-            <ellipse cx="420" cy="732.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="181" x="429" y="735.8198">setButtonActionListeners(): void
-            </text>
-            <ellipse cx="420" cy="745.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="118" x="429" y="748.6245">getCanvas(): Canvas
-            </text>
-            <ellipse cx="420" cy="758.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="91"
-                  x="429" y="761.4292">setUpGui(): void
-            </text>
-            <ellipse cx="420" cy="771.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="104" x="429" y="774.2339">setTimer(int): void
-            </text>
-            <ellipse cx="420" cy="783.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="113" x="429" y="787.0386">setMaze(Maze): void
-            </text>
-            <ellipse cx="420" cy="796.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="170" x="429" y="799.8433">displayPausedDialogue(): void
-            </text>
-            <ellipse cx="420" cy="809.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="154" x="429" y="812.6479">hidePausedDialogue(): void
-            </text>
-            <ellipse cx="420" cy="822.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90"
-                  x="429" y="825.4526">getMaze(): Maze
-            </text>
-            <ellipse cx="420" cy="835.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="186" x="429" y="838.2573">setChapDirection(Direction): void
-            </text>
-            <ellipse cx="420" cy="847.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="149" x="429" y="851.062">moveChap(Direction): void
-            </text>
-            <ellipse cx="420" cy="860.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="134" x="429" y="863.8667">playSound(Sound): void
-            </text>
-            <ellipse cx="420" cy="873.4609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="143" x="429" y="876.6714">updateGui(Boolean): void
-            </text>
-            <ellipse cx="420" cy="886.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="143" x="429" y="889.4761">keyTyped(KeyEvent): void
-            </text>
-            <ellipse cx="420" cy="899.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="156" x="429" y="902.2808">keyPressed(KeyEvent): void
-            </text>
-            <ellipse cx="420" cy="911.875" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="161" x="429" y="915.0854">keyReleased(KeyEvent): void
+                  textLength="124" x="245.5" y="1131.8433">setTimer(String): void
             </text>
         </a><!--MD5=[83b7369569caa394034737a9f0479b79]
 class nz.ac.vuw.ecs.swen225.gp20.application.Dialogues-->
         <a href="Dialogues.html" target="_top" title="Dialogues.html" xlink:actuate="onRequest"
            xlink:href="Dialogues.html" xlink:show="new" xlink:title="Dialogues.html" xlink:type="simple">
-            <rect codeLine="66" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="112.0234"
+            <rect codeLine="14" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="112.0234"
                   id="nz.ac.vuw.ecs.swen225.gp20.application.Dialogues" style="stroke: #A80036; stroke-width: 1.5;"
-                  width="243" x="393.5" y="1033"/>
-            <ellipse cx="479.75" cy="1049" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-            <path d="M482.7188,1054.6406 Q482.1406,1054.9375 481.5,1055.0781 Q480.8594,1055.2344 480.1563,1055.2344 Q477.6563,1055.2344 476.3281,1053.5938 Q475.0156,1051.9375 475.0156,1048.8125 Q475.0156,1045.6875 476.3281,1044.0313 Q477.6563,1042.375 480.1563,1042.375 Q480.8594,1042.375 481.5,1042.5313 Q482.1563,1042.6875 482.7188,1042.9844 L482.7188,1045.7031 Q482.0938,1045.125 481.5,1044.8594 Q480.9063,1044.5781 480.2813,1044.5781 Q478.9375,1044.5781 478.25,1045.6563 Q477.5625,1046.7188 477.5625,1048.8125 Q477.5625,1050.9063 478.25,1051.9844 Q478.9375,1053.0469 480.2813,1053.0469 Q480.9063,1053.0469 481.5,1052.7813 Q482.0938,1052.5 482.7188,1051.9219 L482.7188,1054.6406 Z "/>
+                  width="243" x="433.5" y="1007"/>
+            <ellipse cx="519.75" cy="1023" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M522.7188,1028.6406 Q522.1406,1028.9375 521.5,1029.0781 Q520.8594,1029.2344 520.1563,1029.2344 Q517.6563,1029.2344 516.3281,1027.5938 Q515.0156,1025.9375 515.0156,1022.8125 Q515.0156,1019.6875 516.3281,1018.0313 Q517.6563,1016.375 520.1563,1016.375 Q520.8594,1016.375 521.5,1016.5313 Q522.1563,1016.6875 522.7188,1016.9844 L522.7188,1019.7031 Q522.0938,1019.125 521.5,1018.8594 Q520.9063,1018.5781 520.2813,1018.5781 Q518.9375,1018.5781 518.25,1019.6563 Q517.5625,1020.7188 517.5625,1022.8125 Q517.5625,1024.9063 518.25,1025.9844 Q518.9375,1027.0469 520.2813,1027.0469 Q520.9063,1027.0469 521.5,1026.7813 Q522.0938,1026.5 522.7188,1025.9219 L522.7188,1028.6406 Z "/>
             <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="62"
-                  x="500.25" y="1053.1543">Dialogues
+                  x="540.25" y="1027.1543">Dialogues
             </text>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="394.5" x2="635.5" y1="1065" y2="1065"/>
-            <line style="stroke: #A80036; stroke-width: 1.5;" x1="394.5" x2="635.5" y1="1073" y2="1073"/>
-            <ellipse cx="404.5" cy="1084" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="434.5" x2="675.5" y1="1039" y2="1039"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="434.5" x2="675.5" y1="1047" y2="1047"/>
+            <ellipse cx="444.5" cy="1058" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="174" x="413.5" y="1087.2104">Dialogues(Main, String, String)
+                  textLength="174" x="453.5" y="1061.2104">Dialogues(Main, String, String)
             </text>
-            <ellipse cx="404.5" cy="1096.8047" fill="#84BE84" rx="3" ry="3"
+            <ellipse cx="444.5" cy="1070.8047" fill="#84BE84" rx="3" ry="3"
                      style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="217" x="413.5" y="1100.0151">setActionListener(ActionListener): void
+                  textLength="217" x="453.5" y="1074.0151">setActionListener(ActionListener): void
             </text>
-            <ellipse cx="404.5" cy="1109.6094" fill="#84BE84" rx="3" ry="3"
+            <ellipse cx="444.5" cy="1083.6094" fill="#84BE84" rx="3" ry="3"
                      style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="143" x="413.5" y="1112.8198">keyTyped(KeyEvent): void
+                  textLength="143" x="453.5" y="1086.8198">keyTyped(KeyEvent): void
             </text>
-            <ellipse cx="404.5" cy="1122.4141" fill="#84BE84" rx="3" ry="3"
+            <ellipse cx="444.5" cy="1096.4141" fill="#84BE84" rx="3" ry="3"
                      style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="156" x="413.5" y="1125.6245">keyPressed(KeyEvent): void
+                  textLength="156" x="453.5" y="1099.6245">keyPressed(KeyEvent): void
             </text>
-            <ellipse cx="404.5" cy="1135.2188" fill="#84BE84" rx="3" ry="3"
+            <ellipse cx="444.5" cy="1109.2188" fill="#84BE84" rx="3" ry="3"
                      style="stroke: #038048; stroke-width: 1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
-                  textLength="161" x="413.5" y="1138.4292">keyReleased(KeyEvent): void
+                  textLength="161" x="453.5" y="1112.4292">keyReleased(KeyEvent): void
+            </text>
+        </a><!--MD5=[d278bdffc36e20006e2ca607403c7855]
+class nz.ac.vuw.ecs.swen225.gp20.application.Gui-->
+        <a href="Gui.html" target="_top" title="Gui.html" xlink:actuate="onRequest" xlink:href="Gui.html"
+           xlink:show="new" xlink:title="Gui.html" xlink:type="simple">
+            <rect codeLine="22" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="252.875"
+                  id="nz.ac.vuw.ecs.swen225.gp20.application.Gui" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="212" x="449" y="643"/>
+            <ellipse cx="540.75" cy="659" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M543.7188,664.6406 Q543.1406,664.9375 542.5,665.0781 Q541.8594,665.2344 541.1563,665.2344 Q538.6563,665.2344 537.3281,663.5938 Q536.0156,661.9375 536.0156,658.8125 Q536.0156,655.6875 537.3281,654.0313 Q538.6563,652.375 541.1563,652.375 Q541.8594,652.375 542.5,652.5313 Q543.1563,652.6875 543.7188,652.9844 L543.7188,655.7031 Q543.0938,655.125 542.5,654.8594 Q541.9063,654.5781 541.2813,654.5781 Q539.9375,654.5781 539.25,655.6563 Q538.5625,656.7188 538.5625,658.8125 Q538.5625,660.9063 539.25,661.9844 Q539.9375,663.0469 541.2813,663.0469 Q541.9063,663.0469 542.5,662.7813 Q543.0938,662.5 543.7188,661.9219 L543.7188,664.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="20"
+                  x="561.25" y="663.1543">Gui
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="450" x2="660" y1="675" y2="675"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="450" x2="660" y1="683" y2="683"/>
+            <ellipse cx="460" cy="694" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="89"
+                  x="469" y="697.2104">Gui(Main, Maze)
+            </text>
+            <ellipse cx="460" cy="706.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="181" x="469" y="710.0151">setButtonActionListeners(): void
+            </text>
+            <ellipse cx="460" cy="719.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="118" x="469" y="722.8198">getCanvas(): Canvas
+            </text>
+            <ellipse cx="460" cy="732.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="91"
+                  x="469" y="735.6245">setUpGui(): void
+            </text>
+            <ellipse cx="460" cy="745.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="104" x="469" y="748.4292">setTimer(int): void
+            </text>
+            <ellipse cx="460" cy="758.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="113" x="469" y="761.2339">setMaze(Maze): void
+            </text>
+            <ellipse cx="460" cy="770.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="170" x="469" y="774.0386">displayPausedDialogue(): void
+            </text>
+            <ellipse cx="460" cy="783.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="154" x="469" y="786.8433">hidePausedDialogue(): void
+            </text>
+            <ellipse cx="460" cy="796.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90"
+                  x="469" y="799.6479">getMaze(): Maze
+            </text>
+            <ellipse cx="460" cy="809.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="186" x="469" y="812.4526">setChapDirection(Direction): void
+            </text>
+            <ellipse cx="460" cy="822.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="149" x="469" y="825.2573">moveChap(Direction): void
+            </text>
+            <ellipse cx="460" cy="834.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="134" x="469" y="838.062">playSound(Sound): void
+            </text>
+            <ellipse cx="460" cy="847.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="143" x="469" y="850.8667">updateGui(Boolean): void
+            </text>
+            <ellipse cx="460" cy="860.4609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="143" x="469" y="863.6714">keyTyped(KeyEvent): void
+            </text>
+            <ellipse cx="460" cy="873.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="156" x="469" y="876.4761">keyPressed(KeyEvent): void
+            </text>
+            <ellipse cx="460" cy="886.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="161" x="469" y="889.2808">keyReleased(KeyEvent): void
+            </text>
+        </a><!--MD5=[1cd415b87c4eb40780b5759a7e2af137]
+class nz.ac.vuw.ecs.swen225.gp20.application.Main-->
+        <a href="Main.html" target="_top" title="Main.html" xlink:actuate="onRequest" xlink:href="Main.html"
+           xlink:show="new" xlink:title="Main.html" xlink:type="simple">
+            <rect codeLine="41" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="355.3125"
+                  id="nz.ac.vuw.ecs.swen225.gp20.application.Main" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="211" x="423.5" y="211"/>
+            <ellipse cx="510.25" cy="227" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M513.2188,232.6406 Q512.6406,232.9375 512,233.0781 Q511.3594,233.2344 510.6563,233.2344 Q508.1563,233.2344 506.8281,231.5938 Q505.5156,229.9375 505.5156,226.8125 Q505.5156,223.6875 506.8281,222.0313 Q508.1563,220.375 510.6563,220.375 Q511.3594,220.375 512,220.5313 Q512.6563,220.6875 513.2188,220.9844 L513.2188,223.7031 Q512.5938,223.125 512,222.8594 Q511.4063,222.5781 510.7813,222.5781 Q509.4375,222.5781 508.75,223.6563 Q508.0625,224.7188 508.0625,226.8125 Q508.0625,228.9063 508.75,229.9844 Q509.4375,231.0469 510.7813,231.0469 Q511.4063,231.0469 512,230.7813 Q512.5938,230.5 513.2188,229.9219 L513.2188,232.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="29"
+                  x="530.75" y="231.1543">Main
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="424.5" x2="633.5" y1="243" y2="243"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="424.5" x2="633.5" y1="251" y2="251"/>
+            <ellipse cx="434.5" cy="262" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="34"
+                  x="443.5" y="265.2104">Main()
+            </text>
+            <ellipse cx="434.5" cy="274.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="102" x="443.5" y="278.0151">Main(Boolean, int)
+            </text>
+            <ellipse cx="434.5" cy="287.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="145" x="443.5" y="290.8198">startTimer(Boolean): void
+            </text>
+            <ellipse cx="434.5" cy="300.4141" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="135" x="443.5" y="303.6245">createTimerTask(): void
+            </text>
+            <ellipse cx="434.5" cy="313.2188" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="122" x="443.5" y="316.4292">startRecording(): void
+            </text>
+            <ellipse cx="434.5" cy="326.0234" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="122" x="443.5" y="329.2339">saveRecording(): void
+            </text>
+            <ellipse cx="434.5" cy="338.8281" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="119" x="443.5" y="342.0386">loadRecording(): void
+            </text>
+            <ellipse cx="434.5" cy="351.6328" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="128" x="443.5" y="354.8433">loadFile(Boolean): void
+            </text>
+            <ellipse cx="434.5" cy="364.4375" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="185" x="443.5" y="367.6479">saveFile(Boolean, Boolean): void
+            </text>
+            <ellipse cx="434.5" cy="377.2422" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93"
+                  x="443.5" y="380.4526">exitGame(): void
+            </text>
+            <ellipse cx="434.5" cy="390.0469" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="114" x="443.5" y="393.2573">startGame(int): void
+            </text>
+            <ellipse cx="434.5" cy="402.8516" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="153" x="443.5" y="406.062">pauseGame(boolean): void
+            </text>
+            <ellipse cx="434.5" cy="415.6563" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="96"
+                  x="443.5" y="418.8667">playGame(): void
+            </text>
+            <ellipse cx="434.5" cy="428.4609" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="90"
+                  x="443.5" y="431.6714">getMaze(): Maze
+            </text>
+            <ellipse cx="434.5" cy="441.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77"
+                  x="443.5" y="444.4761">getLevel(): int
+            </text>
+            <ellipse cx="434.5" cy="454.0703" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="101" x="443.5" y="457.2808">getLastLevel(): int
+            </text>
+            <ellipse cx="434.5" cy="466.875" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="100" x="443.5" y="470.0854">setLevel(int): void
+            </text>
+            <ellipse cx="434.5" cy="479.6797" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97"
+                  x="443.5" y="482.8901">getTimeLeft(): int
+            </text>
+            <ellipse cx="434.5" cy="492.4844" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="113" x="443.5" y="495.6948">setMaze(Maze): void
+            </text>
+            <ellipse cx="434.5" cy="505.2891" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="104" x="443.5" y="508.4995">setGui(Maze): void
+            </text>
+            <ellipse cx="434.5" cy="518.0938" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="100" x="443.5" y="521.3042">getTimer(): Timer
+            </text>
+            <ellipse cx="434.5" cy="530.8984" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="120" x="443.5" y="534.1089">setTimeLeft(int): void
+            </text>
+            <ellipse cx="434.5" cy="543.7031" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  textLength="123" x="443.5" y="546.9136">isLevelWon(): boolean
+            </text>
+            <ellipse cx="434.5" cy="556.5078" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs"
+                  text-decoration="underline" textLength="109" x="443.5" y="559.7183">main(String[]): void
+            </text>
+        </a><!--MD5=[43e2ba9142b179c3e85a142a22d0adec]
+class nz.ac.vuw.ecs.swen225.gp20.application.MenuBar-->
+        <a href="MenuBar.html" target="_top" title="MenuBar.html" xlink:actuate="onRequest" xlink:href="MenuBar.html"
+           xlink:show="new" xlink:title="MenuBar.html" xlink:type="simple">
+            <rect codeLine="68" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="60.8047"
+                  id="nz.ac.vuw.ecs.swen225.gp20.application.MenuBar" style="stroke: #A80036; stroke-width: 1.5;"
+                  width="110" x="278" y="358"/>
+            <ellipse cx="303.35" cy="374" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+            <path d="M306.3188,379.6406 Q305.7406,379.9375 305.1,380.0781 Q304.4594,380.2344 303.7563,380.2344 Q301.2563,380.2344 299.9281,378.5938 Q298.6156,376.9375 298.6156,373.8125 Q298.6156,370.6875 299.9281,369.0313 Q301.2563,367.375 303.7563,367.375 Q304.4594,367.375 305.1,367.5313 Q305.7563,367.6875 306.3188,367.9844 L306.3188,370.7031 Q305.6938,370.125 305.1,369.8594 Q304.5063,369.5781 303.8813,369.5781 Q302.5375,369.5781 301.85,370.6563 Q301.1625,371.7188 301.1625,373.8125 Q301.1625,375.9063 301.85,376.9844 Q302.5375,378.0469 303.8813,378.0469 Q304.5063,378.0469 305.1,377.7813 Q305.6938,377.5 306.3188,376.9219 L306.3188,379.6406 Z "/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55"
+                  x="319.65" y="378.1543">MenuBar
+            </text>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="279" x2="387" y1="390" y2="390"/>
+            <line style="stroke: #A80036; stroke-width: 1.5;" x1="279" x2="387" y1="398" y2="398"/>
+            <ellipse cx="289" cy="409" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84"
+                  x="298" y="412.2104">MenuBar(Main)
             </text>
         </a><!--MD5=[56a185cb33bdc7c23303e5865f20a19b]
 class javax.swing.JPanel-->
-        <rect codeLine="86" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="48" id="javax.swing.JPanel"
+        <rect codeLine="84" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="48" id="javax.swing.JPanel"
               style="stroke: #A80036; stroke-width: 1.5;" width="70" x="32" y="60"/>
         <ellipse cx="47" cy="76" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M49.9688,81.6406 Q49.3906,81.9375 48.75,82.0781 Q48.1094,82.2344 47.4063,82.2344 Q44.9063,82.2344 43.5781,80.5938 Q42.2656,78.9375 42.2656,75.8125 Q42.2656,72.6875 43.5781,71.0313 Q44.9063,69.375 47.4063,69.375 Q48.1094,69.375 48.75,69.5313 Q49.4063,69.6875 49.9688,69.9844 L49.9688,72.7031 Q49.3438,72.125 48.75,71.8594 Q48.1563,71.5781 47.5313,71.5781 Q46.1875,71.5781 45.5,72.6563 Q44.8125,73.7188 44.8125,75.8125 Q44.8125,77.9063 45.5,78.9844 Q46.1875,80.0469 47.5313,80.0469 Q48.1563,80.0469 48.75,79.7813 Q49.3438,79.5 49.9688,78.9219 L49.9688,81.6406 Z "/>
@@ -343,24 +342,14 @@ class javax.swing.JPanel-->
               x="61" y="80.1543">JPanel
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="101" y1="92" y2="92"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="101" y1="100" y2="100"/><!--MD5=[e1d5997e74a9e0bf94752554eaad51e9]
-class javax.swing.JMenuBar-->
-        <rect codeLine="88" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="48" id="javax.swing.JMenuBar"
-              style="stroke: #A80036; stroke-width: 1.5;" width="90" x="412" y="60"/>
-        <ellipse cx="427" cy="76" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M429.9688,81.6406 Q429.3906,81.9375 428.75,82.0781 Q428.1094,82.2344 427.4063,82.2344 Q424.9063,82.2344 423.5781,80.5938 Q422.2656,78.9375 422.2656,75.8125 Q422.2656,72.6875 423.5781,71.0313 Q424.9063,69.375 427.4063,69.375 Q428.1094,69.375 428.75,69.5313 Q429.4063,69.6875 429.9688,69.9844 L429.9688,72.7031 Q429.3438,72.125 428.75,71.8594 Q428.1563,71.5781 427.5313,71.5781 Q426.1875,71.5781 425.5,72.6563 Q424.8125,73.7188 424.8125,75.8125 Q424.8125,77.9063 425.5,78.9844 Q426.1875,80.0469 427.5313,80.0469 Q428.1563,80.0469 428.75,79.7813 Q429.3438,79.5 429.9688,78.9219 L429.9688,81.6406 Z "/>
-        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="58"
-              x="441" y="80.1543">JMenuBar
-        </text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="413" x2="501" y1="92" y2="92"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="413" x2="501" y1="100" y2="100"/><!--MD5=[18a7562403221f513ca44e0f82c4c17a]
-class javax.swing.JFrame-->
-        <rect codeLine="90" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="86.4141" id="javax.swing.JFrame"
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="33" x2="101" y1="100" y2="100"/><!--MD5=[c13749207e1e160b2790bec8d09e837f]
+class javax.swing.JDialog-->
+        <rect codeLine="86" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="86.4141" id="javax.swing.JDialog"
               style="stroke: #A80036; stroke-width: 1.5;" width="240" x="137" y="41"/>
         <ellipse cx="231.75" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M234.7188,62.6406 Q234.1406,62.9375 233.5,63.0781 Q232.8594,63.2344 232.1563,63.2344 Q229.6563,63.2344 228.3281,61.5938 Q227.0156,59.9375 227.0156,56.8125 Q227.0156,53.6875 228.3281,52.0313 Q229.6563,50.375 232.1563,50.375 Q232.8594,50.375 233.5,50.5313 Q234.1563,50.6875 234.7188,50.9844 L234.7188,53.7031 Q234.0938,53.125 233.5,52.8594 Q232.9063,52.5781 232.2813,52.5781 Q230.9375,52.5781 230.25,53.6563 Q229.5625,54.7188 229.5625,56.8125 Q229.5625,58.9063 230.25,59.9844 Q230.9375,61.0469 232.2813,61.0469 Q232.9063,61.0469 233.5,60.7813 Q234.0938,60.5 234.7188,59.9219 L234.7188,62.6406 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="42"
-              x="252.25" y="61.1543">JFrame
+              x="252.25" y="61.1543">JDialog
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="138" x2="376" y1="73" y2="73"/>
         <polygon fill="none" points="148,79,152,83,148,87,144,83" style="stroke: #B38D22; stroke-width: 1.0;"/>
@@ -377,14 +366,14 @@ class javax.swing.JFrame-->
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="214"
               x="157" y="112.8198">accessibleContext: AccessibleContext
         </text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="138" x2="376" y1="119.4141" y2="119.4141"/><!--MD5=[c13749207e1e160b2790bec8d09e837f]
-class javax.swing.JDialog-->
-        <rect codeLine="95" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="86.4141" id="javax.swing.JDialog"
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="138" x2="376" y1="119.4141" y2="119.4141"/><!--MD5=[18a7562403221f513ca44e0f82c4c17a]
+class javax.swing.JFrame-->
+        <rect codeLine="91" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="86.4141" id="javax.swing.JFrame"
               style="stroke: #A80036; stroke-width: 1.5;" width="240" x="537" y="41"/>
         <ellipse cx="631.75" cy="57" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
         <path d="M634.7188,62.6406 Q634.1406,62.9375 633.5,63.0781 Q632.8594,63.2344 632.1563,63.2344 Q629.6563,63.2344 628.3281,61.5938 Q627.0156,59.9375 627.0156,56.8125 Q627.0156,53.6875 628.3281,52.0313 Q629.6563,50.375 632.1563,50.375 Q632.8594,50.375 633.5,50.5313 Q634.1563,50.6875 634.7188,50.9844 L634.7188,53.7031 Q634.0938,53.125 633.5,52.8594 Q632.9063,52.5781 632.2813,52.5781 Q630.9375,52.5781 630.25,53.6563 Q629.5625,54.7188 629.5625,56.8125 Q629.5625,58.9063 630.25,59.9844 Q630.9375,61.0469 632.2813,61.0469 Q632.9063,61.0469 633.5,60.7813 Q634.0938,60.5 634.7188,59.9219 L634.7188,62.6406 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="42"
-              x="652.25" y="61.1543">JDialog
+              x="652.25" y="61.1543">JFrame
         </text>
         <line style="stroke: #A80036; stroke-width: 1.5;" x1="538" x2="776" y1="73" y2="73"/>
         <polygon fill="none" points="548,79,552,83,548,87,544,83" style="stroke: #B38D22; stroke-width: 1.0;"/>
@@ -401,138 +390,121 @@ class javax.swing.JDialog-->
         <text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="214"
               x="557" y="112.8198">accessibleContext: AccessibleContext
         </text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="538" x2="776" y1="119.4141" y2="119.4141"/><!--MD5=[3eb55d915ce4c988cc6fe2a782a0fcdf]
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="538" x2="776" y1="119.4141" y2="119.4141"/><!--MD5=[e1d5997e74a9e0bf94752554eaad51e9]
+class javax.swing.JMenuBar-->
+        <rect codeLine="96" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="48" id="javax.swing.JMenuBar"
+              style="stroke: #A80036; stroke-width: 1.5;" width="90" x="412" y="60"/>
+        <ellipse cx="427" cy="76" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M429.9688,81.6406 Q429.3906,81.9375 428.75,82.0781 Q428.1094,82.2344 427.4063,82.2344 Q424.9063,82.2344 423.5781,80.5938 Q422.2656,78.9375 422.2656,75.8125 Q422.2656,72.6875 423.5781,71.0313 Q424.9063,69.375 427.4063,69.375 Q428.1094,69.375 428.75,69.5313 Q429.4063,69.6875 429.9688,69.9844 L429.9688,72.7031 Q429.3438,72.125 428.75,71.8594 Q428.1563,71.5781 427.5313,71.5781 Q426.1875,71.5781 425.5,72.6563 Q424.8125,73.7188 424.8125,75.8125 Q424.8125,77.9063 425.5,78.9844 Q426.1875,80.0469 427.5313,80.0469 Q428.1563,80.0469 428.75,79.7813 Q429.3438,79.5 429.9688,78.9219 L429.9688,81.6406 Z "/>
+        <text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="58"
+              x="441" y="80.1543">JMenuBar
+        </text>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="413" x2="501" y1="92" y2="92"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="413" x2="501" y1="100" y2="100"/><!--MD5=[3eb55d915ce4c988cc6fe2a782a0fcdf]
 class java.awt.event.KeyListener-->
-        <rect codeLine="103" fill="#FEFECE" filter="url(#f6d92vh4433e4)" height="86.4141"
-              id="java.awt.event.KeyListener" style="stroke: #A80036; stroke-width: 1.5;" width="187" x="692.5"
-              y="352"/>
-        <ellipse cx="746.25" cy="368" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
-        <path d="M742.1719,363.7656 L742.1719,361.6094 L749.5625,361.6094 L749.5625,363.7656 L747.0938,363.7656 L747.0938,371.8438 L749.5625,371.8438 L749.5625,374 L742.1719,374 L742.1719,371.8438 L744.6406,371.8438 L744.6406,363.7656 L742.1719,363.7656 Z "/>
+        <rect codeLine="101" fill="#FEFECE" filter="url(#f1dc1hps0562pb)" height="86.4141"
+              id="java.awt.event.KeyListener" style="stroke: #A80036; stroke-width: 1.5;" width="187" x="741.5"
+              y="345.5"/>
+        <ellipse cx="795.25" cy="361.5" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/>
+        <path d="M791.1719,357.2656 L791.1719,355.1094 L798.5625,355.1094 L798.5625,357.2656 L796.0938,357.2656 L796.0938,365.3438 L798.5625,365.3438 L798.5625,367.5 L791.1719,367.5 L791.1719,365.3438 L793.6406,365.3438 L793.6406,357.2656 L791.1719,357.2656 Z "/>
         <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="71" x="766.75" y="372.1543">KeyListener
+              textLength="71" x="815.75" y="365.6543">KeyListener
         </text>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="693.5" x2="878.5" y1="384" y2="384"/>
-        <line style="stroke: #A80036; stroke-width: 1.5;" x1="693.5" x2="878.5" y1="392" y2="392"/>
-        <ellipse cx="703.5" cy="403" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="742.5" x2="927.5" y1="377.5" y2="377.5"/>
+        <line style="stroke: #A80036; stroke-width: 1.5;" x1="742.5" x2="927.5" y1="385.5" y2="385.5"/>
+        <ellipse cx="752.5" cy="396.5" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="143" x="712.5" y="406.2104">keyTyped(KeyEvent): void
+              textLength="143" x="761.5" y="399.7104">keyTyped(KeyEvent): void
         </text>
-        <ellipse cx="703.5" cy="415.8047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <ellipse cx="752.5" cy="409.3047" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="156" x="712.5" y="419.0151">keyPressed(KeyEvent): void
+              textLength="156" x="761.5" y="412.5151">keyPressed(KeyEvent): void
         </text>
-        <ellipse cx="703.5" cy="428.6094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
+        <ellipse cx="752.5" cy="422.1094" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/>
         <text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs"
-              textLength="161" x="712.5" y="431.8198">keyReleased(KeyEvent): void
-        </text><!--MD5=[7666b6907591097f4291fcd170f856ca]
-link nz.ac.vuw.ecs.swen225.gp20.application.Main to nz.ac.vuw.ecs.swen225.gp20.application.GUI-->
-        <path codeLine="74" d="M523.53,579.09 C522.54,603.19 521.55,627.56 520.6,650.72 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.application.Main-to-nz.ac.vuw.ecs.swen225.gp20.application.GUI"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="520.39,655.95,524.7728,647.1301,520.6047,650.9546,516.7802,646.7865,520.39,655.95"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="19"
-              x="523" y="622.0669">gui
+              textLength="161" x="761.5" y="425.3198">keyReleased(KeyEvent): void
         </text><!--MD5=[3a1c9459001fe0ccacbd03b58a0bb5e9]
 reverse link javax.swing.JPanel to nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
-        <path codeLine="75" d="M75.75,128.04 C107.36,283.42 215.8,816.62 255.92,1013.86 " fill="none"
-              id="javax.swing.JPanel-backto-nz.ac.vuw.ecs.swen225.gp20.application.Dashboard"
+        <path codeLine="72"
+              d="M63.82,128.54 C56.03,261.63 46.69,671.38 199,958 C205.94,971.07 215.19,983.36 225.41,994.59 "
+              fill="none" id="javax.swing.JPanel-backto-nz.ac.vuw.ecs.swen225.gp20.application.Dashboard"
               style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="68.87,129.31,71.74,108.32,82.59,126.52,68.87,129.31"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ed7dfb46bb572136f78c3582e9261e9b]
-reverse link javax.swing.JMenuBar to nz.ac.vuw.ecs.swen225.gp20.application.MenuBar-->
-        <path codeLine="76"
-              d="M430.67,125.5 C422.74,138.72 414.44,153.69 408,168 C377.46,235.87 353.69,320.38 342.33,364.33 "
-              fill="none" id="javax.swing.JMenuBar-backto-nz.ac.vuw.ecs.swen225.gp20.application.MenuBar"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="424.9,121.52,441.41,108.22,436.8,128.91,424.9,121.52"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[f2844610d7ed69d22108e0577a1dd94a]
-reverse link javax.swing.JFrame to nz.ac.vuw.ecs.swen225.gp20.application.GUI-->
-        <path codeLine="77"
-              d="M241.94,146.88 C221.59,244.26 195.13,436.78 263,579 C293.66,643.25 354.64,694.66 408.94,730.41 "
-              fill="none" id="javax.swing.JFrame-backto-nz.ac.vuw.ecs.swen225.gp20.application.GUI"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="235.1,145.37,246.21,127.32,248.78,148.36,235.1,145.37"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[e2a073e456c68ffa298ed31dfb0eac3f]
-reverse link java.awt.event.KeyListener to nz.ac.vuw.ecs.swen225.gp20.application.GUI-->
-        <path codeLine="78" d="M745.29,454.88 C708.64,507.9 653.44,587.74 606.27,655.97 " fill="none"
-              id="java.awt.event.KeyListener-backto-nz.ac.vuw.ecs.swen225.gp20.application.GUI"
-              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
-        <polygon fill="none" points="739.61,450.79,756.74,438.32,751.13,458.76,739.61,450.79"
-                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[161e8190b114e48d9297556fb779d44c]
-link nz.ac.vuw.ecs.swen225.gp20.application.GUI to nz.ac.vuw.ecs.swen225.gp20.application.Dialogues-->
-        <path codeLine="79" d="M515,922.01 C515,958.8 515,996.99 515,1027.45 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.application.GUI-to-nz.ac.vuw.ecs.swen225.gp20.application.Dialogues"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036" points="515,1032.66,519,1023.66,515,1027.66,511,1023.66,515,1032.66"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="64"
-              x="516" y="965.0669">gameWon
-        </text>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="64"
-              x="516" y="980.1997">gameLost
-        </text><!--MD5=[06ea537f3258d5696a54a5f4b2888534]
-link nz.ac.vuw.ecs.swen225.gp20.application.GUI to nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
-        <path codeLine="80" d="M408.69,919.84 C383.6,950.49 357.6,982.23 335.05,1009.77 " fill="none"
-              id="nz.ac.vuw.ecs.swen225.gp20.application.GUI-to-nz.ac.vuw.ecs.swen225.gp20.application.Dashboard"
-              style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="#A80036"
-                 points="331.75,1013.81,340.5476,1009.3826,334.9185,1009.9421,334.359,1004.313,331.75,1013.81"
-                 style="stroke: #A80036; stroke-width: 1.0;"/>
-        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="68"
-              x="379" y="972.5669">dashboard
-        </text><!--MD5=[4e9b2dc6f65d2c58ccfef36e897c0e2e]
+        <polygon fill="none" points="56.85,127.81,65.12,108.3,70.82,128.71,56.85,127.81"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[4e9b2dc6f65d2c58ccfef36e897c0e2e]
 reverse link javax.swing.JDialog to nz.ac.vuw.ecs.swen225.gp20.application.Dialogues-->
-        <path codeLine="81"
-              d="M796.49,103.24 C834.59,115.34 871.75,135.27 895,168 C1000.78,316.92 939.32,401.79 895,579 C853.08,746.62 820.69,787.69 712,922 C678.1,963.89 632.46,1003.13 593.65,1032.92 "
+        <path codeLine="73"
+              d="M251.16,147.44 C243.95,239.73 235.53,417.64 261,566 C292.17,747.61 282.79,812.61 396,958 C410.49,976.61 429.29,992.93 448.86,1006.8 "
               fill="none" id="javax.swing.JDialog-backto-nz.ac.vuw.ecs.swen225.gp20.application.Dialogues"
               style="stroke: #A80036; stroke-width: 1.0;"/>
-        <polygon fill="none" points="794.48,109.94,777.15,97.75,798.31,96.47,794.48,109.94"
+        <polygon fill="none" points="244.2,146.58,252.82,127.22,258.16,147.73,244.2,146.58"
                  style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[ea708ec2756a4afc704e596a67c57f1a]
 reverse link java.awt.event.KeyListener to nz.ac.vuw.ecs.swen225.gp20.application.Dialogues-->
-        <path codeLine="82"
-              d="M776.3,458.09 C758.85,559.29 716.54,764.32 639,922 C619.4,961.87 589.85,1001.9 564.51,1032.66 "
+        <path codeLine="74"
+              d="M823.11,451.41 C802.71,549.53 755.68,745.11 679,896 C658.79,935.77 629.07,975.95 603.79,1006.83 "
               fill="none" id="java.awt.event.KeyListener-backto-nz.ac.vuw.ecs.swen225.gp20.application.Dialogues"
               style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
-        <polygon fill="none" points="769.44,456.69,779.65,438.13,783.25,459.01,769.44,456.69"
+        <polygon fill="none" points="816.27,449.92,827.11,431.72,829.99,452.71,816.27,449.92"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[8ff5d34c60d4a031dc0ac72c5da51d30]
+reverse link javax.swing.JFrame to nz.ac.vuw.ecs.swen225.gp20.application.Gui-->
+        <path codeLine="75"
+              d="M664.83,147.25 C674.61,239.93 686.19,419.04 652,566 C646.02,591.72 636.41,618.01 625.51,642.77 "
+              fill="none" id="javax.swing.JFrame-backto-nz.ac.vuw.ecs.swen225.gp20.application.Gui"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="657.86,147.88,662.61,127.22,671.78,146.33,657.86,147.88"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[65f9cb71b7986e95e644791334af8293]
+reverse link java.awt.event.KeyListener to nz.ac.vuw.ecs.swen225.gp20.application.Gui-->
+        <path codeLine="76"
+              d="M808.42,449.87 C786.45,496.6 752.66,561.77 714,613 C698.3,633.8 679.83,654.45 661.14,673.57 "
+              fill="none" id="java.awt.event.KeyListener-backto-nz.ac.vuw.ecs.swen225.gp20.application.Gui"
+              style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/>
+        <polygon fill="none" points="802.08,446.92,816.82,431.69,814.79,452.78,802.08,446.92"
+                 style="stroke: #A80036; stroke-width: 1.0;"/><!--MD5=[1af08bd55049f6b4dc6d8238aeff4dc5]
+link nz.ac.vuw.ecs.swen225.gp20.application.Gui to nz.ac.vuw.ecs.swen225.gp20.application.Dialogues-->
+        <path codeLine="77" d="M555,896.24 C555,932.8 555,971.07 555,1001.62 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.application.Gui-to-nz.ac.vuw.ecs.swen225.gp20.application.Dialogues"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="555,1006.84,559,997.84,555,1001.84,551,997.84,555,1006.84"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="64"
+              x="556" y="939.0669">gameWon
+        </text>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="64"
+              x="556" y="954.1997">gameLost
+        </text><!--MD5=[a9ed28feaa54cd62c31cf10531442e19]
+link nz.ac.vuw.ecs.swen225.gp20.application.Gui to nz.ac.vuw.ecs.swen225.gp20.application.Dashboard-->
+        <path codeLine="78" d="M450.18,896.24 C425.33,926.05 399.53,957 377.04,983.98 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.application.Gui-to-nz.ac.vuw.ecs.swen225.gp20.application.Dashboard"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036"
+                 points="373.75,987.93,382.5909,983.5897,376.9566,984.0936,376.4527,978.4592,373.75,987.93"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="68"
+              x="419" y="946.5669">dashboard
+        </text><!--MD5=[eae08907ca90bdf9329965a1b0afd52a]
+link nz.ac.vuw.ecs.swen225.gp20.application.Main to nz.ac.vuw.ecs.swen225.gp20.application.Gui-->
+        <path codeLine="79" d="M541.12,566.24 C542.77,590.28 544.44,614.6 546.02,637.63 " fill="none"
+              id="nz.ac.vuw.ecs.swen225.gp20.application.Main-to-nz.ac.vuw.ecs.swen225.gp20.application.Gui"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="#A80036" points="546.38,642.84,549.7531,633.5868,546.037,637.8518,541.772,634.1356,546.38,642.84"
+                 style="stroke: #A80036; stroke-width: 1.0;"/>
+        <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="19"
+              x="545" y="609.0669">gui
+        </text><!--MD5=[ed7dfb46bb572136f78c3582e9261e9b]
+reverse link javax.swing.JMenuBar to nz.ac.vuw.ecs.swen225.gp20.application.MenuBar-->
+        <path codeLine="80"
+              d="M429.88,124.97 C421.54,138.29 412.78,153.46 406,168 C375.55,233.34 351.91,314.97 340.5,357.92 "
+              fill="none" id="javax.swing.JMenuBar-backto-nz.ac.vuw.ecs.swen225.gp20.application.MenuBar"
+              style="stroke: #A80036; stroke-width: 1.0;"/>
+        <polygon fill="none" points="424.01,121.14,440.77,108.16,435.76,128.75,424.01,121.14"
                  style="stroke: #A80036; stroke-width: 1.0;"/>
         <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
-              x="401.39" y="1195.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[e6d69f284598e2924c69687637592748]
+              x="378" y="1169.2822">UMLDoclet 2.0.12, PlantUML 1.2020.16
+        </text><!--MD5=[7aed432039b95f31e547bed860483682]
 @startuml
     namespace nz.ac.vuw.ecs.swen225.gp20.application {
 
-        class Main [[Main.html]] {
-            +Main()
-            +Main(Boolean)
-            +startTimer(Boolean): void
-            +startTimer(int): void
-            +createTimerTask(): void
-            +startRecording(): void
-            +saveRecording(): void
-            +loadRecording(): void
-            +replayRecording(): void
-            +loadFile(Boolean): void
-            +saveFile(Boolean, Boolean): void
-            +exitGame(): void
-            +startGame(int): void
-            +pauseGame(boolean): void
-            +playGame(): void
-            +getMaze(): Maze
-            +getLevel(): int
-            +setLevel(int): void
-            +getTimeLeft(): int
-            +setMaze(Maze): void
-            +setGui(Maze): void
-            +getTimer(): Timer
-            +setTimeLeft(int): void
-            +isLevelWon(): boolean
-            {static} +main(String[]): void
-        }
-
         class Dashboard [[Dashboard.html]] {
-            +Dashboard(Maze, Canvas)
+            +Dashboard(Maze)
             +createComponents(): void
             +addComponents(): void
             +updateDashboard(): void
@@ -542,13 +514,16 @@ reverse link java.awt.event.KeyListener to nz.ac.vuw.ecs.swen225.gp20.applicatio
             +setTimer(String): void
         }
 
-        class MenuBar [[MenuBar.html]] {
-            +MenuBar(Main)
+        class Dialogues [[Dialogues.html]] {
+            +Dialogues(Main, String, String)
+            +setActionListener(ActionListener): void
+            +keyTyped(KeyEvent): void
+            +keyPressed(KeyEvent): void
+            +keyReleased(KeyEvent): void
         }
 
-        class GUI [[GUI.html]] {
-            +GUI()
-            +GUI(Main, Maze)
+        class Gui [[Gui.html]] {
+            +Gui(Main, Maze)
             +setButtonActionListeners(): void
             +getCanvas(): Canvas
             +setUpGui(): void
@@ -566,39 +541,62 @@ reverse link java.awt.event.KeyListener to nz.ac.vuw.ecs.swen225.gp20.applicatio
             +keyReleased(KeyEvent): void
         }
 
-        class Dialogues [[Dialogues.html]] {
-            +Dialogues(Main, String, String)
-            +setActionListener(ActionListener): void
-            +keyTyped(KeyEvent): void
-            +keyPressed(KeyEvent): void
-            +keyReleased(KeyEvent): void
+        class Main [[Main.html]] {
+            +Main()
+            +Main(Boolean, int)
+            +startTimer(Boolean): void
+            +createTimerTask(): void
+            +startRecording(): void
+            +saveRecording(): void
+            +loadRecording(): void
+            +loadFile(Boolean): void
+            +saveFile(Boolean, Boolean): void
+            +exitGame(): void
+            +startGame(int): void
+            +pauseGame(boolean): void
+            +playGame(): void
+            +getMaze(): Maze
+            +getLevel(): int
+            +getLastLevel(): int
+            +setLevel(int): void
+            +getTimeLeft(): int
+            +setMaze(Maze): void
+            +setGui(Maze): void
+            +getTimer(): Timer
+            +setTimeLeft(int): void
+            +isLevelWon(): boolean
+            {static} +main(String[]): void
         }
 
-        Main - -> GUI: gui
+        class MenuBar [[MenuBar.html]] {
+            +MenuBar(Main)
+        }
+
         javax.swing.JPanel <|- - Dashboard
-        javax.swing.JMenuBar <|- - MenuBar
-        javax.swing.JFrame <|- - GUI
-        java.awt.event.KeyListener <|.. GUI
-        GUI - -> Dialogues: gameWon\ngameLost
-        GUI - -> Dashboard: dashboard
         javax.swing.JDialog <|- - Dialogues
         java.awt.event.KeyListener <|.. Dialogues
+        javax.swing.JFrame <|- - Gui
+        java.awt.event.KeyListener <|.. Gui
+        Gui - -> Dialogues: gameWon\ngameLost
+        Gui - -> Dashboard: dashboard
+        Main - -> Gui: gui
+        javax.swing.JMenuBar <|- - MenuBar
     }
 
     namespace javax.swing {
         class JPanel {
         }
-        class JMenuBar {
+        class JDialog {
+            #rootPane: JRootPane
+            #rootPaneCheckingEnabled: boolean
+            #accessibleContext: AccessibleContext
         }
         class JFrame {
             #rootPane: JRootPane
             #rootPaneCheckingEnabled: boolean
             #accessibleContext: AccessibleContext
         }
-        class JDialog {
-            #rootPane: JRootPane
-            #rootPaneCheckingEnabled: boolean
-            #accessibleContext: AccessibleContext
+        class JMenuBar {
         }
     }
 
@@ -619,7 +617,7 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
+Country: null
 -->
     </g>
 </svg>

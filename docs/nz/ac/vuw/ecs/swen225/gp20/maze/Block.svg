@@ -54,7 +54,7 @@ class nz.ac.vuw.ecs.swen225.gp20.maze.Block-->
         </a>
         <text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="192"
               x="12" y="146.0479">UMLDoclet 2.0.12, PlantUML 1.2020.16
-        </text><!--MD5=[2a6fa1c16a12d5b742f3996c412f1fce]
+        </text><!--MD5=[ce8c6c7dd7f1e7a5f5fda88c0b3c06eb]
 @startuml
     set namespaceSeparator none
     hide empty fields
@@ -78,7 +78,7 @@ Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM
 Default Encoding: UTF-8
 Language: en
-Country: NZ
+Country: null
 -->
     </g>
 </svg>

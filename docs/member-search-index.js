@@ -96,8 +96,8 @@ memberSearchIndex = [{
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Dashboard",
-    "l": "Dashboard(Maze, Canvas)",
-    "url": "%3Cinit%3E(nz.ac.vuw.ecs.swen225.gp20.maze.Maze,nz.ac.vuw.ecs.swen225.gp20.render.Canvas)"
+    "l": "Dashboard(Maze)",
+    "url": "%3Cinit%3E(nz.ac.vuw.ecs.swen225.gp20.maze.Maze)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Dialogues",
@@ -109,7 +109,7 @@ memberSearchIndex = [{
     "l": "DIED"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "displayPausedDialogue()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
@@ -167,7 +167,7 @@ memberSearchIndex = [{
     "l": "getBlocks()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "getCanvas()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.maze",
@@ -195,7 +195,7 @@ memberSearchIndex = [{
     "l": "getColour()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "getDashboard()"
 }, {"p": "nz.ac.vuw.ecs.swen225.gp20.maze", "c": "Actor", "l": "getDir()"}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.recnplay",
@@ -213,11 +213,11 @@ memberSearchIndex = [{
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
     "c": "FileChooser",
-    "l": "getFileToSave(GUI, String)",
-    "url": "getFileToSave(nz.ac.vuw.ecs.swen225.gp20.application.GUI,java.lang.String)"
+    "l": "getFileToSave(Gui, String)",
+    "url": "getFileToSave(nz.ac.vuw.ecs.swen225.gp20.application.Gui,java.lang.String)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "getGameLost()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.persistence",
@@ -226,7 +226,7 @@ memberSearchIndex = [{
     "url": "getGameState(nz.ac.vuw.ecs.swen225.gp20.application.Main)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "getGameWon()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
@@ -259,8 +259,12 @@ memberSearchIndex = [{
 }, {"p": "nz.ac.vuw.ecs.swen225.gp20.maze", "c": "Tile", "l": "getJson()"}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
     "c": "FileChooser",
-    "l": "getJsonFileToLoad(GUI, String)",
-    "url": "getJsonFileToLoad(nz.ac.vuw.ecs.swen225.gp20.application.GUI,java.lang.String)"
+    "l": "getJsonFileToLoad(Gui, String)",
+    "url": "getJsonFileToLoad(nz.ac.vuw.ecs.swen225.gp20.application.Gui,java.lang.String)"
+}, {
+    "p": "nz.ac.vuw.ecs.swen225.gp20.application",
+    "c": "Main",
+    "l": "getLastLevel()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Main",
@@ -295,7 +299,7 @@ memberSearchIndex = [{
     "l": "getMap()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "getMaze()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
@@ -305,6 +309,10 @@ memberSearchIndex = [{
     "p": "nz.ac.vuw.ecs.swen225.gp20.recnplay",
     "c": "RecordedMove",
     "l": "getMoveIndex()"
+}, {
+    "p": "nz.ac.vuw.ecs.swen225.gp20.maze",
+    "c": "Cobra",
+    "l": "getMoves()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
     "c": "Direction",
@@ -359,13 +367,8 @@ memberSearchIndex = [{
     "l": "GREEN"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
-    "l": "GUI()",
-    "url": "%3Cinit%3E()"
-}, {
-    "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
-    "l": "GUI(Main, Maze)",
+    "c": "Gui",
+    "l": "Gui(Main, Maze)",
     "url": "%3Cinit%3E(nz.ac.vuw.ecs.swen225.gp20.application.Main,nz.ac.vuw.ecs.swen225.gp20.maze.Maze)"
 }, {"p": "nz.ac.vuw.ecs.swen225.gp20.maze", "c": "Tile", "l": "hasBlock()"}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.maze",
@@ -377,7 +380,7 @@ memberSearchIndex = [{
     "l": "hashCode()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "hidePausedDialogue()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
@@ -421,10 +424,6 @@ memberSearchIndex = [{
     "c": "RecordAndPlay",
     "l": "isRecording()"
 }, {
-    "p": "nz.ac.vuw.ecs.swen225.gp20.recnplay",
-    "c": "RecordAndPlay",
-    "l": "isRecordingPaused()"
-}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.maze",
     "c": "Key",
     "l": "Key(int, int, Key.Colour)",
@@ -436,7 +435,7 @@ memberSearchIndex = [{
     "url": "keyPressed(java.awt.event.KeyEvent)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "keyPressed(KeyEvent)",
     "url": "keyPressed(java.awt.event.KeyEvent)"
 }, {
@@ -446,7 +445,7 @@ memberSearchIndex = [{
     "url": "keyReleased(java.awt.event.KeyEvent)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "keyReleased(KeyEvent)",
     "url": "keyReleased(java.awt.event.KeyEvent)"
 }, {
@@ -456,7 +455,7 @@ memberSearchIndex = [{
     "url": "keyTyped(java.awt.event.KeyEvent)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "keyTyped(KeyEvent)",
     "url": "keyTyped(java.awt.event.KeyEvent)"
 }, {
@@ -524,8 +523,8 @@ memberSearchIndex = [{
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Main",
-    "l": "Main(Boolean)",
-    "url": "%3Cinit%3E(java.lang.Boolean)"
+    "l": "Main(Boolean, int)",
+    "url": "%3Cinit%3E(java.lang.Boolean,int)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Main",
@@ -557,13 +556,17 @@ memberSearchIndex = [{
     "l": "MenuBar(Main)",
     "url": "%3Cinit%3E(nz.ac.vuw.ecs.swen225.gp20.application.Main)"
 }, {
+    "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
+    "c": "Sound",
+    "l": "MOVE_BLOCK"
+}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.maze",
     "c": "Maze",
     "l": "moveActor(Actor, Direction)",
     "url": "moveActor(nz.ac.vuw.ecs.swen225.gp20.maze.Actor,nz.ac.vuw.ecs.swen225.gp20.commons.Direction)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "moveChap(Direction)",
     "url": "moveChap(nz.ac.vuw.ecs.swen225.gp20.commons.Direction)"
 }, {
@@ -589,10 +592,6 @@ memberSearchIndex = [{
     "c": "Main",
     "l": "pauseGame(boolean)"
 }, {
-    "p": "nz.ac.vuw.ecs.swen225.gp20.recnplay",
-    "c": "RecordAndPlay",
-    "l": "pauseRecording()"
-}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
     "c": "Sound",
     "l": "PICK_UP_ITEM"
@@ -617,7 +616,7 @@ memberSearchIndex = [{
     "url": "playRecording(nz.ac.vuw.ecs.swen225.gp20.application.Main)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "playSound(Sound)",
     "url": "playSound(nz.ac.vuw.ecs.swen225.gp20.commons.Sound)"
 }, {
@@ -654,16 +653,8 @@ memberSearchIndex = [{
     "url": "%3Cinit%3E()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "Main",
-    "l": "replayRecording()"
-}, {
-    "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Dashboard",
     "l": "resetDashboard()"
-}, {
-    "p": "nz.ac.vuw.ecs.swen225.gp20.recnplay",
-    "c": "RecordAndPlay",
-    "l": "resumeRecording()"
 }, {"p": "nz.ac.vuw.ecs.swen225.gp20.commons", "c": "Direction", "l": "RIGHT"}, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.maze",
     "c": "Maze.LevelState",
@@ -689,8 +680,8 @@ memberSearchIndex = [{
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
     "c": "FileChooser",
-    "l": "saveToFile(GUI, JsonArray, String)",
-    "url": "saveToFile(nz.ac.vuw.ecs.swen225.gp20.application.GUI,javax.json.JsonArray,java.lang.String)"
+    "l": "saveToFile(Gui, JsonArray, String)",
+    "url": "saveToFile(nz.ac.vuw.ecs.swen225.gp20.application.Gui,javax.json.JsonArray,java.lang.String)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
     "c": "Dialogues",
@@ -698,11 +689,11 @@ memberSearchIndex = [{
     "url": "setActionListener(java.awt.event.ActionListener)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "setButtonActionListeners()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "setChapDirection(Direction)",
     "url": "setChapDirection(nz.ac.vuw.ecs.swen225.gp20.commons.Direction)"
 }, {
@@ -740,7 +731,7 @@ memberSearchIndex = [{
     "url": "setMaze(nz.ac.vuw.ecs.swen225.gp20.maze.Maze)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "setMaze(Maze)",
     "url": "setMaze(nz.ac.vuw.ecs.swen225.gp20.maze.Maze)"
 }, {
@@ -768,7 +759,7 @@ memberSearchIndex = [{
     "l": "setTimeLeft(int)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "setTimer(int)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
@@ -777,7 +768,7 @@ memberSearchIndex = [{
     "url": "setTimer(java.lang.String)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "setUpGui()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.render",
@@ -802,10 +793,6 @@ memberSearchIndex = [{
     "c": "Main",
     "l": "startTimer(Boolean)",
     "url": "startTimer(java.lang.Boolean)"
-}, {
-    "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "Main",
-    "l": "startTimer(int)"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.commons",
     "c": "Sound",
@@ -870,7 +857,7 @@ memberSearchIndex = [{
     "l": "updateDashboard()"
 }, {
     "p": "nz.ac.vuw.ecs.swen225.gp20.application",
-    "c": "GUI",
+    "c": "Gui",
     "l": "updateGui(Boolean)",
     "url": "updateGui(java.lang.Boolean)"
 }, {
