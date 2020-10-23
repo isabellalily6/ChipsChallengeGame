@@ -67,9 +67,9 @@ public class Gui extends JFrame implements KeyListener {
     setResizable(false);
 
     // create the dialogues
-    pausedDialogue = new Dialogues(main, "GAME IS PAUSED", "RESUME");
-    gameWon = new Dialogues(main, "You have won the level!!!", "NEXT GAME");
-    gameLost = new Dialogues(main, "You have lost the game", "RETRY");
+    pausedDialogue = new Dialogues(main, "GAME IS PAUSED", "Resume");
+    gameWon = new Dialogues(main, "You have won the level!!!", "Next Game");
+    gameLost = new Dialogues(main, "You have lost the game", "Retry");
     // set the actions for the dialogues
     setButtonActionListeners();
   }
