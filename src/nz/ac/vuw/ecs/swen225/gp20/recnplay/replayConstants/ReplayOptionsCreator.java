@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants;
 
 import nz.ac.vuw.ecs.swen225.gp20.application.Main;
-import nz.ac.vuw.ecs.swen225.gp20.recnplay.ReplayOptionDialog;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -16,6 +15,9 @@ import static nz.ac.vuw.ecs.swen225.gp20.recnplay.replayConstants.ButtonMaker.st
  */
 public class ReplayOptionsCreator implements ReplayDialogCreator {
 
+    /**
+     * The speed to set the replay to
+     */
     static int speed = 0;
 
     @Override
