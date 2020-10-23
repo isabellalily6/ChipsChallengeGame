@@ -22,17 +22,12 @@ import java.util.stream.Collectors;
  *
  * @author Seth Patel
  **/
-public class Canvas extends JLayeredPane {
+public class Canvas extends JPanel {
     private static final int VIEW_SIZE = 9;
     private static final int VIEW_SIDE = (VIEW_SIZE - 1) / 2;
     private static final int TILE_SIZE = 50;
-    private static final int SIZE_OFFSET = 6;
-    private static final int BOUNDS_OFFSET = 3;
     private Maze maze;
     private final JLabel[][] components;
-    private final JPanel boardPanel;
-    private final JPanel transitionPanel;
-    private static final ReentrantLock lock = new ReentrantLock();
 
     /**
      * New canvas to render the game.
@@ -40,31 +35,17 @@ public class Canvas extends JLayeredPane {
      * @param maze the maze to be rendered
      **/
     public Canvas(Maze maze) {
-        setPreferredSize(new Dimension((VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET, (VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET));
-        setMaximumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET, (VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET));
-        setMinimumSize(new Dimension((VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET, (VIEW_SIZE * TILE_SIZE)+SIZE_OFFSET));
-        boardPanel = new JPanel();
-        transitionPanel = new JPanel();
+        setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
+        setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
         this.maze = maze;
         components = new JLabel[VIEW_SIZE][VIEW_SIZE];
-        boardPanel.setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        boardPanel.setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        boardPanel.setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        transitionPanel.setPreferredSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        transitionPanel.setMinimumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        transitionPanel.setMaximumSize(new Dimension(VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE));
-        boardPanel.setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
-        boardPanel.setBounds(BOUNDS_OFFSET, BOUNDS_OFFSET, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
-        transitionPanel.setBounds(BOUNDS_OFFSET, BOUNDS_OFFSET, VIEW_SIZE * TILE_SIZE, VIEW_SIZE * TILE_SIZE);
-        transitionPanel.setLayout(null);
-        transitionPanel.setOpaque(false);
+        setLayout(new GridLayout(VIEW_SIZE, VIEW_SIZE, 0, 0));
         createComponents();
-        add(boardPanel, JLayeredPane.DEFAULT_LAYER);
-        add(transitionPanel, JLayeredPane.PALETTE_LAYER);
     }
 
     private void createComponents() {
-        boardPanel.removeAll();
+        removeAll();
         Tile centre = maze.getChap().getLocation();
         for (int row = centre.getRow() - VIEW_SIDE, y = 0; row <= centre.getRow() + VIEW_SIDE; row++, y++) {
             for (int col = centre.getCol() - VIEW_SIDE, x = 0; col <= centre.getCol() + VIEW_SIDE; col++, x++) {
@@ -73,7 +54,7 @@ public class Canvas extends JLayeredPane {
                 } else {
                     components[x][y] = new JLabel(makeImageIcon(maze.getTiles()[col][row].getImageURl()));
                 }
-                boardPanel.add(components[x][y]);
+                add(components[x][y]);
             }
         }
         components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
@@ -114,87 +95,6 @@ public class Canvas extends JLayeredPane {
         }
         if (maze != null && !maze.getState().equals(Maze.LevelState.DIED)) {
             components[VIEW_SIDE][VIEW_SIDE].setIcon(makeImageIcon(maze.getChap().getImageURl()));
-        }
-    }
-
-    /**
-     * Draws the player between moving tiles for smoother feel.
-     *
-     * @param direction the direction to move
-     **/
-    public void movePlayer(Direction direction) {
-        lock.lock();
-        try {
-            Point origin = components[VIEW_SIDE][VIEW_SIDE].getLocation();
-            int x = (int) origin.getX();
-            int y = (int) origin.getY();
-            ImageIcon image = getImage(direction);
-            int i = 0;
-            while (i < 25) {
-                Graphics g = transitionPanel.getGraphics().create(transitionPanel.getX(), transitionPanel.getY(), transitionPanel.getWidth(), transitionPanel.getHeight());
-                drawUnderlyingTiles(g, direction);
-                g.drawImage(image.getImage(), x-BOUNDS_OFFSET, y-BOUNDS_OFFSET, null);
-                switch (direction) {
-                    case UP:
-                        y -= 2;
-                        break;
-                    case DOWN:
-                        y += 2;
-                        break;
-                    case LEFT:
-                        x -= 2;
-                        break;
-                    case RIGHT:
-                        x += 2;
-                        break;
-                }
-                transitionPanel.repaint();
-                i++;
-            }
-        } finally {
-            lock.unlock();
-        }
-    }
-
-    private void drawUnderlyingTiles(Graphics g, Direction direction) {
-        Point chapPos = new Point(maze.getChap().getLocation().getCol(), maze.getChap().getLocation().getRow());
-        var label = components[VIEW_SIDE][VIEW_SIDE];
-        ImageIcon icon = makeImageIcon(maze.getTiles()[chapPos.x][chapPos.y].getImageURl());
-        if (maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/exit.png")
-                || maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/lava.png")
-                || maze.getTiles()[chapPos.x][chapPos.y].getImageURl().equals("data/infoField.png")) {
-            icon = makeImageIcon("data/free.png");
-        }
-        g.drawImage(icon.getImage(), label.getX()-BOUNDS_OFFSET, label.getY()-BOUNDS_OFFSET, null);
-        switch (direction) {
-            case UP:
-                label = components[VIEW_SIDE][VIEW_SIDE - 1];
-                break;
-            case DOWN:
-                label = components[VIEW_SIDE][VIEW_SIDE + 1];
-                break;
-            case LEFT:
-                label = components[VIEW_SIDE - 1][VIEW_SIDE];
-                break;
-            case RIGHT:
-                label = components[VIEW_SIDE + 1][VIEW_SIDE];
-                break;
-        }
-        g.drawImage(((ImageIcon) label.getIcon()).getImage(), label.getX()-BOUNDS_OFFSET, label.getY()-BOUNDS_OFFSET, null);
-    }
-
-    private ImageIcon getImage(Direction direction) {
-        switch (direction) {
-            case UP:
-                return makeImageIcon("data/playerUpClear.png");
-            case DOWN:
-                return makeImageIcon("data/playerDownClear.png");
-            case LEFT:
-                return makeImageIcon("data/playerLeftClear.png");
-            case RIGHT:
-                return makeImageIcon("data/playerRightClear.png");
-            default:
-                throw new IllegalArgumentException();
         }
     }
 

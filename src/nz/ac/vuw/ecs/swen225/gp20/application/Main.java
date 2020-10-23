@@ -51,9 +51,7 @@ public class Main {
     if (file.exists()) {
       // if the file exists load from this file and then delete it
       loadFile(true);
-      if (!file.delete()) {
-        System.out.println("File couldn't be deleted");
-      }
+      boolean deleted = file.delete();
     } else {
       // otherwise create the maze for the game
       maze = new Maze(level);
@@ -131,6 +129,7 @@ public class Main {
           timer.cancel();
         } else if (timeLeft == 0) {
           // if the timer has reached 0, cancel the timer and show the game lost dialogue
+          RecordAndPlay.saveRecording();
           gui.getGameLost().setVisible(true);
           timer.cancel();
         } else if (!gamePaused) {
@@ -208,6 +207,7 @@ public class Main {
    * Exit the game.
    **/
   public void exitGame() {
+    RecordAndPlay.saveRecording();
     System.exit(0);
   }
 
