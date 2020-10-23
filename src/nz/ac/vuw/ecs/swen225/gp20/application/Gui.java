@@ -27,8 +27,8 @@ import nz.ac.vuw.ecs.swen225.gp20.render.SoundEffect;
  **/
 public class Gui extends JFrame implements KeyListener {
   // initialize the screen sizes
-  private int screenwidth = 900;
-  private int screenHeight = 650;
+  private static final int screenWidth = 900;
+  private static final int screenHeight = 650;
 
   // initialize GUI fields
   private final JPanel mainPanel = new JPanel();
@@ -57,7 +57,7 @@ public class Gui extends JFrame implements KeyListener {
 
     // set the frame requirements
     addKeyListener(this);
-    setSize(screenwidth, screenHeight);
+    setSize(screenWidth, screenHeight);
     setResizable(true);
     setVisible(true);
     setLocationRelativeTo(null);
@@ -266,6 +266,7 @@ public class Gui extends JFrame implements KeyListener {
       canvas.repaint();
       repaint();
     }
+    dashboard.resetDashboard();
     dashboard.updateDashboard();
   }
 

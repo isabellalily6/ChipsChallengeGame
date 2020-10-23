@@ -27,9 +27,9 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private int lastLevel = 2;
+  private static final int lastLevel = 2;
   private int level = 1;
-  private int maxTime = 100;
+  private static final int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -201,8 +201,10 @@ public class Main {
     } else {
       // otherwise if the user wants to choose where to save the file, let the user chose a file
       // and save the game state to the chosen file
-      LevelLoader.saveGameState(LevelLoader.getGameState(this),
-              FileChooser.getFileToSave(gui, "saves"));
+      File file = FileChooser.getFileToSave(gui, "saves");
+      if (file != null) {
+        LevelLoader.saveGameState(LevelLoader.getGameState(this), file);
+      }
     }
   }
 
