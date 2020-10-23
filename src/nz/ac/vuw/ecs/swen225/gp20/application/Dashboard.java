@@ -27,8 +27,8 @@ import nz.ac.vuw.ecs.swen225.gp20.render.Canvas;
  **/
 public class Dashboard extends JPanel {
   // initialise the size of the dashboard
-  private int width = 200;
-  private int height = 400;
+  private static final int width = 200;
+  private static final int height = 400;
 
   // initialise the components to be put on the Dashboard
   private JLabel level;
@@ -157,9 +157,9 @@ public class Dashboard extends JPanel {
   }
 
   /**
-   * Reset the dashboard
+   * Reset the dashboard.
    **/
-  public void resetDashboard(){
+  public void resetDashboard() {
     for (JLabel label : treasuresCollected) {
       label.setIcon(null);
     }
@@ -168,6 +168,7 @@ public class Dashboard extends JPanel {
   /**
    * Get the file for the key, based on the colour.
    *
+   * @param colour which is the colour of the key
    * @return the file which corresponds to the colour
    **/
   public String getFile(Key.Colour colour) {

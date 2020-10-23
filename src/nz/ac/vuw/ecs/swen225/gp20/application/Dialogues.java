@@ -22,6 +22,10 @@ import javax.swing.text.StyledDocument;
  *  @author Isabella Tomaz-Ketley 300494939
  **/
 public class Dialogues extends JDialog implements KeyListener {
+  // initialise the size of the dialogues
+  private static final int width = 500;
+  private static final int height = 300;
+
   // Components of the JDialogue
   private JTextPane text = new JTextPane();
   private JScrollPane scrollText;
@@ -43,7 +47,7 @@ public class Dialogues extends JDialog implements KeyListener {
     this.addKeyListener(this);
     this.setFocusable(true);
     this.setLocationRelativeTo(main.getGui());
-    this.setSize(500, 300);
+    this.setSize(width, height);
     this.setLayout(new GridLayout(3, 1));
     this.setBackground(Color.lightGray);
 

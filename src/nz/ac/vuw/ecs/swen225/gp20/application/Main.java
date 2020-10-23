@@ -1,14 +1,13 @@
 package nz.ac.vuw.ecs.swen225.gp20.application;
 
+import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 import nz.ac.vuw.ecs.swen225.gp20.commons.FileChooser;
 import nz.ac.vuw.ecs.swen225.gp20.maze.Maze;
 import nz.ac.vuw.ecs.swen225.gp20.persistence.LevelLoader;
 import nz.ac.vuw.ecs.swen225.gp20.recnplay.RecordAndPlay;
 import nz.ac.vuw.ecs.swen225.gp20.render.Music;
-
-import java.io.File;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * From Handout:
@@ -28,9 +27,9 @@ public class Main {
   private Maze maze;
 
   // initialise the game information
-  private final int lastLevel = 2;
+  private static final int lastLevel = 2;
   private int level = 1;
-  private final int maxTime = 100;
+  private static final int maxTime = 100;
   private int timeLeft = maxTime;
 
   // initialize the timer variables
@@ -51,7 +50,11 @@ public class Main {
     if (file.exists()) {
       // if the file exists load from this file and then delete it
       loadFile(true);
-      boolean deleted = file.delete();
+      if (!file.delete()) {
+        if (file.renameTo(new File("levels/oldGameState.json"))) {
+          file.deleteOnExit();
+        }
+      }
     } else {
       // otherwise create the maze for the game
       maze = new Maze(level);
@@ -198,8 +201,10 @@ public class Main {
     } else {
       // otherwise if the user wants to choose where to save the file, let the user chose a file
       // and save the game state to the chosen file
-      LevelLoader.saveGameState(LevelLoader.getGameState(this),
-              FileChooser.getFileToSave(gui, "saves"));
+      File file = FileChooser.getFileToSave(gui, "saves");
+      if (file != null) {
+        LevelLoader.saveGameState(LevelLoader.getGameState(this), file);
+      }
     }
   }
 
