@@ -51,9 +51,7 @@ public class Main {
     if (file.exists()) {
       // if the file exists load from this file and then delete it
       loadFile(true);
-      if (!file.delete()) {
-        System.out.println("File couldn't be deleted");
-      }
+      boolean deleted = file.delete();
     } else {
       // otherwise create the maze for the game
       maze = new Maze(level);

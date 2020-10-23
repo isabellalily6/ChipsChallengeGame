@@ -296,14 +296,11 @@ public class Gui extends JFrame implements KeyListener {
       } else if (keyEvent.isControlDown() && keyEvent.getKeyCode() == KeyEvent.VK_1) {
         //CTRL-1 - start a new game at level 1
         main.startGame(1);
-        System.out.println("Start new game a level 1");
       } else if (keyEvent.getKeyCode() == KeyEvent.VK_SPACE) {
         //SPACE - pause the game and display a “game is paused” dialog
-        System.out.println("Pause and display");
         main.pauseGame(true);
       } else if (keyEvent.getKeyCode() == KeyEvent.VK_ESCAPE) {
         //ESC - close the “game is paused” dialog and resume the game
-        System.out.println("Close dialogue and Resume");
         main.playGame();
       }
     }
